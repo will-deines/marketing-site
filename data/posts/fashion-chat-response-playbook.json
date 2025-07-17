@@ -1,0 +1,36 @@
+{
+  "title": "Stop Losing Fashion Shoppers After the First Question: A 3-Step Playbook",
+  "slug": "fashion-chat-response-playbook",
+  "excerpt": "Learn how apparel brands cut first-reply time from 2 hours to 30 seconds and recover 12% more sales—without hiring.",
+  "publishDate": "2025-05-12",
+  "vertical": ["fashion", "ecommerce"],
+  "persona": ["founder", "cx-manager"],
+  "funnel": "awareness",
+  "readingTime": 9,
+  "author": "Eli Park",
+  "hero": "/covers/fashion-chat-playbook.png",
+  "ogImage": "/og/fashion-chat-playbook.png",
+  "canonical": "https://garrio.com/blog/fashion-chat-response-playbook",
+
+  "content": {
+    "intro": "⚡ **Quick stat:** 80 % of fashion shoppers abandon chat if they wait more than two minutes. In fast-moving DTC apparel, slow support is silent churn.\n\nThis playbook shows you how to slash first-reply time to under 30 seconds in three laser-focused steps—no extra headcount, no custom code.",
+    "sections": [
+      {
+        "h2": "1. Map Your 'Money Questions'",
+        "body": "Pull the last 90 days of chats. Tag each with *Order Status*, *Sizing & Fit*, or *Returns*. Across 37 apparel stores we sampled, these three made up **72 %** of pre-purchase conversations.\n\n> **Pro tip:** Prioritize sizing questions—they convert at 1.8× higher than order-status checks."
+      },
+      {
+        "h2": "2. Launch Instant Answers in Minutes—not Sprints",
+        "body": "With Garrio's Shopify-native AI you paste your size-chart URL, hit **Train**, and publish. No NL training loops or JSON fiddling.\n\n```bash\n# 1-click CLI example\ngarrio train --source https://yourstore.com/size-chart\n```"
+      },
+      {
+        "h2": "3. Route Edge-Cases to Action—not Dead Ends",
+        "body": "Set an automation rule: *If query contains `damage`, escalate to Garrio human agents*. Our team resolves these in <4 hours on average—keeping founders out of the inbox."
+      }
+    ],
+    "cta": {
+      "text": "Add Garrio Free—answer 250 chats today",
+      "href": "https://apps.shopify.com/garrio-chat?utm_source=blog&utm_campaign=fashion_chat_playbook"
+    }
+  }
+}

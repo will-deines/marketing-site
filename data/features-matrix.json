@@ -1,0 +1,62 @@
+{
+  "garrio": {
+    "name": "Garrio",
+    "values": {
+      "automation_rate": 0.98,
+      "software_cost_250": 0,
+      "setup_minutes": 5,
+      "dfy_escalations": true,
+      "free_tier": "Free up to 250 tickets"
+    }
+  },
+  "gorgias": {
+    "name": "Gorgias",
+    "values": {
+      "automation_rate": 0.4,
+      "software_cost_250": 60,
+      "setup_minutes": 2880,
+      "dfy_escalations": false,
+      "free_tier": "$10 / 50 tickets"
+    }
+  },
+  "reamaze": {
+    "name": "Re:amaze",
+    "values": {
+      "automation_rate": 0.35,
+      "software_cost_250": 45,
+      "setup_minutes": 1440,
+      "dfy_escalations": false,
+      "free_tier": "$20 / 75 tickets"
+    }
+  },
+  "zendesk": {
+    "name": "Zendesk",
+    "values": {
+      "automation_rate": 0.3,
+      "software_cost_250": 125,
+      "setup_minutes": 4320,
+      "dfy_escalations": false,
+      "free_tier": "$49 / 100 tickets"
+    }
+  },
+  "tidio": {
+    "name": "Tidio",
+    "values": {
+      "automation_rate": 0.45,
+      "software_cost_250": 35,
+      "setup_minutes": 720,
+      "dfy_escalations": false,
+      "free_tier": "Free up to 100 tickets"
+    }
+  },
+  "freshdesk": {
+    "name": "Freshdesk",
+    "values": {
+      "automation_rate": 0.38,
+      "software_cost_250": 75,
+      "setup_minutes": 2160,
+      "dfy_escalations": false,
+      "free_tier": "$15 / 50 tickets"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "gorgias",
+    "name": "Gorgias",
+    "tagline": "Helpdesk built for ecommerce",
+    "pricing": {
+      "entryPlan": 10,
+      "entryTickets": 50,
+      "overagePerTicket": 0.4
+    },
+    "shopifyRating": 4.3,
+    "approxUsers": 15000,
+    "featureFlags": {
+      "oneClickShopifyActions": false,
+      "doneForYouEscalations": false,
+      "builtInUpsells": true,
+      "freeTier": false
+    },
+    "logo": "/logos/gorgias.png",
+    "caseStudyIds": ["roots-resin", "urban-threads"]
+  },
+  {
+    "slug": "zendesk",
+    "name": "Zendesk",
+    "tagline": "Enterprise customer service platform",
+    "pricing": {
+      "entryPlan": 49,
+      "entryTickets": 100,
+      "overagePerTicket": 0.5
+    },
+    "shopifyRating": 3.8,
+    "approxUsers": 20000,
+    "featureFlags": {
+      "oneClickShopifyActions": false,
+      "doneForYouEscalations": false,
+      "builtInUpsells": false,
+      "freeTier": false
+    },
+    "logo": "/logos/zendesk.png",
+    "caseStudyIds": ["minimal-goods", "clay-oak"]
+  },
+  {
+    "slug": "reamaze",
+    "name": "Re:amaze",
+    "tagline": "Customer messaging platform",
+    "pricing": {
+      "entryPlan": 20,
+      "entryTickets": 75,
+      "overagePerTicket": 0.2
+    },
+    "shopifyRating": 4.1,
+    "approxUsers": 5000,
+    "featureFlags": {
+      "oneClickShopifyActions": false,
+      "doneForYouEscalations": false,
+      "builtInUpsells": false,
+      "freeTier": false
+    },
+    "logo": "/logos/reamaze.png",
+    "caseStudyIds": ["eco-essentials", "vintage-vinyl"]
+  },
+  {
+    "slug": "tidio",
+    "name": "Tidio",
+    "tagline": "Live chat and chatbots",
+    "pricing": {
+      "entryPlan": 18,
+      "entryTickets": 100,
+      "overagePerTicket": 0.15
+    },
+    "shopifyRating": 4.5,
+    "approxUsers": 8000,
+    "featureFlags": {
+      "oneClickShopifyActions": false,
+      "doneForYouEscalations": false,
+      "builtInUpsells": false,
+      "freeTier": true
+    },
+    "logo": "/logos/tidio.png",
+    "caseStudyIds": ["glow-beauty", "tech-haven"]
+  }
+]

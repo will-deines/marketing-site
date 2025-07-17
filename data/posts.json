@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "fashion-chat-response-playbook",
+    "title": "Stop Losing Fashion Shoppers After the First Question: A 3-Step Playbook",
+    "excerpt": "Learn how apparel brands cut first-reply time from 2 hours to 30 seconds and recover 12% more sales—without hiring.",
+    "publishDate": "2025-05-12",
+    "vertical": ["fashion", "ecommerce"],
+    "funnel": "awareness",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/fashion-chat-playbook.png",
+    "readingTime": 9
+  },
+  {
+    "slug": "fashion-cx-benchmarks-2025",
+    "title": "2025 Fashion CX Benchmarks",
+    "excerpt": "Data from 1.4M apparel chats shows how top brands are cutting response time by 78% while boosting conversion.",
+    "publishDate": "2025-05-10",
+    "vertical": ["fashion", "ecommerce"],
+    "funnel": "consideration",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/fashion-cx-2025.png",
+    "readingTime": 7
+  },
+  {
+    "slug": "beauty-response-time-study",
+    "title": "Beauty Brands: Cut Response Time by 82%",
+    "excerpt": "How leading beauty stores are automating customer questions about ingredients and application techniques.",
+    "publishDate": "2025-05-05",
+    "vertical": ["beauty"],
+    "funnel": "consideration",
+    "persona": ["cx-manager"],
+    "hero": "/covers/beauty-response-time.png",
+    "readingTime": 5
+  },
+  {
+    "slug": "electronics-support-automation",
+    "title": "Electronics Support Automation Guide",
+    "excerpt": "Technical support for electronics stores can be complex. Learn how to automate 76% of questions with AI.",
+    "publishDate": "2025-04-28",
+    "vertical": ["electronics"],
+    "funnel": "awareness",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/electronics-automation.png",
+    "readingTime": 11
+  },
+  {
+    "slug": "saas-cx-playbook",
+    "title": "SaaS CX Playbook: From Ticket to Expansion",
+    "excerpt": "Turn support conversations into expansion opportunities with these proven tactics from top SaaS companies.",
+    "publishDate": "2025-04-22",
+    "vertical": ["saas"],
+    "funnel": "consideration",
+    "persona": ["cx-manager"],
+    "hero": "/covers/saas-cx-playbook.png",
+    "readingTime": 8
+  },
+  {
+    "slug": "fashion-brand-case-study",
+    "title": "How Urban Threads Cut Support Costs by 62%",
+    "excerpt": "This DTC fashion brand automated 92% of their customer service while improving CSAT scores. Here's how.",
+    "publishDate": "2025-04-15",
+    "vertical": ["fashion"],
+    "funnel": "decision",
+    "persona": ["founder"],
+    "hero": "/covers/urban-threads-case-study.jpg",
+    "readingTime": 6
+  },
+  {
+    "slug": "beauty-upsell-techniques",
+    "title": "Beauty Brands: 5 Upsell Techniques That Work",
+    "excerpt": "Discover how top beauty brands are increasing AOV by 22% through strategic support conversations.",
+    "publishDate": "2025-04-10",
+    "vertical": ["beauty"],
+    "funnel": "consideration",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/beauty-upsell.jpg",
+    "readingTime": 7
+  },
+  {
+    "slug": "electronics-returns-reduction",
+    "title": "Reduce Electronics Returns by 34%",
+    "excerpt": "Learn how proactive support can dramatically cut return rates for electronics stores.",
+    "publishDate": "2025-04-05",
+    "vertical": ["electronics"],
+    "funnel": "consideration",
+    "persona": ["founder"],
+    "hero": "/covers/electronics-returns.jpg",
+    "readingTime": 9
+  },
+  {
+    "slug": "saas-onboarding-automation",
+    "title": "Automate SaaS Onboarding: A Step-by-Step Guide",
+    "excerpt": "How to create a seamless onboarding experience that reduces churn and increases activation.",
+    "publishDate": "2025-03-28",
+    "vertical": ["saas"],
+    "funnel": "awareness",
+    "persona": ["cx-manager"],
+    "hero": "/covers/saas-onboarding.jpg",
+    "readingTime": 12
+  },
+  {
+    "slug": "garrio-spring-update",
+    "title": "Spring 2025 Product Update: New Features",
+    "excerpt": "Discover the latest features we've added to Garrio, including advanced analytics and custom AI training.",
+    "publishDate": "2025-03-20",
+    "vertical": ["fashion", "beauty", "electronics", "saas"],
+    "funnel": "retention",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/spring-update.jpg",
+    "readingTime": 4
+  },
+  {
+    "slug": "fashion-sizing-guide",
+    "title": "The Ultimate Guide to Sizing Questions",
+    "excerpt": "How to handle the #1 pre-purchase question for fashion brands and turn sizing confusion into sales.",
+    "publishDate": "2025-03-15",
+    "vertical": ["fashion"],
+    "funnel": "awareness",
+    "persona": ["cx-manager"],
+    "hero": "/covers/fashion-sizing.jpg",
+    "readingTime": 8
+  },
+  {
+    "slug": "beauty-ingredient-questions",
+    "title": "Handling Ingredient Questions for Beauty Brands",
+    "excerpt": "A comprehensive guide to answering customer questions about ingredients, allergies, and sensitivities.",
+    "publishDate": "2025-03-10",
+    "vertical": ["beauty"],
+    "funnel": "awareness",
+    "persona": ["cx-manager"],
+    "hero": "/covers/beauty-ingredients.jpg",
+    "readingTime": 10
+  }
+]

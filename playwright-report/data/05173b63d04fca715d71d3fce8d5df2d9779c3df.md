@@ -1,0 +1,97 @@
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Talk to the Garrio team" [level=1]
+  - paragraph: We reply within 24h (often sooner). Choose the fastest path below.
+  - form:
+    - text: Full Name
+    - textbox "Full name"
+    - paragraph: Name is required
+    - text: Email Address
+    - textbox "Email Address"
+    - paragraph: Email is required
+    - text: What can we help you with?
+    - combobox "What can we help you with?":
+      - option "Select a topic" [selected]
+      - option "Support"
+      - option "Sales"
+      - option "Partnerships"
+      - option "Press"
+      - option "Other"
+    - paragraph: Please select a topic
+    - text: Message
+    - textbox "Message"
+    - text: 0/20
+    - paragraph: Message is required
+    - text: Attachment (optional)
+    - img
+    - text: Upload a file
+    - button "Attachment (optional) Upload a file"
+    - paragraph: or drag and drop
+    - paragraph: PNG, JPG, PDF up to 5MB
+    - button "Send Message"
+  - heading "Quick Resources" [level=2]
+  - link "Frequently Asked Questions Find quick answers to common questions":
+    - /url: /pricing#faq
+    - img
+    - heading "Frequently Asked Questions" [level=3]
+    - paragraph: Find quick answers to common questions
+  - link "Try Our Live Demo See Garrio in action on your store":
+    - /url: /live-demo
+    - img
+    - heading "Try Our Live Demo" [level=3]
+    - paragraph: See Garrio in action on your store
+  - link "Growth Library CX playbooks and benchmarks":
+    - /url: /blog
+    - img
+    - heading "Growth Library" [level=3]
+    - paragraph: CX playbooks and benchmarks
+  - link "System Status Check our current uptime and incidents":
+    - /url: https://status.garrio.com
+    - img
+    - heading "System Status" [level=3]
+    - paragraph: Check our current uptime and incidents
+  - heading "Company Information" [level=2]
+  - img
+  - heading "Mailing Address" [level=3]
+  - text: Garrio, Inc. 123 Commerce Street Suite 400 Boston, MA 02110
+  - img
+  - heading "Support Hours" [level=3]
+  - paragraph: "Monday – Friday 9:00 AM – 6:00 PM EST Average response time: 4 hours"
+  - img
+  - heading "Email Addresses" [level=3]
+  - paragraph:
+    - text: "General Inquiries:"
+    - link "hello@garrio.com":
+      - /url: mailto:hello@garrio.com
+    - text: "Partnerships:"
+    - link "partners@garrio.com":
+      - /url: mailto:partners@garrio.com
+    - text: "Press:"
+    - link "press@garrio.com":
+      - /url: mailto:press@garrio.com
+  - img
+  - heading "System Status" [level=3]
+  - text: All systems operational
+  - paragraph:
+    - link "View detailed status →":
+      - /url: https://status.garrio.com
+  - heading "Join 3k+ CX builders on social media" [level=2]
+  - paragraph: Connect with our community of Shopify merchants and customer experience professionals to share insights and stay updated.
+  - link "Twitter":
+    - /url: https://twitter.com/garrioapp
+    - img
+    - text: Twitter
+  - link "LinkedIn":
+    - /url: https://linkedin.com/company/garrio
+    - img
+    - text: LinkedIn
+  - link "Slack Community":
+    - /url: https://garrio.com/slack
+    - img
+    - text: Slack Community
+- button "Open Next.js Dev Tools":
+  - img
+- alert
+```

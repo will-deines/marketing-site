@@ -1,0 +1,64 @@
+{
+  "globals": {
+    "agentHourlyWage": 14,
+    "ticketsPerHour": 20,
+    "upsellLiftRate": 0.02
+  },
+  "apps": [
+    {
+      "slug": "garrio",
+      "name": "Garrio",
+      "automationRate": 0.98,
+      "plans": [
+        { "name": "Free", "base": 0, "includedChats": 250, "overage": 0.1 },
+        { "name": "Starter", "base": 10, "includedChats": 350, "overage": 0.1 },
+        { "name": "Growth", "base": 29, "includedChats": 2000, "overage": 0.1 },
+        { "name": "Scale", "base": 99, "includedChats": 10000, "overage": 0.1 }
+      ]
+    },
+    {
+      "slug": "gorgias",
+      "name": "Gorgias",
+      "automationRate": 0.4,
+      "plans": [
+        { "name": "Starter", "base": 10, "includedTickets": 50, "overage": 0.4 },
+        { "name": "Basic", "base": 60, "includedTickets": 300, "overage": 0.4 },
+        { "name": "Pro", "base": 360, "includedTickets": 2000, "overage": 0.3 },
+        { "name": "Advanced", "base": 900, "includedTickets": 6000, "overage": 0.25 }
+      ]
+    },
+    {
+      "slug": "reamaze",
+      "name": "Re:amaze",
+      "automationRate": 0.35,
+      "plans": [
+        { "name": "Starter", "base": 20, "includedTickets": 75, "overage": 0.2 },
+        { "name": "Plus", "base": 40, "includedTickets": 300, "overage": 0.2 },
+        { "name": "Pro", "base": 80, "includedTickets": 1000, "overage": 0.15 },
+        { "name": "Enterprise", "base": 160, "includedTickets": 3000, "overage": 0.1 }
+      ]
+    },
+    {
+      "slug": "zendesk",
+      "name": "Zendesk",
+      "automationRate": 0.3,
+      "plans": [
+        { "name": "Team", "base": 49, "includedTickets": 100, "overage": 0.5 },
+        { "name": "Growth", "base": 79, "includedTickets": 500, "overage": 0.4 },
+        { "name": "Professional", "base": 125, "includedTickets": 2000, "overage": 0.3 },
+        { "name": "Enterprise", "base": 250, "includedTickets": 5000, "overage": 0.25 }
+      ]
+    },
+    {
+      "slug": "tidio",
+      "name": "Tidio",
+      "automationRate": 0.25,
+      "plans": [
+        { "name": "Free", "base": 0, "includedTickets": 50, "overage": 0.2 },
+        { "name": "Starter", "base": 18, "includedTickets": 100, "overage": 0.15 },
+        { "name": "Communicator", "base": 32, "includedTickets": 500, "overage": 0.12 },
+        { "name": "Chatbots", "base": 49, "includedTickets": 1000, "overage": 0.1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+# Page snapshot
+
+```yaml
+- main:
+  - text: Your browser does not support the video tag. Garrio vs
+  - img "Gorgias"
+  - heading "Stop answering tickets yourself." [level=1]
+  - paragraph: Gorgias gives you a better inbox—we give you your evenings back. Our AI answers routine chats and our agents finish the tricky ones, so you never open another ticket.
+  - link "Add Garrio Free—1-Click Install":
+    - /url: https://apps.shopify.com/app-installation
+  - button "See Live Demo":
+    - img
+    - text: See Live Demo
+  - text: 11 hrs
+  - paragraph: Hours saved per week
+  - text: 22 %
+  - paragraph: Revenue lift from upsells
+  - text: 98 %
+  - paragraph: Tickets auto-resolved
+  - heading "Feature Comparison" [level=2]
+  - heading "Why Shopify merchants switch from Gorgias to Garrio" [level=3]
+  - table:
+    - rowgroup:
+      - row "Feature Garrio Gorgias":
+        - cell "Feature"
+        - cell "Garrio"
+        - cell "Gorgias"
+    - rowgroup:
+      - row "Done-for-you escalations Complex tickets handled by human agents without merchant involvement":
+        - cell "Done-for-you escalations Complex tickets handled by human agents without merchant involvement"
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "1-click Shopify actions Edit orders, process returns, apply discounts directly from chat":
+        - cell "1-click Shopify actions Edit orders, process returns, apply discounts directly from chat"
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "AI upsells Automatically suggest relevant products during support conversations":
+        - cell "AI upsells Automatically suggest relevant products during support conversations"
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "Free tier Start without paying and scale as you grow":
+        - cell "Free tier Start without paying and scale as you grow"
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "Overage rate Cost per additional ticket beyond plan limit $0.10 $0.40":
+        - cell "Overage rate Cost per additional ticket beyond plan limit"
+        - cell "$0.10"
+        - cell "$0.40"
+      - row "Shopify rating Average rating on Shopify App Store 4.9★ 4.3★":
+        - cell "Shopify rating Average rating on Shopify App Store"
+        - cell "4.9★"
+        - cell "4.3★"
+  - heading "Hear from Merchants Who Switched" [level=2]
+  - paragraph: Real stories from Shopify merchants who moved from Gorgias to Garrio
+  - img "Alex J."
+  - img "Roots & Resin"
+  - text: Alex J., Founder ↓71% response time
+  - paragraph: "\"I ditched Gorgias in a day—my first upsell paid for six months.\""
+  - img "Sarah K."
+  - img "Urban Threads"
+  - text: Sarah K., Head of CX ↑32% sales
+  - paragraph: "\"Customer response time went from hours to seconds. Sales are up 32%.\""
+  - button "Previous testimonial":
+    - img
+  - button "Go to testimonial 1"
+  - button "Go to testimonial 2"
+  - button "Next testimonial":
+    - img
+  - heading "Pricing Comparison" [level=2]
+  - paragraph: See how Garrio's pricing stacks up against Gorgias
+  - text: Most Popular
+  - heading "Garrio Free" [level=3]
+  - text: $0/month
+  - paragraph: Perfect for new Shopify stores getting started with customer service.
+  - list:
+    - listitem:
+      - img
+      - text: 250 chats/mo included
+    - listitem:
+      - img
+      - text: AI-powered chat widget
+    - listitem:
+      - img
+      - text: Order lookup integration
+    - listitem:
+      - img
+      - text: 1 human-handoff email
+  - paragraph: "Extra chats: $0.10 each"
+  - link "Add Garrio Free—1-Click Install":
+    - /url: https://apps.shopify.com/app-installation
+  - heading "Gorgias Starter" [level=3]
+  - text: $10/month
+  - paragraph: Basic plan for small businesses.
+  - list:
+    - listitem:
+      - img
+      - text: 50 tickets/mo included
+    - listitem:
+      - img
+      - text: Chat widget
+    - listitem:
+      - img
+      - text: Basic integrations
+    - listitem:
+      - img
+      - text: Email support
+  - paragraph: "Extra tickets: $0.40 each"
+  - button "Requires Credit Card" [disabled]
+  - link "Full pricing details →":
+    - /url: /pricing
+  - heading "Seamless Migration" [level=2]
+  - paragraph: We make it easy to switch from Gorgias to Garrio
+  - text: "1"
+  - img "Export tickets"
+  - heading "Export tickets" [level=3]
+  - paragraph: Export your data from Gorgias with our step-by-step guide
+  - img
+  - text: "2"
+  - img "1-click import"
+  - heading "1-click import" [level=3]
+  - paragraph: Our team handles the data migration for you
+  - img
+  - text: "3"
+  - img "Done in 14 days"
+  - heading "Done in 14 days" [level=3]
+  - paragraph: We'll have you up and running in two weeks or less
+  - paragraph: We migrate Gorgias data free of charge
+  - paragraph: Our migration specialists will handle the entire process, ensuring a smooth transition with zero downtime.
+  - heading "Frequently Asked Questions" [level=2]
+  - paragraph: Common questions about switching from Gorgias to Garrio
+  - button "Does Garrio have feature parity with Gorgias?":
+    - text: Does Garrio have feature parity with Gorgias?
+    - img
+  - button "Will switching affect my SEO or site performance?":
+    - text: Will switching affect my SEO or site performance?
+    - img
+  - button "Can I customize the chat widget to match my brand?":
+    - text: Can I customize the chat widget to match my brand?
+    - img
+  - button "What kind of SLA does Garrio offer?":
+    - text: What kind of SLA does Garrio offer?
+    - img
+  - button "How does Garrio handle data security?":
+    - text: How does Garrio handle data security?
+    - img
+  - heading "Ready to leave Gorgias headaches behind?" [level=2]
+  - paragraph: Join thousands of Shopify merchants who've transformed their customer support experience.
+  - link "Add Garrio Free—1-Click Install":
+    - /url: https://apps.shopify.com/app-installation
+  - link "Book a Demo":
+    - /url: "#"
+    - img
+    - text: Book a Demo
+- contentinfo:
+  - heading "Add Garrio Chat to your Shopify store—free forever, launch in 3 minutes." [level=2]
+  - link "Install on Shopify":
+    - /url: https://apps.shopify.com/app-installation
+  - link "See live demo":
+    - /url: "#demo"
+  - text: Garrio
+  - paragraph: AI sales & support built only for Shopify's indie merchants.
+  - heading "Product" [level=3]
+  - img
+  - text: All systems go
+  - list:
+    - listitem:
+      - link "Changelog":
+        - /url: /updates
+    - listitem:
+      - link "Roadmap":
+        - /url: /roadmap
+  - heading "Resources" [level=3]
+  - list:
+    - listitem:
+      - link "Docs":
+        - /url: /docs
+    - listitem:
+      - link "API Reference":
+        - /url: /api
+    - listitem:
+      - link "Shopify App Store":
+        - /url: https://apps.shopify.com/garrio
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+  - heading "Company" [level=3]
+  - list:
+    - listitem:
+      - link "About":
+        - /url: /about
+    - listitem:
+      - link "Careers":
+        - /url: /careers
+    - listitem:
+      - link "Press kit":
+        - /url: /press-kit.zip
+    - listitem:
+      - link "Contact":
+        - /url: /contact
+  - paragraph: We're remote ☕️ 🌍
+  - heading "Legal" [level=3]
+  - list:
+    - listitem:
+      - link "Terms of Service":
+        - /url: /terms
+    - listitem:
+      - link "Privacy & GDPR":
+        - /url: /privacy
+    - listitem:
+      - link "DPA (PDF)":
+        - /url: /dpa.pdf
+    - listitem:
+      - button "Cookie Settings"
+  - heading "Connect" [level=3]
+  - link "Twitter":
+    - /url: https://twitter.com/garrio
+    - img
+  - link "LinkedIn":
+    - /url: https://linkedin.com/company/garrio
+    - img
+  - link "YouTube":
+    - /url: https://youtube.com/garrio
+    - img
+  - link "Discord":
+    - /url: https://discord.gg/garrio
+    - img
+  - paragraph: Join 400+ builders
+  - text: Stripe Partner PCI DSS Level 1 SOC 2 Type II (soon)
+  - link "Built for Shopify":
+    - /url: https://apps.shopify.com/garrio
+  - text: US-Based LLC • QSBS Eligible
+  - heading "Stay Updated" [level=3]
+  - text: Email address
+  - textbox "Email address"
+  - button "Join"
+  - paragraph: Monthly product drops—no spam.
+  - text: © 2025 Garrio, Inc. · Crafted remotely from 🇺🇸 & 🌎 · v2.1.0
+  - button "Back to top":
+    - text: Back to top
+    - img
+- button "Open Next.js Dev Tools":
+  - img
+- alert
+```

@@ -1,0 +1,205 @@
+# Page snapshot
+
+```yaml
+- main:
+  - text: Your browser does not support the video tag.
+  - heading "Start Free. Scale When You're Ready." [level=1]
+  - heading "Most stores launch in under 3 minutes." [level=2]
+  - link "Install Free on Shopify":
+    - /url: https://apps.shopify.com/app-installation
+  - link "Calculate cost →":
+    - /url: "#calculator"
+  - heading "Choose the right plan for your store" [level=2]
+  - paragraph: Start with our generous free tier and scale as your business grows. No credit card required to get started.
+  - heading "Free" [level=3]
+  - text: $0 forever 250 chats/mo included
+  - list:
+    - listitem:
+      - img
+      - text: AI-powered chat widget
+    - listitem:
+      - img
+      - text: Order lookup integration
+    - listitem:
+      - img
+      - text: Basic analytics dashboard
+    - listitem:
+      - img
+      - text: 1 human-handoff email
+    - listitem:
+      - img
+      - text: Community support
+  - paragraph: "Extra chats: $0.10 ea."
+  - link "Start free":
+    - /url: https://apps.shopify.com/app-installation
+  - text: Popular
+  - heading "Starter" [level=3]
+  - text: $10 credit to start 350 chats/mo included
+  - list:
+    - listitem:
+      - img
+      - text: Everything in Free
+    - listitem:
+      - img
+      - text: Unlimited human-handoff emails
+    - listitem:
+      - img
+      - text: Advanced analytics
+    - listitem:
+      - img
+      - text: Custom branding
+    - listitem:
+      - img
+      - text: Priority support
+  - paragraph: "Extra chats: $0.10 ea."
+  - link "Upgrade in app":
+    - /url: "#"
+  - text: Coming Soon
+  - heading "Essentials" [level=3]
+  - text: $200 minimum 350 chats/mo included
+  - list:
+    - listitem:
+      - img
+      - text: Everything in Starter
+    - listitem:
+      - img
+      - text: Multiple agent accounts
+    - listitem:
+      - img
+      - text: Advanced routing rules
+    - listitem:
+      - img
+      - text: Custom integrations
+    - listitem:
+      - img
+      - text: 24/7 support
+  - paragraph: "Extra chats: $1.00 ea."
+  - link "Join waitlist":
+    - /url: "#"
+  - text: Coming Soon
+  - heading "Professional" [level=3]
+  - text: $500 minimum 1000 chats/mo included
+  - list:
+    - listitem:
+      - img
+      - text: Everything in Essentials
+    - listitem:
+      - img
+      - text: Custom model refresh
+    - listitem:
+      - img
+      - text: Enterprise SLA
+    - listitem:
+      - img
+      - text: Dedicated account manager
+    - listitem:
+      - img
+      - text: Custom AI training
+  - paragraph: "Extra chats: $1.00 ea."
+  - link "Join waitlist":
+    - /url: "#"
+  - heading "Usage Cost Calculator" [level=2]
+  - paragraph: Estimate your monthly costs based on expected chat volume. Slide to see how different plans compare.
+  - text: Monthly chat volume 500 chats
+  - slider
+  - text: 0 1,000 2,000 3,000 4,000
+  - heading "Free Plan" [level=3]
+  - text: Included chats 250 chats/mo Extra chats 250 × $0.10 Estimated monthly cost $25.00
+  - heading "Starter Plan" [level=3]
+  - text: Included chats 350 chats/mo Extra chats 150 × $0.10 Estimated monthly cost $15.00 Starter plan saves you $10.00 at 500 chats per month
+  - heading "What's in each plan?" [level=2]
+  - paragraph: Compare features across all plans to find the right fit for your business.
+  - table:
+    - rowgroup:
+      - row "Feature Free Starter Essentials Professional":
+        - cell "Feature"
+        - cell "Free"
+        - cell "Starter"
+        - cell "Essentials"
+        - cell "Professional"
+    - rowgroup:
+      - row "Chats included 250/mo 350/mo 350/mo + agents 1,000/mo + agents":
+        - cell "Chats included"
+        - cell "250/mo"
+        - cell "350/mo"
+        - cell "350/mo + agents"
+        - cell "1,000/mo + agents"
+      - row "Overage rate $0.10/chat $0.10/chat $1.00/chat $1.00/chat":
+        - cell "Overage rate"
+        - cell "$0.10/chat"
+        - cell "$0.10/chat"
+        - cell "$1.00/chat"
+        - cell "$1.00/chat"
+      - row "AI improvement loop":
+        - cell "AI improvement loop"
+        - cell:
+          - img
+        - cell:
+          - img
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "Analytics dashboard Basic Advanced Advanced Custom":
+        - cell "Analytics dashboard"
+        - cell "Basic"
+        - cell "Advanced"
+        - cell "Advanced"
+        - cell "Custom"
+      - row "Usage cap controls":
+        - cell "Usage cap controls"
+        - cell:
+          - img
+        - cell:
+          - img
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "Human-agent escalations 1 email Unlimited Unlimited + routing Unlimited + priority":
+        - cell "Human-agent escalations"
+        - cell "1 email"
+        - cell "Unlimited"
+        - cell "Unlimited + routing"
+        - cell "Unlimited + priority"
+      - row "Custom model refresh":
+        - cell "Custom model refresh"
+        - cell:
+          - img
+        - cell:
+          - img
+        - cell:
+          - img
+        - cell:
+          - img
+      - row "SLA & priority support Email support 24/7 support Dedicated manager":
+        - cell "SLA & priority support"
+        - cell:
+          - img
+        - cell "Email support"
+        - cell "24/7 support"
+        - cell "Dedicated manager"
+  - heading "Frequently Asked Questions" [level=2]
+  - paragraph: Get answers to common questions about our pricing and billing.
+  - button "Can I switch plans anytime?":
+    - text: Can I switch plans anytime?
+    - img
+  - button "Do unused chats roll over?":
+    - text: Do unused chats roll over?
+    - img
+  - button "Is there a long-term contract?":
+    - text: Is there a long-term contract?
+    - img
+  - button "How do overages work?":
+    - text: How do overages work?
+    - img
+  - button "When does billing occur?":
+    - text: When does billing occur?
+    - img
+  - heading "Ready to boost sales for $0 up-front?" [level=2]
+  - link "Add Garrio Chat":
+    - /url: https://apps.shopify.com/app-installation
+  - link "Chat with our team":
+    - /url: "#"
+- alert
+```
