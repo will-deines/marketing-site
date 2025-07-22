@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { Clock, TrendingUp, CheckCircle, Star, BarChart3 } from "lucide-react"
 
 interface Metric {
   id: string
@@ -10,6 +11,8 @@ interface Metric {
   endValue: number
   unit: string
   color: string
+  gradient: string
+  icon: React.ReactNode
 }
 
 const metrics: Metric[] = [
@@ -21,6 +24,8 @@ const metrics: Metric[] = [
     endValue: 11,
     unit: "hrs",
     color: "bg-purple-600",
+    gradient: "from-purple-500 to-indigo-500",
+    icon: <Clock className="w-6 h-6" />,
   },
   {
     id: "revenue-lift",
@@ -30,6 +35,8 @@ const metrics: Metric[] = [
     endValue: 22,
     unit: "%",
     color: "bg-green-500",
+    gradient: "from-green-500 to-emerald-500",
+    icon: <TrendingUp className="w-6 h-6" />,
   },
   {
     id: "resolution-rate",
@@ -39,6 +46,8 @@ const metrics: Metric[] = [
     endValue: 98,
     unit: "%",
     color: "bg-blue-500",
+    gradient: "from-blue-500 to-cyan-500",
+    icon: <CheckCircle className="w-6 h-6" />,
   },
   {
     id: "app-rating",
@@ -48,6 +57,8 @@ const metrics: Metric[] = [
     endValue: 4.9,
     unit: "★",
     color: "bg-amber-500",
+    gradient: "from-amber-500 to-orange-500",
+    icon: <Star className="w-6 h-6" />,
   },
 ]
 
@@ -148,9 +159,24 @@ export default function MetricMosaic() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-gray-50 via-white to-purple-50 overflow-hidden">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Numbers That Matter</h2>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <BarChart3 className="w-4 h-4" />
+            Our Impact
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Numbers That
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
+              Matter
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Real results from real founders who transformed their support into a growth engine
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {metrics.map((metric, index) => (
@@ -158,19 +184,30 @@ export default function MetricMosaic() {
               key={metric.id}
               ref={(el) => (metricRefs.current[metric.id] = el)}
               data-id={metric.id}
-              className={`bg-white rounded-xl border border-gray-200 p-6 shadow-md transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${
+              className={`group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 border border-gray-100 ${
                 index % 2 === 1 ? "md:transform md:translate-y-8" : ""
+              } ${
+                visibleMetrics.includes(metric.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="text-3xl md:text-4xl font-bold mb-2">
+              {/* Icon */}
+              <div className={`w-14 h-14 bg-gradient-to-br ${metric.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                {metric.icon}
+              </div>
+
+              {/* Value */}
+              <div className={`text-4xl md:text-5xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${metric.gradient}`}>
                 {visibleMetrics.includes(metric.id) ? formatValue(metric.id) : metric.value}
               </div>
-              <p className="text-gray-600 mb-4">{metric.caption}</p>
 
-              {/* Micro bar chart */}
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+              {/* Caption */}
+              <p className="text-gray-600 mb-6 leading-relaxed">{metric.caption}</p>
+
+              {/* Progress bar */}
+              <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div
-                  className={`h-full ${metric.color} transition-all duration-1500 ease-out`}
+                  className={`absolute top-0 left-0 h-full bg-gradient-to-r ${metric.gradient} transition-all duration-1500 ease-out rounded-full`}
                   style={{
                     width: visibleMetrics.includes(metric.id)
                       ? `${(animatedValues[metric.id] / metric.endValue) * 100}%`
@@ -178,8 +215,18 @@ export default function MetricMosaic() {
                   }}
                 ></div>
               </div>
+
+              {/* Decorative gradient blur */}
+              <div className={`absolute -inset-x-4 -bottom-4 h-1/2 bg-gradient-to-t ${metric.gradient} opacity-5 blur-3xl group-hover:opacity-10 transition-opacity duration-500`}></div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom accent */}
+        <div className="mt-20 text-center">
+          <p className="text-sm text-gray-500">
+            Data from last 30 days across all active Garrio stores
+          </p>
         </div>
       </div>
     </section>

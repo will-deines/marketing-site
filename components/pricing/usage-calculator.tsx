@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Slider } from "@/components/ui/slider"
 import { plans } from "@/lib/pricing-data"
+import { Calculator, TrendingUp, DollarSign, Users, Sparkles } from "lucide-react"
 
 export default function UsageCalculator() {
   const [conversationCount, setConversationCount] = useState(500)
@@ -109,39 +110,49 @@ export default function UsageCalculator() {
   }, [])
 
   return (
-    <section id="calculator" className="py-16 md:py-24 bg-gray-50">
+    <section id="calculator" className="py-20 md:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Calculate Your Savings</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Calculator className="w-4 h-4" />
+            Cost Calculator
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Calculate your
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+              monthly savings
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             See how much money and time you&apos;ll save vs. hiring your own customer support team.
           </p>
         </div>
 
         <div
-          className={`max-w-4xl mx-auto bg-white rounded-xl shadow-md p-8 transition-all duration-1000 ${
+          className={`max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-10 md:p-12 transition-all duration-1000 border border-indigo-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           {/* Plan Selection Bubbles */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-4 text-center">Select a plan to compare:</h3>
-            <div className="flex flex-wrap justify-center gap-3">
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">Select a plan to compare:</h3>
+            <div className="flex flex-wrap justify-center gap-4">
               {plans.filter(plan => plan.id !== "professional").map((plan) => (
                 <button
                   key={plan.id}
                   onClick={() => handlePlanChange(plan.id)}
-                  className={`px-4 py-2 rounded-full border transition-all duration-200 ${
+                  className={`px-6 py-3 rounded-2xl font-medium transition-all duration-200 transform hover:scale-105 ${
                     selectedPlan === plan.id
-                      ? "bg-purple-600 text-white border-purple-600"
-                      : "bg-white text-gray-700 border-gray-300 hover:border-purple-300"
+                      ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
+                      : "bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300 shadow-md"
                   }`}
                 >
                   {plan.name}
                 </button>
               ))}
               <button
-                className="px-4 py-2 rounded-full border border-gray-300 bg-gray-100 text-gray-600 cursor-not-allowed"
+                className="px-6 py-3 rounded-2xl border-2 border-gray-200 bg-gray-100 text-gray-500 cursor-not-allowed opacity-60"
                 disabled
               >
                 Professional - Contact Us
@@ -150,10 +161,12 @@ export default function UsageCalculator() {
           </div>
 
           {/* Conversation Volume Slider */}
-          <div className="mb-8">
-            <div className="flex justify-between mb-2">
-              <span className="font-medium">Monthly conversation volume</span>
-              <span className="font-bold text-purple-600">{conversationCount} conversations</span>
+          <div className="mb-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8">
+            <div className="flex justify-between mb-4">
+              <span className="text-lg font-semibold text-gray-900">Monthly conversation volume</span>
+              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                {conversationCount} conversations
+              </span>
             </div>
             <div className="relative">
               <div className="relative">
@@ -216,9 +229,14 @@ export default function UsageCalculator() {
           </div>
 
           {/* Cost Comparison */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4">Before Garrio</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border border-red-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Before Garrio</h3>
+              </div>
               <div className="mb-4">
                 <div className="text-sm text-gray-600 mb-1">Agent coverage needed</div>
                 <div className="font-medium">
@@ -231,14 +249,19 @@ export default function UsageCalculator() {
                   {(conversationCount * 6 / 60).toFixed(1)} hours + 40% management costs
                 </div>
               </div>
-              <div className="border-t border-gray-200 pt-4 mt-4">
-                <div className="text-sm text-gray-600 mb-1">Estimated monthly cost</div>
-                <div className="text-2xl font-bold text-red-600">${humanCost.toFixed(0)}</div>
+              <div className="border-t-2 border-red-200 pt-6 mt-6">
+                <div className="text-sm text-gray-600 mb-2">Estimated monthly cost</div>
+                <div className="text-3xl font-bold text-red-600">${humanCost.toFixed(0)}</div>
               </div>
             </div>
 
-            <div className="bg-purple-50 p-6 rounded-lg border border-purple-100">
-              <h3 className="text-lg font-semibold mb-4">With {plans.find(p => p.id === selectedPlan)?.name}</h3>
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-2xl border-2 border-purple-200 shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">With {plans.find(p => p.id === selectedPlan)?.name}</h3>
+              </div>
               <div className="mb-4">
                 <div className="text-sm text-gray-600 mb-1">Garrio plan cost</div>
                 <div className="font-medium">
@@ -254,9 +277,9 @@ export default function UsageCalculator() {
                   }
                 </div>
               </div>
-              <div className="border-t border-gray-200 pt-4 mt-4">
-                <div className="text-sm text-gray-600 mb-1">Total monthly cost</div>
-                <div className="text-2xl font-bold text-green-600">
+              <div className="border-t-2 border-purple-200 pt-6 mt-6">
+                <div className="text-sm text-gray-600 mb-2">Total monthly cost</div>
+                <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
                   ${(planCost + (selectedPlan === "essentials" || selectedPlan === "professional" ? 0 : conversationCount * 0.3 * 6 / 60 * TOTAL_AGENT_COST_WITH_MANAGEMENT)).toFixed(0)}
                 </div>
               </div>
@@ -265,11 +288,14 @@ export default function UsageCalculator() {
 
           {/* Savings Summary */}
           {savings > 0 && (
-            <div className="bg-green-50 border border-green-200 p-6 rounded-lg text-center">
-              <div className="text-2xl font-bold text-green-800 mb-2">
-                You save ${savings.toFixed(0)} per month
+            <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-8 rounded-2xl text-center text-white shadow-xl">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <TrendingUp className="w-8 h-8" />
+                <div className="text-4xl font-bold">
+                  You save ${savings.toFixed(0)} per month
+                </div>
               </div>
-              <div className="text-sm text-green-700">
+              <div className="text-white/90 max-w-2xl mx-auto">
                 {selectedPlan === "essentials" || selectedPlan === "professional"
                   ? `Savings from eliminating 100% of agent hiring and management costs • Based on ${conversationCount} conversations/month`
                   : `Savings from AI deflecting ${Math.round(conversationCount * 0.7)} conversations (still need to manage agents for remaining 30%) • Based on ${conversationCount} conversations/month`
@@ -279,14 +305,14 @@ export default function UsageCalculator() {
           )}
 
           {/* Professional Plan CTA */}
-          <div className="mt-6 p-4 bg-purple-50 border border-purple-100 rounded-lg text-center">
-            <div className="text-lg font-semibold text-purple-800 mb-2">
+          <div className="mt-8 bg-gradient-to-br from-purple-100 to-indigo-100 p-8 rounded-2xl text-center border border-purple-200">
+            <div className="text-2xl font-bold text-gray-900 mb-3">
               Need higher volume or custom features?
             </div>
-            <div className="text-sm text-purple-700 mb-3">
+            <div className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Our Professional plan offers dedicated success management, monthly model refreshes, and enterprise-grade support.
             </div>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200">
+            <button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
               Contact Us for Custom Pricing
             </button>
           </div>

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Star, Shield, Trophy, CheckCircle } from "lucide-react"
 
 interface Testimonial {
   id: number
@@ -212,15 +212,31 @@ export default function SocialProofReel() {
   }
 
   return (
-    <section className="py-16 bg-white border-t border-b border-gray-200">
-      <div className="container mx-auto px-4 mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Trusted by founders who get it</h2>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto">
-          Join thousands of bootstrapped entrepreneurs who found their freedom from customer support chaos.
-        </p>
+    <section className="py-20 md:py-32 bg-gradient-to-br from-purple-50 via-white to-indigo-50 overflow-hidden">
+      <div className="container mx-auto px-4 mb-16">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Star className="w-4 h-4" />
+            Social Proof
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Trusted by founders
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
+              who get it
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Join thousands of bootstrapped entrepreneurs who found their freedom from customer support chaos.
+          </p>
+        </div>
       </div>
 
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-white/50 backdrop-blur-sm rounded-3xl shadow-xl border border-purple-100 mx-4 md:mx-8">
+        {/* Gradient overlays for fade effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        
         {/* Center point reference (invisible) */}
         <div
           ref={centerPointRef}
@@ -230,7 +246,7 @@ export default function SocialProofReel() {
 
         {/* Top row of logos */}
         <div
-          className="flex space-x-12 py-8 logo-row"
+          className="flex space-x-16 py-10 logo-row"
           ref={topRowRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -238,7 +254,7 @@ export default function SocialProofReel() {
           {testimonials.concat(testimonials).map((testimonial, index) => (
             <div
               key={`top-${testimonial.id}-${index}`}
-              className="logo-item flex-shrink-0 w-32 h-16 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+              className="logo-item flex-shrink-0 w-36 h-20 relative grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer group"
               data-id={testimonial.id}
               onClick={() => setActiveQuote(testimonial)}
               onKeyDown={(e) => {
@@ -251,11 +267,12 @@ export default function SocialProofReel() {
               role="button"
               aria-label={`View testimonial from ${testimonial.company}`}
             >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <Image
                 src={testimonial.logo.src || "/placeholder.svg"}
                 alt={testimonial.logo.alt}
                 fill
-                className="object-contain object-center"
+                className="object-contain object-center p-4 group-hover:scale-110 transition-transform duration-300"
               />
             </div>
           ))}
@@ -263,7 +280,7 @@ export default function SocialProofReel() {
 
         {/* Bottom row of logos (reversed direction) */}
         <div
-          className="flex space-x-12 py-8 logo-row-reverse"
+          className="flex space-x-16 py-10 logo-row-reverse border-t border-purple-100"
           ref={bottomRowRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -274,7 +291,7 @@ export default function SocialProofReel() {
             .map((testimonial, index) => (
               <div
                 key={`bottom-${testimonial.id}-${index}`}
-                className="logo-item flex-shrink-0 w-32 h-16 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+                className="logo-item flex-shrink-0 w-36 h-20 relative grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer group"
                 data-id={testimonial.id}
                 onClick={() => setActiveQuote(testimonial)}
                 onKeyDown={(e) => {
@@ -287,11 +304,12 @@ export default function SocialProofReel() {
                 role="button"
                 aria-label={`View testimonial from ${testimonial.company}`}
               >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <Image
                   src={testimonial.logo.src || "/placeholder.svg"}
                   alt={testimonial.logo.alt}
                   fill
-                  className="object-contain object-center"
+                  className="object-contain object-center p-4 group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             ))}
@@ -301,61 +319,87 @@ export default function SocialProofReel() {
         {activeQuote && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div
-              className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg max-w-md text-center transform transition-all duration-300 animate-fade-in"
+              className="bg-white backdrop-blur-md p-8 rounded-3xl shadow-2xl max-w-lg text-center transform transition-all duration-500 animate-fade-in border border-purple-200"
               aria-live="polite"
             >
-              <div className="mb-3">
-                <span className="inline-block bg-purple-100 text-purple-800 font-bold px-3 py-1 rounded-full text-sm">
+              <div className="mb-4">
+                <span className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold px-4 py-2 rounded-full text-sm shadow-md">
                   {activeQuote.metric}
                 </span>
               </div>
-              <p className="text-gray-800 text-lg italic mb-4">&ldquo;{activeQuote.quote}&rdquo;</p>
-              <p className="text-gray-600">
-                {activeQuote.person}, {activeQuote.company} <span className="text-gray-400">|</span> {activeQuote.plan}
-              </p>
+              <p className="text-gray-900 text-xl italic mb-6 leading-relaxed">&ldquo;{activeQuote.quote}&rdquo;</p>
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-indigo-400 rounded-full flex items-center justify-center text-white font-bold">
+                  {activeQuote.person.charAt(0)}
+                </div>
+                <div className="text-left">
+                  <p className="font-semibold text-gray-900">{activeQuote.person}</p>
+                  <p className="text-sm text-gray-600">
+                    {activeQuote.company} • {activeQuote.plan} Plan
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         )}
 
         {/* Manual navigation controls (for accessibility) */}
-        <div className="flex justify-center mt-4 space-x-4">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-20">
           <button
             onClick={() => navigateQuote("prev")}
-            className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
+            className="p-3 bg-white/80 backdrop-blur rounded-full hover:bg-white shadow-lg hover:shadow-xl transition-all duration-200 group"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5 text-purple-600 group-hover:-translate-x-0.5 transition-transform" />
           </button>
           <button
             onClick={() => navigateQuote("next")}
-            className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
+            className="p-3 bg-white/80 backdrop-blur rounded-full hover:bg-white shadow-lg hover:shadow-xl transition-all duration-200 group"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-5 w-5 text-purple-600 group-hover:translate-x-0.5 transition-transform" />
           </button>
         </div>
       </div>
 
       {/* Trust badges */}
-      <div className="container mx-auto px-4 mt-12">
-        <div className="h-px bg-gray-200 mb-8"></div>
-        <div className="flex flex-wrap justify-center items-center gap-8">
-          <div className="grayscale hover:grayscale-0 transition-all duration-300">
-            <div className="flex items-center">
-              <span className="text-gray-600 font-medium">Built for</span>
-              <span className="font-bold ml-2">Shopify</span>
+      <div className="container mx-auto px-4 mt-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <CheckCircle className="w-6 h-6 text-purple-600" />
+              </div>
+              <span className="text-sm text-gray-600 mb-1">Built for</span>
+              <span className="font-bold text-gray-900">Shopify</span>
             </div>
           </div>
-          <div className="grayscale hover:grayscale-0 transition-all duration-300">
-            <span className="text-gray-600 font-medium">SOC 2 Compliant</span>
-          </div>
-          <div className="grayscale hover:grayscale-0 transition-all duration-300">
-            <div className="flex items-center">
-              <span className="text-gray-600 font-medium">4.9★ Shopify Rating</span>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Shield className="w-6 h-6 text-purple-600" />
+              </div>
+              <span className="text-sm text-gray-600 mb-1">Security</span>
+              <span className="font-bold text-gray-900">SOC 2</span>
             </div>
           </div>
-          <div className="grayscale hover:grayscale-0 transition-all duration-300">
-            <span className="text-gray-600 font-medium">G2 High Performer 2025</span>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Star className="w-6 h-6 text-purple-600" />
+              </div>
+              <span className="text-sm text-gray-600 mb-1">Shopify Rating</span>
+              <span className="font-bold text-gray-900">4.9★</span>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Trophy className="w-6 h-6 text-purple-600" />
+              </div>
+              <span className="text-sm text-gray-600 mb-1">G2 Award</span>
+              <span className="font-bold text-gray-900">High Performer</span>
+            </div>
           </div>
         </div>
       </div>
@@ -390,16 +434,16 @@ export default function SocialProofReel() {
         @keyframes fade-in {
           from {
             opacity: 0;
-            transform: translateY(10px);
+            transform: scale(0.95) translateY(10px);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1) translateY(0);
           }
         }
         
         .animate-fade-in {
-          animation: fade-in 0.3s ease-out;
+          animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
     </section>

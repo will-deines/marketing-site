@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/header";
+import { Sparkles, Zap, ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import HeroVideoBackground from "@/components/hero-video-background";
 import ProblemSolutionSection from "@/components/problem-solution-section";
 import TestimonialCarousel from "@/components/testimonial-carousel";
@@ -11,6 +12,7 @@ import ROISliderTeaser from "@/components/home/roi-slider-teaser";
 import ComparisonSnapshotV2 from "@/components/home/comparison-snapshot-v2";
 import GrowthLibraryTeaser from "@/components/home/growth-library-teaser";
 import PricingSectionV2 from "@/components/home/pricing-section-v2";
+import GarrioTeamBarChart from "@/components/garrio-team-bar-chart";
 
 export default function Home() {
   // Structured data for search engines and AI agents
@@ -105,141 +107,114 @@ export default function Home() {
         </section>
         <HeroVideoBackground
           videoSrc="/videos/homepage-hero"
-          blur="md"
+          blur="sm"
           scale="110"
           overlay="black"
-          overlayOpacity="40"
+          overlayOpacity="50"
           height="screen"
           posterSrc="/images/homepage-hero.jpg"
           reducedMotionFallback="/images/homepage-hero.jpg"
         >
-          <div className="container mx-auto px-4 md:px-6 flex flex-col items-center justify-center space-y-8 text-center">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white w-full">
-              Build the brand you always dreamed of
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mt-4 max-w-3xl">
-              Garrio turns support tickets into upsells, complaints into loyalty, and every interaction into revenue—while you focus on what you love.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white/10 text-white border-white hover:bg-white/20"
-                asChild
-              >
-                <Link href="#demo">See How It Works</Link>
-              </Button>
-              <Button
-                size="lg"
-                className="bg-white text-black hover:bg-white/90"
-                asChild
-              >
-                <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer">
-                  Start Building Today
-                </Link>
-              </Button>
+          <div className="container mx-auto px-4 md:px-6 flex flex-col items-center justify-center min-h-screen">
+            <div className="max-w-5xl mx-auto text-center space-y-12">
+              {/* Elegant badge */}
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white/90 px-6 py-3 rounded-full text-sm font-medium border border-white/20 animate-fade-in">
+                <Sparkles className="w-4 h-4" />
+                For Shopify founders ready to scale
+              </div>
+
+              {/* Main headline */}
+              <div className="space-y-6 animate-fade-in-up">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.9]">
+                  Build the brand
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-pink-200 to-indigo-200">
+                    you always
+                  </span>
+                  <br />
+                  dreamed of
+                </h1>
+              </div>
+
+              {/* Subheadline */}
+              <p className="text-xl md:text-2xl lg:text-3xl text-white/80 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
+                Your AI + human support team handles every customer while you focus on growth
+              </p>
+
+              {/* CTA buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4 animate-fade-in-up animation-delay-400">
+                <Button
+                  size="lg"
+                  className="bg-white text-gray-900 hover:bg-white/90 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 text-lg px-8 py-6 h-auto rounded-2xl font-semibold group"
+                  asChild
+                >
+                  <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                    <Zap className="w-5 h-5" />
+                    Start Building Today
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="bg-transparent text-white border-2 border-white/30 hover:bg-white/10 hover:border-white/50 backdrop-blur-sm text-lg px-8 py-6 h-auto rounded-2xl font-semibold"
+                  asChild
+                >
+                  <Link href="#how-it-works" className="flex items-center gap-2">
+                    See How It Works
+                    <ChevronDown className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Trust indicators */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8 text-white/70 text-sm animate-fade-in animation-delay-600">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>3-minute setup</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>No credit card required</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>500+ founders trust us</span>
+                </div>
+              </div>
             </div>
           </div>
         </HeroVideoBackground>
 
-        {/* Value Banner */}
-        <section className="w-full relative overflow-hidden group">
-          <div className="bg-gradient-to-r from-purple-600 to-purple-400 py-8 md:py-10">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="mb-6 md:mb-0">
-                  <h2 className="text-2xl font-bold text-white mb-2">
-                    Wake up to happy customers, not endless tickets
-                  </h2>
-                  <p className="text-white/90 text-lg">
-                    Every question answered, every order tracked, every upsell opportunity captured—all while you focus on growing the business you built from the ground up.
-                  </p>
-                </div>
-
-                {/* Marquee effect on hover */}
-                <div className="w-full md:w-auto overflow-hidden">
-                  <div className="flex items-center space-x-8 group-hover:animate-marquee whitespace-nowrap">
-                    <span className="text-white text-xl font-medium">
-                      No setup fees
-                    </span>
-                    <span className="text-white">•</span>
-                    <span className="text-white text-xl font-medium">
-                      Generous free tier
-                    </span>
-                    <span className="text-white">•</span>
-                    <span className="text-white text-xl font-medium">
-                      Pays for itself with first upsell 🚀
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hero Images */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                <div className="relative h-40 rounded-lg overflow-hidden">
-                  <picture>
-                    <source media="(max-width: 767px)" srcSet="/images/indie-unboxing-final-mobile.avif" type="image/avif" />
-                    <source media="(max-width: 767px)" srcSet="/images/indie-unboxing-final-mobile.webp" type="image/webp" />
-                    <source media="(max-width: 767px)" srcSet="/images/indie-unboxing-final-mobile.jpg" type="image/jpeg" />
-                    <source srcSet="/images/indie-unboxing-final.avif" type="image/avif" />
-                    <source srcSet="/images/indie-unboxing-final.webp" type="image/webp" />
-                    <img 
-                      src="/images/indie-unboxing-final.jpg" 
-                      alt="Indie shop owner unboxing packages" 
-                      className="absolute inset-0 w-full h-full object-cover" 
-                      loading="lazy"
-                    />
-                  </picture>
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                    <span className="text-white font-medium">
-                      Indie shop owner unboxing
-                    </span>
-                  </div>
-                </div>
-                <div className="relative h-40 rounded-lg overflow-hidden">
-                  <picture>
-                    <source media="(max-width: 767px)" srcSet="/images/product-showcase-mobile.avif" type="image/avif" />
-                    <source media="(max-width: 767px)" srcSet="/images/product-showcase-mobile.webp" type="image/webp" />
-                    <source media="(max-width: 767px)" srcSet="/images/product-showcase-mobile.jpg" type="image/jpeg" />
-                    <source srcSet="/images/product-showcase.avif" type="image/avif" />
-                    <source srcSet="/images/product-showcase.webp" type="image/webp" />
-                    <img 
-                      src="/images/product-showcase.jpg" 
-                      alt="Modern e-commerce product management dashboard" 
-                      className="absolute inset-0 w-full h-full object-cover" 
-                      loading="lazy"
-                    />
-                  </picture>
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                    <span className="text-white font-medium">
-                      Product showcase
-                    </span>
-                  </div>
-                </div>
-                <div className="relative h-40 rounded-lg overflow-hidden">
-                  <picture>
-                    <source media="(max-width: 767px)" srcSet="/images/customer-support-mobile.avif" type="image/avif" />
-                    <source media="(max-width: 767px)" srcSet="/images/customer-support-mobile.webp" type="image/webp" />
-                    <source media="(max-width: 767px)" srcSet="/images/customer-support-mobile.jpg" type="image/jpeg" />
-                    <source srcSet="/images/customer-support.avif" type="image/avif" />
-                    <source srcSet="/images/customer-support.webp" type="image/webp" />
-                    <img 
-                      src="/images/customer-support.jpg" 
-                      alt="Professional customer support representative with headset" 
-                      className="absolute inset-0 w-full h-full object-cover" 
-                      loading="lazy"
-                    />
-                  </picture>
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                    <span className="text-white font-medium">
-                      Customer experience
-                    </span>
-                  </div>
-                </div>
+        {/* Transition to Story */}
+        <section className="w-full py-16 bg-gradient-to-b from-gray-900/5 to-transparent">
+          <div className="container mx-auto px-4 text-center">
+            <div className="max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Here's the complete story of how successful founders are reclaiming their time 
+                and transforming their customer experience
+              </p>
+              <div className="animate-bounce">
+                <svg 
+                  className="w-8 h-8 mx-auto text-purple-600" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                  />
+                </svg>
               </div>
             </div>
           </div>
         </section>
+
+        {/* How Garrio Works - Bar Chart Version */}
+        <GarrioTeamBarChart />
 
         {/* Problem-Solution Split */}
         <ProblemSolutionSection />

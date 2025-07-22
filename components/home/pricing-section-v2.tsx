@@ -4,7 +4,7 @@ import type React from "react";
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Check, Info, ChevronRight, X } from "lucide-react";
+import { Check, Info, ChevronRight, X, CornerRightDown, DollarSign, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { plans } from "@/lib/pricing-data";
 import {
@@ -101,210 +101,248 @@ export default function PricingSectionV2() {
   }, [waitlistPlan]);
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-9">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Pick Your Plan
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <DollarSign className="w-4 h-4" />
+            Simple, Transparent Pricing
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Start free, grow with 
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">confidence</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Start free and only pay as you grow. Built for founders who need to
-            see ROI from day one.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Built for founders who need to see ROI from day one. Start with our generous free tier, 
+            then scale seamlessly as your business grows.
           </p>
         </div>
 
-        {/* Handwritten annotation pointing to popular plan */}
-        <div className="relative max-w-6xl mx-auto h-12 mb-3">
-          <div className="absolute left-1/2 transform -translate-x-16 z-50">
-            <div
-              className="text-gray-500 text-base italic transform -rotate-6 px-2 py-1 relative"
-              style={{ fontFamily: "Dancing Script, cursive" }}
-            >
-              Most popular for small brands
-              {/* Curved line positioned at the end of the text */}
-              <svg
-                className="absolute -bottom-8 right-2 w-8 h-8"
-                viewBox="0 0 32 32"
-                fill="none"
-                style={{ transform: "rotate(45deg)" }}
-              >
-                <path
-                  d="M 16 4 A 12 12 0 0 1 28 16"
-                  stroke="#9CA3AF"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeDasharray="4,2"
-                  opacity="0.7"
-                  fill="none"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8 max-w-6xl mx-auto">
           {sortedPlans.map((plan) => (
-            <div
-              key={plan.id}
-              className={`relative bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 hover:translate-y-[-4px] hover:scale-[1.02] overflow-hidden flex flex-col ${
-                plan.popular ? "border border-purple-200" : ""
-              }`}
-            >
-              {/* Plan Label Ribbon */}
-              <div
-                className={`absolute top-0 left-0 px-4 py-1 text-white text-sm font-medium ${
-                  plan.id === "free"
-                    ? "bg-purple-600"
-                    : plan.id === "starter"
-                      ? "bg-indigo-600"
-                      : "bg-gray-400"
-                }`}
-                style={{
-                  clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-                  paddingRight: "1.5rem",
-                }}
-              >
-                {plan.name}
-              </div>
-
-              {/* Corner Triangle - Uses clipping to advantage */}
-              {plan.popular && (
-                <div
-                  className="absolute top-0 right-0 w-[50px] h-[50px] bg-indigo-600"
-                  style={{ clipPath: "polygon(100% 0%, 100% 100%, 0% 0%)" }}
-                />
-              )}
-
-              <div className="p-6 md:p-8 flex flex-col flex-1">
-                {/* Price */}
-                <div className="mt-6 mb-4">
-                  <div className="flex items-center">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    <span className="text-gray-500 ml-1">
-                      {plan.priceDetail}
-                    </span>
-
-                    {/* Cost Estimator Tooltip for Starter */}
-                    {plan.id === "starter" && (
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <button
-                              className="ml-2 text-gray-400 hover:text-gray-600"
-                              onClick={() =>
-                                trackEvent("pricing_tooltip_open", {
-                                  planId: plan.id,
-                                })
-                              }
-                              aria-label="Price information"
-                            >
-                              <Info size={16} />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="bg-gray-900 text-white text-xs p-3">
-                            <p>350 chats cost $10. Extra chats = $0.10 each.</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    )}
-                  </div>
-
-                  {/* Usage note */}
-                  {plan.extraChatPrice && plan.id !== "free" && (
-                    <p className="text-sm text-gray-500 mt-1">
-                      +{plan.extraChatPrice} per extra chat
-                    </p>
-                  )}
-                </div>
-
-                {/* Chat Limit Badge */}
-                <div className="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium mb-6">
-                  {plan.includedChats} chats included
-                </div>
-
-                {/* Feature List */}
-                <ul className="space-y-3 mb-8 text-sm leading-relaxed list-disc pl-4 flex-grow">
-                  {plan.features.slice(0, 3).map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>{feature.title}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                {plan.available ? (
-                  <Button
-                    className={`w-full ${
-                      plan.id === "free"
-                        ? "bg-purple-600 hover:bg-purple-700"
-                        : "border-purple-600 text-purple-600 hover:bg-purple-50"
-                    }`}
-                    variant={plan.id === "free" ? "default" : "outline"}
-                    asChild
-                    onClick={() =>
-                      trackEvent("pricing_cta_click", {
-                        planId: plan.id,
-                        availability: true,
-                      })
-                    }
-                    aria-label={`Start Garrio ${plan.name} Plan`}
-                  >
-                    <Link
-                      href={`${plan.ctaLink}?plan=${plan.id}&utm_source=pricing_strip`}
+            <div key={plan.id} className="relative group">
+              {/* Annotation space above each card */}
+              <div className="h-8 relative overflow-visible mb-2">
+                {plan.popular && (
+                  <div className="absolute top-0 right-0 z-50">
+                    <div
+                      className="text-gray-700 text-lg font-medium italic transform -rotate-6 px-2 py-1 relative whitespace-nowrap transition-transform duration-300 group-hover:-rotate-3"
+                      style={{ fontFamily: "Georgia, serif" }}
                     >
-                      {plan.id === "free"
-                        ? "Add for Free"
-                        : `Start for ${plan.price}`}
-                    </Link>
-                  </Button>
-                ) : (
-                  <Button
-                    className="w-full border-purple-600 text-purple-600 hover:bg-purple-50"
-                    variant="outline"
-                    onClick={() => {
-                      openWaitlist(plan.id);
-                      trackEvent("pricing_cta_click", {
-                        planId: plan.id,
-                        availability: false,
-                      });
-                    }}
-                    aria-label={`Join waitlist for Garrio ${plan.name} Plan`}
-                  >
-                    {plan.id === "professional"
-                      ? "Talk to Sales"
-                      : "Join Waitlist"}{" "}
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
-                )}
-
-                {/* Locked Overlay for Unavailable Plans */}
-                {!plan.available && (
-                  <div
-                    className="absolute inset-0 bg-white/75 backdrop-blur-sm flex items-center justify-center"
-                    role="presentation"
-                  >
-                    <div className="text-gray-500 font-medium bg-white/80 px-4 py-2 rounded-lg shadow-sm">
-                      Coming Soon
+                      Most popular for small brands
+                      <CornerRightDown 
+                        className="absolute -bottom-6 right-2 w-6 h-6 text-gray-500 opacity-80 transition-all duration-300 group-hover:rotate-6 group-hover:text-purple-600"
+                        style={{ transform: "rotate(15deg)" }}
+                      />
                     </div>
                   </div>
                 )}
+              </div>
+              
+              {/* The actual plan card */}
+              <div
+                className={`relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:translate-y-[-8px] hover:scale-[1.02] overflow-hidden flex flex-col h-full border ${
+                  plan.popular 
+                    ? "border-purple-200 ring-4 ring-purple-100 ring-opacity-50" 
+                    : "border-gray-100 hover:border-purple-200"
+                }`}
+              >
+                {/* Plan Label Badge */}
+                <div className="p-6 md:p-8 flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-6">
+                    <div
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
+                        plan.id === "free"
+                          ? "bg-purple-100 text-purple-700"
+                          : plan.id === "starter"
+                            ? "bg-indigo-100 text-indigo-700"
+                            : plan.id === "essentials"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      {plan.id === "free" && <Sparkles className="w-3 h-3" />}
+                      {plan.name}
+                    </div>
+                  </div>
+                  {/* Price */}
+                  <div className="mb-8">
+                    <div className="text-center mb-4">
+                      <div className="inline-flex items-baseline gap-1">
+                        {plan.price.includes('$') && (
+                          <span className="text-2xl text-gray-600 font-medium">$</span>
+                        )}
+                        <span className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                          {plan.price.replace('$', '')}
+                        </span>
+                        {/* Cost Estimator Tooltip for Starter */}
+                        {plan.id === "starter" && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <button
+                                  className="ml-2 text-gray-400 hover:text-purple-600 transition-colors"
+                                  onClick={() =>
+                                    trackEvent("pricing_tooltip_open", {
+                                      planId: plan.id,
+                                    })
+                                  }
+                                  aria-label="Price information"
+                                >
+                                  <Info size={16} />
+                                </button>
+                              </TooltipTrigger>
+                              <TooltipContent 
+                                className="bg-gray-900 text-white text-sm p-4 max-w-xs z-50"
+                                side="top"
+                                sideOffset={10}
+                              >
+                                <p>350 chats cost $10. Extra chats = $0.10 each.</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2 font-medium">
+                        {plan.priceDetail}
+                      </div>
+                    </div>
+
+                    {/* Usage note */}
+                    {plan.extraChatPrice && plan.id !== "free" && (
+                      <p className="text-sm text-gray-500">
+                        +{plan.extraChatPrice} per extra chat
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Chat Limit Badge */}
+                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 px-4 py-3 rounded-xl mb-6">
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span className="text-purple-800 font-semibold text-sm">
+                        {plan.includedChats.toLocaleString()} chats included
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Feature List */}
+                  <ul className="space-y-4 mb-8 flex-grow">
+                    {plan.features.slice(0, 3).map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="bg-green-100 p-1 rounded-full flex-shrink-0 mt-0.5">
+                          <Check className="h-3 w-3 text-green-600" />
+                        </div>
+                        <span className="text-gray-700 leading-relaxed">{feature.title}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA Button */}
+                  {plan.available ? (
+                    <Button
+                      className={`w-full py-4 px-6 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200 group ${
+                        plan.id === "free"
+                          ? "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
+                          : "border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white bg-white"
+                      }`}
+                      asChild
+                      onClick={() =>
+                        trackEvent("pricing_cta_click", {
+                          planId: plan.id,
+                          availability: true,
+                        })
+                      }
+                      aria-label={`Start Garrio ${plan.name} Plan`}
+                    >
+                      <Link
+                        href={`${plan.ctaLink}?plan=${plan.id}&utm_source=pricing_strip`}
+                        className="flex items-center justify-center gap-2"
+                      >
+                        {plan.id === "free"
+                          ? "Add for Free"
+                          : `Start for ${plan.price}`}
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button
+                      className="w-full py-4 px-6 rounded-xl font-semibold text-lg border-2 border-gray-400 text-gray-600 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200 group"
+                      onClick={() => {
+                        openWaitlist(plan.id);
+                        trackEvent("pricing_cta_click", {
+                          planId: plan.id,
+                          availability: false,
+                        });
+                      }}
+                      aria-label={`Join waitlist for Garrio ${plan.name} Plan`}
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        {plan.id === "professional"
+                          ? "Talk to Sales"
+                          : "Join Waitlist"}
+                        <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </Button>
+                  )}
+
+                  {/* Locked Overlay for Unavailable Plans */}
+                  {!plan.available && (
+                    <div
+                      className="absolute inset-0 bg-white/75 backdrop-blur-sm flex items-center justify-center"
+                      role="presentation"
+                    >
+                      <div className="text-gray-500 font-medium bg-white/80 px-4 py-2 rounded-lg shadow-sm">
+                        Coming Soon
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-gray-500 max-w-2xl mx-auto">
-            Every plan includes industry-smart AI that learns your business,
-            instant Shopify integration, and analytics that matter.
-            <br />
-            Need something custom?{" "}
-            <Link href="#" className="text-purple-600 hover:underline">
-              We&apos;ll work with your budget
-            </Link>
-            .
-          </p>
+
+        <div className="mt-20 text-center">
+          <div className="bg-white/60 backdrop-blur rounded-2xl border border-purple-100 p-8 max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="bg-purple-100 p-3 rounded-xl">
+                <Sparkles className="w-6 h-6 text-purple-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">What's included in every plan</h3>
+                <p className="text-gray-600 text-sm">No hidden fees, no surprises</p>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Industry-smart AI that learns your business</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Instant Shopify integration</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Analytics that actually matter</span>
+              </div>
+            </div>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-gray-600">
+                Need something custom?{" "}
+                <Link href="#" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
+                  We'll work with your budget
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 

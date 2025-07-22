@@ -1,38 +1,58 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { Clock, DollarSign, TrendingUp, Zap, Calendar, Sparkles, CheckCircle, XCircle } from "lucide-react"
 
 interface Feature {
   name: string
   garrio: string
   competitor: string
+  garrioPositive?: boolean
+  icon: React.ReactNode
 }
 
 const features: Feature[] = [
   {
-    name: "24/7 availability",
-    garrio: "✅ Included",
-    competitor: "Extra cost",
+    name: "Time back in your week",
+    garrio: "20+ hours saved",
+    competitor: "More management overhead",
+    garrioPositive: true,
+    icon: <Clock className="w-5 h-5" />,
   },
   {
-    name: "Training & management",
-    garrio: "✅ Done for you",
-    competitor: "Your responsibility",
+    name: "Never miss a sale after hours",
+    garrio: "AI answers instantly 24/7",
+    competitor: "Lost revenue when offline",
+    garrioPositive: true,
+    icon: <TrendingUp className="w-5 h-5" />,
   },
   {
-    name: "Shopify integration",
-    garrio: "✅ Built-in",
-    competitor: "Setup required",
+    name: "Monthly investment",
+    garrio: "$200/mo + usage",
+    competitor: "$3,000-5,000/mo per person",
+    garrioPositive: true,
+    icon: <DollarSign className="w-5 h-5" />,
   },
   {
-    name: "Scaling costs",
-    garrio: "✅ Pay per use",
-    competitor: "Fixed salaries",
+    name: "Turn support into revenue",
+    garrio: "AI suggests perfect upsells",
+    competitor: "Support costs, doesn't sell",
+    garrioPositive: true,
+    icon: <Sparkles className="w-5 h-5" />,
   },
   {
-    name: "Smart upselling",
-    garrio: "✅ AI-powered",
-    competitor: "Manual process",
+    name: "Ready to work today",
+    garrio: "5-minute setup",
+    competitor: "6-8 weeks to hire & train",
+    garrioPositive: true,
+    icon: <Zap className="w-5 h-5" />,
+  },
+  {
+    name: "Scales with your growth",
+    garrio: "Handle 10x traffic instantly",
+    competitor: "Panic hire during busy seasons",
+    garrioPositive: true,
+    icon: <Calendar className="w-5 h-5" />,
   },
 ]
 
@@ -63,32 +83,104 @@ export default function ComparisonSnapshotV2() {
   }, [])
 
   return (
-    <section id="comparison-snapshot" className="py-16 md:py-24 bg-white">
+    <section id="comparison-snapshot" className="py-20 md:py-32 bg-gradient-to-br from-green-50 via-white to-emerald-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Garrio vs. Hiring Support Staff</h2>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">Get enterprise-level support without the enterprise costs or management headaches.</p>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            The Smart Choice
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Stop drowning, start 
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">thriving</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            You're already wearing 10 hats. Let your Garrio team handle customer support 
+            so you can focus on growing your brand.
+          </p>
+        </div>
 
-        <div
-          className={`max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          <table className="w-full text-left">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="py-4 px-6 font-medium text-gray-500">Feature</th>
-                <th className="py-4 px-6 font-medium text-purple-600 text-center">Garrio</th>
-                <th className="py-4 px-6 font-medium text-gray-500 text-center">Hiring Staff</th>
-              </tr>
-            </thead>
-            <tbody>
-              {features.map((feature) => (
-                <tr key={feature.name} className="border-b border-gray-200">
-                  <td className="py-4 px-6 font-medium">{feature.name}</td>
-                  <td className="py-4 px-6 text-center">{feature.garrio}</td>
-                  <td className="py-4 px-6 text-center">{feature.competitor}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className={`max-w-6xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          {/* Column Headers */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="hidden md:block"></div>
+            <div className="text-center">
+              <div className="bg-gradient-to-br from-green-600 to-emerald-600 text-white rounded-2xl p-6 shadow-xl">
+                <h3 className="text-2xl font-bold mb-2">With Garrio</h3>
+                <p className="text-green-50">Your team works for you</p>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="bg-gray-100 text-gray-700 rounded-2xl p-6">
+                <h3 className="text-2xl font-bold mb-2">Do-It-Yourself</h3>
+                <p className="text-gray-500">You work for your business</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature Rows */}
+          <div className="space-y-4">
+            {features.map((feature, index) => (
+              <div
+                key={feature.name}
+                className={`grid grid-cols-1 md:grid-cols-3 gap-4 transition-all duration-500 ${
+                  isVisible ? `opacity-100 translate-x-0` : `opacity-0 ${index % 2 === 0 ? '-translate-x-10' : 'translate-x-10'}`
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Feature Name */}
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 flex items-center gap-4">
+                  <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-xl text-green-600 flex-shrink-0">
+                    {feature.icon}
+                  </div>
+                  <h4 className="font-semibold text-gray-900 text-lg leading-tight">{feature.name}</h4>
+                </div>
+
+                {/* Garrio Solution */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl blur opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-green-200 hover:border-green-300 transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center gap-3 mb-2">
+                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      <p className="font-semibold text-green-700">{feature.garrio}</p>
+                    </div>
+                    <div className="h-1 bg-gradient-to-r from-green-200 to-emerald-200 rounded-full"></div>
+                  </div>
+                </div>
+
+                {/* DIY Drawback */}
+                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                  <div className="flex items-center gap-3">
+                    <XCircle className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                    <p className="text-gray-600">{feature.competitor}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Summary CTA */}
+          <div className="mt-16 text-center">
+            <div className="bg-white/80 backdrop-blur rounded-3xl border border-green-200 p-8 max-w-3xl mx-auto shadow-xl">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="bg-green-100 p-4 rounded-2xl">
+                  <TrendingUp className="w-8 h-8 text-green-600" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold text-gray-900">Ready to reclaim your time?</h3>
+                  <p className="text-gray-600 text-lg">Join 500+ founders who chose growth over burnout</p>
+                </div>
+              </div>
+              <a
+                href="#pricing"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
+              >
+                See your potential savings
+                <TrendingUp className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

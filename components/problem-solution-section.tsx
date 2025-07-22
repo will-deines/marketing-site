@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { Clock, MessageSquare, TrendingDown, TrendingUp, Zap, Heart, CheckCircle, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function ProblemSolutionSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -33,118 +35,169 @@ export default function ProblemSolutionSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-32 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-purple-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">You Built This Brand to Create, Not to Answer Emails</h2>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Heart className="w-4 h-4" />
+            The founder's dilemma
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            You built this brand to 
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">create, not answer emails</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Every minute spent on repetitive support tasks is a minute stolen from your vision, 
+            your next product, or the strategic work that only you can do.
+          </p>
+        </div>
 
-        <div className="flex flex-col md:flex-row">
-          {/* Problem Column (Dark) */}
+        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          {/* Problem Side */}
           <div
-            className={`w-full md:w-1/2 bg-gray-900 text-white p-8 md:p-12 rounded-t-lg md:rounded-l-lg md:rounded-tr-none transition-all duration-700 ease-in-out ${
+            className={`transition-all duration-700 ease-in-out ${
               isInView ? "translate-x-0 opacity-100" : "-translate-x-20 opacity-0"
             }`}
           >
-            <div className="h-full flex flex-col">
-              <h3 className="text-2xl font-bold mb-8 text-purple-400">The Reality</h3>
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="mb-8">
-                  <h4 className="text-xl font-semibold mb-4">When passion meets endless logistics</h4>
-                  <p className="text-gray-300 text-lg">You left your day job to build something meaningful. But now you&apos;re spending more time answering &ldquo;Where&rsquo;s my order?&rdquo; than designing new products or connecting with customers who truly get your brand.</p>
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-red-100 h-full flex flex-col">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="bg-red-100 p-4 rounded-2xl">
+                  <TrendingDown className="w-8 h-8 text-red-600" />
                 </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">The Reality Check</h3>
+                  <p className="text-red-600 font-medium">What's actually happening</p>
+                </div>
+              </div>
 
-                <div className="relative h-64 md:h-80 overflow-hidden rounded-lg">
-                  <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-                    <div className="p-6 max-w-sm mx-auto">
-                      <div className="flex items-start space-x-4 animate-pulse">
-                        <div className="h-12 w-12 rounded-full bg-gray-700"></div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                          <div className="space-y-2">
-                            <div className="h-4 bg-gray-700 rounded"></div>
-                            <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                          </div>
-                        </div>
+              <div className="space-y-8 flex-1">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-6">
+                  <h4 className="text-xl font-semibold text-gray-900 mb-4">Your day looks like this:</h4>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <Clock className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-medium text-gray-900">6 AM - 11 PM</p>
+                        <p className="text-gray-700">Constantly checking messages, fielding the same questions over and over</p>
                       </div>
-                      <div className="mt-4 flex items-start space-x-4 animate-pulse">
-                        <div className="h-12 w-12 rounded-full bg-gray-700"></div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                          <div className="space-y-2">
-                            <div className="h-4 bg-gray-700 rounded"></div>
-                            <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                          </div>
-                        </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <MessageSquare className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-medium text-gray-900">47 support tickets today</p>
+                        <p className="text-gray-700">"Where's my order?" "What's your return policy?" "Can I change my address?"</p>
                       </div>
-                      <div className="mt-4 flex items-start space-x-4 animate-pulse">
-                        <div className="h-12 w-12 rounded-full bg-gray-700"></div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                          <div className="space-y-2">
-                            <div className="h-4 bg-gray-700 rounded"></div>
-                            <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                          </div>
-                        </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <Heart className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-medium text-gray-900">Zero time for creativity</p>
+                        <p className="text-gray-700">That product idea you had? Still in your notes from 3 months ago.</p>
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="bg-gray-900 text-white rounded-2xl p-6">
+                  <p className="text-lg italic leading-relaxed">
+                    "I built this brand to create something meaningful, but I spend more time answering 
+                    'Where's my order?' than actually building the business."
+                  </p>
+                  <p className="text-gray-400 mt-3 text-sm">— Every founder, every day</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Solution Column (Light) */}
+          {/* Solution Side */}
           <div
-            className={`w-full md:w-1/2 bg-white p-8 md:p-12 rounded-b-lg md:rounded-r-lg md:rounded-bl-none shadow-lg transition-all duration-700 ease-in-out ${
+            className={`transition-all duration-700 ease-in-out ${
               isInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <div className="h-full flex flex-col">
-              <h3 className="text-2xl font-bold mb-8 text-purple-600">Get Your Creative Energy Back</h3>
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="mb-8">
-                  <h4 className="text-xl font-semibold mb-4">Support that grows with your vision</h4>
-                  <p className="text-gray-700 text-lg">Every customer question answered instantly, every order tracked automatically, every upsell opportunity captured—while you get back to the work that only you can do.</p>
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl shadow-2xl p-8 md:p-12 border border-purple-100 h-full flex flex-col">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="bg-purple-100 p-4 rounded-2xl">
+                  <TrendingUp className="w-8 h-8 text-purple-600" />
                 </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">Get Your Vision Back</h3>
+                  <p className="text-purple-600 font-medium">What's possible with Garrio</p>
+                </div>
+              </div>
 
-                <div className="relative h-64 md:h-80 overflow-hidden rounded-lg border border-gray-200">
-                  <div className="absolute inset-0 bg-gray-50 flex items-center justify-center">
-                    <div className="p-6 max-w-sm mx-auto">
-                      <div className="flex items-start space-x-4">
-                        <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
-                          <span className="text-purple-600 font-bold">G</span>
-                        </div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="bg-purple-100 p-3 rounded-lg text-gray-800">
-                            Hello! I can help you track your order #12345. It&apos;s currently in transit and will arrive
-                            tomorrow.
-                          </div>
-                        </div>
+              <div className="space-y-8 flex-1">
+                <div className="bg-white/60 backdrop-blur border border-purple-200 rounded-2xl p-6">
+                  <h4 className="text-xl font-semibold text-gray-900 mb-4">Your new reality:</h4>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       </div>
-                      <div className="mt-4 flex items-start space-x-4">
-                        <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
-                          <span className="text-gray-600 font-bold">C</span>
-                        </div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="bg-gray-200 p-3 rounded-lg text-gray-800">
-                            Can I get a discount on my next order?
-                          </div>
-                        </div>
+                      <div>
+                        <p className="font-medium text-gray-900">8 hours of pure creative time</p>
+                        <p className="text-gray-700">Work on your next product launch while support runs itself</p>
                       </div>
-                      <div className="mt-4 flex items-start space-x-4">
-                        <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
-                          <span className="text-purple-600 font-bold">G</span>
-                        </div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="bg-purple-100 p-3 rounded-lg text-gray-800">
-                            I&apos;ve created a special 10% discount code for you: HAPPY10. Would you like to browse our new
-                            arrivals?
-                          </div>
-                        </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
+                        <CheckCircle className="w-5 h-5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Zero interruptions</p>
+                        <p className="text-gray-700">Every customer question handled instantly, professionally, on-brand</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
+                        <CheckCircle className="w-5 h-5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">More revenue, less effort</p>
+                        <p className="text-gray-700">AI catches upsells while you sleep. Human agents handle the complex stuff.</p>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl p-6">
+                  <div className="flex items-start gap-4">
+                    <Zap className="w-8 h-8 text-yellow-300 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-lg font-semibold mb-2">The transformation</p>
+                      <p className="leading-relaxed opacity-90">
+                        Within 48 hours: Your customers get instant, helpful responses. 
+                        Within 2 weeks: You remember why you started this business in the first place.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA extending from bottom */}
+              <div className="mt-8">
+                <Link 
+                  href="https://apps.shopify.com/app-installation?utm_source=homepage_problem_solution&utm_medium=cta&utm_campaign=free_install"
+                  className="block bg-white/80 backdrop-blur rounded-2xl p-6 border border-purple-200 hover:bg-white/90 hover:border-purple-300 hover:shadow-lg transition-all duration-200 group cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-gray-900 text-lg group-hover:text-purple-700 transition-colors">Ready to reclaim your time?</p>
+                      <p className="text-gray-600">Start with 250 free interactions</p>
+                    </div>
+                    <ArrowRight className="w-8 h-8 text-purple-600 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

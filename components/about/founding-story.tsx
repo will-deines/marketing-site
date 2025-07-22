@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { Calendar, Lightbulb, Rocket, Trophy, Sparkles } from "lucide-react"
 
 interface TimelineStep {
   id: string
@@ -11,40 +12,70 @@ interface TimelineStep {
   description: string
   imageSrc: string
   imageAlt: string
+  icon: React.ReactNode
+  gradient: string
 }
 
 const timelineSteps: TimelineStep[] = [
   {
-    id: "q2-2023",
-    date: "'23 Q2",
-    title: "The Breaking Point",
-    description: "Our founder was spending weekends answering customer emails instead of designing new products. Something had to change.",
+    id: "2009",
+    date: "2009",
+    title: "DTC Brand Launch",
+    description: "Started our own direct-to-consumer brand, learning firsthand what it takes to build something from scratch.",
     imageSrc: "/images/customer-support.jpg",
-    imageAlt: "Overwhelmed founder dealing with customer support",
+    imageAlt: "Early days of building a DTC brand",
+    icon: <Rocket className="w-6 h-6" />,
+    gradient: "from-purple-500 to-indigo-500",
   },
   {
-    id: "q4-2023",
-    date: "'23 Q4",
-    title: "The 'What If' Moment",
-    description: "What if customer support could actually help founders grow their brands instead of stealing their creative time?",
+    id: "2012",
+    date: "2012",
+    title: "Black Friday Chaos",
+    description: "First Black Friday/Cyber Monday doubled our customer support overnight. The explosive growth was both thrilling and terrifying.",
     imageSrc: "/images/ai-chat-blurred.jpg",
-    imageAlt: "AI chat interface helping with customer support",
+    imageAlt: "Customer support volume explosion",
+    icon: <Calendar className="w-6 h-6" />,
+    gradient: "from-red-500 to-orange-500",
   },
   {
-    id: "q1-2024",
-    date: "'24 Q1",
-    title: "The First Freedom",
-    description: "Our first beta founder went from 40 hours a week on support to 4 hours. She launched two new product lines that month.",
+    id: "2021",
+    date: "2021",
+    title: "Finally in Control",
+    description: "After years of growing, adding tech, and building teams, we finally had control. But it took a huge team and complex tech stack.",
     imageSrc: "/images/product-showcase.jpg",
-    imageAlt: "Founder showcasing new product designs",
+    imageAlt: "Large support team and tech infrastructure",
+    icon: <Trophy className="w-6 h-6" />,
+    gradient: "from-green-500 to-emerald-500",
   },
   {
-    id: "now",
-    date: "'25 Now",
-    title: "Founders Creating Again",
-    description: "Every month, Garrio frees up 50,000+ hours of founder time. That's time going back to creating, not answering tickets.",
+    id: "2022",
+    date: "2022",
+    title: "The Garrio Vision",
+    description: "Left to build Garrio because customer support shouldn't be this hard. We knew there had to be a better way.",
+    imageSrc: "/images/ai-chat-blurred.jpg",
+    imageAlt: "Founding Garrio with a new vision",
+    icon: <Lightbulb className="w-6 h-6" />,
+    gradient: "from-yellow-500 to-orange-500",
+  },
+  {
+    id: "2024",
+    date: "2024",
+    title: "First Customer Success",
+    description: "Our first Garrio customer automated 100% of chats, reaching customers 24/7, capturing revenue and preventing returns before they happen.",
     imageSrc: "/images/growth-metrics.jpg",
-    imageAlt: "Growth metrics showing founder success",
+    imageAlt: "First customer achieving 100% automation",
+    icon: <Rocket className="w-6 h-6" />,
+    gradient: "from-purple-500 to-pink-500",
+  },
+  {
+    id: "2025",
+    date: "2025",
+    title: "Full-Service Support",
+    description: "Garrio expands to manage complete customer support teams for our customers - the solution we wished we had years ago.",
+    imageSrc: "/images/growth-metrics.jpg",
+    imageAlt: "Garrio managing full support teams",
+    icon: <Trophy className="w-6 h-6" />,
+    gradient: "from-indigo-500 to-purple-500",
   },
 ]
 
@@ -126,63 +157,74 @@ export default function FoundingStory() {
   }, [isDesktop])
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How We Got Here</h2>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto">
-          We started Garrio because we lived the founder struggle. Here&apos;s how we went from drowning in customer emails to helping thousands of founders reclaim their creative time.
-        </p>
+    <section className="py-20 md:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 overflow-hidden">
+      <div className="container mx-auto px-4 mb-16">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            Our Journey
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">How We
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+              Got Here
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            We started Garrio because we lived the founder struggle. Here&apos;s how we went from drowning in customer emails to helping thousands of founders reclaim their creative time.
+          </p>
+        </div>
       </div>
 
       {isDesktop ? (
         // Desktop: Vertical Timeline
         <div className="container mx-auto px-4">
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 transform -translate-x-1/2"></div>
+            {/* Vertical line with gradient */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-200 via-indigo-200 to-purple-200 transform -translate-x-1/2 rounded-full"></div>
 
             {timelineSteps.map((step, index) => (
               <div
                 key={step.id}
                 ref={(el) => (stepRefs.current[index] = el)}
-                className={`relative mb-24 last:mb-0 transition-all duration-500 ${
+                className={`relative mb-20 last:mb-0 transition-all duration-500 ${
                   visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
                 }`}
               >
                 <div
                   className={`flex flex-col ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center`}
                 >
-                  {/* Date marker */}
+                  {/* Date marker with icon */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center z-10 transition-colors duration-300 ${
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center z-10 transition-all duration-300 shadow-lg ${
                         activeStep === index
-                          ? "bg-purple-600 text-white"
-                          : "bg-white text-gray-500 border border-gray-300"
+                          ? `bg-gradient-to-br ${step.gradient} text-white scale-110`
+                          : "bg-white text-gray-500 border-2 border-gray-200"
                       }`}
                     >
-                      {index + 1}
+                      {step.icon}
                     </div>
-                    <div className="text-sm font-bold mt-2">{step.date}</div>
+                    <div className="text-sm font-bold mt-3 bg-white px-3 py-1 rounded-full shadow-md">{step.date}</div>
                   </div>
 
                   {/* Content */}
                   <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
                     <div
-                      className={`bg-white p-6 rounded-lg shadow-md transform transition-transform duration-500 ${
-                        activeStep === index ? "scale-105" : "scale-100"
+                      className={`bg-white p-6 rounded-3xl shadow-xl transform transition-all duration-500 border ${
+                        activeStep === index ? "scale-105 border-purple-200" : "scale-100 border-gray-100"
                       }`}
                     >
-                      <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
+                      <h3 className="text-xl font-bold mb-2 text-gray-900">{step.title}</h3>
+                      <p className="text-gray-600 leading-relaxed text-sm">{step.description}</p>
                     </div>
                   </div>
 
                   {/* Image */}
                   <div className={`md:w-1/2 mt-6 md:mt-0 ${index % 2 === 0 ? "md:pl-16" : "md:pr-16"}`}>
                     <div
-                      className={`relative h-64 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-500 ${
-                        activeStep === index ? "scale-105" : "scale-100"
+                      className={`relative h-56 rounded-3xl overflow-hidden shadow-xl transform transition-all duration-500 border-2 ${
+                        activeStep === index ? "scale-105 border-purple-200" : "scale-100 border-transparent"
                       }`}
                     >
                       <Image
@@ -210,8 +252,8 @@ export default function FoundingStory() {
           {timelineSteps.map((step, index) => (
             <div key={step.id} className="flex-shrink-0 w-80 mx-4 snap-center">
               <div
-                className={`bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ${
-                  activeStep === index ? "transform scale-105" : ""
+                className={`bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-300 border-2 ${
+                  activeStep === index ? "transform scale-105 border-purple-200" : "border-transparent"
                 }`}
               >
                 <div className="relative h-48">
@@ -221,14 +263,20 @@ export default function FoundingStory() {
                     fill
                     className="object-cover"
                   />
-                </div>
-                <div className="p-4">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-bold text-purple-600">{step.date}</span>
-                    <span className="text-xs text-gray-500">Step {index + 1}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className="absolute top-4 right-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.gradient} text-white flex items-center justify-center shadow-lg`}>
+                      {step.icon}
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">{step.date}</span>
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">{index + 1} of {timelineSteps.length}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             </div>
@@ -242,8 +290,8 @@ export default function FoundingStory() {
           {timelineSteps.map((_, index) => (
             <div
               key={index}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                activeStep === index ? "bg-purple-600" : "bg-gray-300"
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                activeStep === index ? "bg-gradient-to-r from-purple-600 to-indigo-600 scale-125" : "bg-gray-300"
               }`}
             ></div>
           ))}

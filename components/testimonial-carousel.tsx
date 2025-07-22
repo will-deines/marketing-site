@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
+import { Quote, Star, Users, TrendingUp, Heart } from "lucide-react"
 
 interface Testimonial {
   id: number
@@ -75,19 +76,15 @@ export default function TestimonialCarousel() {
   const getCardStyle = (index: number) => {
     const position = (index - activeIndex + testimonials.length) % testimonials.length
 
+    // Only show center card and immediate neighbors
+    const isVisible = position === 0 || position === 1 || position === testimonials.length - 1
+
     // Calculate z-index, opacity, and transform based on position
     let zIndex = 5 - Math.min(Math.abs(position - 0), Math.abs(position - testimonials.length))
     if (position === 0) zIndex = 10
 
-    let opacity = 1
-    if (position !== 0 && position !== 1 && position !== testimonials.length - 1) {
-      opacity = 0.7
-    }
-
-    let scale = 1
-    if (position !== 0) {
-      scale = 0.85
-    }
+    let opacity = isVisible ? (position === 0 ? 1 : 0.6) : 0
+    let scale = position === 0 ? 1 : 0.85
 
     let translateX = "0%"
     if (position === 0) {
@@ -96,30 +93,41 @@ export default function TestimonialCarousel() {
       translateX = "105%"
     } else if (position === testimonials.length - 1) {
       translateX = "-105%"
-    } else if (position < testimonials.length / 2) {
-      translateX = "200%"
     } else {
-      translateX = "-200%"
+      translateX = "200%" // Hide off-screen cards further away
     }
 
     return {
-      zIndex,
+      zIndex: isVisible ? zIndex : -1,
       opacity,
-      transform: `translateX(${translateX}) scale(${scale})`,
-      transition: "all 0.5s ease-in-out",
+      transform: `translate3d(${translateX === "0%" ? "0" : translateX === "105%" ? "105%" : translateX === "-105%" ? "-105%" : "200%"}, 0, 0) scale(${scale})`,
+      transition: "transform 0.5s ease-out, opacity 0.3s ease-out",
+      willChange: "transform, opacity",
+      visibility: isVisible ? 'visible' : 'hidden',
     }
   }
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-orange-50 via-white to-pink-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Real Stories from Bootstrapped Founders</h2>
-        <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          See how founders like you got their creative energy back and accelerated their growth
-        </p>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Heart className="w-4 h-4" />
+            Founder Stories
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Real stories from 
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600">bootstrapped founders</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            See how founders like you got their creative energy back, reclaimed their evenings, 
+            and accelerated their growth without burning out.
+          </p>
+        </div>
 
         <div
-          className="relative h-[400px] md:h-[300px] overflow-hidden"
+          className="relative h-[600px] md:h-[500px] overflow-hidden"
           ref={carouselRef}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
@@ -128,65 +136,120 @@ export default function TestimonialCarousel() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="absolute w-full max-w-md bg-white rounded-xl shadow-lg p-6 transition-all duration-500 hover:shadow-xl transform hover:-rotate-y-5 hover:-rotate-x-5"
+                className="absolute w-full max-w-lg transform-gpu"
                 style={{
                   ...getCardStyle(index),
                   transformStyle: "preserve-3d",
+                  backfaceVisibility: "hidden",
                 }}
                 onMouseEnter={() => {
                   setActiveIndex(index)
                 }}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                      <Image
-                        src={testimonial.avatar || "/placeholder.svg"}
-                        alt={testimonial.name}
-                        fill
-                        className="object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-bold">{testimonial.name}</h3>
-                      <p className="text-sm text-gray-600">{testimonial.company}</p>
+                <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 border border-orange-100 hover:shadow-3xl transition-all duration-500 hover:scale-105">
+                  {/* Quote Icon */}
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-gradient-to-r from-orange-100 to-pink-100 p-3 rounded-xl">
+                      <Quote className="w-6 h-6 text-orange-600" />
                     </div>
                   </div>
-                  <div className="relative h-10 w-24">
-                    <Image
-                      src={testimonial.logo || "/placeholder.svg"}
-                      alt={`${testimonial.company} logo`}
-                      fill
-                      className="object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <div className="flex mb-2">
+
+                  {/* Stars */}
+                  <div className="flex justify-center mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                      </svg>
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-gray-700 italic">&ldquo;{testimonial.quote}&rdquo;</p>
+
+                  {/* Quote */}
+                  <blockquote className="text-base md:text-lg leading-relaxed text-gray-900 text-center mb-6 font-medium">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  {/* Author Section */}
+                  <div className="flex items-center justify-center">
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden ring-3 ring-orange-100">
+                        <Image
+                          src={testimonial.avatar || "/placeholder.svg"}
+                          alt={testimonial.name}
+                          fill
+                          className="object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                        <p className="text-orange-600 font-medium text-sm">{testimonial.company}</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <Users className="w-3 h-3 text-gray-500" />
+                          <span className="text-xs text-gray-500">Bootstrapped Founder</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Success Metric */}
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="flex items-center justify-center gap-2 text-xs">
+                      <div className="bg-green-100 p-1 rounded">
+                        <TrendingUp className="w-3 h-3 text-green-600" />
+                      </div>
+                      <span className="text-gray-600 font-medium">Growing sustainably with Garrio</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-center mt-8 space-x-2">
+        <div className="flex justify-center mt-12 space-x-3">
           {testimonials.map((_, index) => (
             <button
               key={index}
-              className={`w-3 h-3 rounded-full ${index === activeIndex ? "bg-purple-600" : "bg-gray-300"}`}
+              className="relative flex items-center justify-center w-8 h-4 group"
               onClick={() => setActiveIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              <div
+                className={`rounded-full transition-all duration-300 ease-out ${
+                  index === activeIndex
+                    ? "w-8 h-3 bg-gradient-to-r from-orange-500 to-pink-500"
+                    : "w-3 h-3 bg-gray-300 group-hover:bg-orange-300"
+                }`}
+              />
+            </button>
           ))}
+        </div>
+        
+        {/* Stats Banner */}
+        <div className="mt-16 bg-white/60 backdrop-blur rounded-2xl border border-orange-100 p-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col items-center">
+              <div className="bg-orange-100 p-3 rounded-xl mb-3">
+                <Users className="w-6 h-6 text-orange-600" />
+              </div>
+              <div className="text-2xl font-bold text-gray-900">500+</div>
+              <div className="text-gray-600">Happy founders</div>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <div className="bg-green-100 p-3 rounded-xl mb-3">
+                <TrendingUp className="w-6 h-6 text-green-600" />
+              </div>
+              <div className="text-2xl font-bold text-gray-900">32%</div>
+              <div className="text-gray-600">Average revenue increase</div>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <div className="bg-blue-100 p-3 rounded-xl mb-3">
+                <Heart className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="text-2xl font-bold text-gray-900">98%</div>
+              <div className="text-gray-600">Would recommend</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

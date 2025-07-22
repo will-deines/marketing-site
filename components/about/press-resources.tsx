@@ -4,7 +4,19 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { 
+  Download, 
+  FileText, 
+  Palette, 
+  Mail, 
+  Copy, 
+  Check,
+  Sparkles,
+  Image as ImageIcon,
+  AlertCircle,
+  X
+} from "lucide-react"
 
 
 const brandColors = [

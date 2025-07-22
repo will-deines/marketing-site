@@ -352,21 +352,21 @@ export default function ComparisonTable() {
                   <tr 
                     key={`outcome-${index}`}
                     ref={(el) => (rowRefs.current[index] = el)}
-                    className={`border-b border-gray-200 hover:bg-gray-50 transition-all duration-500 ${
-                      visibleRows.includes(index) ? "opacity-100" : "opacity-0"
+                    className={`border-b border-gray-200 hover:bg-blue-50/30 transition-all duration-700 group ${
+                      visibleRows.includes(index) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                     }`}
-                    style={{ transitionDelay: `${index * 50}ms` }}
+                    style={{ transitionDelay: `${index * 100}ms` }}
                   >
-                    <td className="p-3 md:p-4 font-medium text-sm md:text-base border-r border-gray-200">
+                    <td className="p-5 font-medium border-r-2 border-gray-200">
                       <div className="flex items-center">
-                        {item.feature}
+                        <span className="text-gray-800">{item.feature}</span>
                         {item.tooltip && (
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <Info className="h-3 w-3 md:h-4 md:w-4 text-gray-400 ml-2 cursor-help" />
+                                <Info className="h-4 w-4 text-indigo-400 ml-2 cursor-help hover:text-indigo-600 transition-colors" />
                               </TooltipTrigger>
-                              <TooltipContent className="max-w-xs p-2 bg-gray-800 text-white">
+                              <TooltipContent className="max-w-xs p-3 bg-gray-900 text-white rounded-xl">
                                 <p>{item.tooltip}</p>
                               </TooltipContent>
                             </Tooltip>
@@ -374,19 +374,19 @@ export default function ComparisonTable() {
                         )}
                       </div>
                     </td>
-                    <td className={`text-center p-3 md:p-4 text-sm md:text-base border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-r from-purple-50 to-purple-100" : ""}`}>
+                    <td className={`text-center p-5 border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-b from-purple-50 to-indigo-50" : ""}`}>
                       {renderValue(item.garrio, true)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.gorgias)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.reamaze)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.zendesk)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base">
+                    <td className="text-center p-5 bg-white/50">
                       {renderValue(item.tidio)}
                     </td>
                   </tr>
@@ -402,21 +402,21 @@ export default function ComparisonTable() {
                   <tr 
                     key={`product-${index}`}
                     ref={(el) => (rowRefs.current[outcomeRows.length + index] = el)}
-                    className={`border-b border-gray-200 hover:bg-gray-50 transition-all duration-500 ${
-                      visibleRows.includes(outcomeRows.length + index) ? "opacity-100" : "opacity-0"
+                    className={`border-b border-gray-200 hover:bg-purple-50/30 transition-all duration-700 group ${
+                      visibleRows.includes(outcomeRows.length + index) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                     }`}
-                    style={{ transitionDelay: `${(outcomeRows.length + index) * 50}ms` }}
+                    style={{ transitionDelay: `${(outcomeRows.length + index) * 100}ms` }}
                   >
-                    <td className="p-3 md:p-4 font-medium text-sm md:text-base border-r border-gray-200">
+                    <td className="p-5 font-medium border-r-2 border-gray-200">
                       <div className="flex items-center">
-                        {item.feature}
+                        <span className="text-gray-800">{item.feature}</span>
                         {item.tooltip && (
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <Info className="h-3 w-3 md:h-4 md:w-4 text-gray-400 ml-2 cursor-help" />
+                                <Info className="h-4 w-4 text-indigo-400 ml-2 cursor-help hover:text-indigo-600 transition-colors" />
                               </TooltipTrigger>
-                              <TooltipContent className="max-w-xs p-2 bg-gray-800 text-white">
+                              <TooltipContent className="max-w-xs p-3 bg-gray-900 text-white rounded-xl">
                                 <p>{item.tooltip}</p>
                               </TooltipContent>
                             </Tooltip>
@@ -424,19 +424,19 @@ export default function ComparisonTable() {
                         )}
                       </div>
                     </td>
-                    <td className={`text-center p-3 md:p-4 text-sm md:text-base border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-r from-purple-50 to-purple-100" : ""}`}>
+                    <td className={`text-center p-5 border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-b from-purple-50 to-indigo-50" : ""}`}>
                       {renderValue(item.garrio, true)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.gorgias)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.reamaze)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.zendesk)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base">
+                    <td className="text-center p-5 bg-white/50">
                       {renderValue(item.tidio)}
                     </td>
                   </tr>
@@ -452,21 +452,21 @@ export default function ComparisonTable() {
                   <tr 
                     key={`pricing-${index}`}
                     ref={(el) => (rowRefs.current[outcomeRows.length + productRows.length + index] = el)}
-                    className={`border-b border-gray-200 hover:bg-gray-50 transition-all duration-500 ${
-                      visibleRows.includes(outcomeRows.length + productRows.length + index) ? "opacity-100" : "opacity-0"
+                    className={`border-b border-gray-200 hover:bg-green-50/30 transition-all duration-700 group ${
+                      visibleRows.includes(outcomeRows.length + productRows.length + index) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                     }`}
-                    style={{ transitionDelay: `${(outcomeRows.length + productRows.length + index) * 50}ms` }}
+                    style={{ transitionDelay: `${(outcomeRows.length + productRows.length + index) * 100}ms` }}
                   >
-                    <td className="p-3 md:p-4 font-medium text-sm md:text-base border-r border-gray-200">
+                    <td className="p-5 font-medium border-r-2 border-gray-200">
                       <div className="flex items-center">
-                        {item.feature}
+                        <span className="text-gray-800">{item.feature}</span>
                         {item.tooltip && (
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <Info className="h-3 w-3 md:h-4 md:w-4 text-gray-400 ml-2 cursor-help" />
+                                <Info className="h-4 w-4 text-indigo-400 ml-2 cursor-help hover:text-indigo-600 transition-colors" />
                               </TooltipTrigger>
-                              <TooltipContent className="max-w-xs p-2 bg-gray-800 text-white">
+                              <TooltipContent className="max-w-xs p-3 bg-gray-900 text-white rounded-xl">
                                 <p>{item.tooltip}</p>
                               </TooltipContent>
                             </Tooltip>
@@ -474,19 +474,19 @@ export default function ComparisonTable() {
                         )}
                       </div>
                     </td>
-                    <td className={`text-center p-3 md:p-4 text-sm md:text-base border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-r from-purple-50 to-purple-100" : ""}`}>
+                    <td className={`text-center p-5 border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-b from-purple-50 to-indigo-50" : ""}`}>
                       {renderValue(item.garrio, true)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.gorgias)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.reamaze)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.zendesk)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base">
+                    <td className="text-center p-5 bg-white/50">
                       {renderValue(item.tidio)}
                     </td>
                   </tr>
@@ -502,21 +502,21 @@ export default function ComparisonTable() {
                   <tr 
                     key={`trust-${index}`}
                     ref={(el) => (rowRefs.current[outcomeRows.length + productRows.length + pricingRows.length + index] = el)}
-                    className={`border-b border-gray-200 hover:bg-gray-50 transition-all duration-500 ${
-                      visibleRows.includes(outcomeRows.length + productRows.length + pricingRows.length + index) ? "opacity-100" : "opacity-0"
+                    className={`border-b border-gray-200 hover:bg-amber-50/30 transition-all duration-700 group ${
+                      visibleRows.includes(outcomeRows.length + productRows.length + pricingRows.length + index) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                     }`}
-                    style={{ transitionDelay: `${(outcomeRows.length + productRows.length + pricingRows.length + index) * 50}ms` }}
+                    style={{ transitionDelay: `${(outcomeRows.length + productRows.length + pricingRows.length + index) * 100}ms` }}
                   >
-                    <td className="p-3 md:p-4 font-medium text-sm md:text-base border-r border-gray-200">
+                    <td className="p-5 font-medium border-r-2 border-gray-200">
                       <div className="flex items-center">
-                        {item.feature}
+                        <span className="text-gray-800">{item.feature}</span>
                         {item.tooltip && (
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <Info className="h-3 w-3 md:h-4 md:w-4 text-gray-400 ml-2 cursor-help" />
+                                <Info className="h-4 w-4 text-indigo-400 ml-2 cursor-help hover:text-indigo-600 transition-colors" />
                               </TooltipTrigger>
-                              <TooltipContent className="max-w-xs p-2 bg-gray-800 text-white">
+                              <TooltipContent className="max-w-xs p-3 bg-gray-900 text-white rounded-xl">
                                 <p>{item.tooltip}</p>
                               </TooltipContent>
                             </Tooltip>
@@ -524,19 +524,19 @@ export default function ComparisonTable() {
                         )}
                       </div>
                     </td>
-                    <td className={`text-center p-3 md:p-4 text-sm md:text-base border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-r from-purple-50 to-purple-100" : ""}`}>
+                    <td className={`text-center p-5 border-2 border-purple-200 ${item.garrio.highlight ? "bg-gradient-to-b from-purple-50 to-indigo-50" : ""}`}>
                       {renderValue(item.garrio, true)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.gorgias)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.reamaze)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base border-r border-gray-200">
+                    <td className="text-center p-5 border-r border-gray-200 bg-white/50">
                       {renderValue(item.zendesk)}
                     </td>
-                    <td className="text-center p-3 md:p-4 text-sm md:text-base">
+                    <td className="text-center p-5 bg-white/50">
                       {renderValue(item.tidio)}
                     </td>
                   </tr>

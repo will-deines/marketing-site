@@ -49,18 +49,20 @@ export default function ClaimsModal({
   return (
     <>
       {/* Trigger */}
-      <button
-        onClick={openModal}
-        className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 transition-colors"
-        aria-label="View sources and claims"
-      >
-        {trigger || (
-          <>
-            <Info className="h-3 w-3" />
-            <span>Sources</span>
-          </>
-        )}
-      </button>
+      {trigger ? (
+        <div onClick={openModal} className="cursor-pointer">
+          {trigger}
+        </div>
+      ) : (
+        <button
+          onClick={openModal}
+          className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 transition-colors"
+          aria-label="View sources and claims"
+        >
+          <Info className="h-3 w-3" />
+          <span>Sources</span>
+        </button>
+      )}
 
       {/* Modal */}
       {isOpen && (

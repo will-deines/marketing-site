@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { InfoIcon as InfoCircle, Clock, DollarSign, BarChart2, RefreshCw } from "lucide-react"
+import { InfoIcon as InfoCircle, Clock, DollarSign, BarChart2, RefreshCw, ArrowRight, TrendingUp } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import CostChart from "@/components/roi-calculator/cost-chart"
 import AdvancedSettings from "@/components/roi-calculator/advanced-settings"
@@ -210,12 +210,19 @@ export default function RoiCalculator() {
   }
 
   return (
-    <div className="py-16 md:py-24 bg-white">
+    <div className="py-16 md:py-24 bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">ROI Calculator</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            See how much you can save by switching to Garrio for your Shopify customer support.
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <BarChart2 className="w-4 h-4" />
+            Detailed ROI Analysis
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            What's your support costing you?
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Get a detailed breakdown of your potential savings with Garrio's done-for-you customer support. 
+            Compare costs, see time savings, and understand your ROI.
           </p>
         </div>
 
@@ -231,12 +238,18 @@ export default function RoiCalculator() {
           </div>
 
           {/* Volume Slider */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-md mb-8">
-            <div className="mb-6">
-              <div className="flex justify-between items-center mb-2">
-                <h2 className="text-lg font-medium">How many support chats do you handle each month?</h2>
-                <div className="bg-purple-100 text-purple-800 font-bold px-3 py-1 rounded-full">{chatVolume} chats</div>
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                How many customer questions do you handle monthly?
+              </h2>
+              <div className="inline-flex items-center gap-3 bg-purple-50 px-6 py-4 rounded-xl">
+                <span className="text-4xl font-bold text-purple-600 tabular-nums">{chatVolume.toLocaleString()}</span>
+                <span className="text-gray-600 font-medium">interactions</span>
               </div>
+            </div>
+            
+            <div className="mb-6">
               <Slider
                 defaultValue={[750]}
                 min={50}
@@ -245,13 +258,12 @@ export default function RoiCalculator() {
                 onValueChange={handleSliderChange}
                 className="py-4"
               />
-              <div className="flex justify-between text-sm text-gray-500">
-                <span>50</span>
-                <span>250</span>
-                <span>500</span>
-                <span>1,000</span>
-                <span>2,000</span>
-                <span>5,000</span>
+              <div className="flex justify-between text-sm text-gray-500 mt-3">
+                <span className="font-medium">50</span>
+                <span className="font-medium">500</span>
+                <span className="font-medium">1,000</span>
+                <span className="font-medium">2,500</span>
+                <span className="font-medium">5,000+</span>
               </div>
             </div>
           </div>
@@ -259,82 +271,97 @@ export default function RoiCalculator() {
           {/* Results Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Savings Panel */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-md">
-              <h2 className="text-xl font-bold mb-4">Garrio Wins</h2>
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 border border-green-100 shadow-lg">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-600 rounded-full mb-4">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-green-900 mb-2">Your Savings</h2>
+              </div>
 
               {results.highestCompetitorCost.slug && (
                 <div className="space-y-6">
-                  <div>
-                    <div className="text-sm text-gray-500 mb-1">
+                  <div className="text-center">
+                    <div className="text-sm text-green-700 mb-2 font-medium">
                       Save vs {pricingData.apps.find((app) => app.slug === results.highestCompetitorCost.slug)?.name}
                     </div>
-                    <div className="text-3xl font-bold text-purple-600">
+                    <div className="text-4xl md:text-5xl font-bold text-green-800 mb-2 tabular-nums">
                       {formatCurrency(results.savings[results.highestCompetitorCost.slug] || 0)}
-                      <span className="text-lg font-normal text-gray-500">
-                        /{timePeriod === "monthly" ? "mo" : "yr"}
+                    </div>
+                    <div className="text-lg text-green-700 font-medium mb-4">
+                      per {timePeriod === "monthly" ? "month" : "year"}
+                    </div>
+                    <div className="text-sm text-green-600 bg-green-50 px-4 py-2 rounded-lg inline-block">
+                      {formatPercentage(results.roi[results.highestCompetitorCost.slug] || 0)} ROI
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between bg-green-50 p-3 rounded-lg">
+                      <div className="flex items-center">
+                        <BarChart2 className="h-5 w-5 text-green-600 mr-3" />
+                        <span className="text-green-800 font-medium">Garrio Handled</span>
+                      </div>
+                      <span className="font-bold text-green-900">{formatPercentage((automationRates["garrio"] || 0.98) * 100)}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
+                      <div className="flex items-center">
+                        <Clock className="h-5 w-5 text-blue-600 mr-3" />
+                        <span className="text-blue-800 font-medium">Time Saved</span>
+                      </div>
+                      <span className="font-bold text-blue-900">
+                        {Math.round(results.hoursSaved[results.highestCompetitorCost.slug] || 0)} hours
                       </span>
                     </div>
-                    <div className="text-sm text-gray-600">
-                      That&apos;s {formatPercentage(results.roi[results.highestCompetitorCost.slug] || 0)} ROI vs doing it
-                      yourself.
-                    </div>
-                  </div>
 
-                  <div className="flex items-center">
-                    <BarChart2 className="h-5 w-5 text-purple-600 mr-2" />
-                    <div>
-                      <span className="font-bold">98%</span> chats auto-resolved
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <Clock className="h-5 w-5 text-purple-600 mr-2" />
-                    <div>
-                      <span className="font-bold">
-                        {Math.round(results.hoursSaved[results.highestCompetitorCost.slug] || 0)}
-                      </span>{" "}
-                      hrs founder time back
-                    </div>
-                  </div>
-
-                  {showUpsellRevenue && results.upsellRevenue > 0 && (
-                    <div className="flex items-center">
-                      <DollarSign className="h-5 w-5 text-green-600 mr-2" />
-                      <div>
-                        <span className="font-bold">{formatCurrency(results.upsellRevenue)}</span> extra revenue from
-                        upsells
+                    {showUpsellRevenue && results.upsellRevenue > 0 && (
+                      <div className="flex items-center justify-between bg-purple-50 p-3 rounded-lg">
+                        <div className="flex items-center">
+                          <DollarSign className="h-5 w-5 text-purple-600 mr-3" />
+                          <span className="text-purple-800 font-medium">Upsell Revenue</span>
+                        </div>
+                        <span className="font-bold text-purple-900">{formatCurrency(results.upsellRevenue)}</span>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               )}
 
               {/* CTA Button */}
               <div className="mt-8">
-                <Button className="w-full bg-purple-600 hover:bg-purple-700" size="lg" asChild>
+                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group" size="lg" asChild>
                   <Link
                     href={`https://apps.shopify.com/app-installation?utm_source=roi&utm_medium=calculator&utm_campaign=save_${Math.round(results.savings[results.highestCompetitorCost.slug] || 0)}&utm_content=${chatVolume}_chats`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleCtaClick}
                   >
-                    Save {formatCurrency(results.savings[results.highestCompetitorCost.slug] || 0)} Now—Add Garrio Free
+                    Start Saving {formatCurrency(results.savings[results.highestCompetitorCost.slug] || 0)}
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
-                <p className="text-xs text-center text-gray-500 mt-2">
-                  One-click install • No credit card • Up in 3 min
+                <p className="text-xs text-center text-green-600 mt-3 font-medium">
+                  ✨ Free installation • No credit card • Live in 3 minutes
                 </p>
               </div>
             </div>
 
             {/* Cost Chart */}
-            <div className="md:col-span-2 bg-white rounded-xl border border-gray-200 p-6 shadow-md">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold">{timePeriod === "monthly" ? "Monthly" : "Annual"} Cost Comparison</h2>
+            <div className="md:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-lg p-8">
+              <div className="flex justify-between items-center mb-8">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    {timePeriod === "monthly" ? "Monthly" : "Annual"} Cost Breakdown
+                  </h2>
+                  <p className="text-gray-600">Compare total costs across platforms</p>
+                </div>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <InfoCircle className="h-5 w-5 text-gray-400" />
+                      <div className="bg-gray-100 p-2 rounded-lg hover:bg-gray-200 transition-colors">
+                        <InfoCircle className="h-5 w-5 text-gray-600" />
+                      </div>
                     </TooltipTrigger>
                     <TooltipContent className="max-w-xs p-4">
                       <p className="text-sm">
@@ -356,11 +383,11 @@ export default function RoiCalculator() {
           </div>
 
           {/* Advanced Settings */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-md mb-8">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-lg mb-12">
             <Accordion type="single" collapsible>
               <AccordionItem value="advanced-settings">
                 <AccordionTrigger
-                  className="px-6 py-4"
+                  className="px-8 py-6 text-lg font-semibold"
                   onClick={() => {
                     // Fire analytics event
                     if (typeof window !== "undefined") {
@@ -368,7 +395,12 @@ export default function RoiCalculator() {
                     }
                   }}
                 >
-                  Advanced Settings
+                  <div className="flex items-center gap-3">
+                    <div className="bg-purple-100 p-2 rounded-lg">
+                      <RefreshCw className="h-5 w-5 text-purple-600" />
+                    </div>
+                    <span>Advanced Settings & Customization</span>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-6">
                   <AdvancedSettings
@@ -413,13 +445,36 @@ export default function RoiCalculator() {
           </div>
 
           {/* Methodology Note */}
-          <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-600">
-            <p className="font-medium mb-2">Calculation Methodology:</p>
-            <p>
-              This calculator estimates costs based on industry benchmarks and real customer data. Agent costs include
-              hourly wages for time spent handling tickets that aren&apos;t automated. Software costs are based on current
-              published pricing. Automation rates are derived from public case studies and aggregate user data.
-            </p>
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl border border-blue-100 p-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-600 p-3 rounded-lg flex-shrink-0">
+                <InfoCircle className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How We Calculate Your Savings</h3>
+                <div className="text-gray-700 space-y-2 leading-relaxed">
+                  <p>
+                    <strong>Industry Benchmarks:</strong> All data sourced from our verified claims document, including 15-minute average interaction times and competitor automation rates.
+                  </p>
+                  <p>
+                    <strong>Real Costs:</strong> Agent costs include hourly wages for time spent on non-automated tickets. Software costs from current published pricing.
+                  </p>
+                  <p>
+                    <strong>Transparent Sources:</strong> Automation rates and metrics derived from public case studies, official documentation, and verified customer data.
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <Link 
+                    href="/claims-sources" 
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium hover:underline"
+                    target="_blank"
+                  >
+                    View detailed sources and methodology
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
