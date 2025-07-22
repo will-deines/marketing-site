@@ -187,7 +187,7 @@ export const comparisonFeatures: ComparisonFeature[] = [
   },
 ]
 
-export const calculateCost = (chats: number, _plan: "free" | "starter") => {
+export const calculateCost = (chats: number) => {
   const freePlan = plans.find((p) => p.id === "free")!
   const starterPlan = plans.find((p) => p.id === "starter")!
 

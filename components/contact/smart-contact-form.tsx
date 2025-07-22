@@ -109,7 +109,7 @@ export default function SmartContactForm() {
           <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
             <Check className="w-6 h-6 text-green-600" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">Thanks! We'll be in touch within 24h</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">Thanks! We&apos;ll be in touch within 24h</h3>
           <p className="text-gray-600 mb-4">Meanwhile, why not explore our platform?</p>
           <Link
             href="/features"

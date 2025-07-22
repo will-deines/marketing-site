@@ -178,7 +178,7 @@ const generateComparisonData = (): ComparisonItem[] => {
 const comparisonData: ComparisonItem[] = generateComparisonData()
 
 export default function ComparisonTable() {
-  const [_isSticky, setIsSticky] = useState(false)
+  const [, setIsSticky] = useState(false)
   const [visibleRows, setVisibleRows] = useState<number[]>([])
   const [viewMode, setViewMode] = useState<"full" | "swipe" | "accordion">("full")
   const tableRef = useRef<HTMLTableElement>(null)
@@ -295,7 +295,7 @@ export default function ComparisonTable() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Which platform lets you focus on what you love?</h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-4">
-            Compare what matters most: your time, your customers' happiness, and your peace of mind.
+            Compare what matters most: your time, your customers&apos; happiness, and your peace of mind.
           </p>
           
           {/* Sources Link */}
@@ -548,7 +548,7 @@ export default function ComparisonTable() {
           {viewMode === "accordion" ? (
             // Accordion view for mobile
             <div className="space-y-4">
-              {["Gorgias", "Re:amaze", "Zendesk", "Tidio"].map((competitor, _idx) => (
+              {["Gorgias", "Re:amaze", "Zendesk", "Tidio"].map((competitor) => (
                 <details key={competitor} className="bg-white rounded-lg shadow-sm">
                   <summary className="p-4 font-bold cursor-pointer flex justify-between items-center">
                     {competitor} vs Garrio

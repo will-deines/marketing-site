@@ -64,7 +64,7 @@ export default function SimpleResults() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple setup, powerful results</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            No complex workflows or enterprise training needed. Just the outcomes you've been dreaming of.
+            No complex workflows or enterprise training needed. Just the outcomes you&apos;ve been dreaming of.
           </p>
         </div>
 
@@ -93,8 +93,8 @@ export default function SimpleResults() {
         <div className="text-center mt-12">
           <div className="bg-gray-100 p-6 rounded-xl max-w-2xl mx-auto">
             <p className="text-gray-700 italic">
-              "I went from checking my support email every 30 minutes to checking it once a week. 
-              My stress levels dropped, my creativity came back, and my customers are happier than ever."
+              &ldquo;I went from checking my support email every 30 minutes to checking it once a week. 
+              My stress levels dropped, my creativity came back, and my customers are happier than ever.&rdquo;
             </p>
             <p className="text-gray-500 mt-2">— Maria, founder of Bloom & Thread</p>
           </div>

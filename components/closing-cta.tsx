@@ -49,7 +49,7 @@ export default function ClosingCTA() {
             Your Customers Are Waiting
           </h2>
           <p className="text-white/90 text-lg md:text-xl max-w-2xl mb-10">
-            Don't let another potential sale slip through the cracks. Set up Garrio in 3 minutes and start converting questions into customers today.
+            Don&apos;t let another potential sale slip through the cracks. Set up Garrio in 3 minutes and start converting questions into customers today.
           </p>
 
           <Button

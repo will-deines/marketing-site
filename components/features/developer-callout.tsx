@@ -45,7 +45,7 @@ export default function PeaceOfMindCallout() {
               <div className="text-3xl mb-4">🌙</div>
               <h4 className="font-semibold mb-2">No more midnight panic</h4>
               <p className="text-gray-600 text-sm">
-                Your customers get help 24/7, even when you're offline
+                Your customers get help 24/7, even when you&apos;re offline
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm">

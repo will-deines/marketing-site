@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import BlogHero from "@/components/blog/blog-hero"
 import BlogFilters from "@/components/blog/blog-filters"
 import BlogGrid from "@/components/blog/blog-grid"
@@ -37,7 +37,7 @@ export default function BlogIndex({
   // State for posts
   const [posts, setPosts] = useState<Post[]>([])
   const [featuredPost, setFeaturedPost] = useState<Post | null>(null)
-  const [_totalPosts, setTotalPosts] = useState(0)
+  const [, setTotalPosts] = useState(0)
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -47,7 +47,7 @@ export default function BlogIndex({
 
   // Router for updating URL
   const router = useRouter()
-  const _searchParams = useSearchParams()
+  // const searchParams = useSearchParams()
 
   // Load posts based on filters
   const loadPosts = useCallback(

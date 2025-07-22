@@ -5,7 +5,7 @@ import * as React from "react"
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const _TOAST_REMOVE_DELAY = 6000
+// const TOAST_REMOVE_DELAY = 6000
 
 type ToasterToast = ToastProps & {
   id: string
@@ -21,12 +21,12 @@ type ActionType = {
   REMOVE_TOAST: "REMOVE_TOAST",
 }
 
-const _actionTypes: ActionType = {
-  ADD_TOAST: "ADD_TOAST",
-  UPDATE_TOAST: "UPDATE_TOAST",
-  DISMISS_TOAST: "DISMISS_TOAST",
-  REMOVE_TOAST: "REMOVE_TOAST",
-} as const
+// const actionTypes: ActionType = {
+//   ADD_TOAST: "ADD_TOAST",
+//   UPDATE_TOAST: "UPDATE_TOAST",
+//   DISMISS_TOAST: "DISMISS_TOAST",
+//   REMOVE_TOAST: "REMOVE_TOAST",
+// } as const
 
 let count = 0
 
@@ -59,7 +59,7 @@ interface State {
   toasts: ToasterToast[]
 }
 
-const _toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
+// const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
 
 
 // const addToRemoveQueue = (toastId: string) => {

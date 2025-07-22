@@ -34,7 +34,7 @@ export default function BeforeAfterComparison() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">The reality of growing without proper support</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Every bootstrapped founder knows this cycle. You're not alone—and you don&apos;t have to stay stuck in it.
+            Every bootstrapped founder knows this cycle. You&apos;re not alone—and you don&apos;t have to stay stuck in it.
           </p>
         </div>
 
@@ -77,15 +77,15 @@ export default function BeforeAfterComparison() {
                     <div className="space-y-3 pl-11">
                       <div className="bg-red-50 p-3 rounded-lg border-l-2 border-red-300">
                         <div className="text-xs text-red-600 font-medium mb-1">11:47 PM ⏰</div>
-                        <div className="text-sm text-gray-700">"Where's my order? It's been 3 days!"</div>
+                        <div className="text-sm text-gray-700">&ldquo;Where&apos;s my order? It&apos;s been 3 days!&rdquo;</div>
                       </div>
                       <div className="bg-orange-50 p-3 rounded-lg border-l-2 border-orange-300">
                         <div className="text-xs text-orange-600 font-medium mb-1">12:23 AM ⏰</div>
-                        <div className="text-sm text-gray-700">"Does this come in size small?"</div>
+                        <div className="text-sm text-gray-700">&ldquo;Does this come in size small?&rdquo;</div>
                       </div>
                       <div className="bg-yellow-50 p-3 rounded-lg border-l-2 border-yellow-300">
                         <div className="text-xs text-yellow-600 font-medium mb-1">6:15 AM ⏰</div>
-                        <div className="text-sm text-gray-700">"Can I return this? What's your policy?"</div>
+                        <div className="text-sm text-gray-700">&ldquo;Can I return this? What&apos;s your policy?&rdquo;</div>
                       </div>
                     </div>
                   </div>
@@ -150,15 +150,15 @@ export default function BeforeAfterComparison() {
                     <div className="space-y-3 pl-11">
                       <div className="bg-gray-50 p-3 rounded-lg">
                         <div className="text-xs text-green-600 font-medium mb-1">Order Status ✓</div>
-                        <div className="text-sm text-gray-700">"Your order #1234 shipped via FedEx. Track here: [link]"</div>
+                        <div className="text-sm text-gray-700">&ldquo;Your order #1234 shipped via FedEx. Track here: [link]&rdquo;</div>
                       </div>
                       <div className="bg-gray-50 p-3 rounded-lg">
                         <div className="text-xs text-green-600 font-medium mb-1">Size Recommendation ✓</div>
-                        <div className="text-sm text-gray-700">"That style runs small - I'd recommend a medium based on your previous orders."</div>
+                        <div className="text-sm text-gray-700">&ldquo;That style runs small - I&apos;d recommend a medium based on your previous orders.&rdquo;</div>
                       </div>
                       <div className="bg-gray-50 p-3 rounded-lg">
                         <div className="text-xs text-green-600 font-medium mb-1">Return Process ✓</div>
-                        <div className="text-sm text-gray-700">"You have 30 days for returns. Here's your prepaid label: [link]"</div>
+                        <div className="text-sm text-gray-700">&ldquo;You have 30 days for returns. Here&apos;s your prepaid label: [link]&rdquo;</div>
                       </div>
                     </div>
                   </div>
