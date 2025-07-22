@@ -2,32 +2,34 @@
 // In a real implementation, this would make API calls to a proxy service
 
 interface ShopifyPageData {
-  title: string
-  price: number
-  images: string[]
-  url: string
-  description: string
-  shopName: string
+  title: string;
+  price: number;
+  images: string[];
+  url: string;
+  description: string;
+  shopName: string;
 }
 
 export async function parseShopifyUrl(url: string): Promise<ShopifyPageData> {
   // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 1200))
+  await new Promise((resolve) => setTimeout(resolve, 1200));
 
   // Validate URL
   try {
-    new URL(url)
+    new URL(url);
   } catch {
-    throw new Error("Invalid URL format")
+    throw new Error("Invalid URL format");
   }
 
   // Check if it's a Shopify URL
-  const isShopify = url.includes("myshopify.com") || url.includes("shopify.com")
+  const isShopify =
+    url.includes("myshopify.com") || url.includes("shopify.com");
   if (!isShopify) {
-    const error = new Error("That page doesn't look like a Shopify store.") as Error & { code: string }
-    // @ts-expect-error - Adding custom property to Error object
-    error.code = "non_shopify_url"
-    throw error
+    const error = new Error(
+      "That page doesn't look like a Shopify store.",
+    ) as Error & { code: string };
+    error.code = "non_shopify_url";
+    throw error;
   }
 
   // Simulate different product data based on URL
@@ -43,7 +45,7 @@ export async function parseShopifyUrl(url: string): Promise<ShopifyPageData> {
       description:
         "Our classic everyday sneaker made with ZQ Merino wool. Lightweight, breathable, and ready for anything.",
       shopName: "Allbirds",
-    }
+    };
   } else if (url.includes("glossier")) {
     return {
       title: "Boy Brow",
@@ -53,9 +55,10 @@ export async function parseShopifyUrl(url: string): Promise<ShopifyPageData> {
         "https://cdn.shopify.com/s/files/1/0609/1636/4787/products/BB_Swatch_800x800_1.jpg",
       ],
       url: url,
-      description: "A brushable, creamy wax that visibly thickens, shapes, and grooms brows into place.",
+      description:
+        "A brushable, creamy wax that visibly thickens, shapes, and grooms brows into place.",
       shopName: "Glossier",
-    }
+    };
   } else if (url.includes("brooklinen")) {
     return {
       title: "Classic Core Sheet Set",
@@ -65,27 +68,31 @@ export async function parseShopifyUrl(url: string): Promise<ShopifyPageData> {
         "https://cdn.shopify.com/s/files/1/0204/2210/products/Classic-Core-Sheet-Set_Solid-White_D1.jpg",
       ],
       url: url,
-      description: "Our signature 270 thread count weave. Lightweight, crisp and cool, with a matte finish.",
+      description:
+        "Our signature 270 thread count weave. Lightweight, crisp and cool, with a matte finish.",
       shopName: "Brooklinen",
-    }
+    };
   } else {
     // Random error simulation (10% chance)
     if (Math.random() < 0.1) {
-      const error = new Error("Couldn't read product details—try another URL.") as Error & { code: string }
-      // @ts-expect-error - Adding custom property to Error object
-      error.code = "missing_product_data"
-      throw error
+      const error = new Error(
+        "Couldn't read product details—try another URL.",
+      ) as Error & { code: string };
+      error.code = "missing_product_data";
+      throw error;
     }
 
     // Generic product data for other URLs
     return {
       title: "Sample Product",
       price: 49.99,
-      images: ["https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-1_large.png"],
+      images: [
+        "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-1_large.png",
+      ],
       url: url,
       description:
         "This is a sample product description. In a real implementation, this would be extracted from the page.",
       shopName: url.split("//")[1].split(".")[0],
-    }
+    };
   }
 }

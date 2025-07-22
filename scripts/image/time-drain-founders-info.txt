@@ -1,0 +1,4 @@
+Generated at: Mon Jul 21 11:09:51 PM EDT 2025
+Prompt: Professional business illustration showing the concept of time as money for DTC founders. Central figure of entrepreneur surrounded by floating clocks, calendar icons, and hourly rate symbols. Left side shows time being consumed by support tasks (email icons, chat bubbles, phone calls). Right side shows strategic work opportunities (growth charts, product development, partnerships). Clock faces showing 25+ hours weekly highlighted. Modern flat design with purple and blue color scheme, subtle gold accents for premium feel. Business professional aesthetic. No text overlays. Aspect ratio 16:9 for web banner.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

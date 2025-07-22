@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ResponsiveImage } from "@/components/ui/responsive-image"
 import { funnelLabels, verticalLabels, type PostContent } from "@/lib/blog-utils"
 import { MDXRemote } from "next-mdx-remote/rsc"
 
@@ -47,7 +47,13 @@ export default function BlogPost({ post, formattedDate }: BlogPostProps) {
 
           {/* Hero Image */}
           <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-8">
-            <Image src={post.hero || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
+            <ResponsiveImage 
+              baseName={post.hero ? post.hero.replace('/covers/', '').replace('.jpg', '') : "placeholder"} 
+              alt={post.title} 
+              fill 
+              className="object-cover" 
+              priority 
+            />
           </div>
 
           {/* Content */}

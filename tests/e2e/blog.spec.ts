@@ -73,53 +73,63 @@ test.describe('Blog Page', () => {
 });
 
 test.describe('Blog Post Page', () => {
-  test.skip('should display individual blog post', async ({ page }) => {
-    // Skip: Individual blog post pages not implemented yet
-    // First go to blog listing
-    await page.goto('/blog');
+  const testPosts = [
+    'the-real-cost-of-poor-customer-support-for-dtc-brands',
+    'small-team-big-impact-customer-support-strategies-for-lean-dtc-operations'
+  ];
+
+  testPosts.forEach(slug => {
+    test(`should display ${slug.split('-').slice(0, 3).join('-')} blog post`, async ({ page }) => {
+      await page.goto(`/blog/${slug}`);
+      await page.waitForLoadState('networkidle');
+      
+      // Check post structure
+      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('article, main')).toBeVisible();
+      
+      // Check for hero image
+      const heroImage = page.locator('img').first();
+      await expect(heroImage).toBeVisible();
+      
+      // Check for content sections
+      await expect(page.locator('h2').first()).toBeVisible();
+      
+      // Check for CTA
+      const ctaButton = page.locator('button, a').filter({ hasText: /trial|demo|start|contact/i });
+      await expect(ctaButton.first()).toBeVisible();
+    });
+  });
+
+  test('should show post metadata correctly', async ({ page }) => {
+    await page.goto('/blog/the-real-cost-of-poor-customer-support-for-dtc-brands');
+    await page.waitForLoadState('networkidle');
     
-    // Click on first blog post
+    // Check for date
+    await expect(page.locator('text=/[0-9]{4}|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/')).toBeVisible();
+    
+    // Check for reading time
+    await expect(page.locator('text=/min read/')).toBeVisible();
+    
+    // Check for author
+    await expect(page.locator('text=/By|Author/')).toBeVisible();
+    
+    // Check for tags/categories
+    await expect(page.locator('a[href*="vertical"], a[href*="funnel"]')).toBeVisible();
+  });
+
+  test('should navigate from blog index to post', async ({ page }) => {
+    await page.goto('/blog');
+    await page.waitForLoadState('networkidle');
+    
+    // Find and click first blog post link
     const firstPost = page.locator('a[href*="/blog/"]').filter({ hasNotText: 'Blog' }).first();
     await firstPost.click();
     
     // Wait for navigation
     await page.waitForURL(/\/blog\/.+/);
     
-    // Check post content
-    await expect(page.locator('h1')).toBeVisible(); // Post title
-    await expect(page.locator('main p, article p').first()).toBeVisible(); // Post content
-  });
-
-  test.skip('should show post details and content', async ({ page }) => {
-    // Skip: Individual blog post pages not implemented yet
-    // Navigate directly to a blog post (we'll try common slugs)
-    const possibleSlugs = [
-      '/blog/getting-started',
-      '/blog/announcement',
-      '/blog/how-to',
-      '/blog/introduction'
-    ];
-    
-    let loaded = false;
-    for (const slug of possibleSlugs) {
-      try {
-        await page.goto(slug);
-        if (await page.locator('h1').count() > 0) {
-          loaded = true;
-          break;
-        }
-      } catch {}
-    }
-    
-    if (!loaded) {
-      // If no direct slug works, navigate via listing
-      await page.goto('/blog');
-      await page.locator('a[href*="/blog/"]').filter({ hasNotText: 'Blog' }).first().click();
-    }
-    
-    // Check for post elements
+    // Should be on blog post page
     await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('text=/[0-9]{4}|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/')).toBeVisible();
-    await expect(page.locator('p').first()).toBeVisible();
+    await expect(page.locator('article, main')).toBeVisible();
   });
 });

@@ -1,0 +1,4 @@
+Generated at: Mon Jul 21 11:10:57 PM EDT 2025
+Prompt: Professional technical illustration showing Shopify SEO optimization concepts. Central Shopify store interface surrounded by SEO elements: search ranking charts, keyword research tools, site speed indicators, mobile optimization symbols, and search engine result snippets. Visual metaphors include climbing search result ladders, optimization gears, and traffic growth arrows. Include subtle Shopify bag logo and shopping cart elements. Modern flat design style with purple and blue color scheme, green accents for growth/success. Technical but accessible aesthetic. No text overlays. Aspect ratio 16:9 for web banner.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

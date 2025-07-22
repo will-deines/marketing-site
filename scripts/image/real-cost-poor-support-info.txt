@@ -1,0 +1,4 @@
+Generated at: Mon Jul 21 11:09:30 PM EDT 2025
+Prompt: Professional business illustration showing the financial impact of poor customer support on DTC ecommerce brands. Split composition: left side shows declining revenue charts, cart abandonment icons, frustrated customers on mobile devices. Right side shows upward trending graphs, happy customers, and growth metrics. Modern flat design style with purple and blue color scheme. Include subtle shopping cart, chat bubble, and dollar sign icons. Clean, minimalist corporate aesthetic suitable for business blog header. No text overlays. Aspect ratio 16:9 for web banner.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

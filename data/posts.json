@@ -130,5 +130,126 @@
     "persona": ["cx-manager"],
     "hero": "/covers/beauty-ingredients.jpg",
     "readingTime": 10
+  },
+  {
+    "slug": "the-real-cost-of-poor-customer-support-for-dtc-brands",
+    "title": "The Real Cost of Poor Customer Support for DTC Brands",
+    "excerpt": "Discover how poor customer support costs DTC brands millions in lost revenue. Learn industry-specific data on cart abandonment, customer lifetime value impact, and the hidden costs affecting fashion, beauty, and food brands.",
+    "publishDate": "2025-01-22",
+    "vertical": ["ecommerce", "fashion", "beauty"],
+    "funnel": "awareness",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/real-cost-poor-support.jpg",
+    "readingTime": 8
+  },
+  {
+    "slug": "from-side-hustle-to-1m-how-dtc-founders-scale-customer-support",
+    "title": "From Side Hustle to $1M: How DTC Founders Scale Customer Support",
+    "excerpt": "Success stories, scaling challenges, and timing decisions that separate winning brands from the 75% that never reach $1M. Learn proven strategies from founders who successfully scaled support operations.",
+    "publishDate": "2025-01-21",
+    "vertical": ["ecommerce", "fashion", "beauty"],
+    "funnel": "awareness",
+    "persona": ["founder"],
+    "hero": "/covers/side-hustle-to-1m.jpg",
+    "readingTime": 10
+  },
+  {
+    "slug": "why-fashion-brands-need-industry-specific-ai-not-generic-chatbots",
+    "title": "Why Fashion Brands Need Industry-Specific AI (Not Generic Chatbots)",
+    "excerpt": "Generic chatbots fail fashion brands. Discover how industry-specific AI handles size guides, styling advice, and returns to reduce the 30-40% return rates plaguing fashion ecommerce.",
+    "publishDate": "2025-01-20",
+    "vertical": ["fashion", "ecommerce"],
+    "funnel": "consideration",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/fashion-ai-vs-generic.jpg",
+    "readingTime": 9
+  },
+  {
+    "slug": "the-hidden-time-drain-how-much-customer-support-really-costs-dtc-founders",
+    "title": "The Hidden Time Drain: How Much Customer Support Really Costs DTC Founders",
+    "excerpt": "Time tracking studies reveal DTC founders lose 25+ hours weekly to support tasks. Learn the opportunity cost analysis and what winners do with reclaimed time.",
+    "publishDate": "2025-01-19",
+    "vertical": ["ecommerce"],
+    "funnel": "awareness",
+    "persona": ["founder"],
+    "hero": "/covers/time-drain-founders.jpg",
+    "readingTime": 11
+  },
+  {
+    "slug": "small-team-big-impact-customer-support-strategies-for-lean-dtc-operations",
+    "title": "Small Team, Big Impact: Customer Support Strategies for Lean DTC Operations",
+    "excerpt": "Learn how lean DTC teams with 2-5 people deliver exceptional customer support. Discover efficiency tactics, tool selection strategies, and success stories from bootstrapped brands.",
+    "publishDate": "2025-01-18",
+    "vertical": ["ecommerce"],
+    "funnel": "consideration",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/small-team-big-impact.jpg",
+    "readingTime": 12
+  },
+  {
+    "slug": "the-instagram-generation-expects-instant-answers-meeting-modern-support-expectations",
+    "title": "The Instagram Generation Expects Instant Answers: Meeting Modern Support Expectations",
+    "excerpt": "How Gen Z and Millennial customers are reshaping customer support with demands for instant responses, social media integration, and self-service options.",
+    "publishDate": "2025-01-17",
+    "vertical": ["ecommerce", "fashion", "beauty"],
+    "funnel": "awareness",
+    "persona": ["cx-manager"],
+    "hero": "/covers/instagram-generation-support.jpg",
+    "readingTime": 10
+  },
+  {
+    "slug": "turning-customer-support-into-your-secret-revenue-driver",
+    "title": "Turning Customer Support Into Your Secret Revenue Driver",
+    "excerpt": "How smart DTC brands transform support from cost center to profit engine using upselling tactics, cross-selling strategies, and conversion optimization.",
+    "publishDate": "2025-01-16",
+    "vertical": ["ecommerce"],
+    "funnel": "consideration",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/support-revenue-driver.jpg",
+    "readingTime": 11
+  },
+  {
+    "slug": "the-female-founders-guide-to-scaling-customer-support-without-burning-out",
+    "title": "The Female Founder's Guide to Scaling Customer Support Without Burning Out",
+    "excerpt": "Female entrepreneurs face unique challenges in scaling customer support. Learn delegation strategies, work-life balance techniques, and support systems specifically for women founders in DTC.",
+    "publishDate": "2025-01-15",
+    "vertical": ["ecommerce"],
+    "funnel": "awareness",
+    "persona": ["founder"],
+    "hero": "/covers/female-founders-support.jpg",
+    "readingTime": 13
+  },
+  {
+    "slug": "black-friday-survival-how-dtc-brands-handle-10x-support-volume",
+    "title": "Black Friday Survival: How DTC Brands Handle 10x Support Volume",
+    "excerpt": "Peak season preparation and scalability strategies for DTC customer support. Learn how successful brands manage 50x order increases during major shopping events.",
+    "publishDate": "2025-01-14",
+    "vertical": ["ecommerce"],
+    "funnel": "consideration",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/black-friday-survival.jpg",
+    "readingTime": 12
+  },
+  {
+    "slug": "bootstrap-friendly-support-building-customer-love-on-a-tight-budget",
+    "title": "Bootstrap-Friendly Support: Building Customer Love on a Tight Budget",
+    "excerpt": "Cost-effective customer support strategies for bootstrapped DTC brands. Discover maximum impact tactics, ROI measurement techniques, and budget-friendly tools that deliver exceptional service.",
+    "publishDate": "2025-01-13",
+    "vertical": ["ecommerce"],
+    "funnel": "awareness",
+    "persona": ["founder"],
+    "hero": "/covers/bootstrap-support.jpg",
+    "readingTime": 14
+  },
+  {
+    "slug": "the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings",
+    "title": "The Complete Shopify SEO Guide 2025: Optimize Your Store for Rankings",
+    "excerpt": "Master Shopify SEO with our comprehensive 2025 guide. Learn technical optimization, keyword strategies, Core Web Vitals, and proven tactics to rank higher and drive more organic traffic.",
+    "publishDate": "2025-01-12",
+    "vertical": ["ecommerce"],
+    "funnel": "awareness",
+    "persona": ["founder", "cx-manager"],
+    "hero": "/covers/shopify-seo-guide.jpg",
+    "readingTime": 15
   }
 ]
