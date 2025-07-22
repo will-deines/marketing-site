@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { PostContent } from "@/components/blog/post-content";
+import BlogPost from "@/components/blog/blog-post";
 
 export const metadata: Metadata = {
   title:
@@ -18,28 +18,25 @@ export const metadata: Metadata = {
 const postData = {
   slug: "the-female-founders-guide-to-scaling-customer-support-without-burning-out",
   title: "The Female Founder's Guide to Scaling Customer Support Without Burning Out",
-  subtitle: "Delegation strategies, work-life balance techniques, and support systems specifically designed for women entrepreneurs in the DTC space",
-  hero: "/covers/female-founders-support.jpg",
-  publishedAt: "2025-01-22",
-  readingTime: "13 min read",
+  excerpt: "Delegation strategies, work-life balance techniques, and support systems specifically designed for women entrepreneurs in the DTC space",
+  publishDate: "2025-01-22",
+  readingTime: 13,
   author: "Garrio Team",
-  tags: [
-    "Female Founders",
-    "Work-Life Balance", 
-    "Delegation",
-    "Burnout Prevention",
-    "Women Entrepreneurs",
-  ],
   vertical: ["ecommerce", "fashion", "beauty"],
   funnel: "awareness",
-  intro: `At 2 AM, Sarah was still responding to customer emails while her toddler slept upstairs. Her sustainable clothing brand had grown to $850K in revenue, but she was drowning. "I felt like I had to be available 24/7," she recalls. "Every customer email felt personal. I was the brand, and the brand was me."
+  persona: ["female-founders", "entrepreneurs"],
+  hero: "/covers/female-founders-support.jpg",
+  ogImage: "/covers/female-founders-support.jpg",
+  canonical: "https://garrio.ai/blog/the-female-founders-guide-to-scaling-customer-support-without-burning-out",
+  content: {
+    intro: `At 2 AM, Sarah was still responding to customer emails while her toddler slept upstairs. Her sustainable clothing brand had grown to $850K in revenue, but she was drowning. "I felt like I had to be available 24/7," she recalls. "Every customer email felt personal. I was the brand, and the brand was me."
 
 Sarah's story mirrors that of thousands of female DTC founders who represent **52% of Shopify store owners** yet face unique challenges in scaling their businesses. Research shows that **women are twice as likely to experience severe stress and anxiety** compared to their male counterparts, while shouldering disproportionate familial responsibilities that make traditional scaling advice inadequate.
 
 The statistics are sobering: **53% of founders experienced burnout in 2024**, but female entrepreneurs face additional pressures that male founders typically don't encounter. The key to thriving—not just surviving—lies in building support systems that acknowledge these realities while creating sustainable growth strategies.`,
-  sections: [
-    {
-      heading: "The Female Founder Reality: Understanding the Unique Challenges",
+    sections: [
+      {
+        h2: "The Female Founder Reality: Understanding the Unique Challenges",
       body: `### The Perfectionism Trap
 
 **The Numbers:**
@@ -65,7 +62,7 @@ The statistics are sobering: **53% of founders experienced burnout in 2024**, bu
 - **Female entrepreneurs** spend 35% more time on each customer interaction compared to male founders`
     },
     {
-      heading: "The Sustainable Scaling Framework for Female Founders",
+      h2: "The Sustainable Scaling Framework for Female Founders",
       body: `### Phase 1: The Permission-to-Delegate Mindset Shift
 
 **Reframing Delegation:**
@@ -141,7 +138,7 @@ Track your time for one week, categorizing activities by hourly value:
 - **Growth Partners**: Marketing agencies, PR firms, business development`
     },
     {
-      heading: "Case Studies: Female Founders Who Cracked the Code",
+      h2: "Case Studies: Female Founders Who Cracked the Code",
       body: `### Case Study 1: The Work-Life Integration Model
 
 **Background:** Jessica, founder of a $1.3M organic baby food company, mother of two
@@ -265,7 +262,7 @@ Track your time for one week, categorizing activities by hourly value:
 - **Personal Transformation**: Overcame perfectionist paralysis, improved confidence`
     },
     {
-      heading: "The Female Founder's Delegation Toolkit",
+      h2: "The Female Founder's Delegation Toolkit",
       body: `### Essential Hiring Strategies
 
 **The Empathy-First Approach:**
@@ -328,7 +325,7 @@ Track your time for one week, categorizing activities by hourly value:
 - **Identity Balance**: Maintaining sense of self beyond business role`
     },
     {
-      heading: "Common Pitfalls and How to Avoid Them",
+      h2: "Common Pitfalls and How to Avoid Them",
       body: `### Pitfall 1: The Guilt-Driven Reversal
 
 **Problem**: Feeling guilty about delegation and taking back control
@@ -366,7 +363,7 @@ Track your time for one week, categorizing activities by hourly value:
 - Stay connected to product and service delivery quality`
     },
     {
-      heading: "Measuring Success: Metrics That Matter for Female Founders",
+      h2: "Measuring Success: Metrics That Matter for Female Founders",
       body: `### Business Metrics
 
 **Revenue and Growth:**
@@ -402,7 +399,7 @@ Track your time for one week, categorizing activities by hourly value:
 - Leadership development and team building`
     },
     {
-      heading: "Your 90-Day Transformation Plan",
+      h2: "Your 90-Day Transformation Plan",
       body: `### Days 1-30: Foundation and Assessment
 
 **Week 1-2: Reality Check**
@@ -444,13 +441,12 @@ Track your time for one week, categorizing activities by hourly value:
 - Establish ongoing training and development programs
 - Build founder support network and accountability systems
 - Celebrate wins and plan next growth phase`
+      }
+    ],
+    cta: {
+      text: "Start Your Free Trial",
+      href: "/signup"
     }
-  ],
-  cta: {
-    title: "Ready to Scale Your Support Without Burning Out?",
-    description: "Join thousands of female founders who've transformed their customer support operations with Garrio's AI-powered platform. Get personalized strategies, automation tools, and expert guidance designed specifically for women entrepreneurs.",
-    buttonText: "Start Your Free Trial",
-    buttonLink: "/signup"
   },
   sources: [
     {
@@ -505,5 +501,5 @@ Track your time for one week, categorizing activities by hourly value:
 };
 
 export default function BlogPage() {
-  return <PostContent {...postData} />;
+  return <BlogPost post={postData} formattedDate="January 22, 2025" />;
 }

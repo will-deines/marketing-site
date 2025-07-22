@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { BlogPost } from '@/components/blog/blog-post'
+import BlogPost from '@/components/blog/blog-post'
 import { PostContent } from '@/lib/blog'
 
 export const metadata: Metadata = {
@@ -12,25 +12,28 @@ export const metadata: Metadata = {
   },
 }
 
-const postContent: PostContent = {
+const postContent = {
   slug: "bootstrap-friendly-support-building-customer-love-on-a-tight-budget",
   title: "Bootstrap-Friendly Support: Building Customer Love on a Tight Budget",
-  subtitle: "Cost-effective support strategies, ROI measurement techniques, and maximum-impact tactics for bootstrapped DTC brands building customer loyalty without breaking the bank",
-  hero: "/covers/bootstrap-support.jpg",
+  excerpt: "Cost-effective support strategies, ROI measurement techniques, and maximum-impact tactics for bootstrapped DTC brands building customer loyalty without breaking the bank",
+  publishDate: "2025-01-22",
+  readingTime: 14,
   author: "Garrio Team",
-  publishedAt: "2025-01-22",
-  readingTime: "14 min read",
-  tags: ["Bootstrap Budget", "Cost-Effective Support", "ROI", "Small Budget", "Customer Loyalty"],
   vertical: ["ecommerce", "fashion", "beauty"],
   funnel: "awareness",
-  intro: `When Alex launched his artisanal coffee brand with just $2,500 in savings, premium customer support seemed impossible. "I couldn't afford Zendesk, let alone a support team," he recalls. "But I knew that treating customers right was non-negotiable."
+  persona: ["founders", "budget-conscious"],
+  hero: "/covers/bootstrap-support.jpg",
+  ogImage: "/covers/bootstrap-support.jpg",
+  canonical: "https://garrio.ai/blog/bootstrap-friendly-support-building-customer-love-on-a-tight-budget",
+  content: {
+    intro: `When Alex launched his artisanal coffee brand with just $2,500 in savings, premium customer support seemed impossible. "I couldn't afford Zendesk, let alone a support team," he recalls. "But I knew that treating customers right was non-negotiable."
 
 Fast-forward 18 months: his brand generates $480K annual revenue with **94% customer satisfaction** and **67% repeat purchase rate**—all while spending just **$180/month on support tools**. His secret wasn't expensive software or large teams. It was **strategic bootstrapping** that turned budget constraints into competitive advantages.
 
 This reality reflects the **78% of small businesses that rely on personal funds** rather than investors. Yet the most successful bootstrapped brands don't just survive with limited resources—they **thrive because they maximize every dollar** and build authentic customer relationships that big-budget competitors struggle to replicate.`,
-  sections: [
-    {
-      title: "The Bootstrap Advantage: Why Less Can Be More",
+    sections: [
+      {
+        h2: "The Bootstrap Advantage: Why Less Can Be More",
       body: `### The Authenticity Factor
 
 **Budget constraints force authenticity:**
@@ -53,7 +56,7 @@ This reality reflects the **78% of small businesses that rely on personal funds*
 - ROI tracking happens by survival necessity, not reporting requirements`
     },
     {
-      title: "The $500/Month Support Excellence Framework",
+      h2: "The $500/Month Support Excellence Framework",
       body: `### Tier 1: Foundation ($50-150/month)
 
 **Essential Tools:**
@@ -115,7 +118,7 @@ This reality reflects the **78% of small businesses that rely on personal funds*
 - Founder time investment: 4-8 hours/week`
     },
     {
-      title: "The High-Impact, Low-Cost Tactics Playbook",
+      h2: "The High-Impact, Low-Cost Tactics Playbook",
       body: `### Strategy 1: The Personal Touch at Scale
 
 **The Founder Video Approach:**
@@ -197,7 +200,7 @@ This reality reflects the **78% of small businesses that rely on personal funds*
 - **Performance incentives**: Bonus structures tied to customer satisfaction`
     },
     {
-      title: "ROI Measurement for Bootstrap Operations",
+      h2: "ROI Measurement for Bootstrap Operations",
       body: `### The Essential Metrics Framework
 
 **Revenue-Focused KPIs:**
@@ -237,7 +240,7 @@ Support ROI = (Monthly Return - Monthly Investment) / Monthly Investment × 100
 - **Exceptional performance**: 800%+ (9:1+ return)`
     },
     {
-      title: "Case Studies: Bootstrap Support Success Stories",
+      h2: "Case Studies: Bootstrap Support Success Stories",
       body: `### Case Study 1: The $150/Month Loyalty Machine
 
 **Background:** Handmade jewelry brand, solo founder, $180K annual revenue
@@ -317,7 +320,7 @@ Support ROI = (Monthly Return - Monthly Investment) / Monthly Investment × 100
 - **ROI**: 423%`
     },
     {
-      title: "The Bootstrap Mindset Shifts That Matter",
+      h2: "The Bootstrap Mindset Shifts That Matter",
       body: `### From Scarcity to Strategic Abundance
 
 **Old Thinking**: "We can't afford good customer service"
@@ -341,7 +344,7 @@ Support ROI = (Monthly Return - Monthly Investment) / Monthly Investment × 100
 - Quantify word-of-mouth marketing impact`
     },
     {
-      title: "Common Bootstrap Pitfalls and Solutions",
+      h2: "Common Bootstrap Pitfalls and Solutions",
       body: `### Pitfall 1: The False Economy Trap
 
 **Mistake**: Choosing the absolute cheapest option regardless of impact
@@ -385,7 +388,7 @@ Support ROI = (Monthly Return - Monthly Investment) / Monthly Investment × 100
 - Word-of-mouth and referral tracking`
     },
     {
-      title: "Your Bootstrap Support Action Plan",
+      h2: "Your Bootstrap Support Action Plan",
       body: `### Week 1-2: Foundation Assessment
 
 **Current State Analysis:**
@@ -443,7 +446,7 @@ Support ROI = (Monthly Return - Monthly Investment) / Monthly Investment × 100
 - Establish performance monitoring and optimization protocols`
     },
     {
-      title: "The Bootstrap Support Future",
+      h2: "The Bootstrap Support Future",
       body: `**Emerging Opportunities for Budget-Conscious Brands:**
 
 **AI Democratization:**
@@ -460,22 +463,15 @@ Support ROI = (Monthly Return - Monthly Investment) / Monthly Investment × 100
 - Low-cost tool integrations enabling enterprise-level functionality
 - No-code/low-code platforms reducing development costs
 - API-first tools enabling custom bootstrap solutions`
-    }
-  ],
-  cta: {
-    title: "Transform Your Support Strategy Today",
-    description: "Bootstrap brands that excel at customer support don't just survive—they thrive with advantages that well-funded competitors struggle to replicate. Your budget doesn't determine your customer service quality. Your creativity, strategy, and commitment do.",
-    primaryAction: {
+      }
+    ],
+    cta: {
       text: "Start Building Better Support",
       href: "/features"
-    },
-    secondaryAction: {
-      text: "Calculate Your ROI",
-      href: "/roi-calculator"
     }
   }
 }
 
 export default function BlogPage() {
-  return <BlogPost postContent={postContent} />
+  return <BlogPost post={postContent} formattedDate="January 22, 2025" />
 }

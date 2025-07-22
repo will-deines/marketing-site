@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { PostContent } from '@/components/blog/post-content'
+import BlogPost from '@/components/blog/blog-post'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
@@ -15,24 +15,26 @@ export const metadata: Metadata = {
 const postData = {
   slug: "black-friday-survival-how-dtc-brands-handle-10x-support-volume",
   title: "Black Friday Survival: How DTC Brands Handle 10x Support Volume",
-  subtitle: "Peak season preparation, scalability strategies, and real case studies from DTC brands managing 50x order increases during major shopping events",
-  hero: "/covers/black-friday-survival.jpg",
+  excerpt: "Peak season preparation, scalability strategies, and real case studies from DTC brands managing 50x order increases during major shopping events",
+  publishDate: "2025-01-22",
+  readingTime: 12,
   author: "Garrio Team",
-  publishedAt: "2025-01-22",
-  readingTime: "12 min read",
-  tags: ["Black Friday", "Peak Season", "Scalability", "DTC Strategy", "Customer Support"],
   vertical: ["ecommerce", "fashion", "beauty"],
   funnel: "consideration",
-  intro: `When Jessica's wellness brand sold 400 units during their best month ever, she felt ready for anything. Then Black Friday happened. **In 48 hours, they received 12,000 orders**—30 times their previous record. Her support inbox exploded with 2,400 tickets in two days. Her team of three was drowning.
+  persona: ["founders", "support-managers"],
+  hero: "/covers/black-friday-survival.jpg",
+  ogImage: "/covers/black-friday-survival.jpg",
+  canonical: "https://garrio.ai/blog/black-friday-survival-how-dtc-brands-handle-10x-support-volume",
+  content: {
+    intro: `When Jessica's wellness brand sold 400 units during their best month ever, she felt ready for anything. Then Black Friday happened. **In 48 hours, they received 12,000 orders**—30 times their previous record. Her support inbox exploded with 2,400 tickets in two days. Her team of three was drowning.
 
 Meanwhile, across the industry, successful DTC brands were thriving during the same chaos. **Black Friday 2024 generated $10.8 billion in U.S. online sales** (10.2% increase) and **$74.4 billion globally** (5% growth). The brands that survived—and thrived—weren't just lucky. They had systems.
 
 The difference between peak season success and disaster isn't team size or budget. It's preparation, automation, and smart scalability strategies that turn overwhelming demand into profitable growth.`,
-  sections: [
-    {
-      id: "black-friday-reality-check",
-      title: "The Black Friday Reality Check: What Actually Happens",
-      body: `### The Volume Tsunami
+    sections: [
+      {
+        h2: "The Black Friday Reality Check: What Actually Happens",
+        body: `### The Volume Tsunami
 
 **Black Friday 2024 Performance Data:**
 - **Global online spending**: $74.4 billion (5% increase)
@@ -60,10 +62,9 @@ The difference between peak season success and disaster isn't team size or budge
 - **Escalation rates**: Triple compared to normal operations
 - **Customer satisfaction**: Drops 30-40% without proper preparation
 - **Brand reputation risk**: One bad peak season can impact entire year`
-    },
-    {
-      id: "90-day-preparation-framework",
-      title: "The 90-Day Black Friday Preparation Framework",
+      },
+      {
+        h2: "The 90-Day Black Friday Preparation Framework",
       body: `### Phase 1: Intelligence Gathering (90-60 Days Before)
 
 **Historical Analysis:**
@@ -120,10 +121,9 @@ The difference between peak season success and disaster isn't team size or budge
 - **Freelance Experts**: Specific skill sets (social media, technical support)
 - **Cross-Department Support**: Sales, marketing, operations teams helping during peaks
 - **Virtual Assistant Network**: Overflow handling and basic administration`
-    },
-    {
-      id: "case-studies",
-      title: "Case Studies: Brands That Mastered Peak Season Support",
+      },
+      {
+        h2: "Case Studies: Brands That Mastered Peak Season Support",
       body: `### Case Study 1: The Beauty Brand Breakthrough ($2.1M Peak Weekend)
 
 **Background:** Premium skincare brand with typically 150 orders/day, team of 4
@@ -233,10 +233,9 @@ The difference between peak season success and disaster isn't team size or budge
 - **Community engagement**: Customers helping other customers in social groups
 - **Omnichannel excellence**: Consistent experience across all platforms
 - **Crisis prevention**: No major operational failures or PR incidents`
-    },
-    {
-      id: "technology-stack",
-      title: "The Technology Stack for Peak Season Success",
+      },
+      {
+        h2: "The Technology Stack for Peak Season Success",
       body: `### Essential Platform Components
 
 **Customer Communication:**
@@ -276,10 +275,9 @@ The difference between peak season success and disaster isn't team size or budge
 - Full-service peak season support management
 - Advanced predictive analytics
 - Dedicated account management and optimization`
-    },
-    {
-      id: "peak-season-metrics",
-      title: "Peak Season Support Metrics That Matter",
+      },
+      {
+        h2: "Peak Season Support Metrics That Matter",
       body: `### Real-Time Performance Indicators
 
 **Volume and Velocity:**
@@ -313,10 +311,9 @@ The difference between peak season success and disaster isn't team size or budge
 - Skill development during high-pressure periods
 - Leadership emergence and development
 - Post-peak retention and satisfaction`
-    },
-    {
-      id: "post-peak-analysis",
-      title: "The Post-Peak Analysis Framework",
+      },
+      {
+        h2: "The Post-Peak Analysis Framework",
       body: `### Immediate Debrief (Week 1 After)
 
 **Performance Review:**
@@ -344,10 +341,9 @@ The difference between peak season success and disaster isn't team size or budge
 - Budget allocation for continuous improvement
 - Team development and training programs
 - Growth projection and capacity planning`
-    },
-    {
-      id: "preparation-checklist",
-      title: "Your Peak Season Preparation Checklist",
+      },
+      {
+        h2: "Your Peak Season Preparation Checklist",
       body: `### 90 Days Before Peak Season
 
 **✅ Data Analysis and Projection**
@@ -389,10 +385,9 @@ The difference between peak season success and disaster isn't team size or budge
 - Emergency contact list distribution
 - Crisis management protocol activation
 - Success metrics tracking setup`
-    },
-    {
-      id: "competitive-advantage",
-      title: "The Competitive Advantage of Peak Season Excellence",
+      },
+      {
+        h2: "The Competitive Advantage of Peak Season Excellence",
       body: `Brands that excel during peak seasons don't just survive the chaos—they **gain lasting competitive advantages:**
 
 **Customer Loyalty Boost:**
@@ -418,18 +413,11 @@ The difference between peak season success and disaster isn't team size or budge
 **The brands that thrive during Black Friday aren't lucky—they're prepared. They understand that peak season success requires year-round investment in systems, team development, and customer experience excellence.**
 
 **Your next Black Friday won't be a survival story—it'll be your greatest growth accelerator.**`
-    }
-  ],
-  cta: {
-    title: "Ready to Master Your Next Peak Season?",
-    description: "Don't let Black Friday chaos overwhelm your team. Garrio's AI-powered customer support platform helps DTC brands scale support operations seamlessly during peak seasons.",
-    primaryAction: {
+      }
+    ],
+    cta: {
       text: "See Garrio in Action",
       href: "/demo"
-    },
-    secondaryAction: {
-      text: "Download Peak Season Guide",
-      href: "/resources/peak-season-guide"
     }
   },
   sources: [
@@ -487,7 +475,7 @@ The difference between peak season success and disaster isn't team size or budge
 export default function BlogPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <PostContent {...postData} />
+      <BlogPost post={postData} formattedDate="January 22, 2025" />
     </Suspense>
   )
 }

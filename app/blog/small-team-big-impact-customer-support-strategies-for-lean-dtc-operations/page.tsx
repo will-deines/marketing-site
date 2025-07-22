@@ -37,7 +37,7 @@ Small teams create something larger organizations struggle with: **genuine custo
 
 **Statistical advantage:**
 - Small teams know **85% of repeat customers by name**
-- Large teams recognize **<15% of their customer base**
+- Large teams recognize **less than 15% of their customer base**
 - Personal recognition increases customer lifetime value by **67%**
 
 ### The Agility Advantage
@@ -56,7 +56,7 @@ Small teams create something larger organizations struggle with: **genuine custo
       },
       {
         h2: "The Lean Team Success Framework",
-        body: `### Stage 1: Foundation (2-3 People)
+        body: `### Stage One: Foundation (2-3 People)
 
 **Team Structure:**
 - **Founder/Owner**: Handles complex issues, VIP customers, strategic decisions
@@ -127,7 +127,7 @@ Small teams create something larger organizations struggle with: **genuine custo
 
 **Essential Automation Categories:**
 
-**Tier 1 (Immediate Automation):**
+**Tier One (Immediate Automation):**
 - Order status and tracking
 - Return and refund policies
 - Basic product specifications
@@ -141,10 +141,10 @@ Small teams create something larger organizations struggle with: **genuine custo
 - Appointment scheduling and consultation booking
 
 **Tool Implementation Timeline:**
-- **Week 1-2:** Deploy basic FAQ chatbot
-- **Week 3-4:** Implement order tracking automation
-- **Week 5-6:** Add product recommendation engine
-- **Week 7-8:** Enable proactive notification system
+- **Week One-Two:** Deploy basic FAQ chatbot
+- **Week Three-Four:** Implement order tracking automation
+- **Week Five-Six:** Add product recommendation engine
+- **Week Seven-Eight:** Enable proactive notification system
 
 ### Strategy 3: The Knowledge Multiplication System
 
@@ -153,7 +153,7 @@ Small teams create something larger organizations struggle with: **genuine custo
 
 **The Three-Tier Knowledge Base:**
 
-**Customer-Facing (Tier 1):**
+**Customer-Facing (Tier One):**
 - Comprehensive FAQ covering 80% of common questions
 - Video tutorials for product usage and care
 - Size guides with customer review integration
@@ -166,14 +166,14 @@ Small teams create something larger organizations struggle with: **genuine custo
 - Product knowledge database with regular updates
 
 **Knowledge Creation Process:**
-1. **Document everything:** Turn every unique customer question into knowledge base content
-2. **Video-first approach:** Create 2-minute video explanations for complex topics
-3. **Customer contribution:** Encourage customer reviews and photos for real-world insights
-4. **Regular updates:** Monthly review and refresh of all knowledge content`
+- **Document everything:** Turn every unique customer question into knowledge base content
+- **Video-first approach:** Create 2-minute video explanations for complex topics
+- **Customer contribution:** Encourage customer reviews and photos for real-world insights
+- **Regular updates:** Monthly review and refresh of all knowledge content`
       },
       {
         h2: "Case Studies: Lean Team Champions",
-        body: `### Case Study 1: The $1.5M Beauty Brand (Team of 4)
+        body: `### Case Study One: The Beauty Brand Success Story (Team of 4)
 
 **Background:** Organic skincare brand competing against major beauty corporations
 
@@ -198,7 +198,7 @@ Small teams create something larger organizations struggle with: **genuine custo
 - **3.2x revenue growth** over 18 months
 - **Support costs: 8% of revenue** (vs. 15% industry average)
 
-### Case Study 2: The $900K Food Brand (Team of 3)
+### Case Study Two: The Food Brand Success Story (Team of 3)
 
 **Background:** Artisanal hot sauce company with complex ingredient and recipe questions
 
@@ -264,34 +264,34 @@ Small teams create something larger organizations struggle with: **genuine custo
 ### Quality Metrics
 - **First contact resolution:** 75-85%
 - **Customer satisfaction:** 85-90%
-- **Escalation rate:** <15%
+- **Escalation rate:** less than 15%
 - **Support-to-sales conversion:** 12-18%
 
 ### Efficiency Metrics
 - **Tickets per agent per hour:** 6-10 (depending on complexity)
-- **Average resolution time:** <24 hours
+- **Average resolution time:** less than 24 hours
 - **Self-service adoption:** 40-60%
 - **Cross-selling success rate:** 15-25%`
       },
       {
         h2: "Your Lean Team Action Plan",
-        body: `### Phase 1: Foundation Setting (Week 1-4)
-1. **Audit current processes** and identify inefficiencies
-2. **Document all knowledge** currently held by team members
-3. **Implement basic automation** for 50% of routine inquiries
-4. **Establish performance metrics** and tracking systems
+        body: `### Phase One: Foundation Setting (Week 1-4)
+- **Audit current processes** and identify inefficiencies
+- **Document all knowledge** currently held by team members
+- **Implement basic automation** for 50% of routine inquiries
+- **Establish performance metrics** and tracking systems
 
 ### Phase 2: Optimization (Week 5-8)
-1. **Deploy advanced automation** for additional ticket categories
-2. **Create comprehensive training materials** for team cross-functionality
-3. **Implement proactive support** systems and processes
-4. **Establish customer feedback loops** and improvement systems
+- **Deploy advanced automation** for additional ticket categories
+- **Create comprehensive training materials** for team cross-functionality
+- **Implement proactive support** systems and processes
+- **Establish customer feedback loops** and improvement systems
 
 ### Phase 3: Scaling Preparation (Week 9-12)
-1. **Test expansion scenarios** with current team structure
-2. **Create hiring and training protocols** for future growth
-3. **Optimize tool stack** for maximum efficiency
-4. **Develop specialized roles** within existing team structure
+- **Test expansion scenarios** with current team structure
+- **Create hiring and training protocols** for future growth
+- **Optimize tool stack** for maximum efficiency
+- **Develop specialized roles** within existing team structure
 
 ## The Lean Team Competitive Edge
 

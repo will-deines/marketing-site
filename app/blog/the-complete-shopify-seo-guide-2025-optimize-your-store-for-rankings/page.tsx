@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { BlogPost } from '@/components/blog/blog-post'
+import BlogPost from '@/components/blog/blog-post'
 import { PostContent } from '@/lib/blog'
 
 export const metadata: Metadata = {
@@ -12,27 +12,30 @@ export const metadata: Metadata = {
   },
 }
 
-const blogPostData: PostContent = {
+const blogPostData = {
   slug: "the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings",
   title: "The Complete Shopify SEO Guide 2025: Optimize Your Store for Rankings",
-  subtitle: "Master technical optimization, keyword strategies, Core Web Vitals, and proven tactics to dominate search results and drive organic traffic to your Shopify store",
-  hero: "/covers/shopify-seo-guide.jpg",
+  excerpt: "Master technical optimization, keyword strategies, Core Web Vitals, and proven tactics to dominate search results and drive organic traffic to your Shopify store",
+  publishDate: "2025-01-22",
+  readingTime: 15,
   author: "Garrio Team",
-  publishedAt: "2025-01-22",
-  readingTime: "15 min read",
-  tags: ["Shopify SEO", "Ecommerce Optimization", "Technical SEO", "Organic Traffic", "Search Rankings"],
   vertical: ["ecommerce", "fashion", "beauty"],
   funnel: "awareness",
-  intro: `When Sarah launched her handmade jewelry store on Shopify, she assumed the platform would handle SEO automatically. Six months later, her beautiful products were buried on page 47 of Google search results. Meanwhile, her competitor with inferior products was ranking #3 for "handmade sterling silver rings"—the exact keyword Sarah was targeting.
+  persona: ["founders", "ecommerce-managers"],
+  hero: "/covers/shopify-seo-guide.jpg",
+  ogImage: "/covers/shopify-seo-guide.jpg",
+  canonical: "https://garrio.ai/blog/the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings",
+  content: {
+    intro: `When Sarah launched her handmade jewelry store on Shopify, she assumed the platform would handle SEO automatically. Six months later, her beautiful products were buried on page 47 of Google search results. Meanwhile, her competitor with inferior products was ranking #3 for "handmade sterling silver rings"—the exact keyword Sarah was targeting.
 
 The difference? **Strategic Shopify SEO optimization.**
 
 Today, Sarah's store receives **15,000+ monthly organic visitors** and ranks in the top 3 for 47 high-value keywords. Her transformation illustrates a crucial reality: **Shopify stores are 1.8x faster than other ecommerce platforms**, but speed alone doesn't guarantee rankings. Success requires systematic optimization across technical, content, and strategic elements.
 
 This comprehensive guide reveals the exact strategies that separate top-ranking Shopify stores from the millions struggling for visibility.`,
-  sections: [
-    {
-      title: "The Shopify SEO Landscape in 2025",
+    sections: [
+      {
+        h2: "The Shopify SEO Landscape in 2025",
       body: `### Google's Evolving Requirements
 
 **Core Web Vitals Updates:**
@@ -56,7 +59,7 @@ This comprehensive guide reveals the exact strategies that separate top-ranking 
 - **Internal linking challenges**: Navigation complexity at scale`
     },
     {
-      title: "Technical SEO Foundation",
+      h2: "Technical SEO Foundation",
       body: `### Site Structure Optimization
 
 **The Optimal Shopify Hierarchy:**
@@ -94,7 +97,7 @@ Home Page → Category/Collection Page → Product Page
 
 ### Core Web Vitals Optimization
 
-**Largest Contentful Paint (LCP) - Target: <2.5 seconds**
+**Largest Contentful Paint (LCP) - Target: under 2.5 seconds**
 
 **Image Optimization:**
 - **WebP format**: 25-50% smaller file sizes than JPEG/PNG
@@ -107,14 +110,14 @@ Home Page → Category/Collection Page → Product Page
 - **Unused CSS removal**: Eliminate unnecessary stylesheets
 - **Font optimization**: Use font-display: swap for web fonts
 
-**First Input Delay (FID) - Target: <100ms**
+**First Input Delay (FID) - Target: under 100ms**
 
 **JavaScript Optimization:**
 - **Third-party script management**: Audit and minimize external scripts
 - **Code splitting**: Load JavaScript only when needed
 - **Service worker implementation**: Cache resources for faster interactions
 
-**Cumulative Layout Shift (CLS) - Target: <0.1**
+**Cumulative Layout Shift (CLS) - Target: under 0.1**
 
 **Layout Stability:**
 - **Image dimensions**: Always specify width and height attributes
@@ -195,7 +198,7 @@ Home Page → Category/Collection Page → Product Page
 \`\`\``
     },
     {
-      title: "Keyword Strategy & Content Optimization",
+      h2: "Keyword Strategy & Content Optimization",
       body: `### Ecommerce Keyword Research
 
 **The Three-Tier Keyword Strategy:**
@@ -282,7 +285,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Blog content links**: Connect to relevant educational content`
     },
     {
-      title: "Content Marketing for SEO",
+      h2: "Content Marketing for SEO",
       body: `### Blog Content Strategy
 
 **Content Pillars for Ecommerce SEO:**
@@ -348,7 +351,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Review responses**: Engage with customers publicly`
     },
     {
-      title: "Advanced SEO Tactics",
+      h2: "Advanced SEO Tactics",
       body: `### Link Building for Ecommerce
 
 **Internal Link Building:**
@@ -404,7 +407,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **PWA features**: App-like experience`
     },
     {
-      title: "Monitoring & Analytics",
+      h2: "Monitoring & Analytics",
       body: `### SEO Performance Tracking
 
 **Essential Metrics to Monitor:**
@@ -448,7 +451,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **GTmetrix**: Page speed and performance analysis`
     },
     {
-      title: "Common Shopify SEO Mistakes to Avoid",
+      h2: "Common Shopify SEO Mistakes to Avoid",
       body: `### Technical SEO Pitfalls
 
 **Mistake #1: Duplicate Content Issues**
@@ -479,7 +482,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Prevention**: SEO checklist for content creation process`
     },
     {
-      title: "Your 90-Day Shopify SEO Action Plan",
+      h2: "Your 90-Day Shopify SEO Action Plan",
       body: `### Days 1-30: Foundation Setup
 
 **Week 1-2: Technical Audit and Cleanup**
@@ -523,7 +526,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - Document processes for ongoing optimization`
     },
     {
-      title: "ROI Expectations and Timeline",
+      h2: "ROI Expectations and Timeline",
       body: `### Realistic Timeline for Results
 
 **Months 1-3: Foundation Building**
@@ -564,7 +567,7 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Link building and PR**: $500-2,000/month`
     },
     {
-      title: "The Future of Shopify SEO",
+      h2: "The Future of Shopify SEO",
       body: `### Emerging Trends for 2025-2026
 
 **AI and Machine Learning:**
@@ -584,22 +587,15 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **App ecosystem growth**: More sophisticated SEO tools
 - **Integration capabilities**: Better connection with SEO platforms
 - **Performance optimization**: Continued speed improvements`
-    }
-  ],
-  cta: {
-    title: "Ready to Transform Your Shopify Store's SEO Performance?",
-    description: "Get started with Garrio's customer service platform and watch your search rankings soar. Our comprehensive solution helps ecommerce stores optimize for better customer experience and higher conversions.",
-    primaryButton: {
+      }
+    ],
+    cta: {
       text: "Start Free Trial",
       href: "/signup"
-    },
-    secondaryButton: {
-      text: "View Pricing",
-      href: "/pricing"
     }
   }
 }
 
 export default function BlogPage() {
-  return <BlogPost post={blogPostData} />
+  return <BlogPost post={blogPostData} formattedDate="January 22, 2025" />
 }

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SimpleBlogPost } from "@/components/blog/simple-blog-post";
+import BlogPost from "@/components/blog/blog-post";
 
 export const metadata: Metadata = {
   title:
@@ -86,6 +86,6 @@ const postContent = {
 };
 
 export default function BlogPage() {
-  return <SimpleBlogPost post={postContent} />;
+  return <BlogPost post={postContent} formattedDate="January 22, 2025" />;
 }
 
