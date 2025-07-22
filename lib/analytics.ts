@@ -1,5 +1,5 @@
 type EventProps = {
-  [key: string]: any
+  [key: string]: string | number | boolean | undefined
 }
 
 export function trackEvent(eventName: string, props?: EventProps) {
@@ -8,7 +8,7 @@ export function trackEvent(eventName: string, props?: EventProps) {
 
   // Example implementation for Google Analytics
   if (typeof window !== "undefined" && "gtag" in window) {
-    // @ts-ignore
+    // @ts-expect-error - gtag is added by Google Analytics script
     window.gtag("event", eventName, props)
   }
 }

@@ -3,170 +3,100 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
-interface FlowStep {
-  id: string
+interface Result {
+  icon: string
   title: string
   description: string
-  videoSrc: string
+  metric: string
 }
 
-const flowSteps: FlowStep[] = [
+const results: Result[] = [
   {
-    id: "step1",
-    title: "AI Instant Answer",
-    description: "Immediate order status lookup and response",
-    videoSrc: "/background-video.mp4", // Using placeholder video
+    icon: "⚡",
+    title: "Instant responses",
+    description: "Customers get answers immediately, even at 2 AM",
+    metric: "15 second avg response"
   },
   {
-    id: "step2",
-    title: "AI Detects Edge-Case",
-    description: "Identifies damaged item request that needs special handling",
-    videoSrc: "/background-video.mp4", // Using placeholder video
+    icon: "🎯",
+    title: "Personal touch",
+    description: "Every response sounds like it came from you",
+    metric: "4.9★ customer satisfaction"
   },
   {
-    id: "step3",
-    title: "Auto-Escalate",
-    description: "Email composed and tagged for human agent review",
-    videoSrc: "/background-video.mp4", // Using placeholder video
-  },
-  {
-    id: "step4",
-    title: "Human Agent Resolution",
-    description: "Refund processed, customer satisfaction achieved",
-    videoSrc: "/background-video.mp4", // Using placeholder video
-  },
+    icon: "🎨",
+    title: "Your creative time back",
+    description: "Spend time designing instead of answering repetitive questions",
+    metric: "18 hours saved per week"
+  }
 ]
 
-export default function InteractiveFlow() {
-  const [activeStep, setActiveStep] = useState(0)
-  const [isHovering, setIsHovering] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+export default function SimpleResults() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
-  // Initialize video refs
   useEffect(() => {
-    videoRefs.current = videoRefs.current.slice(0, flowSteps.length)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    const currentSection = sectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
+    }
+
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection)
+      }
+    }
   }, [])
 
-  // Handle step change
-  useEffect(() => {
-    // Reset all videos
-    videoRefs.current.forEach((video, index) => {
-      if (video) {
-        if (index === activeStep) {
-          video.currentTime = 0
-          video.play()
-        } else {
-          video.pause()
-        }
-      }
-    })
-  }, [activeStep])
-
-  // Handle hover scrubbing
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isHovering || !containerRef.current) return
-
-    const containerWidth = containerRef.current.offsetWidth
-    const relativeX = e.nativeEvent.offsetX
-    const stepIndex = Math.floor((relativeX / containerWidth) * flowSteps.length)
-
-    if (stepIndex >= 0 && stepIndex < flowSteps.length) {
-      setActiveStep(stepIndex)
-    }
-  }
-
-  const nextStep = () => {
-    setActiveStep((prev) => (prev + 1) % flowSteps.length)
-  }
-
-  const prevStep = () => {
-    setActiveStep((prev) => (prev - 1 + flowSteps.length) % flowSteps.length)
-  }
-
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">See the Hand-Off</h2>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple setup, powerful results</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Experience the seamless transition from AI to human support in action.
+            No complex workflows or enterprise training needed. Just the outcomes you've been dreaming of.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Interactive stepper */}
-          <div
-            ref={containerRef}
-            className="relative bg-white rounded-xl shadow-lg overflow-hidden"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            onMouseMove={handleMouseMove}
-          >
-            {/* Video container */}
-            <div className="relative aspect-video">
-              {flowSteps.map((step, index) => (
-                <div
-                  key={step.id}
-                  className={`absolute inset-0 transition-opacity duration-300 ${
-                    activeStep === index ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
-                >
-                  <video
-                    ref={(el) => (videoRefs.current[index] = el)}
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  >
-                    <source src={step.videoSrc} type="video/mp4" />
-                  </video>
-
-                  {/* Step info overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-white">
-                    <h3 className="font-bold text-lg">{step.title}</h3>
-                    <p className="text-sm text-white/80">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-
-              {/* Navigation arrows */}
-              <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 z-20"
-                onClick={prevStep}
-                aria-label="Previous step"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-              <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 z-20"
-                onClick={nextStep}
-                aria-label="Next step"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
+        <div
+          ref={sectionRef}
+          className={`grid md:grid-cols-3 gap-8 max-w-5xl mx-auto transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          {results.map((result, index) => (
+            <div
+              key={result.title}
+              className="text-center p-8 bg-gradient-to-br from-purple-50 to-green-50 rounded-2xl"
+              style={{ transitionDelay: `${index * 200}ms` }}
+            >
+              <div className="text-5xl mb-4">{result.icon}</div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">{result.title}</h3>
+              <p className="text-gray-600 mb-4">{result.description}</p>
+              <div className="bg-white px-4 py-2 rounded-full text-purple-700 font-semibold text-sm inline-block">
+                {result.metric}
+              </div>
             </div>
+          ))}
+        </div>
 
-            {/* Step indicators */}
-            <div className="flex justify-center p-4 bg-gray-100">
-              {flowSteps.map((step, index) => (
-                <button
-                  key={step.id}
-                  className={`w-3 h-3 rounded-full mx-2 transition-all ${
-                    activeStep === index ? "bg-purple-600 scale-125" : "bg-gray-300"
-                  }`}
-                  onClick={() => setActiveStep(index)}
-                  aria-label={`Go to step ${index + 1}: ${step.title}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Caption ribbon */}
-          <div className="bg-purple-600 text-white text-center py-4 rounded-b-xl shadow-md">
-            <p className="text-lg font-medium">Zero tickets left for you, zero loops for them.</p>
+        <div className="text-center mt-12">
+          <div className="bg-gray-100 p-6 rounded-xl max-w-2xl mx-auto">
+            <p className="text-gray-700 italic">
+              "I went from checking my support email every 30 minutes to checking it once a week. 
+              My stress levels dropped, my creativity came back, and my customers are happier than ever."
+            </p>
+            <p className="text-gray-500 mt-2">— Maria, founder of Bloom & Thread</p>
           </div>
         </div>
       </div>

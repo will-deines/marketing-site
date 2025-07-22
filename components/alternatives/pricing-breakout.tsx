@@ -32,13 +32,14 @@ export default function PricingBreakout({ competitor }: PricingBreakoutProps) {
       },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentSection = sectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSection) {
+        observer.unobserve(currentSection)
       }
     }
   }, [])
@@ -48,7 +49,7 @@ export default function PricingBreakout({ competitor }: PricingBreakoutProps) {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Pricing Comparison</h2>
         <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-          See how Garrio's pricing stacks up against {competitor.name}
+          See how Garrio&apos;s pricing stacks up against {competitor.name}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">

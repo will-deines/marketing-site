@@ -36,10 +36,10 @@ export default function GrowthLibraryTeaser() {
       <div className="max-w-6xl mx-auto px-4 lg:px-0">
         <div className="text-center mb-12">
           <h2 id="growth-library-heading" className="text-3xl font-semibold mb-3">
-            Growth Library: CX Playbooks & Benchmarks
+            Learn from Brands That Made It
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Actionable guides to cut response time, lift sales and keep shoppers happy.
+            Actionable playbooks from founders who&apos;ve grown past $1M—because you don&apos;t have time for theory.
           </p>
         </div>
 

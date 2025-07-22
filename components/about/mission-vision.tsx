@@ -19,13 +19,14 @@ export default function MissionVision() {
       },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentSection = sectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSection) {
+        observer.unobserve(currentSection)
       }
     }
   }, [])
@@ -46,7 +47,7 @@ export default function MissionVision() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why We Exist</h2>
             <div className="relative">
               <p className="text-2xl md:text-3xl font-medium leading-tight text-gray-800 mb-4">
-                Free every Shopify merchant from support busy-work so they can build the brands shoppers love.
+                So every founder who left everything to chase their vision can get back to creating the brands their customers will love.
               </p>
               {/* Animated accent bar */}
               <div
@@ -67,10 +68,9 @@ export default function MissionVision() {
               >
                 <span className="text-3xl mr-4">🕒</span>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Save founders 10 hrs/wk</h3>
+                  <h3 className="text-xl font-bold mb-2">Give you your creative energy back</h3>
                   <p className="text-gray-600">
-                    Reclaim your nights and weekends. Our AI handles routine questions while our team manages complex
-                    issues.
+                    Stop spending your best hours on &ldquo;Where&apos;s my order?&rdquo; emails. Get back to designing, creating, and building the brand you dreamed about.
                   </p>
                 </div>
               </li>
@@ -82,10 +82,9 @@ export default function MissionVision() {
               >
                 <span className="text-3xl mr-4">💬</span>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Delight 100% of shoppers</h3>
+                  <h3 className="text-xl font-bold mb-2">Keep your customers as obsessed as you are</h3>
                   <p className="text-gray-600">
-                    Every customer gets an instant, accurate response that feels like your brand—whether from AI or our
-                    human team.
+                    Your customers fell in love with your brand because of your passion. We make sure every interaction—from AI to human support—reflects that same care and attention.
                   </p>
                 </div>
               </li>
@@ -97,10 +96,9 @@ export default function MissionVision() {
               >
                 <span className="text-3xl mr-4">💸</span>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Turn chats into checkout</h3>
+                  <h3 className="text-xl font-bold mb-2">Turn every conversation into growth</h3>
                   <p className="text-gray-600">
-                    Support shouldn't just be a cost center. Our AI suggests relevant products and offers, turning
-                    service into sales.
+                    You&apos;re bootstrapped, so every dollar counts. Our support doesn&apos;t just solve problems—it discovers opportunities to showcase products your customers will actually want.
                   </p>
                 </div>
               </li>

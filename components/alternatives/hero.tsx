@@ -32,18 +32,21 @@ export default function Hero({ competitor }: HeroProps) {
     <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover filter blur-sm scale-110"
-          style={{ objectFit: "cover" }}
-        >
-          <source src="/background-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/images/product-showcase-mobile.avif" type="image/avif" />
+          <source media="(max-width: 767px)" srcSet="/images/product-showcase-mobile.webp" type="image/webp" />
+          <source media="(max-width: 767px)" srcSet="/images/product-showcase-mobile.jpg" type="image/jpeg" />
+          <source srcSet="/images/product-showcase.avif" type="image/avif" />
+          <source srcSet="/images/product-showcase.webp" type="image/webp" />
+          <img 
+            ref={videoRef}
+            src="/images/product-showcase.jpg" 
+            alt="Product management dashboard background" 
+            className="absolute inset-0 w-full h-full object-cover filter blur-sm scale-110" 
+            style={{ objectFit: "cover" }}
+            loading="lazy"
+          />
+        </picture>
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-purple-600/70 z-10"></div>
       </div>

@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!competitor) {
     return {
       title: "Not Found",
-      description: "The page you're looking for doesn't exist.",
+      description: "The page you're looking for doesn&apos;t exist.",
     }
   }
 
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: `Garrio vs ${competitor.name} | Best Shopify Support Alternative`,
       description: `Ditch ${competitor.name} busy-work—Garrio answers tickets for you.`,
-      url: `https://garrio.com/alternatives/${competitor.slug}`,
+      url: `https://garrio.ai/alternatives/${competitor.slug}`,
       siteName: "Garrio",
       images: [
         {
@@ -83,10 +83,10 @@ export default function AlternativePage({ params }: { params: { slug: string } }
   }
 
   // Preserve UTM parameters for CTA links
-  const preserveUtm = (baseUrl: string) => {
-    // This would be implemented client-side to capture UTM params
-    return baseUrl
-  }
+  // const preserveUtm = (baseUrl: string) => {
+  //   // This would be implemented client-side to capture UTM params
+  //   return baseUrl
+  // }
 
   // JSON-LD structured data for FAQPage
   const faqJsonLd = {
@@ -106,7 +106,7 @@ export default function AlternativePage({ params }: { params: { slug: string } }
         name: "Will switching affect my SEO or site performance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No, Garrio's lightweight widget (under 30kb) loads asynchronously and won't impact your Core Web Vitals or SEO.",
+          text: "No, Garrio's lightweight widget (under 30kb) loads asynchronously and won&apos;t impact your Core Web Vitals or SEO.",
         },
       },
       {

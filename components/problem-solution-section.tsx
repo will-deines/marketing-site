@@ -20,13 +20,14 @@ export default function ProblemSolutionSection() {
       },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentSection = sectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSection) {
+        observer.unobserve(currentSection)
       }
     }
   }, [])
@@ -34,7 +35,7 @@ export default function ProblemSolutionSection() {
   return (
     <section ref={sectionRef} className="py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Instant Answers, Happier Customers</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">You Built This Brand to Create, Not to Answer Emails</h2>
 
         <div className="flex flex-col md:flex-row">
           {/* Problem Column (Dark) */}
@@ -44,11 +45,11 @@ export default function ProblemSolutionSection() {
             }`}
           >
             <div className="h-full flex flex-col">
-              <h3 className="text-2xl font-bold mb-8 text-purple-400">Pain</h3>
+              <h3 className="text-2xl font-bold mb-8 text-purple-400">The Reality</h3>
               <div className="flex-1 flex flex-col justify-center">
                 <div className="mb-8">
-                  <h4 className="text-xl font-semibold mb-4">Chats piling up?</h4>
-                  <p className="text-gray-300 text-lg">DIY store owners answer the same questions 38× a week.</p>
+                  <h4 className="text-xl font-semibold mb-4">When passion meets endless logistics</h4>
+                  <p className="text-gray-300 text-lg">You left your day job to build something meaningful. But now you&apos;re spending more time answering &ldquo;Where&rsquo;s my order?&rdquo; than designing new products or connecting with customers who truly get your brand.</p>
                 </div>
 
                 <div className="relative h-64 md:h-80 overflow-hidden rounded-lg">
@@ -99,11 +100,11 @@ export default function ProblemSolutionSection() {
             style={{ transitionDelay: "200ms" }}
           >
             <div className="h-full flex flex-col">
-              <h3 className="text-2xl font-bold mb-8 text-purple-600">Relief</h3>
+              <h3 className="text-2xl font-bold mb-8 text-purple-600">Get Your Creative Energy Back</h3>
               <div className="flex-1 flex flex-col justify-center">
                 <div className="mb-8">
-                  <h4 className="text-xl font-semibold mb-4">Let Garrio Chat reply in &lt;300 ms.</h4>
-                  <p className="text-gray-700 text-lg">Inline order lookups, discounts, and upsells—no extra clicks.</p>
+                  <h4 className="text-xl font-semibold mb-4">Support that grows with your vision</h4>
+                  <p className="text-gray-700 text-lg">Every customer question answered instantly, every order tracked automatically, every upsell opportunity captured—while you get back to the work that only you can do.</p>
                 </div>
 
                 <div className="relative h-64 md:h-80 overflow-hidden rounded-lg border border-gray-200">
@@ -115,7 +116,7 @@ export default function ProblemSolutionSection() {
                         </div>
                         <div className="flex-1 space-y-2 py-1">
                           <div className="bg-purple-100 p-3 rounded-lg text-gray-800">
-                            Hello! I can help you track your order #12345. It's currently in transit and will arrive
+                            Hello! I can help you track your order #12345. It&apos;s currently in transit and will arrive
                             tomorrow.
                           </div>
                         </div>
@@ -136,7 +137,7 @@ export default function ProblemSolutionSection() {
                         </div>
                         <div className="flex-1 space-y-2 py-1">
                           <div className="bg-purple-100 p-3 rounded-lg text-gray-800">
-                            I've created a special 10% discount code for you: HAPPY10. Would you like to browse our new
+                            I&apos;ve created a special 10% discount code for you: HAPPY10. Would you like to browse our new
                             arrivals?
                           </div>
                         </div>

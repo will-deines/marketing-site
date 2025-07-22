@@ -82,12 +82,13 @@ export default function MetricMosaic() {
       },
     )
 
-    Object.values(metricRefs.current).forEach((ref) => {
+    const currentRefs = metricRefs.current
+    Object.values(currentRefs).forEach((ref) => {
       if (ref) observer.observe(ref)
     })
 
     return () => {
-      Object.values(metricRefs.current).forEach((ref) => {
+      Object.values(currentRefs).forEach((ref) => {
         if (ref) observer.unobserve(ref)
       })
     }

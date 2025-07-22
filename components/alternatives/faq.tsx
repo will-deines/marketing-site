@@ -24,7 +24,7 @@ export default function Faq({ competitorName }: FaqProps) {
       id: "seo-impact",
       question: "Will switching affect my SEO or site performance?",
       answer:
-        "No, Garrio's lightweight widget (under 30kb) loads asynchronously and won't impact your Core Web Vitals or SEO. Our script is optimized to have minimal impact on page load times and user experience, ensuring your store's performance remains optimal.",
+        "No, Garrio's lightweight widget (under 30kb) loads asynchronously and won&apos;t impact your Core Web Vitals or SEO. Our script is optimized to have minimal impact on page load times and user experience, ensuring your store's performance remains optimal.",
     },
     {
       id: "customization",

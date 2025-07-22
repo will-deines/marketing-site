@@ -9,12 +9,12 @@ export default function FinalCTA() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-0">
-            Ready to boost sales for $0 up-front?
+            Stop losing sales to slow support. Start free today.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="bg-white text-purple-900 hover:bg-white/90" asChild>
               <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer">
-                Add Garrio Chat
+                Start Free Now
               </Link>
             </Button>
             <Button
@@ -23,7 +23,7 @@ export default function FinalCTA() {
               className="bg-transparent border-white text-white hover:bg-white/10"
               asChild
             >
-              <Link href="#" onClick={() => window.open("https://garrio.com/demo", "_blank")}>
+              <Link href="#" onClick={() => window.open("https://garrio.ai/demo", "_blank")}>
                 Chat with our team
               </Link>
             </Button>

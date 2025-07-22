@@ -157,13 +157,13 @@ export default function CareersSection() {
             ) : (
               <div className="bg-gray-50 rounded-lg p-6 text-center">
                 <p className="text-gray-600 mb-4">
-                  We don't have any open positions right now, but we're always looking for exceptional talent.
+                  We don&apos;t have any open positions right now, but we&apos;re always looking for exceptional talent.
                 </p>
               </div>
             )}
 
             <div className="mt-8 text-center">
-              <p className="text-gray-600 mb-4">Don't see your role? Pitch us!</p>
+              <p className="text-gray-600 mb-4">Don&apos;t see your role? Pitch us!</p>
               <Button variant="outline" asChild>
                 <Link href="mailto:careers@garrio.ai">careers@garrio.ai</Link>
               </Button>

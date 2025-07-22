@@ -1,0 +1,18 @@
+<!-- Responsive image implementation for test-avif -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    <source media="(min-width: 1024px)" srcset="test-avif.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="test-avif-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="test-avif-mobile.avif" type="image/avif">
+    <source media="(min-width: 1024px)" srcset="test-avif.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="test-avif-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="test-avif-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="test-avif.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="test-avif-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="test-avif-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="test-avif.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

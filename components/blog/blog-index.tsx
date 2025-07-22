@@ -37,7 +37,7 @@ export default function BlogIndex({
   // State for posts
   const [posts, setPosts] = useState<Post[]>([])
   const [featuredPost, setFeaturedPost] = useState<Post | null>(null)
-  const [totalPosts, setTotalPosts] = useState(0)
+  const [_totalPosts, setTotalPosts] = useState(0)
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -47,7 +47,7 @@ export default function BlogIndex({
 
   // Router for updating URL
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const _searchParams = useSearchParams()
 
   // Load posts based on filters
   const loadPosts = useCallback(

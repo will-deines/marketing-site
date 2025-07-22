@@ -92,7 +92,7 @@ export default function StatusPage() {
       <div className="container mx-auto px-4 py-12">
         <div className="text-center">
           <h1 className="text-3xl font-semibold mb-4">Status Unavailable</h1>
-          <p className="text-gray-600">We're having trouble loading the status information. Please try again later.</p>
+          <p className="text-gray-600">We&apos;re having trouble loading the status information. Please try again later.</p>
         </div>
       </div>
     )

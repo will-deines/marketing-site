@@ -23,13 +23,14 @@ export default function PricingSection() {
       },
     )
 
-    if (freeTierRef.current) {
-      observer.observe(freeTierRef.current)
+    const currentFreeTier = freeTierRef.current
+    if (currentFreeTier) {
+      observer.observe(currentFreeTier)
     }
 
     return () => {
-      if (freeTierRef.current) {
-        observer.unobserve(freeTierRef.current)
+      if (currentFreeTier) {
+        observer.unobserve(currentFreeTier)
       }
     }
   }, [])

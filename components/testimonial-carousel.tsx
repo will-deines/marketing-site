@@ -15,41 +15,41 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Alex",
-    company: "Roots & Resin",
-    quote: "I ditched Zendesk in a day—my first upsell paid for six months.",
+    name: "Emma",
+    company: "Bloom & Scent (Artisan Candles)",
+    quote: "I launched my brand from my kitchen table. Now I&apos;m doing $80K/month and Garrio handles support so I can focus on creating new collections that my customers actually want.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
   {
     id: 2,
     name: "Sarah",
-    company: "Urban Threads",
-    quote: "Customer response time went from hours to seconds. Sales are up 32%.",
+    company: "Urban Threads (Fashion)",
+    quote: "I was spending 4 hours a day on customer emails. Now that time goes to design and sourcing. Sales are up 32% because I&apos;m actually building the brand, not just managing it.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
   {
     id: 3,
-    name: "Michael",
-    company: "Eco Essentials",
-    quote: "The AI handles 80% of our customer questions. I can finally focus on growth.",
+    name: "Maya",
+    company: "Clean Beauty Co. (Skincare)",
+    quote: "As a bootstrapped founder, every dollar matters. Garrio pays for itself with the first few upsells, and I don&apos;t need to hire support staff until I hit 8 figures.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
   {
     id: 4,
     name: "Jessica",
-    company: "Handcrafted Haven",
-    quote: "Our conversion rate jumped 18% after implementing the chat feature.",
+    company: "Wild & Free (Sustainable Fashion)",
+    quote: "I built this brand to make a difference, not to answer 'What's your return policy?' 50 times a day. Now customers get instant answers and I get my evenings back.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
   {
     id: 5,
-    name: "David",
-    company: "Minimal Goods",
-    quote: "Setup took 10 minutes. The ROI was clear after the first week.",
+    name: "Rachel",
+    company: "Nourish Naturally (Food Products)",
+    quote: "Went from drowning in order status questions to actually having time for product development. My customers are happier and I&apos;m not working 80-hour weeks anymore.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
@@ -113,9 +113,9 @@ export default function TestimonialCarousel() {
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Loved by Indie Brands</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Real Stories from Bootstrapped Founders</h2>
         <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          See what Shopify store owners are saying about our platform
+          See how founders like you got their creative energy back and accelerated their growth
         </p>
 
         <div
@@ -128,7 +128,7 @@ export default function TestimonialCarousel() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="absolute w-full max-w-md bg-white rounded-xl shadow-lg p-6 transition-all duration-500 hover:shadow-xl"
+                className="absolute w-full max-w-md bg-white rounded-xl shadow-lg p-6 transition-all duration-500 hover:shadow-xl transform hover:-rotate-y-5 hover:-rotate-x-5"
                 style={{
                   ...getCardStyle(index),
                   transformStyle: "preserve-3d",
@@ -136,7 +136,6 @@ export default function TestimonialCarousel() {
                 onMouseEnter={() => {
                   setActiveIndex(index)
                 }}
-                className="absolute w-full max-w-md bg-white rounded-xl shadow-lg p-6 transition-all duration-500 hover:shadow-xl transform hover:-rotate-y-5 hover:-rotate-x-5"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
@@ -172,7 +171,7 @@ export default function TestimonialCarousel() {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-gray-700 italic">"{testimonial.quote}"</p>
+                  <p className="text-gray-700 italic">&ldquo;{testimonial.quote}&rdquo;</p>
                 </div>
               </div>
             ))}

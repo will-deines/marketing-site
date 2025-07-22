@@ -16,7 +16,7 @@ describe("ClosingCTA", () => {
     render(<ClosingCTA />);
 
     const heading = screen.getByRole("heading", {
-      name: /Start Free → Be Live in 3 Minutes/i,
+      name: /Your Customers Are Waiting/i,
     });
     expect(heading).toBeInTheDocument();
 

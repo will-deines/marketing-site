@@ -5,7 +5,7 @@ import * as React from "react"
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 6000
+const _TOAST_REMOVE_DELAY = 6000
 
 type ToasterToast = ToastProps & {
   id: string
@@ -14,7 +14,14 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement
 }
 
-const actionTypes = {
+type ActionType = {
+  ADD_TOAST: "ADD_TOAST",
+  UPDATE_TOAST: "UPDATE_TOAST",
+  DISMISS_TOAST: "DISMISS_TOAST",
+  REMOVE_TOAST: "REMOVE_TOAST",
+}
+
+const _actionTypes: ActionType = {
   ADD_TOAST: "ADD_TOAST",
   UPDATE_TOAST: "UPDATE_TOAST",
   DISMISS_TOAST: "DISMISS_TOAST",
@@ -52,23 +59,24 @@ interface State {
   toasts: ToasterToast[]
 }
 
-const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
+const _toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
 
-const addToRemoveQueue = (toastId: string) => {
-  if (toastTimeouts.has(toastId)) {
-    return
-  }
 
-  const timeout = setTimeout(() => {
-    toastTimeouts.delete(toastId)
-    dispatch({
-      type: "REMOVE_TOAST",
-      toastId: toastId,
-    })
-  }, TOAST_REMOVE_DELAY)
+// const addToRemoveQueue = (toastId: string) => {
+//   if (toastTimeouts.has(toastId)) {
+//     return
+//   }
 
-  toastTimeouts.set(toastId, timeout)
-}
+//   const timeout = setTimeout(() => {
+//     toastTimeouts.delete(toastId)
+//     dispatch({
+//       type: "REMOVE_TOAST",
+//       toastId: toastId,
+//     })
+//   }, TOAST_REMOVE_DELAY)
+
+//   toastTimeouts.set(toastId, timeout)
+// }
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {

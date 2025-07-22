@@ -17,34 +17,34 @@ const timelineSteps: TimelineStep[] = [
   {
     id: "q2-2023",
     date: "'23 Q2",
-    title: "The Problem",
-    description: "200 unread 'Where's my order?' e-mails. We felt the pain firsthand.",
-    imageSrc: "/cluttered-inbox.png",
-    imageAlt: "Cluttered inbox with hundreds of customer support emails",
+    title: "The Breaking Point",
+    description: "Our founder was spending weekends answering customer emails instead of designing new products. Something had to change.",
+    imageSrc: "/images/customer-support.jpg",
+    imageAlt: "Overwhelmed founder dealing with customer support",
   },
   {
     id: "q4-2023",
     date: "'23 Q4",
-    title: "The Prototype",
-    description: "Prototype LLM + Shopify APO integration in a weekend hackathon.",
-    imageSrc: "/sketch-notebook.png",
-    imageAlt: "Sketch notebook with early Garrio prototype designs",
+    title: "The 'What If' Moment",
+    description: "What if customer support could actually help founders grow their brands instead of stealing their creative time?",
+    imageSrc: "/images/ai-chat-blurred.jpg",
+    imageAlt: "AI chat interface helping with customer support",
   },
   {
     id: "q1-2024",
     date: "'24 Q1",
-    title: "First Success",
-    description: "First store cut ticket volume 60% in week 1.",
-    imageSrc: "/beta-testimonial.png",
-    imageAlt: "Beta customer testimonial showing 60% reduction in support tickets",
+    title: "The First Freedom",
+    description: "Our first beta founder went from 40 hours a week on support to 4 hours. She launched two new product lines that month.",
+    imageSrc: "/images/product-showcase.jpg",
+    imageAlt: "Founder showcasing new product designs",
   },
   {
     id: "now",
     date: "'25 Now",
-    title: "Scaling Impact",
-    description: "Garrio handles 1.2M chats/month — and counting.",
-    imageSrc: "/growth-chart.png",
-    imageAlt: "Growth chart showing Garrio's increasing impact",
+    title: "Founders Creating Again",
+    description: "Every month, Garrio frees up 50,000+ hours of founder time. That's time going back to creating, not answering tickets.",
+    imageSrc: "/images/growth-metrics.jpg",
+    imageAlt: "Growth metrics showing founder success",
   },
 ]
 
@@ -116,10 +116,11 @@ export default function FoundingStory() {
       })
     }
 
-    timelineRef.current.addEventListener("scroll", handleScroll)
+    const currentTimeline = timelineRef.current
+    currentTimeline.addEventListener("scroll", handleScroll)
     return () => {
-      if (timelineRef.current) {
-        timelineRef.current.removeEventListener("scroll", handleScroll)
+      if (currentTimeline) {
+        currentTimeline.removeEventListener("scroll", handleScroll)
       }
     }
   }, [isDesktop])
@@ -127,9 +128,9 @@ export default function FoundingStory() {
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Our Journey</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How We Got Here</h2>
         <p className="text-gray-600 text-center max-w-2xl mx-auto">
-          From identifying a problem to building a solution that helps thousands of Shopify merchants.
+          We started Garrio because we lived the founder struggle. Here&apos;s how we went from drowning in customer emails to helping thousands of founders reclaim their creative time.
         </p>
       </div>
 

@@ -11,29 +11,14 @@ interface Investor {
 
 const investors: Investor[] = [
   {
-    id: "tinyseed",
-    name: "TinySeed",
-    logo: "/investors/tinyseed.svg",
+    id: "simplisafe",
+    name: "SimpliSafe",
+    logo: "/investors/simplisafe-logo.png",
   },
   {
-    id: "shopify-commerce",
-    name: "Shopify Commerce Collective",
-    logo: "/investors/shopify-commerce.svg",
-  },
-  {
-    id: "klaviyo-angel",
-    name: "Klaviyo Angel",
-    logo: "/investors/klaviyo-angel.svg",
-  },
-  {
-    id: "loop-angel",
-    name: "Loop Angel",
-    logo: "/investors/loop-angel.svg",
-  },
-  {
-    id: "buffer-angel",
-    name: "Buffer Angel",
-    logo: "/investors/buffer-angel.svg",
+    id: "workshop",
+    name: "Workshop.dev",
+    logo: "/investors/workshop-dev-logo.png",
   },
 ]
 
@@ -62,7 +47,7 @@ export default function InvestorStrip() {
             </div>
           ))}
         </div>
-        <p className="text-center text-gray-600 mt-8">Backed by operators from Klaviyo, Loop & Buffer.</p>
+        <p className="text-center text-gray-600 mt-8">Backed by operators from SimpliSafe and Workshop.dev</p>
       </div>
     </section>
   )

@@ -99,12 +99,13 @@ export default function FeatureComparison({ competitor }: FeatureComparisonProps
       },
     )
 
-    Object.values(rowRefs.current).forEach((ref) => {
+    const currentRefs = rowRefs.current
+    Object.values(currentRefs).forEach((ref) => {
       if (ref) observer.observe(ref)
     })
 
     return () => {
-      Object.values(rowRefs.current).forEach((ref) => {
+      Object.values(currentRefs).forEach((ref) => {
         if (ref) observer.unobserve(ref)
       })
     }

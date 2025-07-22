@@ -23,19 +23,22 @@ export default function ClosingCTA() {
 
   return (
     <section className="relative w-full py-24 md:py-32 overflow-hidden">
-      {/* Video Background - Zoomed in version of hero video */}
+      {/* Image Background - Team collaboration scene */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover scale-120 filter brightness-50"
-          style={{ objectFit: "cover", transform: "scale(1.2)" }}
-        >
-          <source src="/background-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/images/team-collaboration-mobile.avif" type="image/avif" />
+          <source media="(max-width: 767px)" srcSet="/images/team-collaboration-mobile.webp" type="image/webp" />
+          <source media="(max-width: 767px)" srcSet="/images/team-collaboration-mobile.jpg" type="image/jpeg" />
+          <source srcSet="/images/team-collaboration.avif" type="image/avif" />
+          <source srcSet="/images/team-collaboration.webp" type="image/webp" />
+          <img 
+            src="/images/team-collaboration.jpg" 
+            alt="Team collaboration background" 
+            className="absolute inset-0 w-full h-full object-cover scale-120 filter brightness-50" 
+            style={{ objectFit: "cover", transform: "scale(1.2)" }}
+            loading="lazy"
+          />
+        </picture>
         <div className="absolute inset-0 bg-purple-900/60 z-10"></div>
       </div>
 
@@ -43,10 +46,10 @@ export default function ClosingCTA() {
       <div className="relative z-20 container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Start Free → Be Live in 3 Minutes
+            Your Customers Are Waiting
           </h2>
           <p className="text-white/90 text-lg md:text-xl max-w-2xl mb-10">
-            One-click installation. No credit card required. Start delighting your customers today.
+            Don't let another potential sale slip through the cracks. Set up Garrio in 3 minutes and start converting questions into customers today.
           </p>
 
           <Button

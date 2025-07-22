@@ -18,19 +18,22 @@ export default function PricingHero() {
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background - Zoomed to 150% */}
+      {/* Image Background - Growth metrics dashboard */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover filter blur-md scale-150"
-          style={{ objectFit: "cover" }}
-        >
-          <source src="/background-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/images/growth-metrics-mobile.avif" type="image/avif" />
+          <source media="(max-width: 767px)" srcSet="/images/growth-metrics-mobile.webp" type="image/webp" />
+          <source media="(max-width: 767px)" srcSet="/images/growth-metrics-mobile.jpg" type="image/jpeg" />
+          <source srcSet="/images/growth-metrics.avif" type="image/avif" />
+          <source srcSet="/images/growth-metrics.webp" type="image/webp" />
+          <img 
+            src="/images/growth-metrics.jpg" 
+            alt="Business growth metrics dashboard background" 
+            className="absolute inset-0 w-full h-full object-cover filter blur-md scale-150" 
+            style={{ objectFit: "cover" }}
+            loading="lazy"
+          />
+        </picture>
         <div className="absolute inset-0 bg-black/50 z-10"></div>
       </div>
 
@@ -38,7 +41,7 @@ export default function PricingHero() {
       <div className="relative z-20 container mx-auto px-4">
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Start Free. Scale When You're Ready.
+            Support tools for indie brands competing with giants
           </h1>
         </div>
 
@@ -49,7 +52,7 @@ export default function PricingHero() {
           }`}
         >
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Most stores launch in under 3 minutes.</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Instant, elevated customer experience that puts you totally in control—without wasting your time.</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white" asChild>
                 <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer">

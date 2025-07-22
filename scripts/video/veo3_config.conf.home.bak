@@ -1,0 +1,11 @@
+# Veo 3 Configuration File
+# Source this file to set API parameters
+
+# Required parameter (following Veo 3 best practices)
+PROMPT="A friendly coffee shop owner, woman in her 30s with warm smile wearing casual apron, camera positioned at eye level 8 feet away (that's where the camera is) in modern coffee shop with clean minimalist aesthetic, owner centered in frame looking directly at camera while helping customer with warm welcoming expression, coffee bags displayed on wooden shelves in background, barista working espresso machine to her left in soft focus, warm natural lighting from large windows with golden hour ambiance, gentle coffee shop sounds with espresso machine steaming and quiet conversation, shallow depth of field with beautifully blurred background. Professional lifestyle cinematography. Action ends during the customer still having an easy conversation with the store owner, leaving the audience with a feeling of familiarity, family, and warmth.  This is a static shot, with the owner maintaining her position in the foreground action begins with the conversation, builds to carefully passing an elegantly plated cappucino to the awaiting customer, and concludes with the owner smiling in the final frame brining her beauty and warmth to the audience as a climax.  The background action slowly adds to the beautiful pacing.  No text overlay."
+
+
+# Optional parameters (officially supported)
+ASPECT_RATIO="16:9"
+NEGATIVE_PROMPT="low quality, blurry, distorted"
+PERSON_GENERATION="allow_all"

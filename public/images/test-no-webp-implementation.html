@@ -1,0 +1,12 @@
+<!-- Responsive image implementation for test-no-webp -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="test-no-webp.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="test-no-webp-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="test-no-webp-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="test-no-webp.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

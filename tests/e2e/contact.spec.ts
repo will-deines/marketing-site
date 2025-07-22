@@ -12,7 +12,7 @@ test.describe('Contact Page', () => {
     // Check form fields
     await expect(page.locator('input[name="name"], input[placeholder*="name"]')).toBeVisible();
     await expect(page.locator('input[name="email"], input[type="email"]')).toBeVisible();
-    await expect(page.locator('input[name="company"], input[placeholder*="company"]')).toBeVisible();
+    await expect(page.locator('select[name="topic"]')).toBeVisible();
     await expect(page.locator('textarea[name="message"], textarea[placeholder*="message"]')).toBeVisible();
     
     // Check submit button
@@ -24,13 +24,9 @@ test.describe('Contact Page', () => {
     const submitButton = page.locator('button[type="submit"]');
     await submitButton.click();
     
-    // Check for validation messages or required field indicators
-    const nameInput = page.locator('input[name="name"], input[placeholder*="name"]');
-    const emailInput = page.locator('input[name="email"], input[type="email"]');
-    
-    // Fields should have required attribute or show validation
-    await expect(nameInput).toHaveAttribute('required', '');
-    await expect(emailInput).toHaveAttribute('required', '');
+    // Check for validation error messages (React Hook Form shows errors)
+    await expect(page.locator('text=/name is required/i')).toBeVisible();
+    await expect(page.locator('text=/email is required/i')).toBeVisible();
   });
 
   test('should validate email format', async ({ page }) => {
@@ -50,25 +46,14 @@ test.describe('Contact Page', () => {
     // Fill form with valid data
     await page.fill('input[name="name"], input[placeholder*="name"]', 'John Doe');
     await page.fill('input[name="email"], input[type="email"]', 'john@example.com');
-    await page.fill('input[name="company"], input[placeholder*="company"]', 'Test Company');
-    await page.fill('textarea[name="message"], textarea[placeholder*="message"]', 'This is a test message');
-    
-    // Intercept the API call
-    const responsePromise = page.waitForResponse(response => 
-      response.url().includes('/api/contact') && response.request().method() === 'POST'
-    );
+    await page.selectOption('select[name="topic"]', 'Support');
+    await page.fill('textarea[name="message"], textarea[placeholder*="message"]', 'This is a test message with more than 20 characters');
     
     // Submit form
     await page.locator('button[type="submit"]').click();
     
-    // Wait for response or success message
-    try {
-      const response = await responsePromise;
-      expect(response.status()).toBe(200);
-    } catch {
-      // If no API call, check for success message
-      await expect(page.locator('text=/thank you|success|sent/i')).toBeVisible({ timeout: 5000 });
-    }
+    // Check for success message (the form shows "Thanks! We'll be in touch within 24h")
+    await expect(page.locator('text=/thanks.*touch.*24h/i')).toBeVisible({ timeout: 5000 });
   });
 
   test('should display contact information if present', async ({ page }) => {

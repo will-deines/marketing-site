@@ -1,0 +1,20 @@
+<!-- Responsive poster implementation -->
+<picture>
+    <!-- Modern format for supported browsers -->
+    <source media="(min-width: 1024px)" srcset=".webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset=".jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src=".jpg" alt="Hero background" class="w-full h-full object-cover">
+</picture>
+
+<!-- For video poster attribute, use appropriate size -->
+<video poster=".jpg" autoplay muted loop playsinline preload="none">
+    <!-- video sources here -->
+</video>

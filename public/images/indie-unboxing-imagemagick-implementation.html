@@ -1,0 +1,15 @@
+<!-- Responsive image implementation for indie-unboxing-imagemagick -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    <source media="(min-width: 1024px)" srcset="indie-unboxing-imagemagick.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="indie-unboxing-imagemagick-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="indie-unboxing-imagemagick-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="indie-unboxing-imagemagick.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="indie-unboxing-imagemagick-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="indie-unboxing-imagemagick-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="indie-unboxing-imagemagick.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

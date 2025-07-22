@@ -18,7 +18,7 @@ export default function ClosingCTA() {
         <div className="flex flex-col items-center justify-center text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to reclaim your weekends?</h2>
           <p className="text-white/90 text-lg md:text-xl max-w-2xl mb-10">
-            Join thousands of Shopify merchants who've transformed their customer support experience.
+            Join thousands of Shopify merchants who&apos;ve transformed their customer support experience.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

@@ -275,7 +275,7 @@ export default function RoiCalculator() {
                       </span>
                     </div>
                     <div className="text-sm text-gray-600">
-                      That's {formatPercentage(results.roi[results.highestCompetitorCost.slug] || 0)} ROI vs doing it
+                      That&apos;s {formatPercentage(results.roi[results.highestCompetitorCost.slug] || 0)} ROI vs doing it
                       yourself.
                     </div>
                   </div>
@@ -417,7 +417,7 @@ export default function RoiCalculator() {
             <p className="font-medium mb-2">Calculation Methodology:</p>
             <p>
               This calculator estimates costs based on industry benchmarks and real customer data. Agent costs include
-              hourly wages for time spent handling tickets that aren't automated. Software costs are based on current
+              hourly wages for time spent handling tickets that aren&apos;t automated. Software costs are based on current
               published pricing. Automation rates are derived from public case studies and aggregate user data.
             </p>
           </div>

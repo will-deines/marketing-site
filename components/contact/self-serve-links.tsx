@@ -13,11 +13,11 @@ const links = [
     href: "/pricing#faq",
   },
   {
-    id: "live-demo",
-    title: "Try Our Live Demo",
-    description: "See Garrio in action on your store",
+    id: "features",
+    title: "Platform Features",
+    description: "Explore all Garrio capabilities",
     icon: <Play className="w-5 h-5" />,
-    href: "/live-demo",
+    href: "/features",
   },
   {
     id: "growth-library",

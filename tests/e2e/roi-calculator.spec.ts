@@ -9,8 +9,11 @@ test.describe('ROI Calculator Page', () => {
     // Check page title
     await expect(page).toHaveTitle(/ROI|Calculator|Return/i);
     
-    // Check for input fields
-    await expect(page.locator('input[type="number"], input[type="range"], select').first()).toBeVisible();
+    // Check for the slider (Radix UI slider uses div elements)
+    await expect(page.locator('[role="slider"], .slider, [data-orientation="horizontal"]').first()).toBeVisible();
+    
+    // Check for the chat volume display
+    await expect(page.locator('text=/chats/i').first()).toBeVisible();
   });
 
   test('should have all necessary input fields', async ({ page }) => {
@@ -68,8 +71,8 @@ test.describe('ROI Calculator Page', () => {
   });
 
   test('should have CTA after calculation', async ({ page }) => {
-    // Look for call-to-action buttons
-    const cta = page.locator('a:has-text("Get Started"), a:has-text("Start Free"), button:has-text("Try")');
+    // Look for call-to-action buttons (the actual CTA says "Save ... Now—Add Garrio Free")
+    const cta = page.locator('a:has-text("Save"), a:has-text("Add Garrio"), button:has-text("Start"), a:has-text("Get Started"), a:has-text("Start Free"), button:has-text("Try")');
     await expect(cta.first()).toBeVisible();
   });
 });

@@ -1,20 +1,62 @@
 [
   {
+    "slug": "garrio",
+    "name": "Garrio",
+    "tagline": "Done-for-you customer support for Shopify",
+    "pricing": {
+      "entryPlan": 0,
+      "entryTickets": 250,
+      "overagePerTicket": 0.1,
+      "freeTierDescription": "250 chats/mo",
+      "migrationCost": "Free"
+    },
+    "shopifyRating": 4.9,
+    "approxUsers": 2500,
+    "performance": {
+      "avgFirstResponseTime": "< 2 min",
+      "avgFirstResponseTimeNote": "",
+      "minutesSavedPerInteraction": "15 min",
+      "minutesSavedNote": "up to 100% done for you"
+    },
+    "featureFlags": {
+      "oneClickShopifyActions": true,
+      "oneClickShopifyActionsNote": "",
+      "doneForYouEscalations": true,
+      "builtInUpsells": true,
+      "builtInUpsellsNote": "",
+      "freeTier": true,
+      "doneForYouSupportService": true
+    },
+    "logo": "/logos/garrio.png",
+    "caseStudyIds": []
+  },
+  {
     "slug": "gorgias",
     "name": "Gorgias",
     "tagline": "Helpdesk built for ecommerce",
     "pricing": {
-      "entryPlan": 10,
-      "entryTickets": 50,
-      "overagePerTicket": 0.4
+      "entryPlan": 60,
+      "entryTickets": 350,
+      "overagePerTicket": 0.4,
+      "freeTierDescription": "$60/mo (350 tickets)",
+      "migrationCost": "$500+"
     },
-    "shopifyRating": 4.3,
-    "approxUsers": 15000,
+    "shopifyRating": 4.1,
+    "approxUsers": 21027,
+    "performance": {
+      "avgFirstResponseTime": "11.4 hrs",
+      "avgFirstResponseTimeNote": "email avg",
+      "minutesSavedPerInteraction": "9 min",
+      "minutesSavedNote": "60% AI deflection"
+    },
     "featureFlags": {
-      "oneClickShopifyActions": false,
+      "oneClickShopifyActions": true,
+      "oneClickShopifyActionsNote": "comprehensive",
       "doneForYouEscalations": false,
-      "builtInUpsells": true,
-      "freeTier": false
+      "builtInUpsells": "limited",
+      "builtInUpsellsNote": "Add-on",
+      "freeTier": false,
+      "doneForYouSupportService": false
     },
     "logo": "/logos/gorgias.png",
     "caseStudyIds": ["roots-resin", "urban-threads"]
@@ -24,17 +66,29 @@
     "name": "Zendesk",
     "tagline": "Enterprise customer service platform",
     "pricing": {
-      "entryPlan": 49,
+      "entryPlan": 55,
       "entryTickets": 100,
-      "overagePerTicket": 0.5
+      "overagePerTicket": 0.5,
+      "freeTierDescription": "$55/agent/mo",
+      "migrationCost": "$1000+"
     },
-    "shopifyRating": 3.8,
-    "approxUsers": 20000,
+    "shopifyRating": 2.9,
+    "approxUsers": 23650,
+    "performance": {
+      "avgFirstResponseTime": "7+ hrs",
+      "avgFirstResponseTimeNote": "industry avg",
+      "minutesSavedPerInteraction": "1 min",
+      "minutesSavedNote": "6% AI deflection"
+    },
     "featureFlags": {
-      "oneClickShopifyActions": false,
+      "oneClickShopifyActions": "limited",
+      "oneClickShopifyActionsNote": "basic sidebar",
       "doneForYouEscalations": false,
-      "builtInUpsells": false,
-      "freeTier": false
+      "builtInUpsells": "limited",
+      "builtInUpsellsNote": "Add-on",
+      "freeTier": false,
+      "doneForYouSupportService": "limited",
+      "doneForYouSupportServiceNote": "via partners"
     },
     "logo": "/logos/zendesk.png",
     "caseStudyIds": ["minimal-goods", "clay-oak"]
@@ -44,17 +98,27 @@
     "name": "Re:amaze",
     "tagline": "Customer messaging platform",
     "pricing": {
-      "entryPlan": 20,
+      "entryPlan": 29,
       "entryTickets": 75,
-      "overagePerTicket": 0.2
+      "overagePerTicket": 0.2,
+      "freeTierDescription": "$29/user/mo",
+      "migrationCost": "$250"
     },
-    "shopifyRating": 4.1,
+    "shopifyRating": 4.4,
     "approxUsers": 5000,
+    "performance": {
+      "avgFirstResponseTime": "4-12 hrs",
+      "avgFirstResponseTimeNote": "varies by plan",
+      "minutesSavedPerInteraction": "0 min",
+      "minutesSavedNote": "limited AI automation"
+    },
     "featureFlags": {
-      "oneClickShopifyActions": false,
+      "oneClickShopifyActions": "limited",
+      "oneClickShopifyActionsNote": "manual setup",
       "doneForYouEscalations": false,
       "builtInUpsells": false,
-      "freeTier": false
+      "freeTier": false,
+      "doneForYouSupportService": false
     },
     "logo": "/logos/reamaze.png",
     "caseStudyIds": ["eco-essentials", "vintage-vinyl"]
@@ -64,17 +128,27 @@
     "name": "Tidio",
     "tagline": "Live chat and chatbots",
     "pricing": {
-      "entryPlan": 18,
+      "entryPlan": 29,
       "entryTickets": 100,
-      "overagePerTicket": 0.15
+      "overagePerTicket": 0.15,
+      "freeTierDescription": "50 chats/mo free",
+      "migrationCost": "Self-service"
     },
-    "shopifyRating": 4.5,
-    "approxUsers": 8000,
+    "shopifyRating": 4.4,
+    "approxUsers": 31739,
+    "performance": {
+      "avgFirstResponseTime": "45 sec",
+      "avgFirstResponseTimeNote": "live chat",
+      "minutesSavedPerInteraction": "10 min",
+      "minutesSavedNote": "67% AI deflection"
+    },
     "featureFlags": {
       "oneClickShopifyActions": false,
       "doneForYouEscalations": false,
-      "builtInUpsells": false,
-      "freeTier": true
+      "builtInUpsells": "limited",
+      "builtInUpsellsNote": "basic",
+      "freeTier": true,
+      "doneForYouSupportService": false
     },
     "logo": "/logos/tidio.png",
     "caseStudyIds": ["glow-beauty", "tech-haven"]

@@ -16,7 +16,7 @@ export default function CoreFooter() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-[#E5E5E7]/80">AI sales & support built only for Shopify's indie merchants.</p>
+            <p className="text-sm text-[#E5E5E7]/80">AI sales & support built only for Shopify&apos;s indie merchants.</p>
           </div>
 
           {/* Product Column */}
@@ -154,7 +154,7 @@ export default function CoreFooter() {
                 </Link>
               </li>
             </ul>
-            <p className="text-xs text-[#E5E5E7]/60 mt-3">We're remote ☕️ 🌍</p>
+            <p className="text-xs text-[#E5E5E7]/60 mt-3">We&apos;re remote ☕️ 🌍</p>
           </div>
 
           {/* Legal Column */}

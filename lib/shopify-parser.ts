@@ -17,15 +17,15 @@ export async function parseShopifyUrl(url: string): Promise<ShopifyPageData> {
   // Validate URL
   try {
     new URL(url)
-  } catch (error) {
+  } catch {
     throw new Error("Invalid URL format")
   }
 
   // Check if it's a Shopify URL
   const isShopify = url.includes("myshopify.com") || url.includes("shopify.com")
   if (!isShopify) {
-    const error = new Error("That page doesn't look like a Shopify store.")
-    // @ts-ignore
+    const error = new Error("That page doesn't look like a Shopify store.") as Error & { code: string }
+    // @ts-expect-error - Adding custom property to Error object
     error.code = "non_shopify_url"
     throw error
   }
@@ -71,8 +71,8 @@ export async function parseShopifyUrl(url: string): Promise<ShopifyPageData> {
   } else {
     // Random error simulation (10% chance)
     if (Math.random() < 0.1) {
-      const error = new Error("Couldn't read product details—try another URL.")
-      // @ts-ignore
+      const error = new Error("Couldn't read product details—try another URL.") as Error & { code: string }
+      // @ts-expect-error - Adding custom property to Error object
       error.code = "missing_product_data"
       throw error
     }

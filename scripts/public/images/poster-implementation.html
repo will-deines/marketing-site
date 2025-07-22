@@ -1,0 +1,25 @@
+<!-- Responsive poster implementation -->
+<picture>
+    <!-- AVIF format (best compression) -->
+    <source media="(min-width: 1024px)" srcset="homepage-hero.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="homepage-hero-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="homepage-hero-mobile.avif" type="image/avif">
+    
+    <!-- WebP format (good compression) -->
+    <source media="(min-width: 1024px)" srcset="homepage-hero.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="homepage-hero-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="homepage-hero-mobile.webp" type="image/webp">
+    
+    <!-- JPEG fallback -->
+    <source media="(min-width: 1024px)" srcset="homepage-hero.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="homepage-hero-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="homepage-hero-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="homepage-hero.jpg" alt="Hero background" class="w-full h-full object-cover">
+</picture>
+
+<!-- For video poster attribute, use appropriate size -->
+<video poster="homepage-hero.jpg" autoplay muted loop playsinline preload="none">
+    <!-- video sources here -->
+</video>

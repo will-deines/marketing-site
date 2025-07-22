@@ -10,7 +10,7 @@ interface CostChartProps {
   timePeriod: "monthly" | "annual"
 }
 
-export default function CostChart({ costs, apps, formatCurrency, timePeriod }: CostChartProps) {
+export default function CostChart({ costs, apps, formatCurrency }: CostChartProps) {
   const [activeBar, setActiveBar] = useState<string | null>(null)
 
   // Prepare data for chart
@@ -25,7 +25,7 @@ export default function CostChart({ costs, apps, formatCurrency, timePeriod }: C
     .sort((a, b) => a.total - b.total)
 
   // Custom tooltip
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: Record<string, unknown> }> }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload
       return (

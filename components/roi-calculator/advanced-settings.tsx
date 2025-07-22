@@ -188,7 +188,7 @@ export default function AdvancedSettings({
                 </TooltipTrigger>
                 <TooltipContent className="max-w-xs p-2">
                   <p className="text-sm">
-                    Garrio's AI suggests relevant products during support conversations, increasing average order value.
+                    Garrio&apos;s AI suggests relevant products during support conversations, increasing average order value.
                   </p>
                 </TooltipContent>
               </Tooltip>

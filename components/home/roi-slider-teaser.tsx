@@ -6,19 +6,33 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import ClaimsModal from "@/components/ui/claims-modal"
 
-// ROI calculation function (simplified version of the full calculator)
-const calculateMonthlySavings = (chatVolume: number): number => {
-  const automationRate = 0.98
-  const ticketsPerHour = 20
-  const agentWage = 14
-
-  const humanTickets = chatVolume * (1 - automationRate)
-  const agentHours = humanTickets / ticketsPerHour
-  const agentCost = agentHours * agentWage
-  const softwareCost = 0 // Free tier covers up to 250 chats
-
-  return Math.round(agentCost + softwareCost)
+// ROI calculation function - calculates both time and money savings
+const calculateSavings = (interactions: number) => {
+  const automationRate = 0.85 // 85% of interactions handled by AI
+  const avgTimePerInteraction = 4 // minutes per interaction
+  const agentWage = 14 // USD per hour
+  
+  const automatedInteractions = interactions * automationRate
+  const humanInteractions = interactions * (1 - automationRate)
+  
+  // Time savings calculation
+  const totalTimeWithoutAI = interactions * avgTimePerInteraction // minutes
+  const timeWithAI = humanInteractions * avgTimePerInteraction // only human interactions take time
+  const timeSaved = totalTimeWithoutAI - timeWithAI // minutes saved
+  const hoursSaved = Math.round(timeSaved / 60 * 10) / 10 // hours, rounded to 1 decimal
+  
+  // Money savings calculation  
+  const costWithoutAI = (totalTimeWithoutAI / 60) * agentWage
+  const costWithAI = (timeWithAI / 60) * agentWage
+  const moneySaved = Math.round(costWithoutAI - costWithAI)
+  
+  return {
+    hoursSaved,
+    moneySaved,
+    automatedInteractions: Math.round(automatedInteractions)
+  }
 }
 
 // Animation utility for smooth number transitions
@@ -45,34 +59,50 @@ const animateValue = (start: number, end: number, duration: number, callback: (v
 }
 
 export default function ROISliderTeaser() {
-  const [chatVolume, setChatVolume] = useState(250)
-  const [displayedSavings, setDisplayedSavings] = useState(0)
+  const [interactions, setInteractions] = useState(250)
+  const [displayedHours, setDisplayedHours] = useState(0)
+  const [displayedMoney, setDisplayedMoney] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const previousSavings = useRef(0)
+  const previousHours = useRef(0)
+  const previousMoney = useRef(0)
 
-  // Calculate initial savings
+  // Calculate initial savings on mount
   useEffect(() => {
-    const savings = calculateMonthlySavings(chatVolume)
-    setDisplayedSavings(savings)
-    previousSavings.current = savings
-  }, [])
+    const savings = calculateSavings(interactions)
+    setDisplayedHours(savings.hoursSaved)
+    setDisplayedMoney(savings.moneySaved)
+    previousHours.current = savings.hoursSaved
+    previousMoney.current = savings.moneySaved
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps -- interactions excluded: only for initial calc, updates handled by handleSliderChange with animation
 
   // Handle slider change with animated transition
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newChatVolume = Number.parseInt(e.target.value, 10)
-    setChatVolume(newChatVolume)
+    const newInteractions = Number.parseInt(e.target.value, 10)
+    setInteractions(newInteractions)
 
-    const newSavings = calculateMonthlySavings(newChatVolume)
-    animateValue(previousSavings.current, newSavings, 200, (value) => {
-      setDisplayedSavings(value)
+    const newSavings = calculateSavings(newInteractions)
+    
+    // Animate hours saved
+    animateValue(previousHours.current, newSavings.hoursSaved, 200, (value) => {
+      setDisplayedHours(Math.round(value * 10) / 10)
     })
-    previousSavings.current = newSavings
+    
+    // Animate money saved
+    animateValue(previousMoney.current, newSavings.moneySaved, 200, (value) => {
+      setDisplayedMoney(Math.round(value))
+    })
+    
+    previousHours.current = newSavings.hoursSaved
+    previousMoney.current = newSavings.moneySaved
 
     // Track analytics event (debounced)
     const timer = setTimeout(() => {
-      // Analytics tracking would go here
-      console.log("roi_slider_change", { chats: newChatVolume, monthlySaving: newSavings })
+      console.log("roi_slider_change", { 
+        interactions: newInteractions, 
+        hoursSaved: newSavings.hoursSaved, 
+        moneySaved: newSavings.moneySaved 
+      })
     }, 200)
 
     return () => clearTimeout(timer)
@@ -81,7 +111,11 @@ export default function ROISliderTeaser() {
   // Track CTA click
   const handleCTAClick = () => {
     // Analytics tracking
-    console.log("roi_teaser_cta_click", { chats: chatVolume, monthlySaving: displayedSavings })
+    console.log("roi_teaser_cta_click", { 
+      interactions: interactions, 
+      hoursSaved: displayedHours, 
+      moneySaved: displayedMoney 
+    })
   }
 
   // Intersection Observer for fade-in effect
@@ -112,19 +146,27 @@ export default function ROISliderTeaser() {
       )}
     >
       <div className="max-w-xl mx-auto">
-        <h3 className="text-3xl font-semibold text-center mb-8">How much could you save?</h3>
+        <h3 className="text-3xl font-semibold text-center mb-4">What if you could get 5 hours of your week back?</h3>
+        <p className="text-center text-gray-600 mb-8">Time you&apos;re not answering the same questions is time you can spend on product development, marketing, or actually taking a break.</p>
 
         <div className="w-full">
+          {/* Slider with clear labeling */}
+          <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <span>50 interactions/month</span>
+            <span className="font-medium">{interactions} customer interactions per month</span>
+            <span>2,000 interactions/month</span>
+          </div>
+          
           <input
             type="range"
             id="roi-slider"
             min={50}
             max={2000}
             step={50}
-            value={chatVolume}
+            value={interactions}
             onChange={handleSliderChange}
             className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
-            aria-valuetext={`${chatVolume} chats per month`}
+            aria-valuetext={`${interactions} customer interactions per month`}
             style={
               {
                 // Custom styling for the slider thumb
@@ -134,23 +176,45 @@ export default function ROISliderTeaser() {
             }
           />
 
-          <div className="flex flex-col items-center mt-6">
-            <div
-              className="text-5xl md:text-5xl font-bold text-[hsl(var(--brand-primary))] tabular-nums"
-              aria-live="polite"
-            >
-              ${displayedSavings} <span className="text-xl font-medium">/mo</span>
+          <div className="flex flex-col items-center mt-8">
+            {/* Time and Money Savings Display */}
+            <div className="grid grid-cols-2 gap-8 w-full max-w-md">
+              <div className="text-center">
+                <div
+                  className="text-3xl md:text-4xl font-bold text-[hsl(var(--brand-primary))] tabular-nums"
+                  aria-live="polite"
+                >
+                  {displayedHours}h
+                </div>
+                <p className="text-sm text-gray-600 mt-1">hours saved</p>
+              </div>
+              
+              <div className="text-center">
+                <div
+                  className="text-3xl md:text-4xl font-bold text-[hsl(var(--brand-primary))] tabular-nums"
+                  aria-live="polite"
+                >
+                  ${displayedMoney}
+                </div>
+                <p className="text-sm text-gray-600 mt-1">cost saved</p>
+              </div>
             </div>
 
-            <p className="text-sm text-gray-600 mt-2">Saved every month vs hiring a $14/h agent</p>
+            <div className="text-center">
+              <p className="text-sm text-gray-600 mt-4">Time and money you save each month vs. handling every customer question yourself</p>
+              <ClaimsModal 
+                title="ROI Calculation Methodology"
+                size="md"
+              />
+            </div>
 
             <Button
               className="h-12 px-8 mt-6 bg-[hsl(var(--brand-primary))] text-white rounded-lg font-medium w-full md:w-auto hover:scale-103 hover:shadow-lg transition-all duration-150"
               asChild
               onClick={handleCTAClick}
-              aria-label={`Open full ROI calculator with ${chatVolume} chats`}
+              aria-label={`Open full ROI calculator with ${interactions} interactions`}
             >
-              <Link href={`/roi-calculator?chats=${chatVolume}&utm_source=home_roi_teaser`}>See your full ROI →</Link>
+              <Link href={`/roi-calculator?interactions=${interactions}&utm_source=home_roi_teaser`}>See your full ROI →</Link>
             </Button>
           </div>
         </div>

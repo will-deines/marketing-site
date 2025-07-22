@@ -35,9 +35,10 @@ export default function CinematicHero() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectFit: "cover" }}
+          poster="/images/about-hero.jpg"
         >
-          {/* Only include source if we have a video */}
-          <source src="/founder-closing-laptop.mp4" type="video/mp4" />
+          <source src="/videos/about-hero.av1.webm" type="video/webm" />
+          <source src="/videos/about-hero.h265.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Gradient Overlay */}
@@ -52,10 +53,10 @@ export default function CinematicHero() {
           }`}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Give founders their Fridays back.
+            You launched to build something that matters.
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
-            We built Garrio because answering "Where's my order?" at midnight is broken.
+            We built Garrio because we know what it&apos;s like to chase your dream, bootstrap a brand, and get buried under &ldquo;Where&rsquo;s my order?&rdquo; messages.
           </p>
           <Button
             variant="outline"

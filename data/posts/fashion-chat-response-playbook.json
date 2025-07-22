@@ -10,7 +10,7 @@
   "author": "Eli Park",
   "hero": "/covers/fashion-chat-playbook.png",
   "ogImage": "/og/fashion-chat-playbook.png",
-  "canonical": "https://garrio.com/blog/fashion-chat-response-playbook",
+  "canonical": "https://garrio.ai/blog/fashion-chat-response-playbook",
 
   "content": {
     "intro": "⚡ **Quick stat:** 80 % of fashion shoppers abandon chat if they wait more than two minutes. In fast-moving DTC apparel, slow support is silent churn.\n\nThis playbook shows you how to slash first-reply time to under 30 seconds in three laser-focused steps—no extra headcount, no custom code.",
@@ -21,11 +21,11 @@
       },
       {
         "h2": "2. Launch Instant Answers in Minutes—not Sprints",
-        "body": "With Garrio's Shopify-native AI you paste your size-chart URL, hit **Train**, and publish. No NL training loops or JSON fiddling.\n\n```bash\n# 1-click CLI example\ngarrio train --source https://yourstore.com/size-chart\n```"
+        "body": "With Garrio's Shopify-native AI you paste your size-chart URL, hit **Train**, and publish. No NL training loops or JSON fiddling.\n\n```bash\n# One-click CLI example\ngarrio train --source https://yourstore.com/size-chart\n```"
       },
       {
         "h2": "3. Route Edge-Cases to Action—not Dead Ends",
-        "body": "Set an automation rule: *If query contains `damage`, escalate to Garrio human agents*. Our team resolves these in <4 hours on average—keeping founders out of the inbox."
+        "body": "Set an automation rule: *If query contains `damage`, escalate to Garrio human agents*. Our team resolves these in under 4 hours on average—keeping founders out of the inbox."
       }
     ],
     "cta": {

@@ -201,7 +201,21 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,6 +231,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -273,7 +301,7 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -298,7 +326,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -356,46 +384,60 @@ interface FAQItem {
 &nbsp;
 const faqs: FAQItem[] = [
   {
-    id: "site-speed",
-    question: "Will this slow down my site?",
+    id: "setup-time",
+    question: "How long does setup take?",
     answer:
-      "&lt; 30 kB script, loads async after DOMContentLoaded. Our chat widget is designed to have minimal impact on your site's performance and won't affect your Core Web Vitals scores.",
-    icon: &lt;Zap className="h-5 w-5 text-purple-600" /&gt;,
-  },
-  {
-    id: "turn-off-ai",
-    question: "Can I turn off the AI at night?",
-    answer:
-      "Yes—use store hours or a command in the admin. You can set specific hours of operation or manually toggle the AI assistant on and off as needed.",
+      "Just 5 minutes. Install our Shopify app, and our AI starts answering customer questions immediately. No training, no configuration—it works right out of the box with industry-specific knowledge for your business.",
     icon: &lt;Clock className="h-5 w-5 text-purple-600" /&gt;,
   },
   {
-    id: "data-security",
-    question: "How is my store data protected?",
+    id: "ai-accuracy",
+    question: "How accurate is the AI for my industry?",
     answer:
-      "We use enterprise-grade encryption and never store customer payment details. All data is processed in compliance with GDPR and CCPA regulations.",
-    icon: &lt;Shield className="h-5 w-5 text-purple-600" /&gt;,
+      "Our AI is pre-trained on industry-specific datasets for e-commerce, SaaS, and service businesses. It understands your products, policies, and common customer questions from day one, getting smarter with every conversation.",
+    icon: &lt;Zap className="h-5 w-5 text-purple-600" /&gt;,
   },
   {
-    id: "roi-calculation",
-    question: "How do I measure the ROI?",
+    id: "human-backup",
+    question: "What happens when AI can't help?",
     answer:
-      "Our dashboard shows conversion lift, support time saved, and upsell revenue. You can also integrate with your existing analytics tools for deeper insights.",
-    icon: &lt;BarChart className="h-5 w-5 text-purple-600" /&gt;,
+      "On our Essentials and Professional plans, human agents automatically handle complex issues 24/7. They're trained in your industry and have access to your store data to provide expert support.",
+    icon: &lt;HelpCircle className="h-5 w-5 text-purple-600" /&gt;,
   },
   {
-    id: "pricing-changes",
-    question: "Will pricing change as I grow?",
+    id: "pricing-model",
+    question: "How does pricing work?",
     answer:
-      "Our tiered pricing scales with your business. You'll only pay for what you use, and we'll notify you before you reach any usage limits.",
+      "Start free with 250 AI chats per month. Starter plan gives you 350 chats for $10 credit. Essentials ($200/mo) and Professional ($500/mo) add human agent support. Pay only for what you use with transparent pricing.",
     icon: &lt;Coins className="h-5 w-5 text-purple-600" /&gt;,
   },
   {
-    id: "support",
-    question: "What kind of support do you offer?",
+    id: "data-security",
+    question: "Is my customer data secure?",
     answer:
-      "Free tier includes community support, while paid plans include email support with 24-hour response times. Scale plan includes priority support with 4-hour SLA.",
-    icon: &lt;HelpCircle className="h-5 w-5 text-purple-600" /&gt;,
+      "Yes. We're SOC-2 certified with enterprise-grade encryption. We never store payment details and all data processing complies with GDPR and CCPA regulations. Your customer data stays protected.",
+    icon: &lt;Shield className="h-5 w-5 text-purple-600" /&gt;,
+  },
+  {
+    id: "channels-supported",
+    question: "What channels does it support?",
+    answer:
+      "Currently we support website chat, email, and are expanding to Meta, TikTok, and SMS. All conversations flow into one unified inbox so you never miss a customer inquiry.",
+    icon: &lt;BarChart className="h-5 w-5 text-purple-600" /&gt;,
+  },
+  {
+    id: "scaling-business",
+    question: "Will it handle my business growth?",
+    answer:
+      "Absolutely. Our infrastructure automatically scales from startup to enterprise volumes. Handle seasonal spikes, expand to new channels, and grow your business without growing support headaches.",
+    icon: &lt;Zap className="h-5 w-5 text-purple-600" /&gt;,
+  },
+  {
+    id: "roi-measurement",
+    question: "How do I measure the ROI?",
+    answer:
+      "Our dashboard tracks response times (from hours to seconds), AI resolution rates (typically 70%+), cost savings vs traditional support, and revenue from AI-driven upsells and cross-sells.",
+    icon: &lt;BarChart className="h-5 w-5 text-purple-600" /&gt;,
   },
 ]
 &nbsp;
@@ -430,7 +472,7 @@ export default function FAQSection() {
         &lt;div className="text-center mb-12"&gt;
           &lt;h2 className="text-3xl md:text-4xl font-bold mb-4"&gt;Frequently Asked Questions&lt;/h2&gt;
           &lt;p className="text-gray-600 max-w-2xl mx-auto"&gt;
-            Get answers to common questions about our platform and how it can help your Shopify store.
+            Everything you need to know about setting up and scaling your customer support with Garrio.
           &lt;/p&gt;
         &lt;/div&gt;
 &nbsp;
@@ -451,7 +493,7 @@ export default function FAQSection() {
                 )}
               &lt;/button&gt;
               {openItems.includes(faq.id) &amp;&amp; (
-                &lt;div id={`faq-answer-${faq.id}`} className="p-4 bg-white rounded-b-lg border-t border-gray-100"&gt;
+                &lt;div id={`faq-answer-${faq.id}`} className="mt-2 p-4 bg-white rounded-b-lg border-t border-gray-100"&gt;
                   &lt;div className="flex"&gt;
                     &lt;div
                       className="mr-3 transform transition-transform duration-500 ease-in-out translate-x-0 opacity-100"
@@ -484,7 +526,7 @@ export default function FAQSection() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-17T01:39:43.579Z
+                at 2025-07-21T23:56:18.793Z
             </div>
         <script src="../prettify.js"></script>
         <script>

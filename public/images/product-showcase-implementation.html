@@ -1,0 +1,18 @@
+<!-- Responsive image implementation for product-showcase -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    <source media="(min-width: 1024px)" srcset="product-showcase.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="product-showcase-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="product-showcase-mobile.avif" type="image/avif">
+    <source media="(min-width: 1024px)" srcset="product-showcase.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="product-showcase-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="product-showcase-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="product-showcase.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="product-showcase-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="product-showcase-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="product-showcase.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

@@ -7,15 +7,15 @@ import Link from "next/link"
 import { plans } from "@/lib/pricing-data"
 
 export default function PlanCards() {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  const [, setHoveredCard] = useState<string | null>(null)
 
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose the right plan for your store</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Support that works right out of the box</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Start with our generous free tier and scale as your business grows. No credit card required to get started.
+            Start free with industry-tuned AI that understands your business from day one. Scale to human backup when you&apos;re ready.
           </p>
         </div>
 
@@ -54,19 +54,13 @@ export default function PlanCards() {
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <div
-                      className={`transition-transform duration-300 ${
-                        hoveredCard === plan.id ? "translate-x-0" : "-translate-x-2"
-                      }`}
-                    >
-                      <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                    </div>
+                    <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                     <span>{feature.title}</span>
                   </li>
                 ))}
               </ul>
 
-              {plan.extraChatPrice && <p className="text-sm text-gray-500 mb-6">Extra chats: {plan.extraChatPrice}</p>}
+              {plan.extraChatPrice && plan.id !== "free" && <p className="text-sm text-gray-500 mb-6">Extra chats: {plan.extraChatPrice}</p>}
 
               <Button
                 className={`w-full ${

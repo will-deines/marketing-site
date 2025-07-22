@@ -29,7 +29,7 @@ export default function NewsletterForm() {
 
       setIsSuccess(true)
       setEmail("")
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)

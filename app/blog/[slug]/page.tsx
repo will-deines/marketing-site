@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getPostBySlug, getRelatedPosts, formatDate } from "@/lib/blog-utils"
+import Header from "@/components/header"
 import BlogPost from "@/components/blog/blog-post"
 import RelatedPosts from "@/components/blog/related-posts"
 import Footer from "@/components/footer"
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!post) {
     return {
       title: "Post Not Found",
-      description: "The post you're looking for doesn't exist.",
+      description: "The post you're looking for doesn&apos;t exist.",
     }
   }
 
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://garrio.com/blog/${post.slug}`,
+      url: `https://garrio.ai/blog/${post.slug}`,
       siteName: "Garrio",
       images: [
         {
@@ -65,7 +66,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    image: [`https://garrio.com${post.hero}`],
+    image: [`https://garrio.ai${post.hero}`],
     datePublished: post.publishDate,
     dateModified: post.publishDate,
     author: {
@@ -77,13 +78,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       name: "Garrio",
       logo: {
         "@type": "ImageObject",
-        url: "https://garrio.com/logo.png",
+        url: "https://garrio.ai/logo.png",
       },
     },
     description: post.excerpt,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://garrio.com/blog/${post.slug}`,
+      "@id": `https://garrio.ai/blog/${post.slug}`,
     },
   }
 
@@ -93,6 +94,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       <div className="flex min-h-screen flex-col">
+        <Header />
         <main className="flex-1">
           <BlogPost post={post} formattedDate={formattedDate} />
 

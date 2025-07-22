@@ -1,0 +1,4 @@
+Generated at: Mon Jul 21 12:19:54 PM EDT 2025
+Prompt: A professional lifestyle photograph of an indie shop owner in her early 30s with warm smile, unboxing multiple packages in a modern minimalist workspace, natural lighting from large windows, clean aesthetic with wooden desk and white walls, shipping packages and materials artfully arranged, woman wearing casual but professional clothing like a soft sweater, packages of various sizes from small jewelry boxes to medium shipping boxes, some opened revealing beautiful handmade products inside, warm golden hour lighting creating soft shadows, shot with professional camera equipment using shallow depth of field, background softly blurred, lifestyle photography style, high resolution commercial photography, no text overlay
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

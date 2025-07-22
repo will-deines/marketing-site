@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import ClaimsModal from "@/components/ui/claims-modal"
 
 interface Metric {
   value: number
@@ -47,13 +48,14 @@ export default function OutcomeBanner() {
       },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentSection = sectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSection) {
+        observer.unobserve(currentSection)
       }
     }
   }, [])
@@ -114,6 +116,14 @@ export default function OutcomeBanner() {
               <p className="text-white/80 mt-2">{metric.label}</p>
             </div>
           ))}
+        </div>
+        
+        {/* Claims Sources */}
+        <div className="text-center mt-6">
+          <ClaimsModal 
+            title="Outcome Metrics Sources"
+            size="md"
+          />
         </div>
       </div>
     </section>

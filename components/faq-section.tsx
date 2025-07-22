@@ -15,46 +15,60 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    id: "site-speed",
-    question: "Will this slow down my site?",
+    id: "setup-time",
+    question: "How long does setup take?",
     answer:
-      "< 30 kB script, loads async after DOMContentLoaded. Our chat widget is designed to have minimal impact on your site's performance and won't affect your Core Web Vitals scores.",
-    icon: <Zap className="h-5 w-5 text-purple-600" />,
-  },
-  {
-    id: "turn-off-ai",
-    question: "Can I turn off the AI at night?",
-    answer:
-      "Yes—use store hours or a command in the admin. You can set specific hours of operation or manually toggle the AI assistant on and off as needed.",
+      "Just 5 minutes. Install our Shopify app, and our AI starts answering customer questions immediately. No training, no configuration—it works right out of the box with industry-specific knowledge for your business.",
     icon: <Clock className="h-5 w-5 text-purple-600" />,
   },
   {
-    id: "data-security",
-    question: "How is my store data protected?",
+    id: "ai-accuracy",
+    question: "How accurate is the AI for my industry?",
     answer:
-      "We use enterprise-grade encryption and never store customer payment details. All data is processed in compliance with GDPR and CCPA regulations.",
-    icon: <Shield className="h-5 w-5 text-purple-600" />,
+      "Our AI is pre-trained on industry-specific datasets for e-commerce, SaaS, and service businesses. It understands your products, policies, and common customer questions from day one, getting smarter with every conversation.",
+    icon: <Zap className="h-5 w-5 text-purple-600" />,
   },
   {
-    id: "roi-calculation",
-    question: "How do I measure the ROI?",
+    id: "human-backup",
+    question: "What happens when AI can&apos;t help?",
     answer:
-      "Our dashboard shows conversion lift, support time saved, and upsell revenue. You can also integrate with your existing analytics tools for deeper insights.",
-    icon: <BarChart className="h-5 w-5 text-purple-600" />,
+      "On our Essentials and Professional plans, human agents automatically handle complex issues 24/7. They're trained in your industry and have access to your store data to provide expert support.",
+    icon: <HelpCircle className="h-5 w-5 text-purple-600" />,
   },
   {
-    id: "pricing-changes",
-    question: "Will pricing change as I grow?",
+    id: "pricing-model",
+    question: "How does pricing work?",
     answer:
-      "Our tiered pricing scales with your business. You'll only pay for what you use, and we'll notify you before you reach any usage limits.",
+      "Start free with 250 AI chats per month. Starter plan gives you 350 chats for $10 credit. Essentials ($200/mo) and Professional ($500/mo) add human agent support. Pay only for what you use with transparent pricing.",
     icon: <Coins className="h-5 w-5 text-purple-600" />,
   },
   {
-    id: "support",
-    question: "What kind of support do you offer?",
+    id: "data-security",
+    question: "Is my customer data secure?",
     answer:
-      "Free tier includes community support, while paid plans include email support with 24-hour response times. Scale plan includes priority support with 4-hour SLA.",
-    icon: <HelpCircle className="h-5 w-5 text-purple-600" />,
+      "Yes. We're SOC-2 certified with enterprise-grade encryption. We never store payment details and all data processing complies with GDPR and CCPA regulations. Your customer data stays protected.",
+    icon: <Shield className="h-5 w-5 text-purple-600" />,
+  },
+  {
+    id: "channels-supported",
+    question: "What channels does it support?",
+    answer:
+      "Currently we support website chat, email, and are expanding to Meta, TikTok, and SMS. All conversations flow into one unified inbox so you never miss a customer inquiry.",
+    icon: <BarChart className="h-5 w-5 text-purple-600" />,
+  },
+  {
+    id: "scaling-business",
+    question: "Will it handle my business growth?",
+    answer:
+      "Absolutely. Our infrastructure automatically scales from startup to enterprise volumes. Handle seasonal spikes, expand to new channels, and grow your business without growing support headaches.",
+    icon: <Zap className="h-5 w-5 text-purple-600" />,
+  },
+  {
+    id: "roi-measurement",
+    question: "How do I measure the ROI?",
+    answer:
+      "Our dashboard tracks response times (from hours to seconds), AI resolution rates (typically 70%+), cost savings vs traditional support, and revenue from AI-driven upsells and cross-sells.",
+    icon: <BarChart className="h-5 w-5 text-purple-600" />,
   },
 ]
 
@@ -89,7 +103,7 @@ export default function FAQSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Get answers to common questions about our platform and how it can help your Shopify store.
+            Everything you need to know about setting up and scaling your customer support with Garrio.
           </p>
         </div>
 
@@ -110,7 +124,7 @@ export default function FAQSection() {
                 )}
               </button>
               {openItems.includes(faq.id) && (
-                <div id={`faq-answer-${faq.id}`} className="p-4 bg-white rounded-b-lg border-t border-gray-100">
+                <div id={`faq-answer-${faq.id}`} className="mt-2 p-4 bg-white rounded-b-lg border-t border-gray-100">
                   <div className="flex">
                     <div
                       className="mr-3 transform transition-transform duration-500 ease-in-out translate-x-0 opacity-100"

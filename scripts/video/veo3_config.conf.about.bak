@@ -1,0 +1,10 @@
+# Veo 3 Configuration File
+# Source this file to set API parameters
+
+# Required parameter (following Veo 3 best practices)
+PROMPT="A father in his mid-30s with warm smile wearing casual weekend clothing, camera positioned at eye level 8 feet away (that's where the camera is) sitting at wooden dining table with his 5-year-old daughter, both centered in frame focused on building colorful Lego blocks together, father gently guiding and encouraging while child concentrates with delight, cozy modern home interior with natural lighting streaming through large windows creating golden hour warmth, soft furnishings and family photos visible in beautifully blurred background, quiet peaceful home atmosphere with gentle sounds of blocks clicking together, shallow depth of field emphasizing the connection between father and child. Professional lifestyle cinematography. Action progresses through building activity with natural pauses and smiles, creating feeling of precious time together and work-life balance achieved. This is a static shot, with subjects maintaining their seated positions while the building activity and expressions provide gentle movement and pacing. No text overlay."
+
+# Optional parameters (officially supported)
+ASPECT_RATIO="16:9"
+NEGATIVE_PROMPT="low quality, blurry, distorted"
+PERSON_GENERATION="allow_all"

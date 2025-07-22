@@ -174,9 +174,9 @@ export function generateStructuredData(posts: Post[]) {
   const itemListElements = posts.slice(0, 10).map((post, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `https://garrio.com/blog/${post.slug}`,
+    url: `https://garrio.ai/blog/${post.slug}`,
     name: post.title,
-    image: `https://garrio.com${post.hero}`,
+    image: `https://garrio.ai${post.hero}`,
   }))
 
   return {

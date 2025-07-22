@@ -183,7 +183,7 @@ export default function TestimonialCarousel({ caseStudyIds, competitorName }: Te
                     <div className="bg-purple-100 text-purple-800 font-bold px-3 py-1 rounded-full text-sm inline-block mb-3">
                       {testimonial.metric}
                     </div>
-                    <p className="text-gray-800 text-lg italic">"{testimonial.quote}"</p>
+                    <p className="text-gray-800 text-lg italic">&ldquo;{testimonial.quote}&rdquo;</p>
                   </div>
                 </div>
               </div>

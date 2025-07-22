@@ -1,0 +1,18 @@
+<!-- Responsive image implementation for human-support -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    <source media="(min-width: 1024px)" srcset="human-support.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="human-support-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="human-support-mobile.avif" type="image/avif">
+    <source media="(min-width: 1024px)" srcset="human-support.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="human-support-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="human-support-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="human-support.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="human-support-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="human-support-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="human-support.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

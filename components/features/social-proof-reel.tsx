@@ -28,7 +28,7 @@ const testimonials: Testimonial[] = [
     person: "Sarah K.",
     plan: "Growth",
     metric: "Response time ↓ 70%",
-    quote: "We stopped drowning in tickets. Our team can finally focus on growth.",
+    quote: "Finally, I can focus on designing instead of answering 'Where's my order?' emails.",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ const testimonials: Testimonial[] = [
     person: "David L.",
     plan: "Scale",
     metric: "18 hrs saved/week",
-    quote: "Setup took minutes, the ROI was clear after the first week.",
+    quote: "As a solopreneur, this gave me my evenings back. Setup took minutes.",
   },
   {
     id: 4,
@@ -100,7 +100,7 @@ const testimonials: Testimonial[] = [
     person: "Emma P.",
     plan: "Scale",
     metric: "Conversion +28%",
-    quote: "Our chat-to-purchase rate doubled after implementing Garrio.",
+    quote: "My customers feel heard, I sleep better, and sales are up 28%. Win-win-win.",
   },
   {
     id: 8,
@@ -214,7 +214,10 @@ export default function SocialProofReel() {
   return (
     <section className="py-16 bg-white border-t border-b border-gray-200">
       <div className="container mx-auto px-4 mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center">Trusted by Shopify Merchants</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Trusted by founders who get it</h2>
+        <p className="text-gray-600 text-center max-w-2xl mx-auto">
+          Join thousands of bootstrapped entrepreneurs who found their freedom from customer support chaos.
+        </p>
       </div>
 
       <div className="relative overflow-hidden">
@@ -306,7 +309,7 @@ export default function SocialProofReel() {
                   {activeQuote.metric}
                 </span>
               </div>
-              <p className="text-gray-800 text-lg italic mb-4">"{activeQuote.quote}"</p>
+              <p className="text-gray-800 text-lg italic mb-4">&ldquo;{activeQuote.quote}&rdquo;</p>
               <p className="text-gray-600">
                 {activeQuote.person}, {activeQuote.company} <span className="text-gray-400">|</span> {activeQuote.plan}
               </p>

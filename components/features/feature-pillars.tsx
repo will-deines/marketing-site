@@ -17,27 +17,27 @@ interface FeaturePillar {
 const featurePillars: FeaturePillar[] = [
   {
     id: "works-for-you",
-    title: "Works For You",
+    title: "No more midnight email marathons",
     description:
-      "From chat to inbox, we actually do the work. Escalated emails land in our queue, solved by Garrio agents, synced back to Shopify.",
+      "Your questions get answered 24/7, even while you're designing your next collection or spending time with family. Complex issues get handled by real people who know your brand.",
     icon: <ArrowRight className="h-10 w-10 text-purple-600" />,
-    comparison: "Gorgias: you handle escalations yourself. Zendesk: generic APIs, no native Shopify actions.",
+    comparison: "Other platforms still leave you handling escalations and complex customer issues yourself.",
   },
   {
     id: "shopify-native",
-    title: "Shopify-Native Brain",
+    title: "Knows your business like you do",
     description:
-      "Knows every SKU, order, and discount in real time. Powered by Shopify APO for ultra-personalized answers & actions.",
+      "Answers about your spring collection sizing, shipping policies, and that limited-edition color that sold out last week. No generic responses—it understands your specific products and policies.",
     icon: <Brain className="h-10 w-10 text-purple-600" />,
-    comparison: "Other platforms use generic AI models with limited Shopify integration.",
+    comparison: "Generic support tools don&apos;t understand your specific inventory, product variations, or business policies.",
   },
   {
     id: "revenue-engine",
-    title: "Revenue Engine",
+    title: "Turns browsers into buyers",
     description:
-      "Support that sells. AI suggests upsells & cross-sells inside the chat widget, turning help into margin.",
+      "While helping with sizing questions, suggests 'These earrings would look amazing with that necklace.' Every support conversation becomes an opportunity to share more of what you've created.",
     icon: <DollarSign className="h-10 w-10 text-purple-600" />,
-    comparison: "Most helpdesks focus on closing tickets, not generating revenue.",
+    comparison: "Most support tools just answer questions—they don&apos;t help grow your sales.",
   },
 ]
 
@@ -48,9 +48,9 @@ export default function FeaturePillars() {
     <section id="feature-pillars" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Garrio Beats Every Helpdesk</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Customer service that works the way you do</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            The only Shopify support app that handles customer service for you — from AI to human.
+            Because you started your brand to create, not to answer the same questions over and over again.
           </p>
         </div>
 

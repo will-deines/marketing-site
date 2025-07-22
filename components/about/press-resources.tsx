@@ -6,41 +6,6 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Download } from "lucide-react"
 
-interface PressArticle {
-  id: string
-  title: string
-  publication: string
-  logo: string
-  url: string
-  date: string
-}
-
-const pressArticles: PressArticle[] = [
-  {
-    id: "techcrunch",
-    title: "Garrio raises $5M to automate Shopify customer support",
-    publication: "TechCrunch",
-    logo: "/press/techcrunch.svg",
-    url: "https://techcrunch.com/example",
-    date: "March 15, 2025",
-  },
-  {
-    id: "forbes",
-    title: "How AI is transforming e-commerce customer service",
-    publication: "Forbes",
-    logo: "/press/forbes.svg",
-    url: "https://forbes.com/example",
-    date: "February 8, 2025",
-  },
-  {
-    id: "shopify-blog",
-    title: "Partner Spotlight: Garrio's AI-powered support solution",
-    publication: "Shopify Blog",
-    logo: "/press/shopify.svg",
-    url: "https://shopify.com/blog/example",
-    date: "January 22, 2025",
-  },
-]
 
 const brandColors = [
   { name: "Purple", hex: "#9333EA", variable: "--color-primary" },
@@ -105,32 +70,6 @@ export default function PressResources() {
                 </div>
               </div>
 
-              {/* Latest Coverage */}
-              <h3 className="text-xl font-bold mb-4">Latest Coverage</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                {pressArticles.map((article) => (
-                  <Link
-                    key={article.id}
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow"
-                  >
-                    <div className="h-8 relative mb-4">
-                      <Image
-                        src={
-                          article.logo ? article.logo : "/placeholder.svg?height=32&width=120&query=publication+logo"
-                        }
-                        alt={article.publication}
-                        fill
-                        className="object-contain object-left"
-                      />
-                    </div>
-                    <h4 className="font-medium mb-2 line-clamp-2">{article.title}</h4>
-                    <p className="text-sm text-gray-500">{article.date}</p>
-                  </Link>
-                ))}
-              </div>
 
               {/* Media Contact */}
               <div className="bg-gray-100 rounded-lg p-4 text-center">
@@ -211,7 +150,7 @@ export default function PressResources() {
                           />
                         </div>
                       </div>
-                      <p className="text-sm text-red-600">Don't stretch the logo</p>
+                      <p className="text-sm text-red-600">Don&apos;t stretch the logo</p>
                     </div>
                     <div className="bg-gray-100 p-3 rounded-lg text-center">
                       <div className="h-12 relative mb-2 opacity-50">
@@ -225,7 +164,7 @@ export default function PressResources() {
                           />
                         </div>
                       </div>
-                      <p className="text-sm text-red-600">Don't change colors</p>
+                      <p className="text-sm text-red-600">Don&apos;t change colors</p>
                     </div>
                     <div className="bg-gray-100 p-3 rounded-lg text-center">
                       <div className="h-12 relative mb-2 opacity-50">
@@ -239,7 +178,7 @@ export default function PressResources() {
                           />
                         </div>
                       </div>
-                      <p className="text-sm text-red-600">Don't use on busy backgrounds</p>
+                      <p className="text-sm text-red-600">Don&apos;t use on busy backgrounds</p>
                     </div>
                   </div>
                 </div>

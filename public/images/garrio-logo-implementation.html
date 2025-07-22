@@ -1,0 +1,18 @@
+<!-- Responsive image implementation for garrio-logo -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    <source media="(min-width: 1024px)" srcset="garrio-logo.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="garrio-logo-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="garrio-logo-mobile.avif" type="image/avif">
+    <source media="(min-width: 1024px)" srcset="garrio-logo.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="garrio-logo-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="garrio-logo-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="garrio-logo.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="garrio-logo-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="garrio-logo-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="garrio-logo.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

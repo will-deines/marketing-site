@@ -16,7 +16,7 @@ export default function ClosingCta({ competitorName }: ClosingCtaProps) {
             Ready to leave {competitorName} headaches behind?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Join thousands of Shopify merchants who've transformed their customer support experience.
+            Join thousands of Shopify merchants who&apos;ve transformed their customer support experience.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-purple-900 hover:bg-white/90" asChild>
@@ -30,7 +30,7 @@ export default function ClosingCta({ competitorName }: ClosingCtaProps) {
               className="bg-transparent border-white text-white hover:bg-white/10"
               asChild
             >
-              <Link href="#" onClick={() => window.open("https://garrio.com/demo", "_blank")}>
+              <Link href="#" onClick={() => window.open("https://garrio.ai/demo", "_blank")}>
                 <Calendar className="mr-2 h-5 w-5" /> Book a Demo
               </Link>
             </Button>

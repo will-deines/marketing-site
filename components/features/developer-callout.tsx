@@ -2,14 +2,9 @@
 
 import { useEffect, useState, useRef } from "react"
 
-export default function DeveloperCallout() {
-  const [typedText, setTypedText] = useState("")
-  const codeRef = useRef<HTMLDivElement>(null)
+export default function PeaceOfMindCallout() {
   const [isVisible, setIsVisible] = useState(false)
-
-  const codeSnippet = `curl -X POST https://api.garrio.ai/v1/actions/check_order \\
-  -H "X-Shopify-Store: yours.myshopify.com" \\
-  -d '{"order_id":12345}'`
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,42 +16,56 @@ export default function DeveloperCallout() {
       { threshold: 0.1 },
     )
 
-    if (codeRef.current) {
-      observer.observe(codeRef.current)
+    const currentSection = sectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
     }
 
     return () => {
-      if (codeRef.current) {
-        observer.unobserve(codeRef.current)
+      if (currentSection) {
+        observer.unobserve(currentSection)
       }
     }
   }, [])
 
-  useEffect(() => {
-    if (!isVisible) return
-
-    let i = 0
-    const typeInterval = setInterval(() => {
-      if (i < codeSnippet.length) {
-        setTypedText(codeSnippet.substring(0, i + 1))
-        i++
-      } else {
-        clearInterval(typeInterval)
-      }
-    }, 30)
-
-    return () => clearInterval(typeInterval)
-  }, [isVisible, codeSnippet])
-
   return (
-    <section className="py-12 bg-gray-900 text-white">
+    <section className="py-16 bg-purple-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-xl font-bold mb-4">For Developers</h3>
-          <div ref={codeRef} className="bg-gray-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre className="text-green-400">{typedText}</pre>
+        <div
+          ref={sectionRef}
+          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+            You deserve work-life balance
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="text-3xl mb-4">🌙</div>
+              <h4 className="font-semibold mb-2">No more midnight panic</h4>
+              <p className="text-gray-600 text-sm">
+                Your customers get help 24/7, even when you're offline
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="text-3xl mb-4">📱</div>
+              <h4 className="font-semibold mb-2">Vacation mode: ON</h4>
+              <p className="text-gray-600 text-sm">
+                Travel without worrying about your inbox exploding
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="text-3xl mb-4">🎯</div>
+              <h4 className="font-semibold mb-2">Focus on what you love</h4>
+              <p className="text-gray-600 text-sm">
+                Spend time creating, not answering repetitive questions
+              </p>
+            </div>
           </div>
-          <p className="mt-4 text-gray-300">Open API & webhooks for custom flows.</p>
+          <p className="text-gray-600 text-lg">
+            Because your energy should go toward building the business you dreamed of, not drowning in support tickets.
+          </p>
         </div>
       </div>
     </section>

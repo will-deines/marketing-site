@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# AI/LLM specific directives
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://garrio.ai/sitemap.xml

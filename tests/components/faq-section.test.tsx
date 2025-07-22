@@ -12,17 +12,17 @@ describe("FAQSection", () => {
     });
     expect(heading).toBeInTheDocument();
 
-    const firstQuestion = screen.getByText("Will this slow down my site?");
+    const firstQuestion = screen.getByText("How long does setup take?");
     expect(firstQuestion).toBeInTheDocument();
   });
 
   it("toggles the answer when a question is clicked", () => {
     render(<FAQSection />);
 
-    const question = screen.getByText("Will this slow down my site?");
+    const question = screen.getByText("How long does setup take?");
     fireEvent.click(question);
 
-    const answer = screen.getByText(/< 30 kB script/);
+    const answer = screen.getByText(/Just 5 minutes/);
     expect(answer).toBeInTheDocument();
 
     fireEvent.click(question);
@@ -32,15 +32,15 @@ describe("FAQSection", () => {
   it("applies animation styles correctly for open and closed items", () => {
     const { container } = render(<FAQSection />);
 
-    // Get multiple FAQ questions
-    const firstQuestion = screen.getByText("Will this slow down my site?");
-    const secondQuestion = screen.getByText("Can I turn off the AI at night?");
+    // Get multiple FAQ questions using actual questions from the component
+    const firstQuestion = screen.getByText("How long does setup take?");
+    const secondQuestion = screen.getByText("How accurate is the AI for my industry?");
     
     // Click the first question to open it
     fireEvent.click(firstQuestion);
 
     // The answer section should appear with animation
-    const firstAnswer = container.querySelector("#faq-answer-site-speed");
+    const firstAnswer = container.querySelector("#faq-answer-setup-time");
     expect(firstAnswer).toBeInTheDocument();
     
     // Find the animated div within the answer - it's the one with inline style
@@ -53,7 +53,7 @@ describe("FAQSection", () => {
     fireEvent.click(secondQuestion);
     
     // The second answer should have animation
-    const secondAnswer = container.querySelector("#faq-answer-turn-off-ai");
+    const secondAnswer = container.querySelector("#faq-answer-ai-accuracy");
     expect(secondAnswer).toBeInTheDocument();
     const secondAnimatedDiv = secondAnswer?.querySelector('div[style]');
     expect(secondAnimatedDiv).toHaveStyle({
@@ -64,16 +64,16 @@ describe("FAQSection", () => {
     fireEvent.click(firstQuestion);
     
     // The first answer should no longer be in the document
-    expect(container.querySelector("#faq-answer-site-speed")).not.toBeInTheDocument();
+    expect(container.querySelector("#faq-answer-setup-time")).not.toBeInTheDocument();
     
     // But the second should still be open with animation
-    expect(container.querySelector("#faq-answer-turn-off-ai")).toBeInTheDocument();
+    expect(container.querySelector("#faq-answer-ai-accuracy")).toBeInTheDocument();
     
     // Test the branch where animation is "none" - click to close second question then check a new one
     fireEvent.click(secondQuestion);
     
     // Open third question to verify the animation style is correctly applied to new items
-    const thirdQuestion = screen.getByText("How is my store data protected?");
+    const thirdQuestion = screen.getByText("Is my customer data secure?");
     fireEvent.click(thirdQuestion);
     
     const thirdAnswer = container.querySelector("#faq-answer-data-security");

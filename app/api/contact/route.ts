@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json()
+    await request.json() // TODO: Implement data validation and processing
 
     // Here you would implement the actual logic to:
     // 1. Validate the data
