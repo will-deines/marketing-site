@@ -37,19 +37,21 @@ export default function NewsletterForm() {
   }
 
   return (
-    <div className="bg-[#0E0F11] py-12 relative">
-      {/* Grain texture overlay */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      ></div>
+    <div className="bg-gradient-to-b from-gray-900 to-black py-16 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-md mx-auto">
-          <h3 className="text-xl font-semibold text-white mb-4 text-center">Stay Updated</h3>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
+        <div className="max-w-lg mx-auto text-center">
+          <div className="mb-8">
+            <h3 className="text-2xl font-bold text-white mb-2">Stay in the loop</h3>
+            <p className="text-[#E5E5E7]/60 text-sm">Get monthly insights on scaling your Shopify brand</p>
+          </div>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <div className="flex-1">
               <label htmlFor="email-input" className="sr-only">
                 Email address
@@ -61,21 +63,32 @@ export default function NewsletterForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
                 required
-                className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
                 aria-label="Email address"
               />
             </div>
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 whitespace-nowrap"
             >
               {isSubmitting ? "Joining..." : "Join"}
             </Button>
           </form>
-          {error && <p className="mt-2 text-red-400 text-sm">{error}</p>}
-          {isSuccess && <p className="mt-2 text-green-400 text-sm">Thanks for subscribing!</p>}
-          <p className="text-[#E5E5E7]/60 text-xs mt-3 text-center">Monthly product drops—no spam.</p>
+          <div className="mt-4 h-6">
+            {error && (
+              <p className="text-red-400 text-sm animate-fade-in">{error}</p>
+            )}
+            {isSuccess && (
+              <div className="flex items-center justify-center gap-2 text-green-400 text-sm animate-fade-in">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Welcome aboard! Check your inbox.</span>
+              </div>
+            )}
+          </div>
+          <p className="text-[#E5E5E7]/50 text-xs mt-6">Join 500+ founders • Monthly insights • Zero spam</p>
         </div>
       </div>
     </div>

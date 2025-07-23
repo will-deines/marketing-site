@@ -116,7 +116,9 @@ interface TestimonialCarouselProps {
 export default function TestimonialCarousel({ caseStudyIds, competitorName }: TestimonialCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [isPaused, setIsPaused] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   // Filter testimonials based on case study IDs and competitor
   useEffect(() => {
@@ -128,84 +130,123 @@ export default function TestimonialCarousel({ caseStudyIds, competitorName }: Te
     setTestimonials(filteredTestimonials.length > 0 ? filteredTestimonials : allTestimonials.slice(0, 3))
   }, [caseStudyIds, competitorName])
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isPaused && testimonials.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+      }, 5000) // Change testimonial every 5 seconds
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isPaused, testimonials.length])
+
   const nextTestimonial = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+    setIsPaused(true) // Pause auto-play when user interacts
   }
 
   const prevTestimonial = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
+    setIsPaused(true) // Pause auto-play when user interacts
+  }
+
+  const goToTestimonial = (index: number) => {
+    setActiveIndex(index)
+    setIsPaused(true) // Pause auto-play when user interacts
   }
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Hear from Merchants Who Switched</h2>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-          Real stories from Shopify merchants who moved from {competitorName} to Garrio
-        </p>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-900 to-indigo-700 bg-clip-text text-transparent">
+            Hear from Merchants Who Switched
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Real stories from Shopify merchants who moved from {competitorName} to Garrio
+          </p>
+        </div>
 
-        <div className="relative max-w-4xl mx-auto" ref={carouselRef}>
+        <div 
+          className="relative max-w-5xl mx-auto" 
+          ref={carouselRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Testimonial Cards */}
-          <div className="relative h-[300px] md:h-[250px]">
+          <div className="relative h-[350px] md:h-[280px]">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className={`absolute inset-0 bg-white rounded-xl shadow-lg p-6 transition-all duration-500 ${
-                  index === activeIndex ? "opacity-100 z-10 translate-y-0" : "opacity-0 z-0 translate-y-8"
+                className={`absolute inset-0 bg-white rounded-2xl shadow-2xl p-8 md:p-10 transition-all duration-700 border border-purple-100 ${
+                  index === activeIndex ? "opacity-100 z-10 translate-y-0 scale-100" : "opacity-0 z-0 translate-y-8 scale-95"
                 }`}
               >
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                   {/* Avatar and Company */}
-                  <div className="flex flex-col items-center md:items-start">
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden mb-3">
+                  <div className="flex flex-col items-center md:items-start flex-shrink-0">
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 ring-4 ring-purple-100">
                       <Image
-                        src={testimonial.avatar || "/placeholder.svg?height=64&width=64&query=person"}
+                        src={testimonial.avatar || "/placeholder.svg?height=80&width=80&query=person"}
                         alt={testimonial.person}
                         fill
                         className="object-cover"
                       />
                     </div>
-                    <div className="relative h-8 w-24 mb-2">
+                    <div className="relative h-10 w-28 mb-3">
                       <Image
-                        src={testimonial.logo || "/placeholder.svg?height=32&width=96&query=company+logo"}
+                        src={testimonial.logo || "/placeholder.svg?height=40&width=112&query=company+logo"}
                         alt={testimonial.company}
                         fill
-                        className="object-contain object-left"
+                        className="object-contain object-center"
                       />
                     </div>
-                    <div className="text-sm text-gray-600">
-                      {testimonial.person}, {testimonial.role}
+                    <div className="text-center md:text-left">
+                      <div className="font-semibold text-gray-900">{testimonial.person}</div>
+                      <div className="text-sm text-gray-600">{testimonial.role}</div>
                     </div>
                   </div>
 
                   {/* Quote */}
-                  <div className="flex-1">
-                    <div className="bg-purple-100 text-purple-800 font-bold px-3 py-1 rounded-full text-sm inline-block mb-3">
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="inline-flex items-center bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-800 font-bold px-4 py-2 rounded-full text-sm mb-4">
+                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                      </svg>
                       {testimonial.metric}
                     </div>
-                    <p className="text-gray-800 text-lg italic">&ldquo;{testimonial.quote}&rdquo;</p>
+                    <blockquote className="text-gray-800 text-xl md:text-2xl font-light italic leading-relaxed">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </blockquote>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex justify-center mt-6 space-x-4">
+          {/* Enhanced Navigation Controls */}
+          <div className="flex justify-center mt-10 space-x-6">
             <button
               onClick={prevTestimonial}
-              className="p-2 bg-white rounded-full shadow hover:bg-gray-50 transition-colors"
+              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-purple-50 transition-all duration-200 border border-purple-100"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-6 w-6 text-purple-600" />
             </button>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === activeIndex ? "bg-purple-600" : "bg-gray-300"
+                  onClick={() => goToTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeIndex 
+                      ? "bg-purple-600 scale-125 shadow-lg" 
+                      : "bg-gray-300 hover:bg-purple-300"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -213,10 +254,10 @@ export default function TestimonialCarousel({ caseStudyIds, competitorName }: Te
             </div>
             <button
               onClick={nextTestimonial}
-              className="p-2 bg-white rounded-full shadow hover:bg-gray-50 transition-colors"
+              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-purple-50 transition-all duration-200 border border-purple-100"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-6 w-6 text-purple-600" />
             </button>
           </div>
         </div>

@@ -36,7 +36,8 @@ Generate AI videos with Google Veo 3 for homepage hero, about page, and other ba
 ```bash
 cd scripts/video
 
-# Complete pipeline
+# Complete pipeline (generate, download, and process)
+./generate_veo3_video.sh
 ./download_veo3_video.sh -o about-hero.mp4 -n about-hero --process
 ```
 
@@ -104,7 +105,8 @@ cd scripts/image
 ### Generate About Page Video
 ```bash
 cd scripts/video
-# Update veo3_config.conf with family scene prompt
+# Update veo3_config.conf with desired prompt
+./generate_veo3_video.sh
 ./download_veo3_video.sh -o about-hero.mp4 -n about-hero --process
 ```
 

@@ -58,6 +58,7 @@ export default function DeepDiveSections() {
 
         {/* Section 1: Instant, Personal Answers */}
         <div
+          id="instant-answers"
           ref={(el) => (sectionsRef.current[0] = el)}
           className={`flex flex-col lg:flex-row items-center gap-12 mb-32 transition-all duration-1000 ${
             visibleSections[0] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -167,6 +168,7 @@ export default function DeepDiveSections() {
 
         {/* Section 2: Complex Problems Get Real People */}
         <div
+          id="human-support"
           ref={(el) => (sectionsRef.current[1] = el)}
           className={`flex flex-col lg:flex-row-reverse items-center gap-12 mb-32 transition-all duration-1000 ${
             visibleSections[1] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -293,6 +295,7 @@ export default function DeepDiveSections() {
 
         {/* Section 3: Every conversation sounds like you wrote it */}
         <div
+          id="brand-voice"
           ref={(el) => (sectionsRef.current[2] = el)}
           className={`flex flex-col lg:flex-row items-center gap-12 transition-all duration-1000 ${
             visibleSections[2] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"

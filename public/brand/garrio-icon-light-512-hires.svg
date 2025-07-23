@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient-light-512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+    
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="40.96" 
+        fill="url(#gradient-light-512)" 
+         />
+  
+  <!-- Message Square Icon -->
+  <path d="M192 192
+    C192 173.312
+    210.688 154.624
+    229.376 154.624
+    H309.248
+    C327.93600000000004 154.624
+    346.624 173.312
+    346.624 192
+    V277.248
+    C346.624 295.93600000000004
+    327.93600000000004 314.624
+    309.248 314.624
+    H250.624
+    L229.376 346.624
+    V314.624
+    H229.376
+    C210.688 314.624
+    192 295.93600000000004
+    192 277.248
+    V192Z" fill="#ffffff" />
+  
+  <!-- Sparkle -->
+  <path d="M352 320
+    L358.4 345.6
+    L384 352
+    L358.4 358.4
+    L352 384
+    L345.6 358.4
+    L320 352
+    L345.6 345.6Z" fill="#fbbf24" />
+</svg>

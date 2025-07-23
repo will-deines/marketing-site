@@ -1,52 +1,209 @@
-import Link from "next/link";
+"use client"
 
-export default function Header() {
+import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Menu, X, ChevronDown, Sparkles } from "lucide-react"
+import { Logo } from "@/components/ui/logo"
+
+interface HeaderProps {
+  variant?: "transparent" | "solid"
+}
+
+export default function Header({ variant = "transparent" }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const navigation = [
+    {
+      name: "Features",
+      href: "/features",
+      dropdown: [
+        { name: "24/7 Support Team", href: "/features#works-for-you" },
+        { name: "Brand Intelligence", href: "/features#shopify-native" },
+        { name: "Revenue Engine", href: "/features#revenue-engine" },
+        { name: "Instant Answers", href: "/features#instant-answers" },
+        { name: "Human Support", href: "/features#human-support" },
+        { name: "Brand Voice", href: "/features#brand-voice" },
+      ],
+    },
+    { name: "Pricing", href: "/pricing" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ]
+
+  const headerBg = variant === "solid" || isScrolled
+    ? "bg-white/95 backdrop-blur-md shadow-lg"
+    : "bg-transparent"
+    
+  const textColor = variant === "solid" || isScrolled
+    ? "text-gray-700"
+    : "text-white"
+
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 px-4 lg:px-6 h-14 flex items-center">
-      <Link className="flex items-center space-x-2" href="/">
-        <div className="flex items-center justify-center w-8 h-8 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-          <svg 
-            className="w-5 h-5 text-white" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" 
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
+    >
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="group">
+            <Logo 
+              variant={variant === "solid" || isScrolled ? "gradient" : "transparent"}
+              textClassName={variant === "solid" || isScrolled ? "!text-gray-900" : "!text-white"}
             />
-          </svg>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navigation.map((item) => (
+              <div
+                key={item.name}
+                className="relative group"
+                onMouseEnter={() => setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                {item.dropdown ? (
+                  <button
+                    className={`flex items-center gap-1 text-sm font-medium transition-all duration-300 relative group ${textColor}`}
+                  >
+                    {item.name}
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : "group-hover:rotate-180"}`} />
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 transition-all duration-300 group-hover:w-full" />
+                  </button>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`text-sm font-medium transition-all duration-300 relative group ${textColor}`}
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                )}
+
+                {/* Dropdown Menu */}
+                {item.dropdown && activeDropdown === item.name && (
+                  <div className="absolute top-full left-0 pt-2">
+                    <div className="mt-2 w-56 rounded-xl bg-white shadow-2xl border border-gray-100 overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-top-2">
+                    <div className="py-2">
+                      {item.dropdown.map((subItem, idx) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:text-purple-700 transition-all duration-200 relative group animate-in fade-in slide-in-from-left-2"
+                          style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'both' }}
+                        >
+                          <span className="relative z-10">{subItem.name}</span>
+                          <div className="absolute inset-0 w-0 bg-purple-600 transition-all duration-300 group-hover:w-1" />
+                        </Link>
+                      ))}
+                    </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* CTA Button */}
+            <Button
+              asChild
+              className={`ml-4 transition-all duration-300 transform hover:scale-105 ${
+                variant === "solid" || isScrolled
+                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl"
+                  : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
+              }`}
+            >
+              <Link href="https://apps.shopify.com/garrio" target="_blank" rel="noopener noreferrer">
+                <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
+                Get Started Free
+              </Link>
+            </Button>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
+              variant === "solid" || isScrolled
+                ? "text-gray-700 hover:bg-gray-100"
+                : "text-white hover:bg-white/10"
+            }`}
+          >
+            <div className="relative w-6 h-6">
+              <span className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isMenuOpen ? "rotate-180 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"}`}>
+                <Menu className="w-6 h-6" />
+              </span>
+              <span className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isMenuOpen ? "rotate-0 scale-100 opacity-100" : "-rotate-180 scale-0 opacity-0"}`}>
+                <X className="w-6 h-6" />
+              </span>
+            </div>
+          </button>
         </div>
-        <span className="font-bold text-xl text-white tracking-tight">Garrio</span>
-      </Link>
-      <nav className="ml-auto flex gap-4 sm:gap-6">
-        <Link
-          className="text-sm font-medium text-white hover:underline underline-offset-4"
-          href="/features"
-        >
-          Features
-        </Link>
-        <Link
-          className="text-sm font-medium text-white hover:underline underline-offset-4"
-          href="/pricing"
-        >
-          Pricing
-        </Link>
-        <Link
-          className="text-sm font-medium text-white hover:underline underline-offset-4"
-          href="/about"
-        >
-          About
-        </Link>
-        <Link
-          className="text-sm font-medium text-white hover:underline underline-offset-4"
-          href="/contact"
-        >
-          Contact
-        </Link>
-      </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden absolute top-16 left-0 right-0 bg-white shadow-xl border-t border-gray-100 animate-in slide-in-from-top-4 duration-300">
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col gap-4">
+              {navigation.map((item) => (
+                <div key={item.name}>
+                  {item.dropdown ? (
+                    <>
+                      <div className="font-medium text-gray-900 px-4 py-2">
+                        {item.name}
+                      </div>
+                      <div className="pl-8">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-sm text-gray-600 hover:text-purple-600"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block px-4 py-2 font-medium text-gray-700 hover:text-purple-600"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              
+              {/* Mobile CTA */}
+              <div className="pt-4 border-t border-gray-100">
+                <Button
+                  asChild
+                  className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow-lg"
+                >
+                  <Link href="https://apps.shopify.com/garrio" target="_blank" rel="noopener noreferrer">
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Get Started Free
+                  </Link>
+                </Button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
-  );
+  )
 }

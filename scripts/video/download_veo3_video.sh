@@ -193,10 +193,10 @@ process_video() {
     fi
     
     # Create output directories
-    mkdir -p ../public/videos ../public/images
+    mkdir -p ../../public/videos ../../public/images
     
     print_status "Encoding video for web deployment..."
-    if $ENCODER_SCRIPT "$video_file" -n "$BASE_NAME" -o ../public/videos; then
+    if $ENCODER_SCRIPT "$video_file" -n "$BASE_NAME" -o ../../public/videos; then
         print_success "Video encoding completed"
     else
         print_error "Video encoding failed"
@@ -205,7 +205,7 @@ process_video() {
     
     print_status "Extracting poster frames..."
     if [ -f "./extract_poster.sh" ]; then
-        if ./extract_poster.sh "$video_file" -n "$BASE_NAME" -o ../public/images --modern; then
+        if ./extract_poster.sh "$video_file" -n "$BASE_NAME" -o ../../public/images --modern; then
             print_success "Poster frame extraction completed"
         else
             print_warning "Poster extraction failed, but video encoding succeeded"
@@ -216,8 +216,8 @@ process_video() {
     
     print_success "Video processing pipeline completed!"
     print_status "Files generated in:"
-    echo "  - ../public/videos/ (web-optimized video files)"
-    echo "  - ../public/images/ (poster frames)"
+    echo "  - ../../public/videos/ (web-optimized video files)"
+    echo "  - ../../public/images/ (poster frames)"
 }
 
 # Parse command line arguments

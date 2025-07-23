@@ -1,0 +1,29 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-google-120" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="120" height="120" rx="30" fill="url(#grad-google-120)" />
+  
+  <!-- Message Square Icon -->
+  <g transform="translate(30, 30)">
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" 
+            fill="none" 
+            stroke="#ffffff" 
+            stroke-width="2" 
+            stroke-linejoin="round" 
+            stroke-linecap="round" />
+    </svg>
+  </g>
+  
+  <!-- Sparkles Icon -->
+  <g transform="translate(75, 75)">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3l-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" fill="#fbbf24" />
+    </svg>
+  </g>
+</svg>

@@ -336,7 +336,7 @@ export default function PricingSectionV2() {
             <div className="mt-6 pt-6 border-t border-gray-200">
               <p className="text-gray-600">
                 Need something custom?{" "}
-                <Link href="#" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
+                <Link href="/contact" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
                   We'll work with your budget
                 </Link>
                 .

@@ -28,13 +28,13 @@ vim veo3_config.conf
 ./generate_veo3_video.sh
 
 # 3. Download and process automatically
-./download_veo3_video.sh --process -n [page-name] -o [page-name].mp4
+./download_veo3_video.sh -o [page-name].mp4 -n [page-name] --process
 ```
 
 **Example for homepage:**
 
 ```bash
-./download_veo3_video.sh --process -n homepage-hero -o homepage-hero.mp4
+./download_veo3_video.sh -o homepage-hero.mp4 -n homepage-hero --process
 ```
 
 This single command will:
@@ -53,7 +53,7 @@ This single command will:
 | Script                          | Purpose                    | Usage                                                 |
 | ------------------------------- | -------------------------- | ----------------------------------------------------- |
 | `generate_veo3_video.sh`        | Start AI video generation  | `./generate_veo3_video.sh`                            |
-| `download_veo3_video.sh`        | Download and process video | `./download_veo3_video.sh --process -n [name]`        |
+| `download_veo3_video.sh`        | Download and process video | `./download_veo3_video.sh -o [name].mp4 -n [name] --process` |
 | `encode_web_video_optimized.sh` | Encode video for web       | `./encode_web_video_optimized.sh video.mp4 -n [name]` |
 | `extract_poster.sh`             | Extract poster frames      | `./extract_poster.sh video.mp4 -n [name] --modern`    |
 
@@ -92,7 +92,7 @@ PERSON_GENERATION="allow_all"
 #### Option A: Full Automation (Recommended)
 
 ```bash
-./download_veo3_video.sh --process -n [page-name] -o [page-name].mp4
+./download_veo3_video.sh -o [page-name].mp4 -n [page-name] --process
 ```
 
 #### Option B: Manual Steps
@@ -102,8 +102,8 @@ PERSON_GENERATION="allow_all"
 ./download_veo3_video.sh -o [page-name].mp4
 
 # Then process manually
-./encode_web_video_optimized.sh [page-name].mp4 -n [page-name] -o ../public/videos
-./extract_poster.sh [page-name].mp4 -n [page-name] -o ../public/images --modern
+./encode_web_video_optimized.sh [page-name].mp4 -n [page-name] -o ../../public/videos
+./extract_poster.sh [page-name].mp4 -n [page-name] -o ../../public/images --modern
 ```
 
 ### 3. Advanced Options
@@ -184,7 +184,7 @@ PROMPT="Friendly coffee shop owner, professional lifestyle cinematography..."
 
 # Generate and process
 ./generate_veo3_video.sh
-./download_veo3_video.sh --process -n homepage-hero -o homepage-hero.mp4
+./download_veo3_video.sh -o homepage-hero.mp4 -n homepage-hero --process
 
 # Result: homepage-hero.* files ready for deployment
 ```
@@ -197,7 +197,7 @@ PROMPT="Founder in modern office, warm lighting, authentic business environment.
 
 # Generate and process
 ./generate_veo3_video.sh
-./download_veo3_video.sh --process -n about-hero -o about-hero.mp4
+./download_veo3_video.sh -o about-hero.mp4 -n about-hero --process
 
 # Result: about-hero.* files ready for deployment
 ```
@@ -210,7 +210,7 @@ PROMPT="Modern office environment with professional working at desk..."
 
 # Generate and process
 ./generate_veo3_video.sh
-./download_veo3_video.sh --process -n features-hero -o features-hero.mp4
+./download_veo3_video.sh -o features-hero.mp4 -n features-hero --process
 
 # Result: features-hero.* files ready for deployment
 ```
@@ -360,6 +360,74 @@ ffprobe -v error -select_streams v:0 -show_entries stream=bit_rate \
 
 ---
 
+## 🔄 Complete Workflow: Updating Homepage Hero Video
+
+### Step-by-Step Process
+
+**1. Update Video Prompt**
+```bash
+cd scripts/video
+vim veo3_config.conf
+```
+Edit the `PROMPT` variable with your new video description.
+
+**2. Generate New Video**
+```bash
+./generate_veo3_video.sh
+```
+This creates an operation ID and saves it to `veo3_operation.txt`.
+
+**3. Download and Process Complete Pipeline**
+```bash
+./download_veo3_video.sh -o homepage-hero.mp4 -n homepage-hero --process
+```
+This command:
+- Downloads the generated video when ready
+- Encodes to AV1/WebM + H.265/MP4 formats
+- Extracts responsive poster frames (AVIF/WebP/JPEG)
+- Places files in `../../public/videos/` and `../../public/images/`
+
+**4. Verify Generated Files**
+The pipeline creates these files:
+```
+public/videos/
+├── homepage-hero.av1.webm    # Modern browsers
+├── homepage-hero.h265.mp4    # Safari/mobile fallback
+└── homepage-hero.jpg         # Video poster frame
+
+public/images/
+├── homepage-hero.jpg         # Desktop poster (1920x1080)
+├── homepage-hero.webp        # Desktop WebP
+├── homepage-hero.avif        # Desktop AVIF
+├── homepage-hero-tablet.jpg  # Tablet poster (1024x576)
+├── homepage-hero-tablet.webp # Tablet WebP
+├── homepage-hero-tablet.avif # Tablet AVIF
+├── homepage-hero-mobile.jpg  # Mobile poster (720x405)
+├── homepage-hero-mobile.webp # Mobile WebP
+└── homepage-hero-mobile.avif # Mobile AVIF
+```
+
+**5. Test the Update**
+```bash
+cd ../../
+pnpm dev
+```
+Navigate to `http://localhost:3000` to see your new homepage hero video.
+
+### Troubleshooting
+
+**If generation fails:**
+- Check API key: `echo $GEMINI_API_KEY`
+- Verify operation status: `curl -H "x-goog-api-key: $GEMINI_API_KEY" "https://generativelanguage.googleapis.com/v1beta/$(cat veo3_operation.txt)"`
+
+**If download times out:**
+- Increase timeout: `./download_veo3_video.sh -o homepage-hero.mp4 -n homepage-hero --process --timeout 900`
+
+**If files are too large:**
+- Reduce quality: `./encode_web_video_optimized.sh homepage-hero.mp4 --av1-crf 42 --h265-crf 30 -n homepage-hero`
+
+---
+
 ## ✅ Quick Reference
 
 ### Essential Commands
@@ -367,7 +435,7 @@ ffprobe -v error -select_streams v:0 -show_entries stream=bit_rate \
 ```bash
 # Complete workflow
 ./generate_veo3_video.sh
-./download_veo3_video.sh --process -n [page-name] -o [page-name].mp4
+./download_veo3_video.sh -o [page-name].mp4 -n [page-name] --process
 
 # Check operation status
 curl -H "x-goog-api-key: $GEMINI_API_KEY" \

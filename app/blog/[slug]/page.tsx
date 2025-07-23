@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       <div className="flex min-h-screen flex-col">
-        <Header />
+        <Header variant="solid" />
         <main className="flex-1">
           <BlogPost post={post} formattedDate={formattedDate} />
 

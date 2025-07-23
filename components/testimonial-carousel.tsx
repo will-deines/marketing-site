@@ -83,8 +83,8 @@ export default function TestimonialCarousel() {
     let zIndex = 5 - Math.min(Math.abs(position - 0), Math.abs(position - testimonials.length))
     if (position === 0) zIndex = 10
 
-    let opacity = isVisible ? (position === 0 ? 1 : 0.6) : 0
-    let scale = position === 0 ? 1 : 0.85
+    const opacity = isVisible ? (position === 0 ? 1 : 0.6) : 0
+    const scale = position === 0 ? 1 : 0.85
 
     let translateX = "0%"
     if (position === 0) {

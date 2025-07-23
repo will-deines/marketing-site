@@ -173,6 +173,71 @@ body {
     animation-delay: 600ms;
   }
 
+  /* Sparkle animation that runs for 3 seconds */
+  .animate-sparkle-brief {
+    animation: sparkle-brief 3s ease-in-out;
+  }
+
+  /* Form field animations */
+  .form-field-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .form-field-slide-up-delay-1 {
+    animation: slideUp 0.5s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .form-field-slide-up-delay-2 {
+    animation: slideUp 0.5s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .form-field-slide-up-delay-3 {
+    animation: slideUp 0.5s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .form-field-slide-up-delay-4 {
+    animation: slideUp 0.5s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes sparkle-brief {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    20% {
+      opacity: 0.6;
+      transform: scale(1.2) rotate(180deg);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(0.8) rotate(360deg);
+    }
+    60% {
+      opacity: 0.7;
+      transform: scale(1.1) rotate(540deg);
+    }
+    80% {
+      opacity: 0.9;
+      transform: scale(0.95) rotate(720deg);
+    }
+  }
+
   .badge-slide {
     transition: transform 150ms ease-out;
   }
@@ -219,6 +284,125 @@ body {
   .form-field-slide-up-delay-4 {
     opacity: 0;
     animation: slide-up 300ms ease-out 200ms forwards;
+  }
+
+  @keyframes slow-zoom {
+    0% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1.15);
+    }
+  }
+
+  .animate-slow-zoom {
+    animation: slow-zoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) scale(1);
+    }
+    33% {
+      transform: translateY(-30px) translateX(20px) scale(1.05);
+    }
+    66% {
+      transform: translateY(20px) translateX(-20px) scale(0.95);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0) translateX(0) scale(1);
+    }
+    33% {
+      transform: translateY(30px) translateX(-30px) scale(0.95);
+    }
+    66% {
+      transform: translateY(-20px) translateX(20px) scale(1.05);
+    }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.5;
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-40px) translateX(-10px);
+      opacity: 0.3;
+    }
+    75% {
+      transform: translateY(-20px) translateX(15px);
+      opacity: 0.6;
+    }
+  }
+
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 18s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+
+  .animate-float-particle {
+    animation: float-particle 10s ease-in-out infinite;
+  }
+
+  .animate-float-particle-delayed {
+    animation: float-particle 12s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-float-particle-slow {
+    animation: float-particle 15s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(20px, -50px) scale(1.1);
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+      transform: translate(50px, 10px) scale(1.05);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 20s ease-in-out infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
 }
 

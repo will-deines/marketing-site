@@ -202,7 +202,14 @@ export default function BlogIndex({
   }, [])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/30 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-10 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute top-1/2 right-10 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+      </div>
+
       {/* Hero Section */}
       <BlogHero
         vertical={vertical}
@@ -211,22 +218,50 @@ export default function BlogIndex({
         verticalLabels={verticalLabels}
       />
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-8">
+      {/* Elegant transition */}
+      <div className="w-full py-16 bg-gradient-to-b from-gray-900/5 to-transparent relative z-10">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              Discover proven strategies that have helped thousands of Shopify founders scale their customer experience
+            </p>
+            <div className="animate-bounce">
+              <svg 
+                className="w-8 h-8 mx-auto text-purple-600" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-12 relative z-10">
+        <div className="flex flex-col xl:flex-row gap-12">
           {/* Sidebar */}
-          <div className="md:w-64 flex-shrink-0">
-            <div className="md:sticky md:top-24">
+          <div className="xl:w-80 flex-shrink-0">
+            <div className="xl:sticky xl:top-24">
               {/* Filters */}
-              <BlogFilters
-                vertical={vertical}
-                funnel={funnel}
-                minReadingTime={minReadingTime}
-                maxReadingTime={maxReadingTime}
-                applyFilters={applyFilters}
-                allVerticals={allVerticals}
-                verticalLabels={verticalLabels}
-                funnelLabels={funnelLabels}
-              />
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-6">
+                <BlogFilters
+                  vertical={vertical}
+                  funnel={funnel}
+                  minReadingTime={minReadingTime}
+                  maxReadingTime={maxReadingTime}
+                  applyFilters={applyFilters}
+                  allVerticals={allVerticals}
+                  verticalLabels={verticalLabels}
+                  funnelLabels={funnelLabels}
+                />
+              </div>
 
               {/* CTA Rail */}
               <div className="mt-8">
@@ -236,10 +271,10 @@ export default function BlogIndex({
           </div>
 
           {/* Main Content */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             {/* Featured Post */}
             {featuredPost && posts.length > 0 && (
-              <div className="mb-12">
+              <div className="mb-16">
                 <FeaturedPost post={featuredPost} />
               </div>
             )}
@@ -249,8 +284,13 @@ export default function BlogIndex({
 
             {/* Load More Trigger */}
             {hasMore && (
-              <div ref={loadMoreRef} className="h-20 flex items-center justify-center">
-                {isLoading && <div className="loader">Loading...</div>}
+              <div ref={loadMoreRef} className="h-20 flex items-center justify-center mt-12">
+                {isLoading && (
+                  <div className="flex items-center gap-3 text-purple-600">
+                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-purple-600 border-t-transparent"></div>
+                    <span className="font-medium">Loading more insights...</span>
+                  </div>
+                )}
               </div>
             )}
           </div>

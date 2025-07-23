@@ -1,51 +1,61 @@
 import Link from "next/link"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, MessageSquare, Sparkles } from "lucide-react"
 
 export default function CoreFooter() {
   return (
-    <div className="bg-[#0E0F11] text-[#E5E5E7] py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-y-8 gap-x-12">
+    <div className="bg-gradient-to-b from-gray-900 to-black text-[#E5E5E7] py-20 relative overflow-hidden">
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-y-12 gap-x-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="mb-4 relative h-12 w-32">
-              <div className="group relative h-12 w-32 cursor-pointer">
-                {/* Animated logo would go here - using placeholder for now */}
-                <div className="absolute inset-0 flex items-center justify-start text-white font-bold text-xl">
-                  Garrio
+            <div className="mb-6">
+              <div className="flex items-center gap-3">
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
+                  <div className="relative bg-gradient-to-r from-purple-600 to-indigo-600 p-2.5 rounded-xl group-hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative">
+                      <MessageSquare className="w-7 h-7 text-white" />
+                      <Sparkles className="absolute -bottom-1 -right-1 w-3.5 h-3.5 text-yellow-300 animate-sparkle-brief" />
+                    </div>
+                  </div>
                 </div>
+                <span className="text-white font-bold text-2xl">Garrio</span>
               </div>
             </div>
-            <p className="text-sm text-[#E5E5E7]/80">AI sales & support built only for Shopify&apos;s indie merchants.</p>
+            <p className="text-sm text-[#E5E5E7]/70 leading-relaxed">AI sales & support built exclusively for ambitious Shopify founders.</p>
           </div>
 
           {/* Product Column */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Product</h3>
-            <div className="flex items-center mb-3 text-green-400">
+            <h3 className="text-lg font-semibold mb-6 text-white">Product</h3>
+            <div className="flex items-center mb-4 text-green-400 bg-green-400/10 rounded-full px-3 py-1.5 inline-flex">
               <CheckCircle2 className="h-4 w-4 mr-2" />
-              <span className="text-sm">All systems go</span>
+              <span className="text-sm font-medium">All systems operational</span>
             </div>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/updates"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Changelog
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/roadmap"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Roadmap
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
@@ -54,27 +64,27 @@ export default function CoreFooter() {
 
           {/* Resources Column */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold mb-6 text-white">Resources</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/docs"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Docs
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/api"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     API Reference
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
@@ -83,22 +93,22 @@ export default function CoreFooter() {
                   href="https://apps.shopify.com/garrio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Shopify App Store
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/blog"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Blog
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
@@ -107,93 +117,98 @@ export default function CoreFooter() {
 
           {/* Company Column */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <h3 className="text-lg font-semibold mb-6 text-white">Company</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     About
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/careers"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Careers
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/press-kit.zip"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Press kit
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Contact
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
             </ul>
-            <p className="text-xs text-[#E5E5E7]/60 mt-3">We&apos;re remote ☕️ 🌍</p>
+            <div className="mt-6 pt-4 border-t border-gray-800">
+              <p className="text-xs text-[#E5E5E7]/50 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                Remote team ☕️ 🌍
+              </p>
+            </div>
           </div>
 
           {/* Legal Column */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold mb-6 text-white">Legal</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/terms"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                   rel="legal"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Terms of Service
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/privacy"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                   rel="legal"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     Privacy & GDPR
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/dpa.pdf"
-                  className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors relative overflow-hidden group"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                   rel="legal"
                 >
-                  <span className="relative inline-block">
+                  <span className="relative inline-flex items-center gap-2">
                     DPA (PDF)
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
@@ -207,14 +222,14 @@ export default function CoreFooter() {
 
           {/* Social Column */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
-            <div className="flex space-x-4 mb-4">
+            <h3 className="text-lg font-semibold mb-6 text-white">Connect</h3>
+            <div className="flex space-x-5 mb-6">
               <Link
                 href="https://twitter.com/garrio"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="text-[#E5E5E7]/50 hover:text-[#E5E5E7] transition-colors"
+                className="text-[#E5E5E7]/40 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -235,7 +250,7 @@ export default function CoreFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-[#E5E5E7]/50 hover:text-[#E5E5E7] transition-colors"
+                className="text-[#E5E5E7]/40 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +273,7 @@ export default function CoreFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="text-[#E5E5E7]/50 hover:text-[#E5E5E7] transition-colors"
+                className="text-[#E5E5E7]/40 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +295,7 @@ export default function CoreFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Discord"
-                className="text-[#E5E5E7]/50 hover:text-[#E5E5E7] transition-colors"
+                className="text-[#E5E5E7]/40 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +317,9 @@ export default function CoreFooter() {
                 </svg>
               </Link>
             </div>
-            <p className="text-sm text-[#E5E5E7]/80">Join 400+ builders</p>
+            <div className="mt-6 pt-4 border-t border-gray-800">
+              <p className="text-sm text-[#E5E5E7]/60">Join <span className="text-purple-400 font-semibold">500+</span> founders</p>
+            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { ChevronDown, ChevronUp, Filter, Clock, Tag } from "lucide-react"
 
 interface BlogFiltersProps {
   vertical: string[]
@@ -69,13 +69,16 @@ export default function BlogFilters({
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+    <div className="overflow-hidden">
       {/* Mobile Toggle */}
-      <div className="md:hidden p-4 flex justify-between items-center border-b border-gray-200">
-        <h2 className="font-medium">Filters</h2>
+      <div className="xl:hidden mb-6 flex items-center justify-between p-4 bg-white/70 backdrop-blur-sm rounded-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+        <div className="flex items-center gap-2">
+          <Filter className="w-5 h-5 text-purple-600" />
+          <h2 className="font-semibold text-gray-900">Filters</h2>
+        </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-gray-500"
+          className="text-gray-500 hover:text-purple-600 transition-colors p-1 rounded-lg hover:bg-purple-50"
           aria-expanded={isOpen}
           aria-controls="filters-panel"
         >
@@ -84,72 +87,99 @@ export default function BlogFilters({
       </div>
 
       {/* Filters Panel */}
-      <div id="filters-panel" className={`md:block ${isOpen ? "block" : "hidden"}`} aria-live="polite">
-        <div className="p-4 border-b border-gray-200">
-          <h3 className="font-medium mb-3">Vertical</h3>
-          <div className="space-y-2">
-            {allVerticals.map((v) => (
-              <div key={v} className="flex items-center">
-                <Checkbox
-                  id={`vertical-${v}`}
-                  checked={localVertical.includes(v)}
-                  onCheckedChange={() => toggleVertical(v)}
-                />
-                <Label htmlFor={`vertical-${v}`} className="ml-2 text-sm font-medium text-gray-700 cursor-pointer">
-                  {verticalLabels[v] || v}
-                </Label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="p-4 border-b border-gray-200">
-          <h3 className="font-medium mb-3">Funnel Stage</h3>
-          <RadioGroup value={localFunnel} onValueChange={setLocalFunnel}>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <RadioGroupItem id="funnel-all" value="" />
-                <Label htmlFor="funnel-all" className="ml-2 text-sm font-medium text-gray-700 cursor-pointer">
-                  All Stages
-                </Label>
-              </div>
-
-              {Object.entries(funnelLabels).map(([key, label]) => (
-                <div key={key} className="flex items-center">
-                  <RadioGroupItem id={`funnel-${key}`} value={key} />
-                  <Label htmlFor={`funnel-${key}`} className="ml-2 text-sm font-medium text-gray-700 cursor-pointer">
-                    {label}
+      <div id="filters-panel" className={`xl:block ${isOpen ? "block" : "hidden"}`} aria-live="polite">
+        <div className="space-y-6">
+          {/* Vertical Filters */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <Tag className="w-4 h-4 text-purple-600" />
+              <h3 className="font-semibold text-gray-900">Industry</h3>
+            </div>
+            <div className="space-y-3">
+              {allVerticals.map((v) => (
+                <div key={v} className="flex items-center group">
+                  <Checkbox
+                    id={`vertical-${v}`}
+                    checked={localVertical.includes(v)}
+                    onCheckedChange={() => toggleVertical(v)}
+                    className="data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
+                  />
+                  <Label 
+                    htmlFor={`vertical-${v}`} 
+                    className="ml-3 text-sm font-medium text-gray-700 cursor-pointer group-hover:text-purple-600 transition-colors"
+                  >
+                    {verticalLabels[v] || v}
                   </Label>
                 </div>
               ))}
             </div>
-          </RadioGroup>
-        </div>
+          </div>
 
-        <div className="p-4 border-b border-gray-200">
-          <h3 className="font-medium mb-3">Reading Time</h3>
-          <div className="px-2">
-            <Slider
-              value={localReadingTime}
-              min={0}
-              max={20}
-              step={1}
-              onValueChange={(value) => setLocalReadingTime(value as [number, number])}
-            />
-            <div className="flex justify-between mt-2 text-sm text-gray-500">
-              <span>{localReadingTime[0]} min</span>
-              <span>{localReadingTime[1] >= 20 ? "20+" : localReadingTime[1]} min</span>
+          {/* Funnel Stage */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <Filter className="w-4 h-4 text-purple-600" />
+              <h3 className="font-semibold text-gray-900">Journey Stage</h3>
+            </div>
+            <RadioGroup value={localFunnel} onValueChange={setLocalFunnel}>
+              <div className="space-y-3">
+                <div className="flex items-center group">
+                  <RadioGroupItem id="funnel-all" value="" className="border-purple-300 text-purple-600" />
+                  <Label htmlFor="funnel-all" className="ml-3 text-sm font-medium text-gray-700 cursor-pointer group-hover:text-purple-600 transition-colors">
+                    All Stages
+                  </Label>
+                </div>
+
+                {Object.entries(funnelLabels).map(([key, label]) => (
+                  <div key={key} className="flex items-center group">
+                    <RadioGroupItem id={`funnel-${key}`} value={key} className="border-purple-300 text-purple-600" />
+                    <Label htmlFor={`funnel-${key}`} className="ml-3 text-sm font-medium text-gray-700 cursor-pointer group-hover:text-purple-600 transition-colors">
+                      {label}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </RadioGroup>
+          </div>
+
+          {/* Reading Time */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <Clock className="w-4 h-4 text-purple-600" />
+              <h3 className="font-semibold text-gray-900">Reading Time</h3>
+            </div>
+            <div className="px-1">
+              <Slider
+                value={localReadingTime}
+                min={0}
+                max={20}
+                step={1}
+                onValueChange={(value) => setLocalReadingTime(value as [number, number])}
+                className="w-full"
+              />
+              <div className="flex justify-between mt-3 text-sm text-gray-600">
+                <span className="font-medium">{localReadingTime[0]} min</span>
+                <span className="font-medium">{localReadingTime[1] >= 20 ? "20+" : localReadingTime[1]} min</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="p-4 flex flex-col gap-2">
-          <Button onClick={handleApplyFilters} className="w-full">
-            Apply Filters
-          </Button>
-          <Button variant="outline" onClick={handleResetFilters} className="w-full">
-            Reset
-          </Button>
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-3 pt-2">
+            <Button 
+              onClick={handleApplyFilters} 
+              className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-2xl py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              Apply Filters
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={handleResetFilters} 
+              className="w-full border-2 border-purple-200 text-purple-700 hover:bg-purple-50 rounded-2xl py-3 font-semibold transition-all duration-200"
+            >
+              Reset All
+            </Button>
+          </div>
         </div>
       </div>
     </div>

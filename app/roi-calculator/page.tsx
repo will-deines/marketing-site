@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function RoiCalculatorPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="solid" />
       <main className="flex-1">
         <RoiCalculator />
       </main>

@@ -1,20 +1,25 @@
 <!-- Responsive poster implementation -->
 <picture>
-    <!-- Modern format for supported browsers -->
-    <source media="(min-width: 1024px)" srcset=".webp" type="image/webp">
-    <source media="(min-width: 768px)" srcset="-tablet.webp" type="image/webp">
-    <source media="(max-width: 767px)" srcset="-mobile.webp" type="image/webp">
+    <!-- AVIF format (best compression) -->
+    <source media="(min-width: 1024px)" srcset="homepage-hero.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="homepage-hero-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="homepage-hero-mobile.avif" type="image/avif">
     
-    <!-- Fallback JPEG versions -->
-    <source media="(min-width: 1024px)" srcset=".jpg" type="image/jpeg">
-    <source media="(min-width: 768px)" srcset="-tablet.jpg" type="image/jpeg">
-    <source media="(max-width: 767px)" srcset="-mobile.jpg" type="image/jpeg">
+    <!-- WebP format (good compression) -->
+    <source media="(min-width: 1024px)" srcset="homepage-hero.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="homepage-hero-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="homepage-hero-mobile.webp" type="image/webp">
+    
+    <!-- JPEG fallback -->
+    <source media="(min-width: 1024px)" srcset="homepage-hero.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="homepage-hero-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="homepage-hero-mobile.jpg" type="image/jpeg">
     
     <!-- Default image -->
-    <img src=".jpg" alt="Hero background" class="w-full h-full object-cover">
+    <img src="homepage-hero.jpg" alt="Hero background" class="w-full h-full object-cover">
 </picture>
 
 <!-- For video poster attribute, use appropriate size -->
-<video poster=".jpg" autoplay muted loop playsinline preload="none">
+<video poster="homepage-hero.jpg" autoplay muted loop playsinline preload="none">
     <!-- video sources here -->
 </video>

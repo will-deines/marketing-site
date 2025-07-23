@@ -33,7 +33,7 @@ export const plans: Plan[] = [
       { title: "Peer community for tips & troubleshooting", included: true },
     ],
     ctaText: "Add for Free",
-    ctaLink: "https://apps.shopify.com/app-installation",
+    ctaLink: "https://apps.shopify.com/garrio",
     available: true,
   },
   {
@@ -50,7 +50,7 @@ export const plans: Plan[] = [
       { title: "Adjust cap anytime for total bill control", included: true },
     ],
     ctaText: "Start for $10",
-    ctaLink: "#",
+    ctaLink: "https://apps.shopify.com/garrio",
     available: true,
   },
   {
@@ -69,7 +69,7 @@ export const plans: Plan[] = [
       { title: "Priority email support from our CX team", included: true },
     ],
     ctaText: "Start for $200",
-    ctaLink: "#",
+    ctaLink: "https://apps.shopify.com/garrio",
     available: true,
     popular: true,
   },
@@ -87,7 +87,7 @@ export const plans: Plan[] = [
       { title: "Priority response & dedicated success manager", included: true },
     ],
     ctaText: "Start for $500",
-    ctaLink: "#",
+    ctaLink: "https://apps.shopify.com/garrio",
     available: true,
   },
 ]

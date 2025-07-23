@@ -62,7 +62,7 @@ export default function BlogPage({
         <link key={post.slug} rel="preload" href={post.hero} as="image" type="image/jpeg" />
       ))}
 
-      <Header />
+      <Header variant="transparent" />
       <main className="flex-1">
         <Suspense fallback={<div className="container mx-auto px-4 py-16">Loading...</div>}>
           <BlogIndex

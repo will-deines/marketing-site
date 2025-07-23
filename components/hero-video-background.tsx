@@ -175,7 +175,6 @@ export default function HeroVideoBackground({
         <video
           ref={videoRef}
           autoPlay
-          loop
           muted
           playsInline
           className={videoClasses}

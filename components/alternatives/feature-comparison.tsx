@@ -130,52 +130,98 @@ export default function FeatureComparison({ competitor }: FeatureComparisonProps
   const renderValue = (value: boolean | string | number, isGarrio = false) => {
     if (typeof value === "boolean") {
       return value ? (
-        <Check className={`h-6 w-6 ${isGarrio ? "text-purple-600" : "text-green-500"} mx-auto`} />
+        <div className="flex items-center justify-center">
+          <div className={`rounded-full p-2 ${isGarrio ? "bg-purple-100" : "bg-green-100"}`}>
+            <Check className={`h-5 w-5 ${isGarrio ? "text-purple-600" : "text-green-600"}`} />
+          </div>
+        </div>
       ) : (
-        <X className="h-6 w-6 text-gray-400 mx-auto" />
+        <div className="flex items-center justify-center">
+          <div className="rounded-full p-2 bg-gray-100">
+            <X className="h-5 w-5 text-gray-400" />
+          </div>
+        </div>
       )
     }
 
-    return <div className={`text-center ${isGarrio ? "font-bold text-purple-700" : "text-gray-700"}`}>{value}</div>
+    return (
+      <div className={`text-center font-semibold text-lg ${
+        isGarrio ? "text-purple-700 bg-purple-50 px-3 py-1 rounded-lg mx-auto inline-block" : "text-gray-700"
+      }`}>
+        {value}
+      </div>
+    )
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Feature Comparison</h2>
-        <h3 className="text-xl text-gray-600 text-center max-w-2xl mx-auto mb-12">
-          Why Shopify merchants switch from {competitor.name} to Garrio
-        </h3>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-900 to-indigo-700 bg-clip-text text-transparent">
+            Feature Comparison
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Why Shopify merchants switch from {competitor.name} to Garrio
+          </p>
+        </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse max-w-4xl mx-auto">
-            <thead>
-              <tr className="border-b border-gray-200">
-                <th className="py-4 px-6 text-left font-medium text-gray-500">Feature</th>
-                <th className="py-4 px-6 text-center font-medium text-purple-600">Garrio</th>
-                <th className="py-4 px-6 text-center font-medium text-gray-500">{competitor.name}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {features.map((feature) => (
-                <tr
-                  key={feature.id}
-                  ref={(el) => (rowRefs.current[feature.id] = el)}
-                  data-id={feature.id}
-                  className={`border-b border-gray-200 transition-opacity duration-500 ${
-                    visibleRows.includes(feature.id) ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <td className="py-4 px-6">
-                    <div className="font-medium">{feature.name}</div>
-                    <div className="text-sm text-gray-500">{feature.description}</div>
-                  </td>
-                  <td className="py-4 px-6 bg-purple-50/50">{renderValue(feature.garrioValue, true)}</td>
-                  <td className="py-4 px-6">{renderValue(getCompetitorValue(feature))}</td>
+          <div className="inline-block min-w-full">
+            <table className="w-full border-collapse max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100">
+                  <th className="py-6 px-8 text-left font-semibold text-gray-700 text-lg">Feature</th>
+                  <th className="py-6 px-8 text-center font-semibold text-purple-700 text-lg bg-purple-50/50">
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      Garrio
+                    </div>
+                  </th>
+                  <th className="py-6 px-8 text-center font-semibold text-gray-600 text-lg">{competitor.name}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {features.map((feature, index) => (
+                  <tr
+                    key={feature.id}
+                    ref={(el) => (rowRefs.current[feature.id] = el)}
+                    data-id={feature.id}
+                    className={`border-b border-gray-100 transition-all duration-700 hover:bg-purple-50/30 ${
+                      visibleRows.includes(feature.id) 
+                        ? "opacity-100 translate-x-0" 
+                        : "opacity-0 translate-x-4"
+                    } ${index % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}
+                    style={{ transitionDelay: `${index * 100}ms` }}
+                  >
+                    <td className="py-6 px-8">
+                      <div className="font-semibold text-gray-900 text-lg mb-1">{feature.name}</div>
+                      <div className="text-sm text-gray-600 leading-relaxed">{feature.description}</div>
+                    </td>
+                    <td className="py-6 px-8 bg-gradient-to-r from-purple-50/70 to-purple-50/30 relative">
+                      <div className="absolute inset-0 bg-purple-100/20 rounded-lg mx-2"></div>
+                      <div className="relative z-10">{renderValue(feature.garrioValue, true)}</div>
+                    </td>
+                    <td className="py-6 px-8 text-center">{renderValue(getCompetitorValue(feature))}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Call to action */}
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-6">Ready to make the switch?</p>
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            Setup takes 60 seconds
+          </div>
         </div>
       </div>
     </section>

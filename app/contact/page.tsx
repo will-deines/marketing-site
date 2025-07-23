@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="solid" />
       <ContactPage />
     </div>
   )

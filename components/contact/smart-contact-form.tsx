@@ -100,22 +100,25 @@ export default function SmartContactForm() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 animate-fade">
+    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-purple-100 animate-fade-in-up">
       {isSuccess ? (
         <div
-          className="bg-green-50 border border-green-100 rounded-lg p-6 text-center animate-fade-up"
+          className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-8 text-center animate-fade-in-up"
           aria-live="polite"
         >
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
-            <Check className="w-6 h-6 text-green-600" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl shadow-lg mb-6">
+            <Check className="w-8 h-8 text-white" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">Thanks! We&apos;ll be in touch within 24h</h3>
-          <p className="text-gray-600 mb-4">Meanwhile, why not explore our platform?</p>
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">Thanks! We&apos;ll be in touch within 24h</h3>
+          <p className="text-gray-600 mb-6 text-lg">Meanwhile, why not explore our platform?</p>
           <Link
             href="/features"
-            className="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-700"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
           >
-            Explore Features →
+            Explore Features
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </Link>
         </div>
       ) : (
@@ -133,8 +136,8 @@ export default function SmartContactForm() {
               <input
                 id="name"
                 type="text"
-                className={`w-full px-4 py-3 border ${errors.name ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"} rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition`}
-                placeholder="Your name"
+                className={`w-full px-5 py-3.5 border ${errors.name ? "border-red-300 focus:ring-red-500" : "border-gray-200 focus:ring-purple-500"} rounded-xl bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 hover:border-purple-300`}
+                placeholder="John Doe"
                 aria-label="Full name"
                 aria-invalid={errors.name ? "true" : "false"}
                 aria-describedby={errors.name ? "name-error" : undefined}
@@ -154,7 +157,7 @@ export default function SmartContactForm() {
               <input
                 id="email"
                 type="email"
-                className={`w-full px-4 py-3 border ${errors.email ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"} rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition`}
+                className={`w-full px-5 py-3.5 border ${errors.email ? "border-red-300 focus:ring-red-500" : "border-gray-200 focus:ring-purple-500"} rounded-xl bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 hover:border-purple-300`}
                 placeholder="you@yourstore.com"
                 aria-invalid={errors.email ? "true" : "false"}
                 aria-describedby={errors.email ? "email-error" : undefined}
@@ -179,7 +182,7 @@ export default function SmartContactForm() {
               </label>
               <select
                 id="topic"
-                className={`w-full px-4 py-3 border ${errors.topic ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"} rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition bg-white`}
+                className={`w-full px-5 py-3.5 border ${errors.topic ? "border-red-300 focus:ring-red-500" : "border-gray-200 focus:ring-purple-500"} rounded-xl bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 hover:border-purple-300 cursor-pointer`}
                 aria-invalid={errors.topic ? "true" : "false"}
                 aria-describedby={errors.topic ? "topic-error" : undefined}
                 {...register("topic", { required: "Please select a topic" })}
@@ -223,7 +226,7 @@ export default function SmartContactForm() {
                 <textarea
                   id="message"
                   rows={5}
-                  className={`w-full px-4 py-3 border ${errors.message ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"} rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition`}
+                  className={`w-full px-5 py-3.5 border ${errors.message ? "border-red-300 focus:ring-red-500" : "border-gray-200 focus:ring-purple-500"} rounded-xl bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 hover:border-purple-300 resize-none`}
                   placeholder="Tell us what's on your mind…"
                   aria-invalid={errors.message ? "true" : "false"}
                   aria-describedby={errors.message ? "message-error" : undefined}
@@ -279,7 +282,7 @@ export default function SmartContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-70 form-field-slide-up-delay-4"
+            className="w-full h-14 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-70 disabled:transform-none form-field-slide-up-delay-4"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">
