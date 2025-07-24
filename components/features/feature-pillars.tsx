@@ -117,7 +117,7 @@ export default function FeaturePillars() {
               onMouseEnter={() => setHoveredCard(pillar.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="relative h-full bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden">
+              <div className="relative h-full bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105 overflow-hidden will-change-transform">
                 {/* Gradient accent bar */}
                 <div
                   className="absolute top-0 left-0 right-0 h-2"
@@ -214,7 +214,7 @@ export default function FeaturePillars() {
           </p>
           <a
             href="#interactive-flow"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-lg transform transition-transform duration-200 hover:scale-105 will-change-transform"
           >
             See it in action
             <ArrowRight className="w-5 h-5" />

@@ -1,215 +1,169 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
-import { ChevronLeft, ChevronRight, Star, Shield, Trophy, CheckCircle } from "lucide-react"
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  Shield,
+  Trophy,
+  CheckCircle,
+} from "lucide-react";
 
 interface Testimonial {
-  id: number
-  company: string
+  id: number;
+  company: string;
   logo: {
-    src: string
-    alt: string
-  }
-  person: string
-  plan: string
-  metric: string
-  quote: string
+    src: string;
+    alt: string;
+  };
+  person: string;
+  plan: string;
+  metric: string;
+  quote: string;
 }
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    company: "Urban Threads",
+    company: "HOAst",
     logo: {
       src: "/abstract-urban-threads.png",
-      alt: "Brand logo: Urban Threads",
+      alt: "Brand logo: Mortadella Head",
     },
-    person: "Sarah K.",
-    plan: "Growth",
-    metric: "Response time ↓ 70%",
-    quote: "Finally, I can focus on designing instead of answering 'Where's my order?' emails.",
+    person: "Ryan",
+    plan: "Enterprise",
+    metric: "Response time ↓ 90%",
+    quote:
+      "Finally, I can focus on building the business intead of answering 'Where's my order?' emails.",
   },
   {
     id: 2,
-    company: "Eco Essentials",
+    company: "Mortadella Head",
     logo: {
       src: "/leafy-eco-circle.png",
-      alt: "Brand logo: Eco Essentials",
+      alt: "Brand logo: Mortadella Head",
     },
-    person: "Michael T.",
+    person: "Chuck",
     plan: "Free",
     metric: "Sales up 23%",
     quote: "The AI suggests perfect upsells that customers actually buy.",
   },
   {
     id: 3,
-    company: "Minimal Goods",
+    company: "Harbor Hose",
     logo: {
       src: "/abstract-minimal-goods.png",
-      alt: "Brand logo: Minimal Goods",
+      alt: "Brand logo: Harbor Hose",
     },
-    person: "David L.",
+    person: "Mike",
     plan: "Scale",
     metric: "18 hrs saved/week",
-    quote: "As a solopreneur, this gave me my evenings back. Setup took minutes.",
+    quote:
+      "As an entrepreneur, this gave me my evenings back. Setup took minutes.",
   },
-  {
-    id: 4,
-    company: "Clay & Oak",
-    logo: {
-      src: "/earthy-oak-mark.png",
-      alt: "Brand logo: Clay & Oak",
-    },
-    person: "Sam B.",
-    plan: "Growth",
-    metric: "CSAT up 32%",
-    quote: "The AI-to-human handoff is seamless. Our customers love it.",
-  },
-  {
-    id: 5,
-    company: "Roots & Resin",
-    logo: {
-      src: "/intertwined-nature-craft.png",
-      alt: "Brand logo: Roots & Resin",
-    },
-    person: "Alex J.",
-    plan: "Free",
-    metric: "ROI of 320%",
-    quote: "I ditched Zendesk in a day—my first upsell paid for six months.",
-  },
-  {
-    id: 6,
-    company: "Vintage Vinyl",
-    logo: {
-      src: "/spinning-grooves.png",
-      alt: "Brand logo: Vintage Vinyl",
-    },
-    person: "Jamie R.",
-    plan: "Growth",
-    metric: "AOV +15%",
-    quote: "Customers spend more when they get instant answers to their questions.",
-  },
-  {
-    id: 7,
-    company: "Glow Beauty",
-    logo: {
-      src: "/radiant-glow-logo.png",
-      alt: "Brand logo: Glow Beauty",
-    },
-    person: "Emma P.",
-    plan: "Scale",
-    metric: "Conversion +28%",
-    quote: "My customers feel heard, I sleep better, and sales are up 28%. Win-win-win.",
-  },
-  {
-    id: 8,
-    company: "Tech Haven",
-    logo: {
-      src: "/tech-haven-logo.png",
-      alt: "Brand logo: Tech Haven",
-    },
-    person: "Ryan M.",
-    plan: "Growth",
-    metric: "Support cost ↓ 45%",
-    quote: "Complex tech support questions handled perfectly by the AI.",
-  },
-]
+];
 
 export default function SocialProofReel() {
-  const [isPaused, setIsPaused] = useState(false)
-  const [activeQuote, setActiveQuote] = useState<Testimonial | null>(null)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-  const topRowRef = useRef<HTMLDivElement>(null)
-  const bottomRowRef = useRef<HTMLDivElement>(null)
-  const centerPointRef = useRef<HTMLDivElement>(null)
+  const [isPaused, setIsPaused] = useState(false);
+  const [activeQuote, setActiveQuote] = useState<Testimonial | null>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const topRowRef = useRef<HTMLDivElement>(null);
+  const bottomRowRef = useRef<HTMLDivElement>(null);
+  const centerPointRef = useRef<HTMLDivElement>(null);
 
   // Check for reduced motion preference
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setPrefersReducedMotion(mediaQuery.matches)
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
 
-    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches)
-    mediaQuery.addEventListener("change", handleChange)
-    return () => mediaQuery.removeEventListener("change", handleChange)
-  }, [])
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   // Handle marquee animation
   useEffect(() => {
-    const topRow = topRowRef.current
-    const bottomRow = bottomRowRef.current
+    const topRow = topRowRef.current;
+    const bottomRow = bottomRowRef.current;
 
-    if (!topRow || !bottomRow) return
+    if (!topRow || !bottomRow) return;
 
     if (isPaused || prefersReducedMotion) {
-      topRow.style.animationPlayState = "paused"
-      bottomRow.style.animationPlayState = "paused"
+      topRow.style.animationPlayState = "paused";
+      bottomRow.style.animationPlayState = "paused";
     } else {
-      topRow.style.animationPlayState = "running"
-      bottomRow.style.animationPlayState = "running"
+      topRow.style.animationPlayState = "running";
+      bottomRow.style.animationPlayState = "running";
     }
-  }, [isPaused, prefersReducedMotion])
+  }, [isPaused, prefersReducedMotion]);
 
   // Check for centered logos and update active quote
   useEffect(() => {
-    if (prefersReducedMotion) return
+    if (prefersReducedMotion) return;
 
     const checkCenteredLogo = () => {
-      if (isPaused || !centerPointRef.current) return
+      if (isPaused || !centerPointRef.current) return;
 
-      const centerPoint = centerPointRef.current.getBoundingClientRect()
-      const centerX = centerPoint.left + centerPoint.width / 2
+      const centerPoint = centerPointRef.current.getBoundingClientRect();
+      const centerX = centerPoint.left + centerPoint.width / 2;
 
       // Get all logo elements
-      const logoElements = document.querySelectorAll(".logo-item")
+      const logoElements = document.querySelectorAll(".logo-item");
 
       // Find the closest logo to center
-      let closestLogo = null
-      let minDistance = Number.POSITIVE_INFINITY
+      let closestLogo = null;
+      let minDistance = Number.POSITIVE_INFINITY;
 
       logoElements.forEach((logo) => {
-        const rect = logo.getBoundingClientRect()
-        const logoCenter = rect.left + rect.width / 2
-        const distance = Math.abs(logoCenter - centerX)
+        const rect = logo.getBoundingClientRect();
+        const logoCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(logoCenter - centerX);
 
         if (distance < minDistance) {
-          minDistance = distance
-          closestLogo = logo
+          minDistance = distance;
+          closestLogo = logo;
         }
-      })
+      });
 
       // If we found a close logo and it's near the center
       if (closestLogo && minDistance < 50) {
-        const logoId = Number.parseInt(closestLogo.getAttribute("data-id") || "0")
-        const testimonial = testimonials.find((t) => t.id === logoId)
-        if (testimonial && (!activeQuote || activeQuote.id !== testimonial.id)) {
-          setActiveQuote(testimonial)
+        const logoId = Number.parseInt(
+          closestLogo.getAttribute("data-id") || "0",
+        );
+        const testimonial = testimonials.find((t) => t.id === logoId);
+        if (
+          testimonial &&
+          (!activeQuote || activeQuote.id !== testimonial.id)
+        ) {
+          setActiveQuote(testimonial);
         }
       }
-    }
+    };
 
-    const interval = setInterval(checkCenteredLogo, 300)
-    return () => clearInterval(interval)
-  }, [isPaused, activeQuote, prefersReducedMotion])
+    const interval = setInterval(checkCenteredLogo, 300);
+    return () => clearInterval(interval);
+  }, [isPaused, activeQuote, prefersReducedMotion]);
 
   // Manual navigation for accessibility
   const navigateQuote = (direction: "prev" | "next") => {
     if (!activeQuote) {
-      setActiveQuote(testimonials[0])
-      return
+      setActiveQuote(testimonials[0]);
+      return;
     }
 
-    const currentIndex = testimonials.findIndex((t) => t.id === activeQuote.id)
-    let newIndex
+    const currentIndex = testimonials.findIndex((t) => t.id === activeQuote.id);
+    let newIndex;
 
     if (direction === "next") {
-      newIndex = (currentIndex + 1) % testimonials.length
+      newIndex = (currentIndex + 1) % testimonials.length;
     } else {
-      newIndex = (currentIndex - 1 + testimonials.length) % testimonials.length
+      newIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
     }
 
-    setActiveQuote(testimonials[newIndex])
-  }
+    setActiveQuote(testimonials[newIndex]);
+  };
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-br from-purple-50 via-white to-indigo-50 overflow-hidden">
@@ -227,7 +181,8 @@ export default function SocialProofReel() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of bootstrapped entrepreneurs who found their freedom from customer support chaos.
+            Join thousands of bootstrapped entrepreneurs who found their freedom
+            from customer support chaos.
           </p>
         </div>
       </div>
@@ -236,7 +191,7 @@ export default function SocialProofReel() {
         {/* Gradient overlays for fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-        
+
         {/* Center point reference (invisible) */}
         <div
           ref={centerPointRef}
@@ -259,8 +214,8 @@ export default function SocialProofReel() {
               onClick={() => setActiveQuote(testimonial)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault()
-                  setActiveQuote(testimonial)
+                  e.preventDefault();
+                  setActiveQuote(testimonial);
                 }
               }}
               tabIndex={0}
@@ -296,8 +251,8 @@ export default function SocialProofReel() {
                 onClick={() => setActiveQuote(testimonial)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault()
-                    setActiveQuote(testimonial)
+                    e.preventDefault();
+                    setActiveQuote(testimonial);
                   }
                 }}
                 tabIndex={0}
@@ -327,13 +282,17 @@ export default function SocialProofReel() {
                   {activeQuote.metric}
                 </span>
               </div>
-              <p className="text-gray-900 text-xl italic mb-6 leading-relaxed">&ldquo;{activeQuote.quote}&rdquo;</p>
+              <p className="text-gray-900 text-xl italic mb-6 leading-relaxed">
+                &ldquo;{activeQuote.quote}&rdquo;
+              </p>
               <div className="flex items-center justify-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-indigo-400 rounded-full flex items-center justify-center text-white font-bold">
                   {activeQuote.person.charAt(0)}
                 </div>
                 <div className="text-left">
-                  <p className="font-semibold text-gray-900">{activeQuote.person}</p>
+                  <p className="font-semibold text-gray-900">
+                    {activeQuote.person}
+                  </p>
                   <p className="text-sm text-gray-600">
                     {activeQuote.company} • {activeQuote.plan} Plan
                   </p>
@@ -361,49 +320,6 @@ export default function SocialProofReel() {
           </button>
         </div>
       </div>
-
-      {/* Trust badges */}
-      <div className="container mx-auto px-4 mt-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <CheckCircle className="w-6 h-6 text-purple-600" />
-              </div>
-              <span className="text-sm text-gray-600 mb-1">Built for</span>
-              <span className="font-bold text-gray-900">Shopify</span>
-            </div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <Shield className="w-6 h-6 text-purple-600" />
-              </div>
-              <span className="text-sm text-gray-600 mb-1">Security</span>
-              <span className="font-bold text-gray-900">SOC 2</span>
-            </div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <Star className="w-6 h-6 text-purple-600" />
-              </div>
-              <span className="text-sm text-gray-600 mb-1">Shopify Rating</span>
-              <span className="font-bold text-gray-900">4.9★</span>
-            </div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:scale-105 group">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <Trophy className="w-6 h-6 text-purple-600" />
-              </div>
-              <span className="text-sm text-gray-600 mb-1">G2 Award</span>
-              <span className="font-bold text-gray-900">High Performer</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <style jsx global>{`
         @keyframes marquee {
           0% {
@@ -413,7 +329,7 @@ export default function SocialProofReel() {
             transform: translateX(-50%);
           }
         }
-        
+
         @keyframes marquee-reverse {
           0% {
             transform: translateX(-50%);
@@ -422,15 +338,15 @@ export default function SocialProofReel() {
             transform: translateX(0);
           }
         }
-        
+
         .logo-row {
           animation: marquee 40s linear infinite;
         }
-        
+
         .logo-row-reverse {
           animation: marquee-reverse 45s linear infinite;
         }
-        
+
         @keyframes fade-in {
           from {
             opacity: 0;
@@ -441,11 +357,11 @@ export default function SocialProofReel() {
             transform: scale(1) translateY(0);
           }
         }
-        
+
         .animate-fade-in {
           animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
     </section>
-  )
+  );
 }

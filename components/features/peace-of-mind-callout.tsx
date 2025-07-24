@@ -92,7 +92,7 @@ export default function PeaceOfMindCallout() {
                 }`}
                 style={{ transitionDelay: `${(index + 1) * 150}ms` }}
               >
-                <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden border border-purple-100">
+                <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 transform transition-transform duration-300 hover:scale-105 overflow-hidden border border-purple-100 will-change-transform">
                   {/* Background gradient */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${benefit.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                   

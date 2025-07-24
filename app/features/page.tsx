@@ -1,20 +1,21 @@
-import Header from "@/components/header"
-import HeroSection from "@/components/features/hero-section"
-import BeforeAfterComparison from "@/components/features/before-after-comparison"
-import FeaturePillars from "@/components/features/feature-pillars"
-import SimpleResults from "@/components/features/interactive-flow"
-import DeepDiveSections from "@/components/features/deep-dive-sections"
-import ComparisonTable from "@/components/features/comparison-table"
-import SocialProofReel from "@/components/features/social-proof-reel"
-import PeaceOfMindCallout from "@/components/features/developer-callout"
-import ClosingCTA from "@/components/features/closing-cta"
-import type { Metadata } from "next"
+import Header from "@/components/header";
+import HeroSection from "@/components/features/hero-section";
+import BeforeAfterComparison from "@/components/features/before-after-comparison";
+import FeaturePillars from "@/components/features/feature-pillars";
+import SimpleResults from "@/components/features/interactive-flow";
+import DeepDiveSections from "@/components/features/deep-dive-sections";
+import ComparisonTable from "@/components/features/comparison-table";
+import SocialProofReel from "@/components/features/social-proof-reel";
+import PeaceOfMindCallout from "@/components/features/peace-of-mind-callout";
+import ClosingCTA from "@/components/features/closing-cta";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Features – Garrio Chat for Shopify",
   description:
     "The only Shopify support app that handles customer service for you — from AI to human. Discover how Garrio Chat can transform your customer support.",
-  keywords: "shopify features, ai customer support, automated responses, human backup, shopify integration, customer service automation",
+  keywords:
+    "shopify features, ai customer support, automated responses, human backup, shopify integration, customer service automation",
   openGraph: {
     title: "Features – Garrio Chat for Shopify",
     description:
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/features",
   },
-}
+};
 
 export default function FeaturesPage() {
   return (
@@ -77,5 +78,5 @@ export default function FeaturesPage() {
         <ClosingCTA />
       </main>
     </div>
-  )
+  );
 }
