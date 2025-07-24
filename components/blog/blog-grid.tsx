@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback } from "react"
+
 import BlogCard from "@/components/blog/blog-card"
 import type { Post } from "@/lib/blog-utils"
 

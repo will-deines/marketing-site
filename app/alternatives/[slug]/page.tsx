@@ -1,15 +1,16 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import competitors from "@/data/competitors.json"
-import Hero from "@/components/alternatives/hero"
-import OutcomeBanner from "@/components/alternatives/outcome-banner"
-import FeatureComparison from "@/components/alternatives/feature-comparison"
-import TestimonialCarousel from "@/components/alternatives/testimonial-carousel"
-import PricingBreakout from "@/components/alternatives/pricing-breakout"
-import MigrationCta from "@/components/alternatives/migration-cta"
-import Faq from "@/components/alternatives/faq"
+
 import ClosingCta from "@/components/alternatives/closing-cta"
+import Faq from "@/components/alternatives/faq"
+import FeatureComparison from "@/components/alternatives/feature-comparison"
+import Hero from "@/components/alternatives/hero"
+import MigrationCta from "@/components/alternatives/migration-cta"
+import OutcomeBanner from "@/components/alternatives/outcome-banner"
+import PricingBreakout from "@/components/alternatives/pricing-breakout"
+import TestimonialCarousel from "@/components/alternatives/testimonial-carousel"
 import Footer from "@/components/footer"
+import competitors from "@/data/competitors.json"
 
 // Define the type for competitor data
 type Competitor = {

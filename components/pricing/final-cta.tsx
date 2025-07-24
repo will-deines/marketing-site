@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Sparkles, MessageCircle, TrendingUp, Clock } from "lucide-react";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 
 export default function FinalCTA() {
   return (
@@ -96,7 +97,7 @@ export default function FinalCTA() {
                 <TrendingUp className="w-5 h-5 text-white/80" />
                 <div className="text-3xl font-bold text-white">98%</div>
               </div>
-              <p className="text-white/70">Done-For-You</p>
+              <p className="text-white/70">Done for you</p>
             </div>
           </div>
         </div>

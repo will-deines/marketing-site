@@ -1,5 +1,6 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
 import BlogPost from '@/components/blog/blog-post'
 import { getPostBySlug, formatDate } from '@/lib/blog-utils'
 

@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
+
+import Footer from "@/components/footer"
 import Header from "@/components/header"
 import RoiCalculator from "@/components/roi-calculator/roi-calculator"
-import Footer from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "ROI Calculator | Garrio",

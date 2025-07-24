@@ -1,11 +1,12 @@
-import Header from "@/components/header"
-import PricingHero from "@/components/pricing/pricing-hero"
-import PlanCards from "@/components/pricing/plan-cards"
-import UsageCalculator from "@/components/pricing/usage-calculator"
-import ComparisonTable from "@/components/pricing/comparison-table"
-import PricingFAQ from "@/components/pricing/pricing-faq"
-import FinalCTA from "@/components/pricing/final-cta"
 import type { Metadata } from "next"
+
+import Header from "@/components/header"
+import ComparisonTable from "@/components/pricing/comparison-table"
+import FinalCTA from "@/components/pricing/final-cta"
+import PlanCards from "@/components/pricing/plan-cards"
+import PricingFAQ from "@/components/pricing/pricing-faq"
+import PricingHero from "@/components/pricing/pricing-hero"
+import UsageCalculator from "@/components/pricing/usage-calculator"
 import { plans } from "@/lib/pricing-data"
 
 export const metadata: Metadata = {

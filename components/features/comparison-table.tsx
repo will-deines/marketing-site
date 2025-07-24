@@ -1,11 +1,12 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
 import { Check, X, Info, FileText } from "lucide-react"
 import Link from "next/link"
+import { useEffect, useState, useRef } from "react"
+
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import ClaimsModal from "@/components/ui/claims-modal"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import competitorsData from "@/data/competitors.json"
 
 interface ComparisonItem {

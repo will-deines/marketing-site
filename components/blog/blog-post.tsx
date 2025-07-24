@@ -1,8 +1,9 @@
 import Link from "next/link"
+import { MDXRemote } from "next-mdx-remote/rsc"
+
 import { Button } from "@/components/ui/button"
 import { ResponsiveImage } from "@/components/ui/responsive-image"
 import { funnelLabels, verticalLabels, type PostContent } from "@/lib/blog-utils"
-import { MDXRemote } from "next-mdx-remote/rsc"
 
 interface BlogPostProps {
   post: PostContent

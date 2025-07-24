@@ -1,15 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { InfoIcon as InfoCircle, Clock, DollarSign, BarChart2, RefreshCw, ArrowRight, TrendingUp } from "lucide-react"
 import Link from "next/link"
+import { useState, useEffect } from "react"
+
+import AdvancedSettings from "@/components/roi-calculator/advanced-settings"
+import CostChart from "@/components/roi-calculator/cost-chart"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { InfoIcon as InfoCircle, Clock, DollarSign, BarChart2, RefreshCw, ArrowRight, TrendingUp } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import CostChart from "@/components/roi-calculator/cost-chart"
-import AdvancedSettings from "@/components/roi-calculator/advanced-settings"
 import pricingData from "@/data/roi-pricing.json"
 
 export default function RoiCalculator() {

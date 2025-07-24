@@ -1,9 +1,10 @@
 "use client"
 
+import { Download, Brain, RefreshCw, Mail, MessageSquare, TrendingUp, Users, Heart } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
+
 import { Progress } from "@/components/ui/progress"
-import { Download, Brain, RefreshCw, Mail, MessageSquare, TrendingUp, Users, Heart } from "lucide-react"
 
 interface WorkflowStep {
   id: number

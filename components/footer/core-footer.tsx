@@ -1,8 +1,8 @@
 "use client"
 
+import { CheckCircle2, MessageSquare, Sparkles, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
-import { CheckCircle2, MessageSquare, Sparkles, ChevronDown } from "lucide-react"
 
 interface FooterSectionProps {
   title: string

@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import { Target, Clock, MessageCircle, TrendingUp, Heart } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 export default function MissionVision() {
   const sectionRef = useRef<HTMLDivElement>(null)

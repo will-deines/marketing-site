@@ -1,9 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { 
   Heart, 
   Palmtree, 
@@ -17,6 +13,12 @@ import {
   Sparkles,
   Mail
 } from "lucide-react"
+import Link from "next/link"
+import { useState, useEffect } from "react"
+
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+
 
 interface JobRole {
   id: string

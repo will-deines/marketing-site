@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import { Clock, TrendingUp, CheckCircle, Star, BarChart3 } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 interface Metric {
   id: string
@@ -221,7 +221,7 @@ export default function MetricMosaic() {
               {/* Progress bar */}
               <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div
-                  className={`absolute top-0 left-0 h-full bg-gradient-to-r ${metric.gradient} transition-all duration-[2000ms] ease-out rounded-full`}
+                  className={`absolute top-0 left-0 h-full bg-gradient-to-r ${metric.gradient} transition-all duration-2000 ease-out rounded-full`}
                   style={{
                     width: visibleMetrics.includes(metric.id)
                       ? `${(animatedValues[metric.id] / metric.endValue) * 100}%`

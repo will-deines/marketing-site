@@ -1,14 +1,16 @@
-import Header from "@/components/header";
-import HeroSection from "@/components/features/hero-section";
-import BeforeAfterComparison from "@/components/features/before-after-comparison";
-import FeaturePillars from "@/components/features/feature-pillars";
-import SimpleResults from "@/components/features/interactive-flow";
-import DeepDiveSections from "@/components/features/deep-dive-sections";
-import ComparisonTable from "@/components/features/comparison-table";
-import SocialProofReel from "@/components/features/social-proof-reel";
-import PeaceOfMindCallout from "@/components/features/peace-of-mind-callout";
-import ClosingCTA from "@/components/features/closing-cta";
 import type { Metadata } from "next";
+
+import BeforeAfterComparison from "@/components/features/before-after-comparison";
+import ClosingCTA from "@/components/features/closing-cta";
+import ComparisonTable from "@/components/features/comparison-table";
+import DeepDiveSections from "@/components/features/deep-dive-sections";
+import FeaturePillars from "@/components/features/feature-pillars";
+import HeroSection from "@/components/features/hero-section";
+import SimpleResults from "@/components/features/interactive-flow";
+import PeaceOfMindCallout from "@/components/features/peace-of-mind-callout";
+import SocialProofReel from "@/components/features/social-proof-reel";
+import Header from "@/components/header";
+
 
 export const metadata: Metadata = {
   title: "Features – Garrio Chat for Shopify",

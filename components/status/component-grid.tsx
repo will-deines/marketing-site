@@ -1,8 +1,9 @@
 "use client"
 
-import type { Component } from "./status-page"
 import { CheckCircle, AlertTriangle, AlertOctagon } from "lucide-react"
 import { useState } from "react"
+
+import type { Component } from "./status-page"
 
 type ComponentGridProps = {
   components: Component[]

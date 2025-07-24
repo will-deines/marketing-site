@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Clock,
   DollarSign,
@@ -11,6 +10,7 @@ import {
   CheckCircle,
   XCircle,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface Feature {
   name: string;

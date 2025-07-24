@@ -1,9 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { useMediaQuery } from "@/hooks/use-media-query"
 import { Calendar, Lightbulb, Rocket, Trophy, Sparkles } from "lucide-react"
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
+
+import { useMediaQuery } from "@/hooks/use-media-query"
+
 
 interface TimelineStep {
   id: string

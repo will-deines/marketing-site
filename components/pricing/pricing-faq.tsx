@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import { ChevronDown, HelpCircle, Clock, DollarSign, FileText, Calendar } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
 
 interface FAQItem {
   id: string

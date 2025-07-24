@@ -1,5 +1,7 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import BlogPost from '@/components/blog/blog-post'
+
 import { PostContent } from '@/lib/blog'
 
 export const metadata: Metadata = {

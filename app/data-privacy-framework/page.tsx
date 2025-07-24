@@ -1,6 +1,7 @@
-import Header from "@/components/header";
-import CoreFooter from "@/components/footer/core-footer";
 import Link from "next/link";
+
+import CoreFooter from "@/components/footer/core-footer";
+import Header from "@/components/header";
 
 export default function DataPrivacyFramework() {
   return (

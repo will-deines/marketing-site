@@ -1,9 +1,10 @@
 "use client"
-import { Label } from "@/components/ui/label"
+import { InfoIcon as InfoCircle } from "lucide-react"
+
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
-import { InfoIcon as InfoCircle } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 interface AdvancedSettingsProps {

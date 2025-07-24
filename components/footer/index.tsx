@@ -1,8 +1,8 @@
-import LastChanceCTA from "./last-chance-cta"
 import CoreFooter from "./core-footer"
-import TrustStrip from "./trust-strip"
-import NewsletterForm from "./newsletter-form"
+import LastChanceCTA from "./last-chance-cta"
 import MicroFooter from "./micro-footer"
+import NewsletterForm from "./newsletter-form"
+import TrustStrip from "./trust-strip"
 
 export default function Footer() {
   return (

@@ -1,13 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import CurrentSummaryBanner from "./current-summary-banner"
-import ComponentGrid from "./component-grid"
-import UptimeChart from "./uptime-chart"
-import IncidentTimeline from "./incident-timeline"
-import SubscribeCTA from "./subscribe-cta"
-import StatusFooter from "./status-footer"
+
 import { trackEvent } from "@/lib/analytics"
+
+import ComponentGrid from "./component-grid"
+import CurrentSummaryBanner from "./current-summary-banner"
+import IncidentTimeline from "./incident-timeline"
+import StatusFooter from "./status-footer"
+import SubscribeCTA from "./subscribe-cta"
+import UptimeChart from "./uptime-chart"
+
 
 // Types for our status data
 export type SystemStatus = "operational" | "degraded" | "outage"

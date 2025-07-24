@@ -1,7 +1,8 @@
 "use client"
 
-import Link from "next/link"
 import { HelpCircle, Play, BookOpen, Activity } from "lucide-react"
+import Link from "next/link"
+
 import { trackEvent } from "@/lib/analytics"
 
 const links = [

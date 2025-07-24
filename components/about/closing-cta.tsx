@@ -1,9 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Play, Sparkles, ArrowRight, Star, Zap, X } from "lucide-react"
+import Link from "next/link"
+import { useState, useEffect } from "react"
+
+import { Button } from "@/components/ui/button"
+
 
 export default function ClosingCTA() {
   const [showModal, setShowModal] = useState(false)

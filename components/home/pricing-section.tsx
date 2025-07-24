@@ -1,9 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
+
+import { Button } from "@/components/ui/button"
+
 
 export default function PricingSection() {
   const freeTierRef = useRef<HTMLDivElement>(null)

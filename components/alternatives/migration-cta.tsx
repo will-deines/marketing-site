@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import { ArrowRight, Download, Upload, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 
 interface MigrationCtaProps {
   competitorName: string

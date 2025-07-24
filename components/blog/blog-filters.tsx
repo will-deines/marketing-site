@@ -1,12 +1,13 @@
 "use client"
 
+import { ChevronDown, ChevronUp, Filter, Clock, Tag } from "lucide-react"
 import { useState, useEffect } from "react"
-import { Slider } from "@/components/ui/slider"
+
+import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp, Filter, Clock, Tag } from "lucide-react"
+import { Slider } from "@/components/ui/slider"
 
 interface BlogFiltersProps {
   vertical: string[]

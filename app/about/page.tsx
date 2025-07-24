@@ -1,15 +1,16 @@
 import type { Metadata } from "next"
-import Header from "@/components/header"
-import CinematicHero from "@/components/about/cinematic-hero"
-import MissionVision from "@/components/about/mission-vision"
-import FoundingStory from "@/components/about/founding-story"
-import MetricMosaic from "@/components/about/metric-mosaic"
-import ValuesGrid from "@/components/about/values-grid"
-import InvestorStrip from "@/components/about/investor-strip"
+
 import CareersSection from "@/components/about/careers-section"
-import PressResources from "@/components/about/press-resources"
+import CinematicHero from "@/components/about/cinematic-hero"
 import ClosingCTA from "@/components/about/closing-cta"
+import FoundingStory from "@/components/about/founding-story"
+import InvestorStrip from "@/components/about/investor-strip"
+import MetricMosaic from "@/components/about/metric-mosaic"
+import MissionVision from "@/components/about/mission-vision"
+import PressResources from "@/components/about/press-resources"
+import ValuesGrid from "@/components/about/values-grid"
 import Footer from "@/components/footer"
+import Header from "@/components/header"
 
 export const metadata: Metadata = {
   title: "About Garrio – Support That Works While You Grow",

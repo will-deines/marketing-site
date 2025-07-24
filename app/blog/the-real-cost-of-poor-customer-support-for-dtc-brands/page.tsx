@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
-import { formatDate } from "@/lib/blog-utils"
-import Header from "@/components/header"
+
 import BlogPost from "@/components/blog/blog-post"
 import Footer from "@/components/footer"
+import Header from "@/components/header"
+import { formatDate } from "@/lib/blog-utils"
 
 export const metadata: Metadata = {
   title: "The Real Cost of Poor Customer Support for DTC Brands | Garrio",

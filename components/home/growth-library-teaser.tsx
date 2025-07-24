@@ -1,11 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { BookOpen, TrendingUp, ArrowRight, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { getPosts, formatDate, verticalLabels, type Post } from "@/lib/blog-utils"
+import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
-import { BookOpen, TrendingUp, ArrowRight, Users } from "lucide-react"
+
+import { getPosts, formatDate, verticalLabels, type Post } from "@/lib/blog-utils"
 
 export default function GrowthLibraryTeaser() {
   const [posts, setPosts] = useState<Post[]>([])

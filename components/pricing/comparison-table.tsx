@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import { Check, X, Info } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+
 import { plans, comparisonFeatures } from "@/lib/pricing-data"
 
 export default function ComparisonTable() {

@@ -1,9 +1,8 @@
 "use client";
 
-import type React from "react";
-
-import { useState, useEffect, useRef } from "react";
 import { Zap, Heart, Palette, Star, TrendingUp, Clock } from "lucide-react";
+import type React from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Result {
   icon: React.ReactNode;

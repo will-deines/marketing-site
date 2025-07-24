@@ -1,5 +1,6 @@
-import type { SystemStatus } from "./status-page"
 import { CheckCircle, AlertTriangle, AlertOctagon } from "lucide-react"
+
+import type { SystemStatus } from "./status-page"
 
 type BannerProps = {
   status: SystemStatus

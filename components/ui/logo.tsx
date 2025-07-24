@@ -1,6 +1,7 @@
 "use client"
 
 import { MessageSquare, Sparkles } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 
 interface LogoProps {

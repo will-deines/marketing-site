@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
 import { Moon, Smartphone, Target, Heart, Sparkles, Coffee } from "lucide-react"
+import { useEffect, useState, useRef } from "react"
 
 export default function PeaceOfMindCallout() {
   const [isVisible, setIsVisible] = useState(false)

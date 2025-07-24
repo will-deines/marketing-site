@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { ArrowRight, Sparkles, Clock, Users, TrendingUp, Zap } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useState } from "react"
+
+import { Button } from "@/components/ui/button"
 
 export default function ClosingCTA() {
   const [isPulsing, setIsPulsing] = useState(false)

@@ -1,8 +1,5 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
 import {
   ChevronDown,
   ChevronUp,
@@ -14,6 +11,8 @@ import {
   HelpCircle,
 } from "lucide-react";
 import Script from "next/script";
+import type React from "react";
+import { useState } from "react";
 
 interface FAQItem {
   id: string;

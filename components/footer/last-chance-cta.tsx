@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useEffect, useState, useRef } from "react"
+
+import { Button } from "@/components/ui/button"
 
 export default function LastChanceCTA() {
   const [isSticky, setIsSticky] = useState(false)

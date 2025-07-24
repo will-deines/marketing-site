@@ -1,6 +1,8 @@
 "use client"
 
-import { useEffect, useRef, ReactNode } from "react"
+import type { ReactNode } from "react";
+import { useEffect, useRef } from "react"
+
 import { cn } from "@/lib/utils"
 
 interface HeroVideoBackgroundProps {

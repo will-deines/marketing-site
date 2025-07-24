@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ChevronDown, Sparkles, Zap, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+
+import { Button } from "@/components/ui/button";
+
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);

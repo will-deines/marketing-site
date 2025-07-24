@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { Quote, Star, Users, TrendingUp, Heart } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState, useRef } from "react";
 
 interface Testimonial {
   id: number;

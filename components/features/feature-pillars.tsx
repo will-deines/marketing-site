@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-
-import { useState } from "react";
 import {
   Clock,
   DollarSign,
@@ -10,6 +7,8 @@ import {
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
+import React from "react";
+import { useState } from "react";
 
 interface FeaturePillar {
   id: string;

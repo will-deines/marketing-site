@@ -1,13 +1,13 @@
 "use client";
 
-import type React from "react";
-
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { Clock, DollarSign, TrendingUp, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import type React from "react";
+import { useState, useEffect, useRef } from "react";
+
+import { Button } from "@/components/ui/button";
 import ClaimsModal from "@/components/ui/claims-modal";
+import { cn } from "@/lib/utils";
 
 // ROI calculation function - calculates both time and money savings
 // Data sourced from /claims-sources - verified industry benchmarks

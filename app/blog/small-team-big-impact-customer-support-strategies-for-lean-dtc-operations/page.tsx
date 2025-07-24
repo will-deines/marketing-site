@@ -1,4 +1,5 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
+
 import BlogPost from "@/components/blog/blog-post"
 import type { PostContent } from "@/lib/blog-utils"
 

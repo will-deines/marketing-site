@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+
 import StatusPage from "@/components/status/status-page"
 
 export const metadata: Metadata = {

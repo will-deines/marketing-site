@@ -1,9 +1,11 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Sparkles, Zap, ArrowRight, CheckCircle, ChevronDown } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useState, useRef } from "react"
+
+import { Button } from "@/components/ui/button"
+
 
 export default function HomeHero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -29,7 +31,7 @@ export default function HomeHero() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/homepage-hero.jpg"
+          poster="/images/homepage-hero.webp"
         >
           <source src="/videos/homepage-hero.av1.webm" type="video/webm" />
           <source src="/videos/homepage-hero.h265.mp4" type="video/mp4" />

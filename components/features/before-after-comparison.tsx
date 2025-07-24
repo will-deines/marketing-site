@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-import Link from "next/link"
 import { AlertCircle, Clock, TrendingDown, XCircle, CheckCircle, Zap, Sparkles, ArrowRight, TrendingUp } from "lucide-react"
+import Link from "next/link"
+import { useState, useRef, useEffect } from "react"
 
 export default function BeforeAfterComparison() {
   const [isVisible, setIsVisible] = useState(false)

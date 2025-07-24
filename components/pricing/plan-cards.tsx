@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
 import { Check, Sparkles, Star, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { useState, useEffect, useRef } from "react"
+
+import { Button } from "@/components/ui/button"
 import { plans } from "@/lib/pricing-data"
 
 export default function PlanCards() {

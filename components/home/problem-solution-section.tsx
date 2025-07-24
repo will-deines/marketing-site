@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import {
   Clock,
   MessageSquare,
@@ -12,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 export default function ProblemSolutionSection() {
   const sectionRef = useRef<HTMLDivElement>(null);

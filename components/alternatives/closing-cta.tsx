@@ -1,9 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Calendar, Sparkles, ArrowRight, Star } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
+
+import { Button } from "@/components/ui/button"
+
 
 interface ClosingCtaProps {
   competitorName: string

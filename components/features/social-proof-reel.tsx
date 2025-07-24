@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
@@ -10,6 +8,8 @@ import {
   Trophy,
   CheckCircle,
 } from "lucide-react";
+import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 
 interface Testimonial {
   id: number;

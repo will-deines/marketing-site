@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2,
   Zap,
@@ -8,6 +7,7 @@ import {
   MessageSquare,
   ArrowRight,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DeepDiveSections() {
   const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);

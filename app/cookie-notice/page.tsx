@@ -1,12 +1,14 @@
-import Header from "@/components/header";
+import Link from "next/link";
+
 import CoreFooter from "@/components/footer/core-footer";
+import Header from "@/components/header";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Link from "next/link";
+
 
 export default function CookieNotice() {
   return (

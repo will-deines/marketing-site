@@ -1,13 +1,14 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
 import { useRouter } from "next/navigation"
-import BlogHero from "@/components/blog/blog-hero"
+import { useState, useEffect, useRef, useCallback } from "react"
+
 import BlogFilters from "@/components/blog/blog-filters"
 import BlogGrid from "@/components/blog/blog-grid"
-import FeaturedPost from "@/components/blog/featured-post"
+import BlogHero from "@/components/blog/blog-hero"
 import CtaRail from "@/components/blog/cta-rail"
 import EmptyState from "@/components/blog/empty-state"
+import FeaturedPost from "@/components/blog/featured-post"
 import { getFilteredPosts, getFeaturedPost, funnelLabels, verticalLabels, type Post } from "@/lib/blog-utils"
 
 interface BlogIndexProps {

@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getPostBySlug, getRelatedPosts, formatDate } from "@/lib/blog-utils"
-import Header from "@/components/header"
+
 import BlogPost from "@/components/blog/blog-post"
 import RelatedPosts from "@/components/blog/related-posts"
 import Footer from "@/components/footer"
+import Header from "@/components/header"
+import { getPostBySlug, getRelatedPosts, formatDate } from "@/lib/blog-utils"
 
 // Generate static params for all posts
 export async function generateStaticParams() {

@@ -1,9 +1,10 @@
 "use client"
 
+import { Calculator, TrendingUp, DollarSign, Users, Sparkles } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
+
 import { Slider } from "@/components/ui/slider"
 import { plans } from "@/lib/pricing-data"
-import { Calculator, TrendingUp, DollarSign, Users, Sparkles } from "lucide-react"
 
 export default function UsageCalculator() {
   const [conversationCount, setConversationCount] = useState(500)

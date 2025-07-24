@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+
 import ClaimsModal from "@/components/ui/claims-modal"
 
 interface Metric {

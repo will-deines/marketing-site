@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { DollarSign, Sparkles, Calculator, ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+
 
 export default function PricingHero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -49,7 +51,7 @@ export default function PricingHero() {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h1 className="text-[2.75rem] leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white sm:leading-[0.9]">
+            <h1 className="text-4xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white sm:leading-[0.9]">
               Support tools for
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-pink-200 to-indigo-200">

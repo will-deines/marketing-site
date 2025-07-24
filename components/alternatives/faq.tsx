@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import { ChevronDown, MessageSquare, Shield, Zap, HeadphonesIcon, Settings } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
 
 interface FaqProps {
   competitorName: string

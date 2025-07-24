@@ -1,10 +1,12 @@
 "use client"
 
-import Link from "next/link"
+import { Star, ArrowRight, Clock, Calendar } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+
 import { formatDate } from "@/lib/blog-utils"
 import type { Post } from "@/lib/blog-utils"
-import { Star, ArrowRight, Clock, Calendar } from "lucide-react"
+
 
 interface FeaturedPostProps {
   post: Post

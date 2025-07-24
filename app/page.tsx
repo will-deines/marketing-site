@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import Header from "@/components/header";
-import HomeHero from "@/components/home/home-hero";
-import ProblemSolutionSection from "@/components/home/problem-solution-section";
-import TestimonialCarousel from "@/components/home/testimonial-carousel";
-import FAQSection from "@/components/home/faq-section";
-import ClosingCTA from "@/components/home/closing-cta";
+
 import Footer from "@/components/footer";
-import ROISliderTeaser from "@/components/home/roi-slider-teaser";
+import Header from "@/components/header";
+import ClosingCTA from "@/components/home/closing-cta";
 import ComparisonSnapshotV2 from "@/components/home/comparison-snapshot-v2";
-import GrowthLibraryTeaser from "@/components/home/growth-library-teaser";
-import PricingSectionV2 from "@/components/home/pricing-section-v2";
+import FAQSection from "@/components/home/faq-section";
 import GarrioTeamBarChart from "@/components/home/garrio-team-bar-chart";
+import GrowthLibraryTeaser from "@/components/home/growth-library-teaser";
+import HomeHero from "@/components/home/home-hero";
+import PricingSectionV2 from "@/components/home/pricing-section-v2";
+import ProblemSolutionSection from "@/components/home/problem-solution-section";
+import ROISliderTeaser from "@/components/home/roi-slider-teaser";
+import TestimonialCarousel from "@/components/home/testimonial-carousel";
 
 // Structured data for search engines
 const structuredData = {

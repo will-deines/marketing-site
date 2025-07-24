@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import BlogPost from '@/components/blog/blog-post'
 import { formatDate } from '@/lib/blog-utils'
 

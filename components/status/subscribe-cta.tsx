@@ -1,9 +1,9 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { Rss, Copy, Check } from "lucide-react"
+import type React from "react"
+import { useState } from "react"
+
 import { trackEvent } from "@/lib/analytics"
 
 export default function SubscribeCTA() {

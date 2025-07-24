@@ -1,9 +1,11 @@
 "use client"
 
-import { useState } from "react"
-import type { Incident } from "./status-page"
 import { ChevronDown, AlertTriangle, AlertOctagon, CheckCircle, Clock } from "lucide-react"
+import { useState } from "react"
+
 import { trackEvent } from "@/lib/analytics"
+
+import type { Incident } from "./status-page"
 
 type IncidentTimelineProps = {
   incidents: Incident[]

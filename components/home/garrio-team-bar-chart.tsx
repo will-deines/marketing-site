@@ -1,9 +1,9 @@
 "use client"
 
+import { Download, Brain, RefreshCw, Mail, MessageSquare, TrendingUp, Users } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
 import { useInView } from "react-intersection-observer"
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from "recharts"
-import { Download, Brain, RefreshCw, Mail, MessageSquare, TrendingUp, Users } from "lucide-react"
 
 interface StepData {
   step: number

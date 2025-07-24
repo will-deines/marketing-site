@@ -1,9 +1,5 @@
 "use client";
 
-import type React from "react";
-
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import {
   Check,
   Info,
@@ -14,8 +10,11 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
+import type React from "react";
+import { useState, useRef, useEffect } from "react";
+
 import { Button } from "@/components/ui/button";
-import { plans } from "@/lib/pricing-data";
 import {
   Tooltip,
   TooltipContent,
@@ -23,6 +22,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { trackEvent } from "@/lib/analytics";
+import { plans } from "@/lib/pricing-data";
 
 export default function PricingSectionV2() {
   const [waitlistPlan, setWaitlistPlan] = useState<string | null>(null);

@@ -1,7 +1,7 @@
-import HeroIntro from "./hero-intro"
-import SmartContactForm from "./smart-contact-form"
-import SelfServeLinks from "./self-serve-links"
 import CompanyInfo from "./company-info"
+import HeroIntro from "./hero-intro"
+import SelfServeLinks from "./self-serve-links"
+import SmartContactForm from "./smart-contact-form"
 import SocialCta from "./social-cta"
 
 export default function ContactPage() {

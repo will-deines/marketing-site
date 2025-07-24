@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
 import { Check } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
+
 import { Button } from "@/components/ui/button"
 
 interface PricingBreakoutProps {

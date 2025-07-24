@@ -1,6 +1,7 @@
-import { Metadata } from 'next'
-import BlogPost from '@/components/blog/blog-post'
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
+
+import BlogPost from '@/components/blog/blog-post'
 
 export const metadata: Metadata = {
   title: 'Black Friday Survival: How DTC Brands Handle 10x Support Volume | Garrio',

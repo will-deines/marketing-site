@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Header from "@/components/header";
+
 import BlogIndex from "@/components/blog/blog-index";
+import Header from "@/components/header";
 import {
   getAllVerticals,
   generateStructuredData,

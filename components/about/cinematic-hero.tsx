@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
 import { ChevronDown, Sparkles } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+
+import { Button } from "@/components/ui/button";
 
 export default function CinematicHero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +36,7 @@ export default function CinematicHero() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/about-hero.jpg"
+          poster="/images/about-hero.webp"
         >
           <source src="/videos/about-hero.av1.webm" type="video/webm" />
           <source src="/videos/about-hero.h265.mp4" type="video/mp4" />
