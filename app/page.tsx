@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Header from "@/components/header";
-import CinematicHero from "@/components/about/cinematic-hero";
+import HomeHero from "@/components/home/home-hero";
 import ProblemSolutionSection from "@/components/problem-solution-section";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import FAQSection from "@/components/faq-section";
@@ -76,18 +76,17 @@ const structuredData = {
 }
 
 export const metadata: Metadata = {
-  other: {
-    'application/ld+json': JSON.stringify(structuredData)
-  }
+  title: "Garrio - Customer Service Platform for Shopify Stores",
+  description: "Complete customer experience tool for growing Shopify brands. Handle every customer interaction with AI-powered responses backed by live human agents when needed."
 }
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="transparent" />
       <main className="flex-1">
         {/* Hero Section */}
-        <CinematicHero />
+        <HomeHero />
 
         {/* AI-readable content summary for LLM consumption */}
         <section className="sr-only" aria-label="Page Summary for AI">

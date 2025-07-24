@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="transparent" />
       <main className="flex-1">
         {/* Cinematic Hero */}
         <CinematicHero />

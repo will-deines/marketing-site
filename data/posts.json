@@ -88,17 +88,6 @@
     "readingTime": 9
   },
   {
-    "slug": "saas-onboarding-automation",
-    "title": "Automate SaaS Onboarding: A Step-by-Step Guide",
-    "excerpt": "How to create a seamless onboarding experience that reduces churn and increases activation.",
-    "publishDate": "2025-03-28",
-    "vertical": ["saas"],
-    "funnel": "awareness",
-    "persona": ["cx-manager"],
-    "hero": "/covers/saas-onboarding.jpg",
-    "readingTime": 12
-  },
-  {
     "slug": "garrio-spring-update",
     "title": "Spring 2025 Product Update: New Features",
     "excerpt": "Discover the latest features we've added to Garrio, including advanced analytics and custom AI training.",

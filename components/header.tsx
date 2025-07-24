@@ -52,10 +52,11 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${headerBg}`}
+      style={{ right: 0 }}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16">
+      <div className="relative w-full max-w-[1440px] mx-auto">
+        <div className="flex items-center justify-between h-16 px-4 md:px-6">
           {/* Logo */}
           <Link href="/" className="group">
             <Logo 
@@ -154,9 +155,9 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden fixed top-16 left-0 right-0 bg-white shadow-xl border-t border-gray-100 animate-in slide-in-from-top-4 duration-300 z-50">
-          <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col gap-4">
+        <div className="lg:hidden fixed top-16 left-0 right-0 w-full bg-white shadow-xl border-t border-gray-100 animate-in slide-in-from-top-4 duration-300 z-50 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="w-full max-w-[1440px] mx-auto">
+            <nav className="flex flex-col gap-4 px-4 py-4">
               {navigation.map((item) => (
                 <div key={item.name}>
                   {item.dropdown ? (

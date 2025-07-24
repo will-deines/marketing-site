@@ -54,7 +54,7 @@ export default function ProblemSolutionSection() {
             <Heart className="w-4 h-4" />
             The founder's dilemma
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight">
             You built a{" "}
             <em className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 not-italic">
               brand
@@ -68,7 +68,7 @@ export default function ProblemSolutionSection() {
               helpdesk
             </em>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Let your Garrio team handle the “Where’s my order?” chaos so you can
             get back to designing, sourcing, and scaling the next sell‑out drop.
           </p>
@@ -83,29 +83,29 @@ export default function ProblemSolutionSection() {
                 : "-translate-x-20 opacity-0"
             }`}
           >
-            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-red-100 h-full flex flex-col">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="bg-red-100 p-4 rounded-2xl">
-                  <TrendingDown className="w-8 h-8 text-red-600" />
+            <div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-12 border border-red-100 h-full flex flex-col">
+              <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="bg-red-100 p-3 sm:p-4 rounded-2xl">
+                  <TrendingDown className="w-6 h-6 sm:w-8 sm:h-8 text-red-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
                     The Reality Check
                   </h3>
-                  <p className="text-red-600 font-medium">
+                  <p className="text-red-600 font-medium text-sm sm:text-base">
                     What's actually happening
                   </p>
                 </div>
               </div>
 
               <div className="space-y-8 flex-1">
-                <div className="bg-red-50 border border-red-200 rounded-2xl p-6">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-4 sm:p-6">
+                  <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
                     Your day looks like this:
                   </h4>
 
                   <div className="space-y-4">
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <Clock className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-medium text-gray-900">
@@ -118,7 +118,7 @@ export default function ProblemSolutionSection() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <MessageSquare className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-medium text-gray-900">
@@ -131,7 +131,7 @@ export default function ProblemSolutionSection() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <Heart className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-medium text-gray-900">
@@ -146,8 +146,8 @@ export default function ProblemSolutionSection() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900 text-white rounded-2xl p-6">
-                  <p className="text-lg italic leading-relaxed">
+                <div className="bg-gray-900 text-white rounded-2xl p-4 sm:p-6">
+                  <p className="text-base sm:text-lg italic leading-relaxed">
                     "I built this brand to create something meaningful, but I
                     spend more time answering 'Where's my order?' than actually
                     building the business."
@@ -169,29 +169,29 @@ export default function ProblemSolutionSection() {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl shadow-2xl p-8 md:p-12 border border-purple-100 h-full flex flex-col">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="bg-purple-100 p-4 rounded-2xl">
-                  <TrendingUp className="w-8 h-8 text-purple-600" />
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-12 border border-purple-100 h-full flex flex-col">
+              <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="bg-purple-100 p-3 sm:p-4 rounded-2xl">
+                  <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
                     Get Your Vision Back
                   </h3>
-                  <p className="text-purple-600 font-medium">
+                  <p className="text-purple-600 font-medium text-sm sm:text-base">
                     What's possible with Garrio
                   </p>
                 </div>
               </div>
 
               <div className="space-y-8 flex-1">
-                <div className="bg-white/60 backdrop-blur border border-purple-200 rounded-2xl p-6">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                <div className="bg-white/60 backdrop-blur border border-purple-200 rounded-2xl p-4 sm:p-6">
+                  <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
                     Your new reality:
                   </h4>
 
                   <div className="space-y-4">
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                       </div>
@@ -206,7 +206,7 @@ export default function ProblemSolutionSection() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                       </div>
@@ -221,7 +221,7 @@ export default function ProblemSolutionSection() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                       </div>
@@ -238,14 +238,14 @@ export default function ProblemSolutionSection() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl p-6">
-                  <div className="flex items-start gap-4">
-                    <Zap className="w-8 h-8 text-yellow-300 flex-shrink-0 mt-1" />
+                <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl p-4 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-300 flex-shrink-0 mt-1" />
                     <div>
-                      <p className="text-lg font-semibold mb-2">
+                      <p className="text-base sm:text-lg font-semibold mb-2">
                         The transformation
                       </p>
-                      <p className="leading-relaxed opacity-90">
+                      <p className="text-sm sm:text-base leading-relaxed opacity-90">
                         Within 48 hours: Your customers get instant, helpful
                         responses. Within 2 weeks: You remember why you started
                         this business in the first place.
@@ -259,7 +259,7 @@ export default function ProblemSolutionSection() {
               <div className="mt-8">
                 <Link
                   href="https://apps.shopify.com/garrio?utm_source=homepage_problem_solution&utm_medium=cta&utm_campaign=free_install"
-                  className="block bg-white/80 backdrop-blur rounded-2xl p-6 border border-purple-200 hover:bg-white/90 hover:border-purple-300 hover:shadow-lg transition-all duration-200 group cursor-pointer"
+                  className="block bg-white/80 backdrop-blur rounded-2xl p-4 sm:p-6 border border-purple-200 hover:bg-white/90 hover:border-purple-300 hover:shadow-lg transition-all duration-200 group cursor-pointer"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
