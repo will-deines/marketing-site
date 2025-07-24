@@ -16,46 +16,28 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Dawn",
-    company: "",
+    name: "Ryan",
+    company: "HOAst (Services)",
     quote:
-      "I launched my brand from my kitchen table. Now I'm doing $80K/month and Garrio handles support so I can focus on creating new collections that my customers actually want.",
+      "I was drowning in email.  Garrio took over and we went from four days behind to instant responses.  Our customers are so happy..",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
   {
     id: 2,
-    name: "Sarah",
-    company: "Urban Threads (Fashion)",
+    name: "Chuck",
+    company: "Mortadella Head (Food & Bev)",
     quote:
-      "I was spending 4 hours a day on customer emails. Now that time goes to design and sourcing. Sales are up 32% because I'm actually building the brand, not just managing it.",
+      "Garrio gets what our customers need right away.  They're happy and buying more than ever.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },
   {
     id: 3,
-    name: "Maya",
-    company: "Clean Beauty Co. (Skincare)",
+    name: "Mike",
+    company: "Harbor Hoses (Retail)",
     quote:
-      "As a bootstrapped founder, every dollar matters. Garrio pays for itself with the first few upsells, and I don't need to hire support staff until I hit 8 figures.",
-    avatar: "/placeholder.svg?height=80&width=80",
-    logo: "/placeholder.svg?height=40&width=120",
-  },
-  {
-    id: 4,
-    name: "Jessica",
-    company: "Wild & Free (Sustainable Fashion)",
-    quote:
-      "I built this brand to make a difference, not to answer 'What's your return policy?' 50 times a day. Now customers get instant answers and I get my evenings back.",
-    avatar: "/placeholder.svg?height=80&width=80",
-    logo: "/placeholder.svg?height=40&width=120",
-  },
-  {
-    id: 5,
-    name: "Rachel",
-    company: "Nourish Naturally (Food Products)",
-    quote:
-      "Went from drowning in order status questions to actually having time for product development. My customers are happier and I'm not working 80-hour weeks anymore.",
+      "This is our first online store and we really needed help with our customers.  Garrio gets the job done.",
     avatar: "/placeholder.svg?height=80&width=80",
     logo: "/placeholder.svg?height=40&width=120",
   },

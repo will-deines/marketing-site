@@ -130,13 +130,13 @@ export default function PricingSectionV2() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-14 md:gap-14 lg:gap-8 max-w-6xl mx-auto">
           {sortedPlans.map((plan) => (
             <div key={plan.id} className="relative group">
               {/* Annotation space above each card */}
               <div className="h-6 relative overflow-visible mb-2">
                 {plan.popular && (
-                  <div className="absolute top-0 right-0 z-50">
+                  <div className="absolute -top-4 right-0 z-50">
                     <div
                       className="text-gray-700 text-lg font-medium italic transform -rotate-6 px-2 py-1 relative whitespace-nowrap transition-transform duration-300 group-hover:-rotate-3"
                       style={{ fontFamily: "Georgia, serif" }}
@@ -321,47 +321,65 @@ export default function PricingSectionV2() {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
-          <div className="bg-white/60 backdrop-blur rounded-2xl border border-purple-100 p-8 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="bg-purple-100 p-3 rounded-xl">
-                <Sparkles className="w-6 h-6 text-purple-600" />
+        <div className="mt-24 text-center">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                Everything you need, in every plan
+              </h3>
+              <p className="text-lg text-gray-600">
+                No hidden fees. No feature gates. Just honest pricing.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-purple-200">
+                <div className="bg-gradient-to-br from-purple-100 to-blue-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                  <svg className="w-7 h-7 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Smart AI Assistant</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Industry-trained AI that learns your products, policies, and brand voice
+                </p>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  What's included in every plan
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  No hidden fees, no surprises
+              
+              <div className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-purple-200">
+                <div className="bg-gradient-to-br from-green-100 to-emerald-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                  <svg className="w-7 h-7 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Real-Time Analytics</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Track conversions, response times, and customer satisfaction metrics
+                </p>
+              </div>
+              
+              <div className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-purple-200">
+                <div className="bg-gradient-to-br from-blue-100 to-indigo-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                  <svg className="w-7 h-7 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Instant Integration</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  One-click Shopify setup with automatic order and customer data sync
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Industry-smart AI that learns your business</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Instant Shopify integration</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Analytics that actually matter</span>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-gray-600">
-                Need something custom?{" "}
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+              <p className="text-gray-700">
+                Looking for enterprise features or custom integrations?{" "}
                 <Link
                   href="/contact"
-                  className="text-purple-600 hover:text-purple-700 font-medium hover:underline"
+                  className="text-purple-600 hover:text-purple-700 font-semibold inline-flex items-center gap-1 group"
                 >
-                  We'll work with your budget
+                  Let's build something together
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                .
               </p>
             </div>
           </div>

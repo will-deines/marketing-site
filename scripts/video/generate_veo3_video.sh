@@ -11,6 +11,27 @@ MODEL="veo-3.0-generate-preview"
 # DESCRIPTION_FILE="video_description.txt"  # Now using PROMPT from config
 CONFIG_FILE="veo3_config.conf"
 
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -c|--config)
+            CONFIG_FILE="$2"
+            shift 2
+            ;;
+        -h|--help)
+            echo "Usage: $0 [-c CONFIG_FILE]"
+            echo "  -c, --config    Configuration file (default: veo3_config.conf)"
+            echo "  -h, --help      Show this help message"
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Use -h for help"
+            exit 1
+            ;;
+    esac
+done
+
 # Check if API key is provided
 if [ -z "$GEMINI_API_KEY" ]; then
   echo "Error: GEMINI_API_KEY environment variable is required"
