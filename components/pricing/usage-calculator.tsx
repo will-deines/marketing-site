@@ -161,10 +161,10 @@ export default function UsageCalculator() {
           </div>
 
           {/* Conversation Volume Slider */}
-          <div className="mb-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8">
-            <div className="flex justify-between mb-4">
-              <span className="text-lg font-semibold text-gray-900">Monthly conversation volume</span>
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+          <div className="mb-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-2 mb-4">
+              <span className="text-base sm:text-lg font-semibold text-gray-900">Monthly conversation volume</span>
+              <span className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                 {conversationCount} conversations
               </span>
             </div>

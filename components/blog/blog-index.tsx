@@ -218,32 +218,6 @@ export default function BlogIndex({
         verticalLabels={verticalLabels}
       />
 
-      {/* Elegant transition */}
-      <div className="w-full py-16 bg-gradient-to-b from-gray-900/5 to-transparent relative z-10">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Discover proven strategies that have helped thousands of Shopify founders scale their customer experience
-            </p>
-            <div className="animate-bounce">
-              <svg 
-                className="w-8 h-8 mx-auto text-purple-600" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="flex flex-col xl:flex-row gap-12">
           {/* Sidebar */}

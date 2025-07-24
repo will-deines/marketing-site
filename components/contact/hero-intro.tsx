@@ -4,7 +4,7 @@ export default function HeroIntro() {
   return (
     <div className="text-center mb-16 animate-fade-in-up">
       {/* Animated badge */}
-      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 px-6 py-3 rounded-full text-sm font-medium mb-8 animate-fade-in">
+      <div className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 px-6 py-3 rounded-full text-sm font-medium mb-8 animate-fade-in">
         <MessageSquare className="w-4 h-4" />
         Get in touch
       </div>

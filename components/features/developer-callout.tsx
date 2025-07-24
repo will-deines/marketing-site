@@ -112,25 +112,25 @@ export default function PeaceOfMindCallout() {
           </div>
           
           {/* Bottom CTA section */}
-          <div className={`bg-white rounded-3xl p-10 shadow-2xl border border-purple-200 transition-all duration-1000 ${
+          <div className={`bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-purple-200 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`} style={{ transitionDelay: "600ms" }}>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                  <Coffee className="w-8 h-8" />
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                  <Coffee className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                 </div>
-                <div className="text-left">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-1">Ready to reclaim your time?</h4>
-                  <p className="text-gray-600">Join 500+ founders who chose balance over burnout</p>
+                <div>
+                  <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Ready to reclaim your time?</h4>
+                  <p className="text-sm sm:text-base text-gray-600">Join 500+ founders who chose balance over burnout</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="text-right">
-                  <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">20+ hours</div>
-                  <div className="text-sm text-gray-600">saved per week</div>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="text-center sm:text-right">
+                  <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">20+ hours</div>
+                  <div className="text-xs sm:text-sm text-gray-600">saved per week</div>
                 </div>
-                <Sparkles className="w-8 h-8 text-purple-500" />
+                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-purple-500" />
               </div>
             </div>
           </div>

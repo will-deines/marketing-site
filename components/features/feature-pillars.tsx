@@ -107,6 +107,7 @@ export default function FeaturePillars() {
           {featurePillars.map((pillar, index) => (
             <div
               key={pillar.id}
+              id={pillar.id}
               className={`group relative transition-all duration-700 ${
                 isVisible
                   ? "opacity-100 translate-y-0"

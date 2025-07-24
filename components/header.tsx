@@ -54,7 +54,7 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
     >
-      <div className="container mx-auto px-4 lg:px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="group">
@@ -74,13 +74,14 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {item.dropdown ? (
-                  <button
+                  <Link
+                    href={item.href}
                     className={`flex items-center gap-1 text-sm font-medium transition-all duration-300 relative group ${textColor}`}
                   >
                     {item.name}
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : "group-hover:rotate-180"}`} />
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 transition-all duration-300 group-hover:w-full" />
-                  </button>
+                  </Link>
                 ) : (
                   <Link
                     href={item.href}
@@ -117,7 +118,7 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
             {/* CTA Button */}
             <Button
               asChild
-              className={`ml-4 transition-all duration-300 transform hover:scale-105 ${
+              className={`ml-4 px-4 py-2 text-sm font-medium min-w-[140px] transition-all duration-300 transform hover:scale-105 ${
                 variant === "solid" || isScrolled
                   ? "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl"
                   : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
@@ -133,7 +134,7 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
+            className={`lg:hidden p-2 w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-300 ${
               variant === "solid" || isScrolled
                 ? "text-gray-700 hover:bg-gray-100"
                 : "text-white hover:bg-white/10"
@@ -153,16 +154,20 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-16 left-0 right-0 bg-white shadow-xl border-t border-gray-100 animate-in slide-in-from-top-4 duration-300">
+        <div className="lg:hidden fixed top-16 left-0 right-0 bg-white shadow-xl border-t border-gray-100 animate-in slide-in-from-top-4 duration-300 z-50">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col gap-4">
               {navigation.map((item) => (
                 <div key={item.name}>
                   {item.dropdown ? (
                     <>
-                      <div className="font-medium text-gray-900 px-4 py-2">
+                      <Link
+                        href={item.href}
+                        className="block font-medium text-gray-900 px-4 py-2 hover:text-purple-600"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                         {item.name}
-                      </div>
+                      </Link>
                       <div className="pl-8">
                         {item.dropdown.map((subItem) => (
                           <Link

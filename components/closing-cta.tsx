@@ -87,7 +87,7 @@ export default function ClosingCTA() {
         <div className="text-center">
           <Button
             size="lg"
-            className={`bg-white text-purple-900 hover:bg-white/95 text-xl font-semibold px-12 py-6 h-auto rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group ${
+            className={`bg-white text-purple-900 hover:bg-white/95 text-sm sm:text-xl font-semibold px-4 sm:px-12 py-3 sm:py-6 h-auto rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group ${
               isPulsing ? "animate-pulse-once scale-105" : ""
             }`}
             asChild
@@ -96,11 +96,12 @@ export default function ClosingCTA() {
               href="https://apps.shopify.com/garrio?utm_source=homepage_closing_cta&utm_medium=cta&utm_campaign=free_install" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-3"
+              className="flex items-center gap-2 sm:gap-3"
             >
-              <Zap className="w-6 h-6" />
-              Start Building Your Dream Business
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <Zap className="w-4 sm:w-6 h-4 sm:h-6 flex-shrink-0" />
+              <span className="sm:hidden">Start Building</span>
+              <span className="hidden sm:inline">Start Building Your Dream Business</span>
+              <ArrowRight className="w-4 sm:w-6 h-4 sm:h-6 group-hover:translate-x-1 transition-transform flex-shrink-0" />
             </Link>
           </Button>
 

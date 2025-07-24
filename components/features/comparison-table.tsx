@@ -548,36 +548,44 @@ export default function ComparisonTable() {
           {viewMode === "accordion" ? (
             // Accordion view for mobile
             <div className="space-y-4">
-              {["Gorgias", "Re:amaze", "Zendesk", "Tidio"].map((competitor) => (
-                <details key={competitor} className="bg-white rounded-lg shadow-sm">
+              {[
+                { display: "Gorgias", key: "gorgias" },
+                { display: "Re:amaze", key: "reamaze" },
+                { display: "Zendesk", key: "zendesk" },
+                { display: "Tidio", key: "tidio" }
+              ].map((competitor) => (
+                <details key={competitor.key} className="bg-white rounded-lg shadow-sm">
                   <summary className="p-4 font-bold cursor-pointer flex justify-between items-center">
-                    {competitor} vs Garrio
+                    {competitor.display} vs Garrio
                     <span className="text-purple-600">Compare</span>
                   </summary>
                   <div className="p-4 border-t border-gray-200">
-                    {comparisonData.map((item, index) => (
-                      <div key={index} className="py-3 border-b border-gray-100 last:border-b-0">
-                        <div className="font-medium mb-2">{item.feature}</div>
-                        <div className="flex justify-between">
-                          <div className="font-bold text-purple-700">
-                            Garrio:{" "}
-                            {typeof item.garrio.value === "boolean"
-                              ? item.garrio.value
-                                ? "Yes"
-                                : "No"
-                              : item.garrio.value}
-                          </div>
-                          <div className="text-gray-700">
-                            {competitor}:{" "}
-                            {typeof item[competitor.toLowerCase() as keyof typeof item].value === "boolean"
-                              ? item[competitor.toLowerCase() as keyof typeof item].value
-                                ? "Yes"
-                                : "No"
-                              : item[competitor.toLowerCase() as keyof typeof item].value}
+                    {comparisonData.map((item, index) => {
+                      const competitorData = item[competitor.key as keyof typeof item] as { value: string | boolean | number; note?: string };
+                      return (
+                        <div key={index} className="py-3 border-b border-gray-100 last:border-b-0">
+                          <div className="font-medium mb-2">{item.feature}</div>
+                          <div className="flex justify-between">
+                            <div className="font-bold text-purple-700">
+                              Garrio:{" "}
+                              {typeof item.garrio.value === "boolean"
+                                ? item.garrio.value
+                                  ? "Yes"
+                                  : "No"
+                                : item.garrio.value}
+                            </div>
+                            <div className="text-gray-700">
+                              {competitor.display}:{" "}
+                              {competitorData && typeof competitorData.value === "boolean"
+                                ? competitorData.value
+                                  ? "Yes"
+                                  : "No"
+                                : competitorData?.value || "N/A"}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </details>
               ))}

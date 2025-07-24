@@ -243,14 +243,14 @@ export default function ROISliderTeaser() {
           <div className="text-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2 group"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2 group"
                 asChild
                 onClick={handleCTAClick}
                 aria-label={`See detailed ROI breakdown with ${interactions} interactions`}
               >
                 <Link href={`/roi-calculator?interactions=${interactions}&utm_source=home_roi_teaser`}>
                   Get my full savings breakdown
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               
