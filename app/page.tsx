@@ -111,7 +111,6 @@ export default function Home() {
           </ul>
         </section>
 
-
         {/* How Garrio Works - Bar Chart Version */}
         <GarrioTeamBarChart />
 
@@ -125,7 +124,7 @@ export default function Home() {
         <ROISliderTeaser />
 
         {/* Growth Library Teaser */}
-        <GrowthLibraryTeaser />
+        {/* )}<GrowthLibraryTeaser /> */}
 
         {/* Social Proof Carousel */}
         <TestimonialCarousel />

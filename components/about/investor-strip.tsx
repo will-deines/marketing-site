@@ -58,7 +58,7 @@ export default function InvestorStrip() {
             <Sparkles className="w-3 h-3 text-purple-500" />
           </div>
           <h3 className="text-2xl md:text-3xl font-bold text-center bg-gradient-to-r from-purple-900 to-purple-600 bg-clip-text text-transparent">
-            Trusted by Successful Operators
+            Built by Successful Operators
           </h3>
         </div>
 
