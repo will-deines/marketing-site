@@ -85,8 +85,8 @@ export default function CoreFooter() {
             <p className="text-sm text-[#E5E5E7]/70 leading-relaxed">AI sales & support built exclusively for ambitious Shopify founders.</p>
           </div>
 
-          {/* Product Column */}
-          <FooterSection
+          {/* Product Column - Commented out for now */}
+          {/* <FooterSection
             title="Product"
             sectionId="product"
             isOpen={openSections.includes('product')}
@@ -120,7 +120,7 @@ export default function CoreFooter() {
                   </Link>
                 </li>
               </ul>
-          </FooterSection>
+          </FooterSection> */}
 
           {/* Resources Column */}
           <FooterSection
@@ -130,28 +130,6 @@ export default function CoreFooter() {
             onToggle={() => toggleSection('resources')}
           >
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/docs"
-                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
-                >
-                  <span className="relative inline-flex items-center gap-2">
-                    Docs
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/api"
-                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
-                >
-                  <span className="relative inline-flex items-center gap-2">
-                    API Reference
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
-                  </span>
-                </Link>
-              </li>
               <li>
                 <Link
                   href="https://apps.shopify.com/garrio"
@@ -200,7 +178,7 @@ export default function CoreFooter() {
               </li>
               <li>
                 <Link
-                  href="/careers"
+                  href="/about#careers"
                   className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
                   <span className="relative inline-flex items-center gap-2">
@@ -211,7 +189,7 @@ export default function CoreFooter() {
               </li>
               <li>
                 <Link
-                  href="/press-kit.zip"
+                  href="/about#press-kit"
                   className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                 >
                   <span className="relative inline-flex items-center gap-2">
@@ -250,7 +228,7 @@ export default function CoreFooter() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/terms"
+                  href="/terms-of-service"
                   className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                   rel="legal"
                 >
@@ -262,32 +240,39 @@ export default function CoreFooter() {
               </li>
               <li>
                 <Link
-                  href="/privacy"
+                  href="/privacy-policy"
                   className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                   rel="legal"
                 >
                   <span className="relative inline-flex items-center gap-2">
-                    Privacy & GDPR
+                    Privacy Policy
                     <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/dpa.pdf"
+                  href="/ccpa-disclosures"
                   className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
                   rel="legal"
                 >
                   <span className="relative inline-flex items-center gap-2">
-                    DPA (PDF)
+                    CCPA Disclosures
                     <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </li>
               <li>
-                <button className="text-sm text-[#E5E5E7]/80 hover:text-purple-400 transition-colors">
-                  Cookie Settings
-                </button>
+                <Link
+                  href="/data-privacy-framework"
+                  className="text-sm text-[#E5E5E7]/60 hover:text-white transition-all duration-300 relative overflow-hidden group inline-block"
+                  rel="legal"
+                >
+                  <span className="relative inline-flex items-center gap-2">
+                    Data Privacy Framework
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </Link>
               </li>
             </ul>
           </FooterSection>

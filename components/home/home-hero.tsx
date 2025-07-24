@@ -41,13 +41,6 @@ export default function HomeHero() {
 
       <div className="container mx-auto px-4 md:px-6 flex flex-col items-center justify-center min-h-screen relative z-20 pt-16">
         <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 py-12 sm:py-16 md:py-20">
-          {/* Elegant badge */}
-          <div className={`hidden md:inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white/90 px-6 py-3 rounded-full text-sm font-medium border border-white/20 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}>
-            <Sparkles className="w-4 h-4" />
-            For Shopify founders ready to scale
-          </div>
 
           {/* Main headline */}
           <div className={`space-y-4 sm:space-y-5 md:space-y-6 transition-all duration-1000 delay-200 ${
@@ -118,8 +111,8 @@ export default function HomeHero() {
           </div>
         </div>
         
-        {/* Scroll indicator - Mobile only */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden">
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <div className="animate-bounce">
             <ChevronDown className="w-8 h-8 text-white/70" />
           </div>

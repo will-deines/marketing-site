@@ -1,143 +1,148 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { Clock, DollarSign, TrendingUp, ArrowRight } from "lucide-react"
-import ClaimsModal from "@/components/ui/claims-modal"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Clock, DollarSign, TrendingUp, ArrowRight } from "lucide-react";
+import ClaimsModal from "@/components/ui/claims-modal";
 
 // ROI calculation function - calculates both time and money savings
 // Data sourced from /claims-sources - verified industry benchmarks
 const calculateSavings = (interactions: number) => {
-  const automationRate = 0.98 // 98% automation rate for Garrio (from claims data)
-  const avgTimePerInteraction = 15 // minutes per interaction (industry benchmark)
-  const agentWage = 14 // USD per hour (from ROI pricing data)
-  
-  const automatedInteractions = interactions * automationRate
-  const humanInteractions = interactions * (1 - automationRate)
-  
+  const automationRate = 0.98; // 98% automation rate for Garrio (from claims data)
+  const avgTimePerInteraction = 15; // minutes per interaction (industry benchmark)
+  const agentWage = 14; // USD per hour (from ROI pricing data)
+
+  const automatedInteractions = interactions * automationRate;
+  const humanInteractions = interactions * (1 - automationRate);
+
   // Time savings calculation
-  const totalTimeWithoutAI = interactions * avgTimePerInteraction // minutes
-  const timeWithAI = humanInteractions * avgTimePerInteraction // only human interactions take time
-  const timeSaved = totalTimeWithoutAI - timeWithAI // minutes saved
-  const hoursSaved = Math.round(timeSaved / 60) // hours, rounded to nearest whole
-  
-  // Money savings calculation  
-  const costWithoutAI = (totalTimeWithoutAI / 60) * agentWage
-  const costWithAI = (timeWithAI / 60) * agentWage
-  const moneySaved = Math.round(costWithoutAI - costWithAI)
-  
+  const totalTimeWithoutAI = interactions * avgTimePerInteraction; // minutes
+  const timeWithAI = humanInteractions * avgTimePerInteraction; // only human interactions take time
+  const timeSaved = totalTimeWithoutAI - timeWithAI; // minutes saved
+  const hoursSaved = Math.round(timeSaved / 60); // hours, rounded to nearest whole
+
+  // Money savings calculation
+  const costWithoutAI = (totalTimeWithoutAI / 60) * agentWage;
+  const costWithAI = (timeWithAI / 60) * agentWage;
+  const moneySaved = Math.round(costWithoutAI - costWithAI);
+
   return {
     hoursSaved,
     moneySaved,
-    automatedInteractions: Math.round(automatedInteractions)
-  }
-}
+    automatedInteractions: Math.round(automatedInteractions),
+  };
+};
 
 // Animation utility for smooth number transitions
-const animateValue = (start: number, end: number, duration: number, callback: (value: number) => void) => {
-  const startTime = performance.now()
+const animateValue = (
+  start: number,
+  end: number,
+  duration: number,
+  callback: (value: number) => void,
+) => {
+  const startTime = performance.now();
 
   const updateValue = (currentTime: number) => {
-    const elapsedTime = currentTime - startTime
+    const elapsedTime = currentTime - startTime;
 
     if (elapsedTime > duration) {
-      callback(end)
-      return
+      callback(end);
+      return;
     }
 
-    const progress = elapsedTime / duration
-    const easedProgress = 1 - Math.pow(1 - progress, 3) // Cubic ease-out
-    const currentValue = Math.round(start + (end - start) * easedProgress)
+    const progress = elapsedTime / duration;
+    const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
+    const currentValue = Math.round(start + (end - start) * easedProgress);
 
-    callback(currentValue)
-    requestAnimationFrame(updateValue)
-  }
+    callback(currentValue);
+    requestAnimationFrame(updateValue);
+  };
 
-  requestAnimationFrame(updateValue)
-}
+  requestAnimationFrame(updateValue);
+};
 
 export default function ROISliderTeaser() {
-  const [interactions, setInteractions] = useState(250)
-  const [displayedHours, setDisplayedHours] = useState(0)
-  const [displayedMoney, setDisplayedMoney] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const previousHours = useRef(0)
-  const previousMoney = useRef(0)
+  const [interactions, setInteractions] = useState(250);
+  const [displayedHours, setDisplayedHours] = useState(0);
+  const [displayedMoney, setDisplayedMoney] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const previousHours = useRef(0);
+  const previousMoney = useRef(0);
 
   // Calculate initial savings on mount
   useEffect(() => {
-    const savings = calculateSavings(interactions)
-    setDisplayedHours(savings.hoursSaved)
-    setDisplayedMoney(savings.moneySaved)
-    previousHours.current = savings.hoursSaved
-    previousMoney.current = savings.moneySaved
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps -- interactions excluded: only for initial calc, updates handled by handleSliderChange with animation
+    const savings = calculateSavings(interactions);
+    setDisplayedHours(savings.hoursSaved);
+    setDisplayedMoney(savings.moneySaved);
+    previousHours.current = savings.hoursSaved;
+    previousMoney.current = savings.moneySaved;
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps -- interactions excluded: only for initial calc, updates handled by handleSliderChange with animation
 
   // Handle slider change with animated transition
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newInteractions = Number.parseInt(e.target.value, 10)
-    setInteractions(newInteractions)
+    const newInteractions = Number.parseInt(e.target.value, 10);
+    setInteractions(newInteractions);
 
-    const newSavings = calculateSavings(newInteractions)
-    
+    const newSavings = calculateSavings(newInteractions);
+
     // Animate hours saved
     animateValue(previousHours.current, newSavings.hoursSaved, 200, (value) => {
-      setDisplayedHours(Math.round(value))
-    })
-    
+      setDisplayedHours(Math.round(value));
+    });
+
     // Animate money saved
     animateValue(previousMoney.current, newSavings.moneySaved, 200, (value) => {
-      setDisplayedMoney(Math.round(value))
-    })
-    
-    previousHours.current = newSavings.hoursSaved
-    previousMoney.current = newSavings.moneySaved
+      setDisplayedMoney(Math.round(value));
+    });
+
+    previousHours.current = newSavings.hoursSaved;
+    previousMoney.current = newSavings.moneySaved;
 
     // Track analytics event (debounced)
     const timer = setTimeout(() => {
-      console.log("roi_slider_change", { 
-        interactions: newInteractions, 
-        hoursSaved: newSavings.hoursSaved, 
-        moneySaved: newSavings.moneySaved 
-      })
-    }, 200)
+      console.log("roi_slider_change", {
+        interactions: newInteractions,
+        hoursSaved: newSavings.hoursSaved,
+        moneySaved: newSavings.moneySaved,
+      });
+    }, 200);
 
-    return () => clearTimeout(timer)
-  }
+    return () => clearTimeout(timer);
+  };
 
   // Track CTA click
   const handleCTAClick = () => {
     // Analytics tracking
-    console.log("roi_teaser_cta_click", { 
-      interactions: interactions, 
-      hoursSaved: displayedHours, 
-      moneySaved: displayedMoney 
-    })
-  }
+    console.log("roi_teaser_cta_click", {
+      interactions: interactions,
+      hoursSaved: displayedHours,
+      moneySaved: displayedMoney,
+    });
+  };
 
   // Intersection Observer for fade-in effect
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
+          setIsVisible(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.3 },
-    )
+    );
 
     if (containerRef.current) {
-      observer.observe(containerRef.current)
+      observer.observe(containerRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -155,13 +160,14 @@ export default function ROISliderTeaser() {
             Stop trading time for customer support
           </div>
           <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            What if you never had to answer 
+            What if you never had to answer
             <br />
             <span className="text-purple-600">the same question twice?</span>
           </h3>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            You started a business to build something amazing, not to be a full-time customer service rep. 
-            See how much time you get back with AI that actually works.
+            You started a business to build something amazing, not to be a
+            full-time customer service rep. See how much time you get back with
+            support that actually works.
           </p>
         </div>
 
@@ -170,15 +176,20 @@ export default function ROISliderTeaser() {
           {/* Slider Section */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <label htmlFor="roi-slider" className="text-lg font-semibold text-gray-900 block mb-2">
+              <label
+                htmlFor="roi-slider"
+                className="text-lg font-semibold text-gray-900 block mb-2"
+              >
                 How many customer questions do you handle each month?
               </label>
               <div className="inline-flex items-center gap-3 bg-purple-50 px-6 py-3 rounded-xl">
-                <span className="text-3xl font-bold text-purple-600 tabular-nums">{interactions.toLocaleString()}</span>
+                <span className="text-3xl font-bold text-purple-600 tabular-nums">
+                  {interactions.toLocaleString()}
+                </span>
                 <span className="text-gray-600 font-medium">interactions</span>
               </div>
             </div>
-            
+
             {/* Custom Slider */}
             <div className="relative">
               <input
@@ -215,9 +226,12 @@ export default function ROISliderTeaser() {
               >
                 {displayedHours}
               </div>
-              <p className="text-blue-700 font-semibold text-lg mb-2">hours saved</p>
+              <p className="text-blue-700 font-semibold text-lg mb-2">
+                hours saved
+              </p>
               <p className="text-blue-600 text-sm leading-relaxed">
-                Time you can spend on product development, marketing, or actually taking a break
+                Time you can spend on product development, marketing, or
+                actually taking a break
               </p>
             </div>
 
@@ -232,9 +246,12 @@ export default function ROISliderTeaser() {
               >
                 ${displayedMoney}
               </div>
-              <p className="text-green-700 font-semibold text-lg mb-2">cost saved monthly</p>
+              <p className="text-green-700 font-semibold text-lg mb-2">
+                cost saved monthly
+              </p>
               <p className="text-green-600 text-sm leading-relaxed">
-                Money you save vs. hiring someone to handle customer support full-time
+                Money you save vs. hiring someone to handle customer support
+                full-time
               </p>
             </div>
           </div>
@@ -248,13 +265,15 @@ export default function ROISliderTeaser() {
                 onClick={handleCTAClick}
                 aria-label={`See detailed ROI breakdown with ${interactions} interactions`}
               >
-                <Link href={`/roi-calculator?interactions=${interactions}&utm_source=home_roi_teaser`}>
+                <Link
+                  href={`/roi-calculator?interactions=${interactions}&utm_source=home_roi_teaser`}
+                >
                   Get my full savings breakdown
                   <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
-              <ClaimsModal 
+
+              <ClaimsModal
                 title="ROI Calculation Methodology"
                 size="md"
                 trigger={
@@ -285,7 +304,7 @@ export default function ROISliderTeaser() {
           border: 3px solid white;
           box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
         }
-        
+
         .slider::-moz-range-thumb {
           width: 24px;
           height: 24px;
@@ -295,12 +314,18 @@ export default function ROISliderTeaser() {
           border: 3px solid white;
           box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
         }
-        
+
         .slider::-webkit-slider-track {
-          background: linear-gradient(to right, #7c3aed 0%, #7c3aed ${(interactions - 50) / (2000 - 50) * 100}%, #e5e7eb ${(interactions - 50) / (2000 - 50) * 100}%, #e5e7eb 100%);
+          background: linear-gradient(
+            to right,
+            #7c3aed 0%,
+            #7c3aed ${((interactions - 50) / (2000 - 50)) * 100}%,
+            #e5e7eb ${((interactions - 50) / (2000 - 50)) * 100}%,
+            #e5e7eb 100%
+          );
           border-radius: 6px;
         }
       `}</style>
     </section>
-  )
+  );
 }

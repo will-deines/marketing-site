@@ -64,6 +64,7 @@ const metrics: Metric[] = [
 
 export default function MetricMosaic() {
   const [visibleMetrics, setVisibleMetrics] = useState<string[]>([])
+  const [animatedMetrics, setAnimatedMetrics] = useState<string[]>([])
   const [animatedValues, setAnimatedValues] = useState<{ [key: string]: number }>({})
   const metricRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
@@ -84,6 +85,8 @@ export default function MetricMosaic() {
           const id = entry.target.getAttribute("data-id")
           if (id && entry.isIntersecting && !visibleMetrics.includes(id)) {
             setVisibleMetrics((prev) => [...prev, id])
+            // Once observed and added to visible metrics, stop observing
+            observer.unobserve(entry.target)
           }
         })
       },
@@ -95,7 +98,9 @@ export default function MetricMosaic() {
 
     const currentRefs = metricRefs.current
     Object.values(currentRefs).forEach((ref) => {
-      if (ref) observer.observe(ref)
+      if (ref && !visibleMetrics.includes(ref.getAttribute("data-id") || "")) {
+        observer.observe(ref)
+      }
     })
 
     return () => {
@@ -103,18 +108,24 @@ export default function MetricMosaic() {
         if (ref) observer.unobserve(ref)
       })
     }
-  }, [visibleMetrics])
+  }, [])
 
   // Animate values when they become visible
   useEffect(() => {
     visibleMetrics.forEach((id) => {
+      // Skip if already animated
+      if (animatedMetrics.includes(id)) return
+      
       const metric = metrics.find((m) => m.id === id)
       if (!metric) return
 
+      // Mark as animated
+      setAnimatedMetrics((prev) => [...prev, id])
+
       const startValue = metric.startValue
       const endValue = metric.endValue
-      const duration = 1500 // ms
-      const stepTime = 20 // ms
+      const duration = 2000 // ms (increased from 1500)
+      const stepTime = 50 // ms (increased from 20 for smoother animation)
       const steps = duration / stepTime
       const valueIncrement = (endValue - startValue) / steps
 
@@ -123,7 +134,10 @@ export default function MetricMosaic() {
 
       const interval = setInterval(() => {
         currentStep++
-        currentValue += valueIncrement
+        // Use easing function for smoother animation
+        const progress = currentStep / steps
+        const easedProgress = 1 - Math.pow(1 - progress, 3) // Ease-out cubic
+        currentValue = startValue + (endValue - startValue) * easedProgress
 
         if (currentStep >= steps) {
           clearInterval(interval)
@@ -138,7 +152,7 @@ export default function MetricMosaic() {
 
       return () => clearInterval(interval)
     })
-  }, [visibleMetrics])
+  }, [visibleMetrics, animatedMetrics])
 
   // Format animated value based on metric
   const formatValue = (id: string): string => {
@@ -207,7 +221,7 @@ export default function MetricMosaic() {
               {/* Progress bar */}
               <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div
-                  className={`absolute top-0 left-0 h-full bg-gradient-to-r ${metric.gradient} transition-all duration-1500 ease-out rounded-full`}
+                  className={`absolute top-0 left-0 h-full bg-gradient-to-r ${metric.gradient} transition-all duration-[2000ms] ease-out rounded-full`}
                   style={{
                     width: visibleMetrics.includes(metric.id)
                       ? `${(animatedValues[metric.id] / metric.endValue) * 100}%`

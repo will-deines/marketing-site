@@ -1,14 +1,23 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Clock, DollarSign, TrendingUp, Zap, Calendar, Sparkles, CheckCircle, XCircle } from "lucide-react"
+import { useEffect, useState } from "react";
+import {
+  Clock,
+  DollarSign,
+  TrendingUp,
+  Zap,
+  Calendar,
+  Sparkles,
+  CheckCircle,
+  XCircle,
+} from "lucide-react";
 
 interface Feature {
-  name: string
-  garrio: string
-  competitor: string
-  garrioPositive?: boolean
-  icon: React.ReactNode
+  name: string;
+  garrio: string;
+  competitor: string;
+  garrioPositive?: boolean;
+  icon: React.ReactNode;
 }
 
 const features: Feature[] = [
@@ -21,7 +30,7 @@ const features: Feature[] = [
   },
   {
     name: "Never miss a sale after hours",
-    garrio: "AI answers instantly 24/7",
+    garrio: "Your team answers instantly 24/7",
     competitor: "Lost revenue when offline",
     garrioPositive: true,
     icon: <TrendingUp className="w-5 h-5" />,
@@ -35,7 +44,7 @@ const features: Feature[] = [
   },
   {
     name: "Turn support into revenue",
-    garrio: "AI suggests perfect upsells",
+    garrio: "Your team suggests perfect upsells",
     competitor: "Support costs, doesn't sell",
     garrioPositive: true,
     icon: <Sparkles className="w-5 h-5" />,
@@ -54,36 +63,39 @@ const features: Feature[] = [
     garrioPositive: true,
     icon: <Calendar className="w-5 h-5" />,
   },
-]
+];
 
 export default function ComparisonSnapshotV2() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
+          setIsVisible(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.2 },
-    )
+    );
 
-    const element = document.getElementById("comparison-snapshot")
+    const element = document.getElementById("comparison-snapshot");
     if (element) {
-      observer.observe(element)
+      observer.observe(element);
     }
 
     return () => {
       if (element) {
-        observer.unobserve(element)
+        observer.unobserve(element);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
-    <section id="comparison-snapshot" className="py-16 md:py-32 bg-gradient-to-br from-green-50 via-white to-emerald-50">
+    <section
+      id="comparison-snapshot"
+      className="py-16 md:py-32 bg-gradient-to-br from-green-50 via-white to-emerald-50"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 md:mb-20">
           <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -91,24 +103,28 @@ export default function ComparisonSnapshotV2() {
             The Smart Choice
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Stop drowning, start 
+            Stop drowning, start
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">thriving</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
+              thriving
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            You're already wearing 10 hats. Let your Garrio team handle customer support 
-            so you can focus on growing your brand.
+            You're already wearing 10 hats. Let your Garrio team handle customer
+            support so you can focus on growing your brand.
           </p>
         </div>
 
-        <div className={`max-w-6xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div
+          className={`max-w-6xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           {/* Column Headers - Desktop Only */}
           <div className="hidden md:grid grid-cols-3 gap-6 mb-8">
             <div></div>
             <div className="text-center">
               <div className="bg-gradient-to-br from-green-600 to-emerald-600 text-white rounded-2xl p-6 shadow-xl">
                 <h3 className="text-2xl font-bold mb-2">With Garrio</h3>
-                <p className="text-green-50">Your team works for you</p>
+                <p className="text-green-50">Your business works for you</p>
               </div>
             </div>
             <div className="text-center">
@@ -139,7 +155,9 @@ export default function ComparisonSnapshotV2() {
               <div
                 key={feature.name}
                 className={`transition-all duration-500 ${
-                  isVisible ? `opacity-100 translate-x-0` : `opacity-0 ${index % 2 === 0 ? '-translate-x-10' : 'translate-x-10'}`
+                  isVisible
+                    ? `opacity-100 translate-x-0`
+                    : `opacity-0 ${index % 2 === 0 ? "-translate-x-10" : "translate-x-10"}`
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
@@ -150,7 +168,9 @@ export default function ComparisonSnapshotV2() {
                     <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-xl text-green-600 flex-shrink-0">
                       {feature.icon}
                     </div>
-                    <h4 className="font-semibold text-gray-900 text-lg leading-tight">{feature.name}</h4>
+                    <h4 className="font-semibold text-gray-900 text-lg leading-tight">
+                      {feature.name}
+                    </h4>
                   </div>
 
                   {/* Garrio Solution */}
@@ -159,7 +179,9 @@ export default function ComparisonSnapshotV2() {
                     <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-green-200 hover:border-green-300 transition-all duration-300 hover:scale-105">
                       <div className="flex items-center gap-3 mb-2">
                         <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                        <p className="font-semibold text-green-700">{feature.garrio}</p>
+                        <p className="font-semibold text-green-700">
+                          {feature.garrio}
+                        </p>
                       </div>
                       <div className="h-1 bg-gradient-to-r from-green-200 to-emerald-200 rounded-full"></div>
                     </div>
@@ -182,7 +204,9 @@ export default function ComparisonSnapshotV2() {
                       <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-2.5 rounded-lg text-green-600 flex-shrink-0">
                         {feature.icon}
                       </div>
-                      <h4 className="font-semibold text-gray-900 text-base leading-tight">{feature.name}</h4>
+                      <h4 className="font-semibold text-gray-900 text-base leading-tight">
+                        {feature.name}
+                      </h4>
                     </div>
                   </div>
 
@@ -193,8 +217,12 @@ export default function ComparisonSnapshotV2() {
                       <div className="flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-xs font-semibold text-green-700 mb-1">Garrio</p>
-                          <p className="text-sm text-green-800 font-medium">{feature.garrio}</p>
+                          <p className="text-xs font-semibold text-green-700 mb-1">
+                            Garrio
+                          </p>
+                          <p className="text-sm text-green-800 font-medium">
+                            {feature.garrio}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -204,8 +232,12 @@ export default function ComparisonSnapshotV2() {
                       <div className="flex items-start gap-2">
                         <XCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-xs font-semibold text-gray-500 mb-1">DIY</p>
-                          <p className="text-sm text-gray-600">{feature.competitor}</p>
+                          <p className="text-xs font-semibold text-gray-500 mb-1">
+                            DIY
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            {feature.competitor}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -223,8 +255,12 @@ export default function ComparisonSnapshotV2() {
                   <TrendingUp className="w-6 md:w-8 h-6 md:h-8 text-green-600" />
                 </div>
                 <div className="text-center md:text-left">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Ready to reclaim your time?</h3>
-                  <p className="text-gray-600 text-base md:text-lg">Join 500+ founders who chose growth over burnout</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    Ready to reclaim your time?
+                  </h3>
+                  <p className="text-gray-600 text-base md:text-lg">
+                    Join 500+ founders who chose growth over burnout
+                  </p>
                 </div>
               </div>
               <a
@@ -239,5 +275,5 @@ export default function ComparisonSnapshotV2() {
         </div>
       </div>
     </section>
-  )
+  );
 }

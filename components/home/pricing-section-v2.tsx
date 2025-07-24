@@ -4,7 +4,16 @@ import type React from "react";
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Check, Info, ChevronRight, X, CornerRightDown, DollarSign, Sparkles, ArrowRight } from "lucide-react";
+import {
+  Check,
+  Info,
+  ChevronRight,
+  X,
+  CornerRightDown,
+  DollarSign,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { plans } from "@/lib/pricing-data";
 import {
@@ -109,22 +118,23 @@ export default function PricingSectionV2() {
             Simple, Transparent Pricing
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Start free, grow with 
+            Start free, grow with
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">confidence</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+              confidence
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Built for founders who need to see ROI from day one. Start with our generous free tier, 
-            then scale seamlessly as your business grows.
+            Built for founders who need to see ROI from day one. Start with our
+            generous free tier, then scale seamlessly as your business grows.
           </p>
         </div>
-
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8 max-w-6xl mx-auto">
           {sortedPlans.map((plan) => (
             <div key={plan.id} className="relative group">
               {/* Annotation space above each card */}
-              <div className="h-8 relative overflow-visible mb-2">
+              <div className="h-6 relative overflow-visible mb-2">
                 {plan.popular && (
                   <div className="absolute top-0 right-0 z-50">
                     <div
@@ -132,7 +142,7 @@ export default function PricingSectionV2() {
                       style={{ fontFamily: "Georgia, serif" }}
                     >
                       Most popular for small brands
-                      <CornerRightDown 
+                      <CornerRightDown
                         className="absolute -bottom-6 right-2 w-6 h-6 text-gray-500 opacity-80 transition-all duration-300 group-hover:rotate-6 group-hover:text-purple-600"
                         style={{ transform: "rotate(15deg)" }}
                       />
@@ -140,12 +150,12 @@ export default function PricingSectionV2() {
                   </div>
                 )}
               </div>
-              
+
               {/* The actual plan card */}
               <div
                 className={`relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:translate-y-[-8px] hover:scale-[1.02] overflow-hidden flex flex-col h-full border ${
-                  plan.popular 
-                    ? "border-purple-200 ring-4 ring-purple-100 ring-opacity-50" 
+                  plan.popular
+                    ? "border-purple-200 ring-4 ring-purple-100 ring-opacity-50"
                     : "border-gray-100 hover:border-purple-200"
                 }`}
               >
@@ -171,11 +181,13 @@ export default function PricingSectionV2() {
                   <div className="mb-8">
                     <div className="text-center mb-4">
                       <div className="inline-flex items-baseline gap-1">
-                        {plan.price.includes('$') && (
-                          <span className="text-2xl text-gray-600 font-medium">$</span>
+                        {plan.price.includes("$") && (
+                          <span className="text-2xl text-gray-600 font-medium">
+                            $
+                          </span>
                         )}
                         <span className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                          {plan.price.replace('$', '')}
+                          {plan.price.replace("$", "")}
                         </span>
                         {/* Cost Estimator Tooltip for Starter */}
                         {plan.id === "starter" && (
@@ -194,12 +206,14 @@ export default function PricingSectionV2() {
                                   <Info size={16} />
                                 </button>
                               </TooltipTrigger>
-                              <TooltipContent 
+                              <TooltipContent
                                 className="bg-gray-900 text-white text-sm p-4 max-w-xs z-50"
                                 side="top"
                                 sideOffset={10}
                               >
-                                <p>350 chats cost $10. Extra chats = $0.10 each.</p>
+                                <p>
+                                  350 chats cost $10. Extra chats = $0.10 each.
+                                </p>
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
@@ -235,7 +249,9 @@ export default function PricingSectionV2() {
                         <div className="bg-green-100 p-1 rounded-full flex-shrink-0 mt-0.5">
                           <Check className="h-3 w-3 text-green-600" />
                         </div>
-                        <span className="text-gray-700 leading-relaxed">{feature.title}</span>
+                        <span className="text-gray-700 leading-relaxed">
+                          {feature.title}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -305,7 +321,6 @@ export default function PricingSectionV2() {
           ))}
         </div>
 
-
         <div className="mt-20 text-center">
           <div className="bg-white/60 backdrop-blur rounded-2xl border border-purple-100 p-8 max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -313,11 +328,15 @@ export default function PricingSectionV2() {
                 <Sparkles className="w-6 h-6 text-purple-600" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900">What's included in every plan</h3>
-                <p className="text-gray-600 text-sm">No hidden fees, no surprises</p>
+                <h3 className="text-xl font-bold text-gray-900">
+                  What's included in every plan
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  No hidden fees, no surprises
+                </p>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -332,11 +351,14 @@ export default function PricingSectionV2() {
                 <span>Analytics that actually matter</span>
               </div>
             </div>
-            
+
             <div className="mt-6 pt-6 border-t border-gray-200">
               <p className="text-gray-600">
                 Need something custom?{" "}
-                <Link href="/contact" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
+                <Link
+                  href="/contact"
+                  className="text-purple-600 hover:text-purple-700 font-medium hover:underline"
+                >
                   We'll work with your budget
                 </Link>
                 .

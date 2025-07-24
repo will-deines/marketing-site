@@ -55,7 +55,7 @@ export default function PressResources() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section id="press-kit" className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Press & Resources</h2>
         <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">

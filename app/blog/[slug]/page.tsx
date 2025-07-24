@@ -14,8 +14,9 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for each post
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
 
   if (!post) {
     return {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://garrio.ai/blog/${post.slug}`,
+      url: `https://garrio.ai/blog/${slug}`,
       siteName: "Garrio",
       images: [
         {
@@ -51,14 +52,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug)
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
 
   if (!post) {
     notFound()
   }
 
-  const relatedPosts = getRelatedPosts(params.slug, 3)
+  const relatedPosts = getRelatedPosts(slug, 3)
   const formattedDate = formatDate(post.publishDate)
 
   // Generate structured data for SEO
@@ -84,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     description: post.excerpt,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://garrio.ai/blog/${post.slug}`,
+      "@id": `https://garrio.ai/blog/${slug}`,
     },
   }
 

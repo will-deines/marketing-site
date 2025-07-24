@@ -1,16 +1,25 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { ChevronDown, ChevronUp, Clock, Zap, Shield, Coins, BarChart, HelpCircle } from "lucide-react"
-import Script from "next/script"
+import { useState } from "react";
+import {
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Zap,
+  Shield,
+  Coins,
+  BarChart,
+  HelpCircle,
+} from "lucide-react";
+import Script from "next/script";
 
 interface FAQItem {
-  id: string
-  question: string
-  answer: string
-  icon: React.ReactNode
+  id: string;
+  question: string;
+  answer: string;
+  icon: React.ReactNode;
 }
 
 const faqs: FAQItem[] = [
@@ -30,7 +39,7 @@ const faqs: FAQItem[] = [
   },
   {
     id: "human-backup",
-    question: "What happens when AI can&apos;t help?",
+    question: "What happens when AI can't help?",
     answer:
       "On our Essentials and Professional plans, human agents automatically handle complex issues 24/7. They're trained in your industry and have access to your store data to provide expert support.",
     icon: <HelpCircle className="h-5 w-5 text-purple-600" />,
@@ -70,14 +79,16 @@ const faqs: FAQItem[] = [
       "Our dashboard tracks response times (from hours to seconds), AI resolution rates (typically 70%+), cost savings vs traditional support, and revenue from AI-driven upsells and cross-sells.",
     icon: <BarChart className="h-5 w-5 text-purple-600" />,
   },
-]
+];
 
 export default function FAQSection() {
-  const [openItems, setOpenItems] = useState<string[]>([])
+  const [openItems, setOpenItems] = useState<string[]>([]);
 
   const toggleItem = (id: string) => {
-    setOpenItems((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
-  }
+    setOpenItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
+  };
 
   // Generate the schema.org FAQPage markup
   const generateFAQSchema = () => {
@@ -92,10 +103,10 @@ export default function FAQSection() {
           text: faq.answer,
         },
       })),
-    }
+    };
 
-    return JSON.stringify(schemaData)
-  }
+    return JSON.stringify(schemaData);
+  };
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
@@ -106,13 +117,15 @@ export default function FAQSection() {
             Questions & Answers
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Everything you need to 
+            Everything you need to
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">know to get started</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+              know to get started
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Common questions from founders who want to reclaim their time and transform 
-            their customer experience with Garrio.
+            Common questions from founders who want to reclaim their time and
+            transform their customer experience with Garrio.
           </p>
         </div>
 
@@ -122,7 +135,7 @@ export default function FAQSection() {
               <div
                 key={faq.id}
                 className={`bg-white rounded-3xl shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300 overflow-hidden ${
-                  openItems.includes(faq.id) ? 'ring-2 ring-blue-200' : ''
+                  openItems.includes(faq.id) ? "ring-2 ring-blue-200" : ""
                 }`}
               >
                 <button
@@ -140,20 +153,24 @@ export default function FAQSection() {
                     </span>
                   </div>
                   <div className="flex-shrink-0 ml-4">
-                    <div className={`p-2 rounded-full transition-all duration-200 ${
-                      openItems.includes(faq.id) 
-                        ? 'bg-blue-200 text-blue-700' 
-                        : 'bg-blue-100 text-blue-600 group-hover:bg-blue-200'
-                    }`}>
+                    <div
+                      className={`p-2 rounded-full transition-all duration-200 ${
+                        openItems.includes(faq.id)
+                          ? "bg-blue-200 text-blue-700"
+                          : "bg-blue-100 text-blue-600 group-hover:bg-blue-200"
+                      }`}
+                    >
                       <ChevronDown
                         className={`w-5 h-5 transition-transform duration-200 ${
-                          openItems.includes(faq.id) ? 'transform rotate-180' : ''
+                          openItems.includes(faq.id)
+                            ? "transform rotate-180"
+                            : ""
                         }`}
                       />
                     </div>
                   </div>
                 </button>
-                
+
                 {openItems.includes(faq.id) && (
                   <div
                     id={`faq-answer-${faq.id}`}
@@ -172,7 +189,7 @@ export default function FAQSection() {
             ))}
           </div>
         </div>
-        
+
         {/* Contact CTA */}
         <div className="mt-20 text-center">
           <div className="bg-white/80 backdrop-blur rounded-3xl border border-blue-200 p-8 max-w-3xl mx-auto shadow-xl">
@@ -181,8 +198,12 @@ export default function FAQSection() {
                 <HelpCircle className="w-8 h-8 text-blue-600" />
               </div>
               <div className="text-left">
-                <h3 className="text-2xl font-bold text-gray-900">Still have questions?</h3>
-                <p className="text-gray-600 text-lg">We're here to help you get started</p>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Still have questions?
+                </h3>
+                <p className="text-gray-600 text-lg">
+                  We're here to help you get started
+                </p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -209,5 +230,5 @@ export default function FAQSection() {
         {generateFAQSchema()}
       </Script>
     </section>
-  )
+  );
 }

@@ -82,6 +82,7 @@ const timelineSteps: TimelineStep[] = [
 export default function FoundingStory() {
   const [activeStep, setActiveStep] = useState(0)
   const [visibleSteps, setVisibleSteps] = useState<number[]>([])
+  const [timelineProgress, setTimelineProgress] = useState(0)
   const timelineRef = useRef<HTMLDivElement>(null)
   const stepRefs = useRef<(HTMLDivElement | null)[]>([])
   const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -91,39 +92,76 @@ export default function FoundingStory() {
     stepRefs.current = stepRefs.current.slice(0, timelineSteps.length)
   }, [])
 
-  // Handle scroll-based activation on desktop
+  // Handle scroll-based activation on desktop using overall scroll position
   useEffect(() => {
     if (!isDesktop) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = stepRefs.current.findIndex((ref) => ref === entry.target)
-          if (index !== -1 && entry.isIntersecting) {
-            setActiveStep(index)
-            setVisibleSteps((prev) => {
-              if (!prev.includes(index)) {
-                return [...prev, index]
+    let animationFrame: number | null = null
+    let lastActiveStep = -1
+
+    const handleScroll = () => {
+      if (animationFrame) return
+
+      animationFrame = requestAnimationFrame(() => {
+        const windowHeight = window.innerHeight
+        const scrollY = window.scrollY
+        
+        // Find the timeline section's position
+        const firstStep = stepRefs.current[0]
+        const lastStep = stepRefs.current[stepRefs.current.length - 1]
+        
+        if (!firstStep || !lastStep) {
+          animationFrame = null
+          return
+        }
+
+        const timelineStart = firstStep.getBoundingClientRect().top + scrollY - windowHeight * 0.5
+        const timelineEnd = lastStep.getBoundingClientRect().bottom + scrollY - windowHeight * 0.5
+        const timelineHeight = timelineEnd - timelineStart
+
+        // Calculate progress through the timeline (0 to 1)
+        const progress = Math.max(0, Math.min(1, (scrollY - timelineStart) / timelineHeight))
+        
+        // Update the timeline progress for the vertical line
+        setTimelineProgress(progress * 100)
+        
+        // Determine which step should be active based on progress
+        const activeIndex = Math.min(
+          Math.floor(progress * timelineSteps.length),
+          timelineSteps.length - 1
+        )
+
+        // Only update if the active step has changed
+        if (activeIndex !== lastActiveStep && activeIndex >= 0) {
+          lastActiveStep = activeIndex
+          setActiveStep(activeIndex)
+          
+          // Add all steps up to and including the active one to visible steps
+          setVisibleSteps((prev) => {
+            const newVisible = [...prev]
+            for (let i = 0; i <= activeIndex; i++) {
+              if (!newVisible.includes(i)) {
+                newVisible.push(i)
               }
-              return prev
-            })
-          }
-        })
-      },
-      {
-        threshold: 0.6,
-        rootMargin: "-100px 0px -100px 0px",
-      },
-    )
+            }
+            return newVisible
+          })
+        }
 
-    stepRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
-
-    return () => {
-      stepRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref)
+        animationFrame = null
       })
+    }
+
+    // Initial check
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame)
+      }
     }
   }, [isDesktop])
 
@@ -181,14 +219,20 @@ export default function FoundingStory() {
         <div className="container mx-auto px-4">
           <div className="relative">
             {/* Vertical line with gradient */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-200 via-indigo-200 to-purple-200 transform -translate-x-1/2 rounded-full"></div>
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform -translate-x-1/2 rounded-full overflow-hidden">
+              {/* Progress line */}
+              <div 
+                className="absolute left-0 top-0 w-full bg-gradient-to-b from-purple-500 via-indigo-500 to-purple-500 transition-all duration-300 ease-out"
+                style={{ height: `${timelineProgress}%` }}
+              ></div>
+            </div>
 
             {timelineSteps.map((step, index) => (
               <div
                 key={step.id}
                 ref={(el) => (stepRefs.current[index] = el)}
-                className={`relative mb-20 last:mb-0 transition-all duration-500 ${
-                  visibleSteps.includes(index) ? "opacity-100" : "opacity-0"
+                className={`relative mb-20 last:mb-0 transition-all duration-1000 ${
+                  visibleSteps.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
               >
                 <div
@@ -197,22 +241,22 @@ export default function FoundingStory() {
                   {/* Date marker with icon */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
                     <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center z-10 transition-all duration-300 shadow-lg ${
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center z-10 transition-all duration-700 ease-out shadow-lg ${
                         activeStep === index
-                          ? `bg-gradient-to-br ${step.gradient} text-white scale-110`
-                          : "bg-white text-gray-500 border-2 border-gray-200"
+                          ? `bg-gradient-to-br ${step.gradient} text-white scale-125`
+                          : "bg-white text-gray-500 border-2 border-gray-200 scale-100"
                       }`}
                     >
                       {step.icon}
                     </div>
-                    <div className="text-sm font-bold mt-3 bg-white px-3 py-1 rounded-full shadow-md">{step.date}</div>
+                    <div className="text-sm font-bold mt-3 bg-white px-3 py-1 rounded-full shadow-md transition-all duration-500">{step.date}</div>
                   </div>
 
                   {/* Content */}
                   <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
                     <div
-                      className={`bg-white p-6 rounded-3xl shadow-xl transform transition-all duration-500 border ${
-                        activeStep === index ? "scale-105 border-purple-200" : "scale-100 border-gray-100"
+                      className={`bg-white p-6 rounded-3xl shadow-xl transform transition-all duration-700 ease-out border ${
+                        activeStep === index ? "scale-105 border-purple-200 shadow-2xl" : "scale-100 border-gray-100"
                       }`}
                     >
                       <h3 className="text-xl font-bold mb-2 text-gray-900">{step.title}</h3>
@@ -223,8 +267,8 @@ export default function FoundingStory() {
                   {/* Image */}
                   <div className={`md:w-1/2 mt-6 md:mt-0 ${index % 2 === 0 ? "md:pl-16" : "md:pr-16"}`}>
                     <div
-                      className={`relative h-56 rounded-3xl overflow-hidden shadow-xl transform transition-all duration-500 border-2 ${
-                        activeStep === index ? "scale-105 border-purple-200" : "scale-100 border-transparent"
+                      className={`relative h-56 rounded-3xl overflow-hidden shadow-xl transform transition-all duration-700 ease-out border-2 ${
+                        activeStep === index ? "scale-105 border-purple-200 shadow-2xl" : "scale-100 border-transparent"
                       }`}
                     >
                       <Image
