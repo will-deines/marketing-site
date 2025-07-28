@@ -97,12 +97,32 @@ const config: Config = {
   				'75%': {
   					transform: 'translateY(-5px)'
   				}
+  			},
+  			'spin-slow': {
+  				from: {
+  					transform: 'rotate(0deg)'
+  				},
+  				to: {
+  					transform: 'rotate(360deg)'
+  				}
+  			},
+  			'twinkle': {
+  				'0%, 100%': {
+  					opacity: '1',
+  					transform: 'scale(1)'
+  				},
+  				'50%': {
+  					opacity: '0.3',
+  					transform: 'scale(0.8)'
+  				}
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			'bounce-once': 'bounce-once 0.6s ease-in-out'
+  			'bounce-once': 'bounce-once 0.6s ease-in-out',
+  			'spin-slow': 'spin-slow 2s linear infinite',
+  			'twinkle': 'twinkle 1.5s ease-in-out infinite'
   		}
   	}
   },

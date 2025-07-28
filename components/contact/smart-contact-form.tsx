@@ -6,6 +6,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 
+import { useToast } from "@/components/ui/use-toast"
 import { trackEvent } from "@/lib/analytics"
 
 
@@ -24,6 +25,7 @@ export default function SmartContactForm() {
   const [fileAttachment, setFileAttachment] = useState<File | null>(null)
   const [fileError, setFileError] = useState<string | null>(null)
   const [charCount, setCharCount] = useState(0)
+  const { toast } = useToast()
 
   const {
     register,
@@ -46,21 +48,64 @@ export default function SmartContactForm() {
   const onSubmit = async (data: FormData) => {
     // Check honeypot
     if (data.website) {
-      console.log("Bot detected")
+      // Bot detected - silently succeed
       return
     }
 
     setIsSubmitting(true)
 
     try {
-      // Simulate API call
+      // Create FormData if we have a file attachment, otherwise use JSON
+      let response: Response
 
-      // Track event
+      if (fileAttachment) {
+        const formData = new FormData()
+        formData.append("name", data.name)
+        formData.append("email", data.email)
+        if (data.storeUrl) formData.append("storeUrl", data.storeUrl)
+        formData.append("topic", data.topic)
+        formData.append("message", data.message)
+        formData.append("fileAttachment", fileAttachment)
+        
+        response = await fetch("/api/contact", {
+          method: "POST",
+          body: formData,
+        })
+      } else {
+        response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            storeUrl: data.storeUrl || "",
+            topic: data.topic,
+            message: data.message,
+          }),
+        })
+      }
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to submit form")
+      }
+
+      // Track successful submission
       trackEvent("contact_submit", {
         topic: data.topic,
         hasStoreURL: !!data.storeUrl,
+        hasAttachment: !!fileAttachment,
       })
 
+      // Show success toast
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      })
+      
       // Reset form and show success
       reset()
       setFileAttachment(null)
@@ -69,8 +114,13 @@ export default function SmartContactForm() {
     } catch (error) {
       console.error("Error submitting form:", error)
       setIsSubmitting(false)
-      // Show error toast (would implement with a toast library)
-      alert("There was an error submitting your form. Please try again.")
+      
+      // Show error toast
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: error instanceof Error ? error.message : "There was an error submitting your form. Please try again.",
+      })
     }
   }
 
@@ -84,12 +134,22 @@ export default function SmartContactForm() {
     const validTypes = ["image/jpeg", "image/png", "application/pdf"]
     if (!validTypes.includes(file.type)) {
       setFileError("Please upload a PNG, JPG, or PDF file")
+      toast({
+        variant: "destructive",
+        title: "Invalid file type",
+        description: "Please upload a PNG, JPG, or PDF file",
+      })
       return
     }
 
     // Check file size (5MB)
     if (file.size > 5 * 1024 * 1024) {
       setFileError("File must be less than 5MB")
+      toast({
+        variant: "destructive",
+        title: "File too large",
+        description: "File must be less than 5MB",
+      })
       return
     }
 
@@ -234,12 +294,12 @@ export default function SmartContactForm() {
                   {...register("message", {
                     required: "Message is required",
                     minLength: {
-                      value: 20,
-                      message: "Message must be at least 20 characters",
+                      value: 10,
+                      message: "Message must be at least 10 characters",
                     },
                   })}
                 ></textarea>
-                <div className="absolute bottom-2 right-2 text-xs text-gray-500">{charCount}/20</div>
+                <div className="absolute bottom-2 right-2 text-xs text-gray-500">{charCount}/10</div>
               </div>
               {errors.message && (
                 <p id="message-error" className="mt-1 text-sm text-red-600">

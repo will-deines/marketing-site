@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
-
 export default function PricingHero() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -121,7 +120,7 @@ export default function PricingHero() {
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span>Free forever on first 50 chats</span>
+              <span>Free forever on first 250 chats</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>

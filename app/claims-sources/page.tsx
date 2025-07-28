@@ -282,9 +282,9 @@ export default function ClaimsSourcesPage() {
                   </a>
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  Basic plan: $60/month with 350 tickets included. Pro plan:
-                  $300/month (2000 tickets). Advanced: $750/month (6000
-                  tickets).
+                  Ticket-based pricing (not per seat). Basic: $60/month (300 tickets). 
+                  Pro: $360/month or $300/annual (2000 tickets). Advanced: $900/month or $750/annual (5000 tickets).
+                  Includes up to 500 agent seats on paid plans.
                 </p>
               </div>
 
@@ -348,6 +348,33 @@ export default function ClaimsSourcesPage() {
                   Paid plans: Starter $29/month, Communicator $25/seat, Chatbots
                   $29/month.
                 </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-sm border mb-6">
+            <h3 className="text-lg font-semibold mb-3">
+              Pricing Model Comparison
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              Important distinction: Competitors use different pricing models that significantly impact total costs.
+            </p>
+            <div className="space-y-3">
+              <div className="border-l-4 border-purple-500 pl-4">
+                <strong className="text-purple-700">Garrio: Ticket-based + Done-for-you</strong>
+                <p className="text-sm text-gray-600">Essentials plan includes both AI and human agents</p>
+              </div>
+              <div className="border-l-4 border-green-500 pl-4">
+                <strong className="text-green-700">Gorgias: Ticket-based only</strong>
+                <p className="text-sm text-gray-600">Up to 500 seats included, no per-agent fees</p>
+              </div>
+              <div className="border-l-4 border-red-500 pl-4">
+                <strong className="text-red-700">Re:amaze & Zendesk: Per-agent seat</strong>
+                <p className="text-sm text-gray-600">Must pay for each agent using the platform</p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-4">
+                <strong className="text-blue-700">Tidio: Mixed model</strong>
+                <p className="text-sm text-gray-600">Chatbot plans are flat-rate, Communicator plan is per-seat</p>
               </div>
             </div>
           </div>
@@ -640,6 +667,79 @@ export default function ClaimsSourcesPage() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Labor Cost Calculations */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Labor Cost Methodology</h2>
+          <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <h3 className="text-lg font-semibold mb-3">
+              Agent Cost Calculations
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              Our ROI calculations use industry-standard fully loaded costs for customer service agents,
+              not just base wages.
+            </p>
+
+            <div className="space-y-4">
+              <div className="border-l-4 border-blue-500 pl-4">
+                <strong>Base Wage: $20.59/hour</strong>
+                <p className="text-sm text-gray-600 mt-1">
+                  Source: Bureau of Labor Statistics (BLS) - Customer Service Representatives
+                  median hourly wage, May 2024 data (wages only, excludes benefits)
+                </p>
+              </div>
+
+              <div className="border-l-4 border-blue-500 pl-4">
+                <strong>Benefits & Taxes: +30%</strong>
+                <p className="text-sm text-gray-600 mt-1">
+                  Industry standard for employment taxes, health insurance, PTO, and other benefits.
+                  Aligns with BLS ECEC data showing benefits are 29.7% of total compensation costs.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-blue-500 pl-4">
+                <strong>Management Overhead: +40%</strong>
+                <p className="text-sm text-gray-600 mt-1">
+                  Based on industry research showing fully loaded costs are 2-2.5x base wage.
+                  Includes supervision (10:1 agent-to-supervisor ratio), training, HR, facilities,
+                  technology, and other indirect costs.
+                </p>
+                <p className="text-xs text-gray-500 mt-2">
+                  Sources: Strategic Contact "Cost Structure and Distribution in Today's Contact Centers";
+                  RDI Corporation "True Cost of Operating a Contact Center"; 
+                  Industry benchmarks showing all-in hourly rates of $30-40+ for agents paid $15-20/hour base
+                </p>
+              </div>
+
+              <div className="border-l-4 border-purple-500 pl-4">
+                <strong className="text-purple-700">Total: $37.48/hour</strong>
+                <p className="text-sm text-gray-600 mt-1">
+                  $20.59 × 1.30 (benefits) × 1.40 (management) = $37.48 fully loaded cost per hour
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h4 className="font-semibold text-blue-900 mb-2">
+                Industry Validation
+              </h4>
+              <ul className="text-sm text-blue-800 space-y-1">
+                <li>
+                  • "The all-in hourly rate for an in-house call center is around 2-2.5x the agent base wage rate"
+                </li>
+                <li>
+                  • "If paying agents $15/hour, the in-house all-in hourly rate might be closer to $30-35/hour or higher"
+                </li>
+                <li>
+                  • "Some in-house operations in the U.S. have an all-in hourly cost close to $40+/hour"
+                </li>
+                <li>
+                  • Typical supervision ratio: 10:1 (one supervisor per 10 agents)
+                </li>
+              </ul>
             </div>
           </div>
         </section>

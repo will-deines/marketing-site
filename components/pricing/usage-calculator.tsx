@@ -29,10 +29,12 @@ export default function UsageCalculator() {
   // Adding benefits/taxes (~30% overhead) = $26.77/hour
   // Adding management overhead (~40% of agent costs) = $37.48/hour total
   // Management includes: hiring, training, scheduling, QA, supervisor time, tools/software
-  const AGENT_HOURLY_COST = 26.77
-  const MANAGEMENT_OVERHEAD_RATE = 0.4 // 40% of agent costs
-  const TOTAL_AGENT_COST_WITH_MANAGEMENT = AGENT_HOURLY_COST * (1 + MANAGEMENT_OVERHEAD_RATE)
-  const AVG_CONVERSATION_MINUTES = 6
+  // Sources: BLS May 2024 data + industry benchmarks (see /claims-sources)
+  const BASE_WAGE = 20.59
+  const BENEFITS_RATE = 0.3 // 30% for benefits/taxes
+  const MANAGEMENT_OVERHEAD_RATE = 0.4 // 40% management overhead
+  const TOTAL_AGENT_COST_WITH_MANAGEMENT = BASE_WAGE * (1 + BENEFITS_RATE) * (1 + MANAGEMENT_OVERHEAD_RATE) // $37.48
+  const AVG_CONVERSATION_MINUTES = 15 // Industry benchmark from claims document
 
   const calculateSavings = () => {
     const selectedPlanData = plans.find(p => p.id === selectedPlan)
@@ -48,6 +50,7 @@ export default function UsageCalculator() {
     }
     
     // Add base cost for paid plans
+    if (selectedPlan === "starter") planCost += 10
     if (selectedPlan === "essentials") planCost += 200
     if (selectedPlan === "professional") planCost += 500
 
@@ -247,7 +250,7 @@ export default function UsageCalculator() {
               <div className="mb-4">
                 <div className="text-sm text-gray-600 mb-1">Agent hours + management overhead</div>
                 <div className="font-medium">
-                  {(conversationCount * 6 / 60).toFixed(1)} hours + 40% management costs
+                  {(conversationCount * AVG_CONVERSATION_MINUTES / 60).toFixed(1)} hours + 40% management costs
                 </div>
               </div>
               <div className="border-t-2 border-red-200 pt-6 mt-6">
@@ -274,14 +277,14 @@ export default function UsageCalculator() {
                 <div className="font-medium">
                   {selectedPlan === "essentials" || selectedPlan === "professional" 
                     ? "$0 (human agents included)"
-                    : `$${(conversationCount * 0.3 * 6 / 60 * TOTAL_AGENT_COST_WITH_MANAGEMENT).toFixed(0)} (30% need agents + mgmt)`
+                    : `$${(conversationCount * 0.3 * AVG_CONVERSATION_MINUTES / 60 * TOTAL_AGENT_COST_WITH_MANAGEMENT).toFixed(0)} (30% need agents + mgmt)`
                   }
                 </div>
               </div>
               <div className="border-t-2 border-purple-200 pt-6 mt-6">
                 <div className="text-sm text-gray-600 mb-2">Total monthly cost</div>
                 <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
-                  ${(planCost + (selectedPlan === "essentials" || selectedPlan === "professional" ? 0 : conversationCount * 0.3 * 6 / 60 * TOTAL_AGENT_COST_WITH_MANAGEMENT)).toFixed(0)}
+                  ${(planCost + (selectedPlan === "essentials" || selectedPlan === "professional" ? 0 : conversationCount * 0.3 * AVG_CONVERSATION_MINUTES / 60 * TOTAL_AGENT_COST_WITH_MANAGEMENT)).toFixed(0)}
                 </div>
               </div>
             </div>
@@ -329,7 +332,14 @@ export default function UsageCalculator() {
             >
               BLS customer service representative wage data
             </a>
-            {" "}($20.59/hour + 30% benefits + 40% management overhead = $37.48/hour total)
+            {" "}($20.59/hour + 30% benefits + 40% management overhead = $37.48/hour total).
+            {" "}Average interaction time: 15 minutes.{" "}
+            <a 
+              href="/claims-sources#labor-cost-methodology" 
+              className="underline hover:text-gray-700"
+            >
+              View full methodology
+            </a>
           </div>
         </div>
       </div>

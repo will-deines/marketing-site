@@ -11,7 +11,8 @@ import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import pricingData from "@/data/roi-pricing.json"
+import { plans } from "@/lib/pricing-data"
+import competitorData from "@/data/competitor-pricing.json"
 
 export default function RoiCalculator() {
   // State for chat volume and time period
@@ -19,11 +20,17 @@ export default function RoiCalculator() {
   const [timePeriod, setTimePeriod] = useState<"monthly" | "annual">("monthly")
 
   // State for advanced settings
-  const [agentHourlyWage, setAgentHourlyWage] = useState(pricingData.globals.agentHourlyWage)
-  const [ticketsPerHour, setTicketsPerHour] = useState(pricingData.globals.ticketsPerHour)
-  const [automationRates, setAutomationRates] = useState<Record<string, number>>(
-    pricingData.apps.reduce((acc, app) => ({ ...acc, [app.slug]: app.automationRate }), {}),
-  )
+  // BLS data: $20.59/hour + 30% benefits = $26.77 + 40% management = $37.48 total
+  // Sources: BLS May 2024 data + industry benchmarks showing 2-2.5x multiplier (see /claims-sources)
+  const [agentHourlyWage, setAgentHourlyWage] = useState(37.48)
+  // 15 minutes per interaction (from claims doc) = 4 tickets per hour
+  const [ticketsPerHour, setTicketsPerHour] = useState(4)
+  const [automationRates, setAutomationRates] = useState<Record<string, number>>({
+    gorgias: 0.4,
+    reamaze: 0.35,
+    zendesk: 0.3,
+    tidio: 0.25
+  })
   const [showUpsellRevenue, setShowUpsellRevenue] = useState(false)
   const [averageOrderValue, setAverageOrderValue] = useState(50)
   const [conversionRate, setConversionRate] = useState(0.05)
@@ -36,6 +43,7 @@ export default function RoiCalculator() {
     hoursSaved: Record<string, number>
     highestCompetitorCost: { slug: string; cost: number }
     upsellRevenue: number
+    garrioPlanInfo: { planName: string; effectiveAutomationRate: number }
   }>({
     costs: {},
     savings: {},
@@ -43,6 +51,7 @@ export default function RoiCalculator() {
     hoursSaved: {},
     highestCompetitorCost: { slug: "", cost: 0 },
     upsellRevenue: 0,
+    garrioPlanInfo: { planName: "essentials", effectiveAutomationRate: 0.98 },
   })
 
   // Calculate results when inputs change
@@ -54,79 +63,130 @@ export default function RoiCalculator() {
       const hoursSaved: Record<string, number> = {}
       let highestCompetitorCost = { slug: "", cost: 0 }
 
-      // Calculate costs for each app
-      pricingData.apps.forEach((app) => {
-        // Calculate human tickets
-        const humanTickets = chatVolume * (1 - automationRates[app.slug])
+      // Calculate Garrio costs
+      const calculateGarrioCost = () => {
+        // For ROI calculator, always assume Essentials plan with 98% handling
+        const effectiveAutomationRate = 0.98
+        const planName = "essentials"
+        
+        // Calculate software cost for Essentials plan
+        let softwareCost = 200 // Base cost for Essentials
+        
+        if (chatVolume > 350) {
+          // Add overage cost ($1.00 per chat over 350)
+          const overageChats = chatVolume - 350
+          softwareCost = 200 + (overageChats * 1.00)
+        }
 
-        // Calculate agent hours and cost
+        // Calculate human tickets - only 2% need human agents with Essentials
+        const humanTickets = chatVolume * (1 - effectiveAutomationRate)
         const agentHours = humanTickets / ticketsPerHour
+        // Agent cost already includes management overhead from default wage
         const agentCost = agentHours * agentHourlyWage
 
-        // Calculate software cost
-        let softwareCost = 0
-        const plans = app.plans
-
-        // Find the cheapest plan that can handle the volume
-        const eligiblePlans = plans.filter((plan) => {
-          const includedTickets = "includedChats" in plan ? plan.includedChats : plan.includedTickets
-          return includedTickets >= chatVolume
-        })
-
-        if (eligiblePlans.length > 0) {
-          // Sort by base price and take the cheapest
-          const cheapestPlan = eligiblePlans.sort((a, b) => a.base - b.base)[0]
-          softwareCost = cheapestPlan.base
-        } else {
-          // If no plan covers the volume, take the highest tier and add overage
-          const highestPlan = plans.sort((a, b) => {
-            const aIncluded = "includedChats" in a ? a.includedChats : a.includedTickets
-            const bIncluded = "includedChats" in b ? b.includedChats : b.includedTickets
-            return bIncluded - aIncluded
-          })[0]
-
-          const includedTickets =
-            "includedChats" in highestPlan ? highestPlan.includedChats : highestPlan.includedTickets
-          const overageTickets = Math.max(0, chatVolume - includedTickets)
-          softwareCost = highestPlan.base + overageTickets * highestPlan.overage
-        }
-
-        // Calculate total cost
-        const totalCost = agentCost + softwareCost
-
-        // Store results
-        costs[app.slug] = {
-          total: totalCost,
+        return {
+          total: agentCost + softwareCost,
           agentCost,
           softwareCost,
+          planName,
+          effectiveAutomationRate
+        }
+      }
+
+      // Calculate competitor costs
+      const calculateCompetitorCost = (competitor: any) => {
+        const humanTickets = chatVolume * (1 - automationRates[competitor.slug])
+        const agentHours = humanTickets / ticketsPerHour
+        // Agent cost includes full burden (wage + benefits + management overhead)
+        const agentCost = agentHours * agentHourlyWage
+
+        let softwareCost = 0
+        
+        // Check if competitor requires per-seat pricing
+        if (competitor.seatRequired && competitor.seatPricing) {
+          // Calculate number of seats needed
+          // Assume 40 hours/week = 160 hours/month per agent
+          const seatsNeeded = Math.max(1, Math.ceil(agentHours / 160))
+          
+          // Use the cheapest seat price available
+          const cheapestSeat = competitor.seatPricing.sort((a: any, b: any) => a.pricePerSeat - b.pricePerSeat)[0]
+          const seatCost = seatsNeeded * cheapestSeat.pricePerSeat
+          
+          // For seat-based pricing, also add any volume-based costs
+          const plans = competitor.plans
+          const eligiblePlans = plans.filter((plan: any) => plan.includedTickets >= chatVolume)
+          
+          if (eligiblePlans.length > 0) {
+            const cheapestPlan = eligiblePlans.sort((a: any, b: any) => a.base - b.base)[0]
+            softwareCost = seatCost + cheapestPlan.base
+          } else {
+            const highestPlan = plans.sort((a: any, b: any) => b.includedTickets - a.includedTickets)[0]
+            const overageTickets = Math.max(0, chatVolume - highestPlan.includedTickets)
+            softwareCost = seatCost + highestPlan.base + (overageTickets * highestPlan.overage)
+          }
+        } else {
+          // Ticket-based pricing only (like Gorgias)
+          const plans = competitor.plans
+          const eligiblePlans = plans.filter((plan: any) => plan.includedTickets >= chatVolume)
+
+          if (eligiblePlans.length > 0) {
+            const cheapestPlan = eligiblePlans.sort((a: any, b: any) => a.base - b.base)[0]
+            softwareCost = cheapestPlan.base
+          } else {
+            const highestPlan = plans.sort((a: any, b: any) => b.includedTickets - a.includedTickets)[0]
+            const overageTickets = Math.max(0, chatVolume - highestPlan.includedTickets)
+            softwareCost = highestPlan.base + (overageTickets * highestPlan.overage)
+          }
         }
 
+        return {
+          total: agentCost + softwareCost,
+          agentCost,
+          softwareCost
+        }
+      }
+
+      // Calculate Garrio costs
+      const garrioCostResult = calculateGarrioCost()
+      costs["garrio"] = {
+        total: garrioCostResult.total,
+        agentCost: garrioCostResult.agentCost,
+        softwareCost: garrioCostResult.softwareCost
+      }
+      const garrioPlanInfo = {
+        planName: garrioCostResult.planName,
+        effectiveAutomationRate: garrioCostResult.effectiveAutomationRate
+      }
+
+      // Calculate competitor costs
+      competitorData.competitors.forEach((competitor) => {
+        const cost = calculateCompetitorCost(competitor)
+        costs[competitor.slug] = cost
+
         // Track highest competitor cost
-        if (app.slug !== "garrio" && totalCost > highestCompetitorCost.cost) {
-          highestCompetitorCost = { slug: app.slug, cost: totalCost }
+        if (cost.total > highestCompetitorCost.cost) {
+          highestCompetitorCost = { slug: competitor.slug, cost: cost.total }
         }
       })
 
       // Calculate savings compared to Garrio
       const garrioCost = costs["garrio"].total
 
-      pricingData.apps.forEach((app) => {
-        if (app.slug !== "garrio") {
-          const competitorCost = costs[app.slug].total
-          savings[app.slug] = competitorCost - garrioCost
-          roi[app.slug] = (savings[app.slug] / garrioCost) * 100
+      competitorData.competitors.forEach((competitor) => {
+        const competitorCost = costs[competitor.slug].total
+        savings[competitor.slug] = competitorCost - garrioCost
+        roi[competitor.slug] = garrioCost > 0 ? (savings[competitor.slug] / garrioCost) * 100 : 0
 
-          // Calculate hours saved
-          const garrioHumanTickets = chatVolume * (1 - automationRates["garrio"])
-          const competitorHumanTickets = chatVolume * (1 - automationRates[app.slug])
-          const hoursDiff = (competitorHumanTickets - garrioHumanTickets) / ticketsPerHour
-          hoursSaved[app.slug] = hoursDiff
-        }
+        // Calculate hours saved
+        const garrioHumanTickets = chatVolume * (1 - garrioPlanInfo.effectiveAutomationRate)
+        const competitorHumanTickets = chatVolume * (1 - automationRates[competitor.slug])
+        const hoursDiff = (competitorHumanTickets - garrioHumanTickets) / ticketsPerHour
+        hoursSaved[competitor.slug] = hoursDiff
       })
 
       // Calculate upsell revenue (Garrio only)
       const upsellRevenue = showUpsellRevenue
-        ? chatVolume * conversionRate * averageOrderValue * pricingData.globals.upsellLiftRate
+        ? chatVolume * conversionRate * averageOrderValue * 0.02
         : 0
 
       // Apply time period multiplier
@@ -152,6 +212,7 @@ export default function RoiCalculator() {
         hoursSaved,
         highestCompetitorCost,
         upsellRevenue: upsellRevenue * multiplier,
+        garrioPlanInfo,
       })
     }
 
@@ -284,7 +345,7 @@ export default function RoiCalculator() {
                 <div className="space-y-6">
                   <div className="text-center">
                     <div className="text-sm text-green-700 mb-2 font-medium">
-                      Save vs {pricingData.apps.find((app) => app.slug === results.highestCompetitorCost.slug)?.name}
+                      Save vs {competitorData.competitors.find((app) => app.slug === results.highestCompetitorCost.slug)?.name}
                     </div>
                     <div className="text-4xl md:text-5xl font-bold text-green-800 mb-2 tabular-nums">
                       {formatCurrency(results.savings[results.highestCompetitorCost.slug] || 0)}
@@ -303,7 +364,7 @@ export default function RoiCalculator() {
                         <BarChart2 className="h-5 w-5 text-green-600 mr-3" />
                         <span className="text-green-800 font-medium">Garrio Handled</span>
                       </div>
-                      <span className="font-bold text-green-900">{formatPercentage((automationRates["garrio"] || 0.98) * 100)}</span>
+                      <span className="font-bold text-green-900">{formatPercentage((results.garrioPlanInfo?.effectiveAutomationRate || 0.7) * 100)}</span>
                     </div>
 
                     <div className="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
@@ -376,7 +437,10 @@ export default function RoiCalculator() {
 
               <CostChart
                 costs={results.costs}
-                apps={pricingData.apps}
+                apps={[
+                  { slug: "garrio", name: "Garrio", automationRate: results.garrioPlanInfo?.effectiveAutomationRate || 0.7 },
+                  ...competitorData.competitors
+                ]}
                 formatCurrency={formatCurrency}
                 timePeriod={timePeriod}
               />
@@ -417,7 +481,10 @@ export default function RoiCalculator() {
                     setAverageOrderValue={setAverageOrderValue}
                     conversionRate={conversionRate}
                     setConversionRate={setConversionRate}
-                    apps={pricingData.apps}
+                    apps={[
+                      { slug: "garrio", name: "Garrio", automationRate: results.garrioPlanInfo?.effectiveAutomationRate || 0.7 },
+                      ...competitorData.competitors
+                    ]}
                   />
 
                   <div className="mt-6 flex justify-end">
@@ -426,11 +493,14 @@ export default function RoiCalculator() {
                       className="flex items-center"
                       onClick={() => {
                         // Reset to defaults
-                        setAgentHourlyWage(pricingData.globals.agentHourlyWage)
-                        setTicketsPerHour(pricingData.globals.ticketsPerHour)
-                        setAutomationRates(
-                          pricingData.apps.reduce((acc, app) => ({ ...acc, [app.slug]: app.automationRate }), {}),
-                        )
+                        setAgentHourlyWage(37.48) // BLS data + benefits + management
+                        setTicketsPerHour(4) // 15 minutes per interaction
+                        setAutomationRates({
+                          gorgias: 0.4,
+                          reamaze: 0.35,
+                          zendesk: 0.3,
+                          tidio: 0.25
+                        })
                         setShowUpsellRevenue(false)
                         setAverageOrderValue(50)
                         setConversionRate(0.05)
@@ -458,7 +528,7 @@ export default function RoiCalculator() {
                     <strong>Industry Benchmarks:</strong> All data sourced from our verified claims document, including 15-minute average interaction times and competitor automation rates.
                   </p>
                   <p>
-                    <strong>Real Costs:</strong> Agent costs include hourly wages for time spent on non-automated tickets. Software costs from current published pricing.
+                    <strong>Real Costs:</strong> Agent costs based on BLS data ($20.59/hour median wage) plus 30% benefits/taxes and 40% management overhead. Software costs from current published pricing.
                   </p>
                   <p>
                     <strong>Transparent Sources:</strong> Automation rates and metrics derived from public case studies, official documentation, and verified customer data.

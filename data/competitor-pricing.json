@@ -1,25 +1,10 @@
 {
-  "globals": {
-    "agentHourlyWage": 14,
-    "ticketsPerHour": 20,
-    "upsellLiftRate": 0.02
-  },
-  "apps": [
-    {
-      "slug": "garrio",
-      "name": "Garrio",
-      "automationRate": 0.98,
-      "plans": [
-        { "name": "Free", "base": 0, "includedChats": 250, "overage": 0.1 },
-        { "name": "Starter", "base": 10, "includedChats": 350, "overage": 0.1 },
-        { "name": "Growth", "base": 29, "includedChats": 2000, "overage": 0.1 },
-        { "name": "Scale", "base": 99, "includedChats": 10000, "overage": 0.1 }
-      ]
-    },
+  "competitors": [
     {
       "slug": "gorgias",
       "name": "Gorgias",
       "automationRate": 0.4,
+      "seatRequired": false,
       "plans": [
         { "name": "Starter", "base": 10, "includedTickets": 50, "overage": 0.4 },
         { "name": "Basic", "base": 60, "includedTickets": 300, "overage": 0.4 },
@@ -31,6 +16,12 @@
       "slug": "reamaze",
       "name": "Re:amaze",
       "automationRate": 0.35,
+      "seatRequired": true,
+      "seatPricing": [
+        { "name": "Basic", "pricePerSeat": 29 },
+        { "name": "Pro", "pricePerSeat": 49 },
+        { "name": "Plus", "pricePerSeat": 69 }
+      ],
       "plans": [
         { "name": "Starter", "base": 20, "includedTickets": 75, "overage": 0.2 },
         { "name": "Plus", "base": 40, "includedTickets": 300, "overage": 0.2 },
@@ -42,6 +33,12 @@
       "slug": "zendesk",
       "name": "Zendesk",
       "automationRate": 0.3,
+      "seatRequired": true,
+      "seatPricing": [
+        { "name": "Suite Team", "pricePerSeat": 55 },
+        { "name": "Suite Growth", "pricePerSeat": 89 },
+        { "name": "Suite Professional", "pricePerSeat": 115 }
+      ],
       "plans": [
         { "name": "Team", "base": 49, "includedTickets": 100, "overage": 0.5 },
         { "name": "Growth", "base": 79, "includedTickets": 500, "overage": 0.4 },
@@ -53,6 +50,10 @@
       "slug": "tidio",
       "name": "Tidio",
       "automationRate": 0.25,
+      "seatRequired": true,
+      "seatPricing": [
+        { "name": "Communicator", "pricePerSeat": 25 }
+      ],
       "plans": [
         { "name": "Free", "base": 0, "includedTickets": 50, "overage": 0.2 },
         { "name": "Starter", "base": 18, "includedTickets": 100, "overage": 0.15 },

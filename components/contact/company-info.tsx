@@ -1,9 +1,11 @@
-import { MapPin, Clock, Mail, Activity } from "lucide-react"
+import { MapPin, Clock, Mail, Activity } from "lucide-react";
 
 export default function CompanyInfo() {
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-blue-100 animate-fade-in-up animation-delay-400">
-      <h2 className="text-2xl font-bold text-gray-900 mb-8">Company Information</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-8">
+        Company Information
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex group hover:bg-gradient-to-r hover:from-purple-50/50 hover:to-transparent p-4 -m-4 rounded-xl transition-all duration-300">
@@ -19,7 +21,9 @@ export default function CompanyInfo() {
               <br />
               Fully Remote Company
               <br />
-              <span className="text-xs text-gray-500">Incorporated in Delaware, USA</span>
+              <span className="text-xs text-gray-500">
+                Incorporated in Delaware, USA
+              </span>
             </address>
           </div>
         </div>
@@ -54,17 +58,29 @@ export default function CompanyInfo() {
           <div>
             <h3 className="font-medium text-gray-900 mb-1">Email Addresses</h3>
             <p className="text-gray-600 text-sm">
-              <a href="mailto:hello@garrio.ai" className="text-purple-600 hover:text-purple-700 font-medium hover:underline underline-offset-2">
-                hello@garrio.ai
-              </a> → General
+              <a
+                href="mailto:hello@garr.io"
+                className="text-purple-600 hover:text-purple-700 font-medium hover:underline underline-offset-2"
+              >
+                hello@garr.io
+              </a>{" "}
+              → General
               <br />
-              <a href="mailto:partners@garrio.ai" className="text-purple-600 hover:text-purple-700 font-medium hover:underline underline-offset-2">
-                partners@garrio.ai
-              </a> → Partnerships
+              <a
+                href="mailto:partners@garr.io"
+                className="text-purple-600 hover:text-purple-700 font-medium hover:underline underline-offset-2"
+              >
+                partners@garr.io
+              </a>{" "}
+              → Partnerships
               <br />
-              <a href="mailto:press@garrio.ai" className="text-purple-600 hover:text-purple-700 font-medium hover:underline underline-offset-2">
-                press@garrio.ai
-              </a> → Media
+              <a
+                href="mailto:press@garr.io"
+                className="text-purple-600 hover:text-purple-700 font-medium hover:underline underline-offset-2"
+              >
+                press@garr.io
+              </a>{" "}
+              → Media
             </p>
           </div>
         </div>
@@ -79,7 +95,9 @@ export default function CompanyInfo() {
             <h3 className="font-medium text-gray-900 mb-1">System Status</h3>
             <div className="flex items-center">
               <span className="inline-block w-3 h-3 bg-green-500 rounded-full mr-2"></span>
-              <span className="text-gray-600 text-sm">All systems operational</span>
+              <span className="text-gray-600 text-sm">
+                All systems operational
+              </span>
             </div>
             <p className="text-gray-600 text-sm mt-1">
               <a
@@ -95,5 +113,5 @@ export default function CompanyInfo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -28,3 +28,4 @@ next-env.d.ts
 
 #local helpers
 gen_video.sh
+.env*.local

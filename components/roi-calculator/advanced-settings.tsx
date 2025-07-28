@@ -64,19 +64,19 @@ export default function AdvancedSettings({
                     <InfoCircle className="h-4 w-4 text-gray-400 ml-2" />
                   </TooltipTrigger>
                   <TooltipContent className="max-w-xs p-2">
-                    <p className="text-sm">W-2, fully-loaded cost. Based on Glassdoor US median.</p>
+                    <p className="text-sm">Fully loaded cost: BLS base wage ($20.59, no benefits) + 30% benefits + 40% management = $37.48. Industry standard is 2-2.5x base wage.</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </Label>
-            <div className="font-medium">${agentHourlyWage}/hr</div>
+            <div className="font-medium">${agentHourlyWage.toFixed(2)}/hr</div>
           </div>
           <Slider
             id="agent-wage"
             defaultValue={[agentHourlyWage]}
-            min={10}
-            max={30}
-            step={1}
+            min={20}
+            max={60}
+            step={0.5}
             onValueChange={(value) => {
               const oldValue = agentHourlyWage
               setAgentHourlyWage(value[0])
@@ -84,9 +84,11 @@ export default function AdvancedSettings({
             }}
           />
           <div className="flex justify-between text-xs text-gray-500 mt-1">
-            <span>$10</span>
             <span>$20</span>
             <span>$30</span>
+            <span>$40</span>
+            <span>$50</span>
+            <span>$60</span>
           </div>
         </div>
 
@@ -101,7 +103,7 @@ export default function AdvancedSettings({
                     <InfoCircle className="h-4 w-4 text-gray-400 ml-2" />
                   </TooltipTrigger>
                   <TooltipContent className="max-w-xs p-2">
-                    <p className="text-sm">≈3 min per ticket + context-switch time.</p>
+                    <p className="text-sm">Based on 15-minute average interaction time (industry benchmark) = 4 tickets/hour</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -111,8 +113,8 @@ export default function AdvancedSettings({
           <Slider
             id="tickets-per-hour"
             defaultValue={[ticketsPerHour]}
-            min={10}
-            max={30}
+            min={2}
+            max={12}
             step={1}
             onValueChange={(value) => {
               const oldValue = ticketsPerHour
@@ -121,9 +123,12 @@ export default function AdvancedSettings({
             }}
           />
           <div className="flex justify-between text-xs text-gray-500 mt-1">
+            <span>2</span>
+            <span>4</span>
+            <span>6</span>
+            <span>8</span>
             <span>10</span>
-            <span>20</span>
-            <span>30</span>
+            <span>12</span>
           </div>
         </div>
       </div>
@@ -132,7 +137,7 @@ export default function AdvancedSettings({
       <div>
         <h3 className="text-lg font-medium mb-4">Automation Rates</h3>
         <div className="space-y-4">
-          {apps.map((app) => (
+          {apps.filter(app => app.slug !== 'garrio').map((app) => (
             <div key={app.slug}>
               <div className="flex items-center justify-between mb-2">
                 <Label htmlFor={`automation-${app.slug}`} className="flex items-center">

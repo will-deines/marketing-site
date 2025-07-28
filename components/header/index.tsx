@@ -133,19 +133,26 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
             {/* CTA Button */}
             <Button
               asChild
-              className={`ml-4 px-4 py-2 text-sm font-medium min-w-[140px] transition-all duration-300 transform hover:scale-105 ${
+              className={`ml-4 px-4 py-2 text-sm font-medium min-w-[140px] relative group transition-all duration-1000 border ${
                 variant === "solid" || isScrolled
-                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl"
-                  : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white"
+                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-purple-500/30 hover:shadow-2xl border-transparent"
+                  : "bg-white/10 backdrop-blur-sm border-white/20 hover:bg-gradient-to-r hover:from-amber-500/20 hover:to-yellow-500/20 hover:border-yellow-400/40 text-white hover:shadow-yellow-400/20 hover:shadow-lg"
               }`}
             >
               <Link
                 href="https://apps.shopify.com/garrio"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="relative flex items-center justify-center"
               >
-                <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
-                Get Started Free
+                <Sparkles className={`w-4 h-4 mr-2 transition-all duration-1000 ${
+                  variant === "solid" || isScrolled
+                    ? "group-hover:text-purple-200 group-hover:animate-twinkle"
+                    : "group-hover:text-yellow-100 group-hover:animate-twinkle"
+                }`} />
+                <span className="relative">
+                  Get Started Free
+                </span>
               </Link>
             </Button>
           </nav>
