@@ -54,7 +54,7 @@ const faqs: FAQItem[] = [
     id: "data-security",
     question: "Is my customer data secure?",
     answer:
-      "Yes. We're SOC-2 certified with enterprise-grade encryption. We never store payment details and all data processing complies with GDPR and CCPA regulations. Your customer data stays protected.",
+      "Yes. We use enterprise-grade encryption. We never store payment details and all data processing complies with GDPR and CCPA regulations. Your customer data stays protected.",
     icon: <Shield className="h-5 w-5 text-purple-600" />,
   },
   {
