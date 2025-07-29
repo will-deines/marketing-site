@@ -40,7 +40,7 @@ const faqs: FAQItem[] = [
     id: "human-backup",
     question: "What happens when AI can't help?",
     answer:
-      "On our Essentials and Professional plans, human agents automatically handle complex issues 24/7. They're trained in your industry and have access to your store data to provide expert support.",
+      "On our Essentials and Professional plans, human agents automatically handle complex issues 24/7. They're trained in your industry and have access to your store data to provide expert support.  On our Free and Starter plans, you can respond to escalations directly from the Shopify app.",
     icon: <HelpCircle className="h-5 w-5 text-purple-600" />,
   },
   {
