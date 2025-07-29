@@ -313,7 +313,7 @@ export default function RoiCalculator() {
             
             <div className="mb-6">
               <Slider
-                defaultValue={[750]}
+                value={[chatVolume]}
                 min={50}
                 max={5000}
                 step={50}

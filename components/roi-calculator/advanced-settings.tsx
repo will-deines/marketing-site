@@ -73,7 +73,7 @@ export default function AdvancedSettings({
           </div>
           <Slider
             id="agent-wage"
-            defaultValue={[agentHourlyWage]}
+            value={[agentHourlyWage]}
             min={20}
             max={60}
             step={0.5}
@@ -112,7 +112,7 @@ export default function AdvancedSettings({
           </div>
           <Slider
             id="tickets-per-hour"
-            defaultValue={[ticketsPerHour]}
+            value={[ticketsPerHour]}
             min={2}
             max={12}
             step={1}
@@ -159,7 +159,7 @@ export default function AdvancedSettings({
               </div>
               <Slider
                 id={`automation-${app.slug}`}
-                defaultValue={[automationRates[app.slug] * 100]}
+                value={[automationRates[app.slug] * 100]}
                 min={0}
                 max={100}
                 step={1}
