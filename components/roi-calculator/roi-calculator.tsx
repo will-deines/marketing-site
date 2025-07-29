@@ -493,6 +493,8 @@ export default function RoiCalculator() {
                       className="flex items-center"
                       onClick={() => {
                         // Reset to defaults
+                        setChatVolume(750) // Reset chat volume
+                        setTimePeriod("monthly") // Reset time period
                         setAgentHourlyWage(37.48) // BLS data + benefits + management
                         setTicketsPerHour(4) // 15 minutes per interaction
                         setAutomationRates({
