@@ -1,0 +1,4 @@
+Generated at: Wed Jul 30 03:54:06 PM EDT 2025
+Prompt: Modern isometric illustration of an e-commerce store ascending through search result levels like a mountain path. The store building sits on floating platforms that represent different SERP positions (10, 5, 3, 1). Each level shows progression markers: technical optimization gears, content creation symbols, keyword research tools, and performance metrics. Surrounding the path are abstract representations of SEO elements: magnifying glasses with keywords, speed indicators showing fast loading, mobile device outlines, and organic traffic flow arrows. Color palette: Deep blues and purples for trust, bright greens for growth, with subtle orange accents. Clean, professional aesthetic with depth and dimension. No text, purely visual storytelling.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:43 PM EDT 2025
+Prompt: Skilled gardener tending to thriving plants in greenhouse, carefully nurturing growth from seedlings to mature specimens. Professional greenhouse setting with natural lighting, showing progression and careful cultivation. Person demonstrates patient expertise and systematic approach, hands working with different growth stages. Background shows organized greenhouse, various plant sizes, warm natural lighting. Botanical lifestyle photography with purple and blue undertones, soft greenhouse lighting. Conveys organic growth, patient cultivation, and systematic scaling mastery.
+
+Negative prompt: text, words, letters, money symbols, M imagery, business charts, hustle imagery, computers, office settings, growth graphs
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

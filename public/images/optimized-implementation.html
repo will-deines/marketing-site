@@ -1,0 +1,18 @@
+<!-- Responsive image implementation for optimized -->
+<picture>
+    <!-- Modern formats for supported browsers -->
+    <source media="(min-width: 1024px)" srcset="optimized.avif" type="image/avif">
+    <source media="(min-width: 768px)" srcset="optimized-tablet.avif" type="image/avif">
+    <source media="(max-width: 767px)" srcset="optimized-mobile.avif" type="image/avif">
+    <source media="(min-width: 1024px)" srcset="optimized.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="optimized-tablet.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="optimized-mobile.webp" type="image/webp">
+    
+    <!-- Fallback JPEG versions -->
+    <source media="(min-width: 1024px)" srcset="optimized.jpg" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="optimized-tablet.jpg" type="image/jpeg">
+    <source media="(max-width: 767px)" srcset="optimized-mobile.jpg" type="image/jpeg">
+    
+    <!-- Default image -->
+    <img src="optimized.jpg" alt="Generated image" class="w-full h-full object-cover" loading="lazy">
+</picture>

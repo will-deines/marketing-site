@@ -33,8 +33,8 @@ async function getPostContent() {
   vertical: ["ecommerce", "fashion", "beauty"],
   funnel: "awareness",
   persona: ["founders", "ecommerce-managers"],
-  hero: "/covers/shopify-seo-guide.jpg",
-  ogImage: "/covers/shopify-seo-guide.jpg",
+  hero: "/images/shopify-seo-guide.jpg",
+  ogImage: "/images/shopify-seo-guide.jpg",
   canonical: "https://garrio.ai/blog/the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings",
   content: {
     intro: `When Sarah launched her handmade jewelry store on Shopify, she assumed the platform would handle SEO automatically. Six months later, her beautiful products were buried on page 47 of Google search results. Meanwhile, her competitor with inferior products was ranking #3 for "handmade sterling silver rings"—the exact keyword Sarah was targeting.

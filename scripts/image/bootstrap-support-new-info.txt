@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:32 PM EDT 2025
+Prompt: Small-batch baker working efficiently in compact home kitchen, creating beautiful pastries with limited equipment but maximum creativity. Cozy kitchen setting with warm lighting, showing resourcefulness and ingenuity in tight space. Person demonstrates making the most of available resources, hands working skillfully with basic tools. Background shows organized small kitchen, homemade quality, golden morning lighting. Artisanal lifestyle photography with purple and blue undertones, warm home lighting. Conveys resourceful excellence, creative solutions, and achieving quality with limited resources.
+
+Negative prompt: text, words, letters, budget symbols, money imagery, bootstrap logos, cheap materials, computers, office settings, business graphics
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

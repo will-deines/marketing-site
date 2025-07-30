@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:23 PM EDT 2025
+Prompt: Fashion designer carefully selecting fabrics with expert touch, feeling texture and examining drape quality in natural atelier lighting. Design studio setting with fabric swatches, natural light streaming through large windows. Person demonstrates specialized knowledge and refined expertise, hands showing tactile understanding of materials. Background shows organized design workspace, colorful fabrics, warm natural lighting. Fashion lifestyle photography with purple and blue undertones, soft studio lighting. Conveys specialized expertise, refined judgment, and industry-specific mastery.
+
+Negative prompt: text, words, letters, AI symbols, robot imagery, computer screens, generic chatbots, technology interfaces, artificial elements
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

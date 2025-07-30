@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:53 PM EDT 2025
+Prompt: Master watchmaker working with precision instruments on intricate timepiece, demonstrating how small detailed work creates significant impact. Workshop setting with focused lighting, specialized tools arranged meticulously. Person shows concentrated expertise and precise technique, hands working with delicate precision on complex mechanism. Background shows organized watchmaking bench, warm task lighting, tools in perfect order. Craftsmanship lifestyle photography with purple and blue undertones, focused workshop lighting. Conveys precision impact, masterful efficiency, and small actions creating big results.
+
+Negative prompt: text, words, letters, team imagery, computers, office settings, collaboration symbols, DTC imagery, business graphics, large group scenes
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

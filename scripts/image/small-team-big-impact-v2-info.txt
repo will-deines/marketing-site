@@ -1,0 +1,4 @@
+Generated at: Wed Jul 30 04:01:14 PM EDT 2025
+Prompt: Authentic candid moment of a diverse small team of 3-4 people in a bright, modern coworking space, genuinely laughing and collaborating around a standing desk. Natural expressions of joy and connection. One person is gesturing enthusiastically while others listen attentively. Laptops open, coffee cups, notebooks scattered naturally. Large windows with soft natural light. The scene captures the energy, intimacy and effectiveness of small teams. Documentary photography style. Warm, human-centered composition emphasizing relationships over technology.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

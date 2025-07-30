@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:18 PM EDT 2025
+Prompt: Master chef transforming simple ingredients into an exquisite dish through skillful technique and presentation. Professional kitchen setting with warm lighting, showing the art of elevating basic elements into something valuable. Person demonstrates expertise in transformation, hands working with precision and creativity. Background shows organized kitchen, beautiful plating, ambient lighting. Culinary lifestyle photography with purple and blue undertones, warm kitchen lighting. Conveys transformation mastery, value creation, and turning basics into excellence.
+
+Negative prompt: text, words, letters, revenue symbols, money, sales charts, support tickets, computers, customer service imagery, business graphics
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

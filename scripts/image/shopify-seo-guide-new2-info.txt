@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:01 PM EDT 2025
+Prompt: Professional photographer adjusting lighting setup for perfect product shot, carefully positioning reflectors and adjusting camera angle. Clean studio environment with natural window light, showing meticulous attention to making products look their absolute best. Person demonstrates expertise in presentation and visibility optimization. Background shows organized photography equipment, soft natural lighting. Modern lifestyle photography aesthetic with purple and blue undertones, bright clean lighting. Conveys optimization, visibility, and professional presentation mastery.
+
+Negative prompt: text, words, letters, SEO, Shopify logos, computer screens, websites, search results, ranking charts, analytics, technical interfaces
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

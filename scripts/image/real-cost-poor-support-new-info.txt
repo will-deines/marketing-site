@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:17:12 PM EDT 2025
+Prompt: Skilled craftsperson carefully selecting premium materials for handmade product, examining quality with focused expertise. Workshop setting with natural lighting streaming through windows, tools organized around workspace. Person demonstrates discerning judgment and investment in quality materials over cheaper alternatives. Background shows workshop environment, quality materials, warm natural lighting. Artisanal lifestyle photography with purple and blue undertones, golden workshop lighting. Conveys quality investment, careful decision-making, and understanding true value over cost.
+
+Negative prompt: text, words, letters, money symbols, dollar signs, charts, graphs, calculators, spreadsheets, financial imagery, computers, broken items
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

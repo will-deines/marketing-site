@@ -1,0 +1,4 @@
+Generated at: Wed Jul 30 04:01:09 PM EDT 2025
+Prompt: Cinematic portrait of a confident female entrepreneur in her modern home office, looking satisfied while reviewing analytics on her laptop screen showing upward growth trends. Warm golden hour lighting through large windows. She's wearing casual professional attire. Behind her, subtle visual metaphors of success: plants reaching toward light, books stacked purposefully, a vision board with growth charts. The mood conveys achievement, strategic thinking, and organic growth. Professional photography style with shallow depth of field. Warm, inspiring color palette with natural lighting.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

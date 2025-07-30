@@ -27,14 +27,14 @@ async function getPostContent(): Promise<PostContent> {
   slug: "small-team-big-impact-customer-support-strategies-for-lean-dtc-operations",
   title: "Small Team, Big Impact: Customer Support Strategies for Lean DTC Operations",
   excerpt: "Learn how lean DTC teams with 2-5 people deliver exceptional customer support. Discover efficiency tactics, tool selection strategies, and success stories from bootstrapped brands.",
-  hero: "/covers/small-team-big-impact.jpg",
+  hero: "/images/small-team-big-impact.jpg",
   publishDate: "2025-01-22",
   author: "Garrio Team",
   readingTime: 12,
   vertical: ["ecommerce", "fashion", "beauty"],
   persona: ["founder", "cx-manager"],
   funnel: "awareness",
-  ogImage: "/og/small-team-big-impact.jpg",
+  ogImage: "/images/small-team-big-impact.jpg",
   canonical: "https://garrio.ai/blog/small-team-big-impact-customer-support-strategies-for-lean-dtc-operations",
   content: {
     intro: `When Jake launched his outdoor gear brand with just himself and two part-time employees, he wondered how they'd ever compete with larger brands that had entire customer service departments. Eighteen months later, his 4-person team consistently outperforms competitors with 20+ support staff on every metric that matters—response time, customer satisfaction, and support-to-sales conversion.

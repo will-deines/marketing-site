@@ -1,0 +1,6 @@
+Generated at: Wed Jul 30 04:16:53 PM EDT 2025
+Prompt: Young barista expertly crafting multiple coffee drinks simultaneously with fluid precision and speed. Modern specialty coffee shop setting with natural lighting, steam rising from espresso machine. Person demonstrates mastery of instant execution, hands moving with practiced efficiency across multiple orders. Background shows warm cafe atmosphere, customers waiting patiently. Contemporary lifestyle photography with purple and blue color undertones, golden morning light. Conveys instant expertise, seamless service, and meeting high expectations in real-time.
+
+Negative prompt: text, words, letters, Instagram logos, social media icons, phones, screens, computers, notification symbols, apps, digital interfaces
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9

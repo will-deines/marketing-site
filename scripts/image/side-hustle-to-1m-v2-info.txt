@@ -1,0 +1,4 @@
+Generated at: Wed Jul 30 04:01:19 PM EDT 2025
+Prompt: Split composition showing a founder's transformation: Left side shows a person in casual clothes working late at night on a laptop at their kitchen table, surrounded by product samples and humble beginnings. Right side shows the same person, now confidently dressed, in a professional office space with a small team collaborating in the background. The lighting transitions from warm, intimate home lighting to bright, professional office lighting. The person's expression shows determination on the left and confident satisfaction on the right. Documentary style photography capturing the authentic journey of entrepreneurial growth.
+Model: imagen-4.0-generate-preview-06-06
+Aspect Ratio: 16:9
