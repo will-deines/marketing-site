@@ -121,7 +121,7 @@ export default function HeroSection() {
               asChild
             >
               <Link
-                href="https://apps.shopify.com/app-installation"
+                href="https://apps.shopify.com/garrio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 sm:gap-3"

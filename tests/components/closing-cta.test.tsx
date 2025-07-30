@@ -26,7 +26,7 @@ describe("ClosingCTA", () => {
     expect(addToShopifyLink).toBeInTheDocument();
     expect(addToShopifyLink).toHaveAttribute(
       "href",
-      "https://apps.shopify.com/app-installation",
+      "https://apps.shopify.com/garrio",
     );
 
     const signInLink = screen.getByRole("link", { name: /Sign in/i });

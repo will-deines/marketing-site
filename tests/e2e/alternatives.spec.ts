@@ -27,7 +27,7 @@ test.describe('Alternatives Pages', () => {
         // Check CTA buttons are present and functional
         const shopifyButton = page.locator('text=Add Garrio Free—1-Click Install')
         await expect(shopifyButton).toBeVisible()
-        await expect(shopifyButton).toHaveAttribute('href', 'https://apps.shopify.com/app-installation')
+        await expect(shopifyButton).toHaveAttribute('href', 'https://apps.shopify.com/garrio')
         
         const demoButton = page.locator('text=See Live Demo')
         await expect(demoButton).toBeVisible()

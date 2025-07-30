@@ -131,7 +131,7 @@ export default function ClosingCta({ competitorName }: ClosingCtaProps) {
               className="bg-white text-purple-900 hover:bg-white/95 hover:scale-105 transition-all duration-200 shadow-2xl hover:shadow-3xl group px-8 py-6 text-lg font-semibold" 
               asChild
             >
-              <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer">
+              <Link href="https://apps.shopify.com/garrio" target="_blank" rel="noopener noreferrer">
                 <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 Add Garrio Free—1-Click Install
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

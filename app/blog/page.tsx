@@ -4,10 +4,10 @@ import { Suspense } from "react";
 import BlogIndex from "@/components/blog/blog-index";
 import Header from "@/components/header";
 import {
-  getAllVerticals,
   generateStructuredData,
-  posts,
+  posts as fallbackPosts,
 } from "@/lib/blog-utils";
+import { getAllMDXPosts } from "@/lib/mdx-blog-utils";
 
 export const metadata: Metadata = {
   title: "Garrio Growth Library | CX Playbooks for Shopify Merchants",
@@ -62,8 +62,21 @@ export default async function BlogPage({
     : 100;
   const page = pageParam ? Number.parseInt(pageParam) : 1;
 
-  // Get all available verticals for filters
-  const allVerticals = getAllVerticals();
+  // Get posts from MDX files, fallback to JSON posts
+  let posts;
+  try {
+    posts = await getAllMDXPosts();
+    // If no MDX posts found, fallback to JSON posts
+    if (posts.length === 0) {
+      posts = fallbackPosts;
+    }
+  } catch (error) {
+    console.error('Error loading MDX posts, using fallback:', error);
+    posts = fallbackPosts;
+  }
+
+  // Get all available verticals for filters from the loaded posts
+  const allVerticals = Array.from(new Set(posts.flatMap(post => post.vertical)));
 
   // Generate structured data for SEO
   const structuredData = generateStructuredData(posts);
@@ -101,6 +114,7 @@ export default async function BlogPage({
             initialMaxReadingTime={maxReadingTime}
             initialPage={page}
             allVerticals={allVerticals}
+            posts={posts}
           />
         </Suspense>
       </main>

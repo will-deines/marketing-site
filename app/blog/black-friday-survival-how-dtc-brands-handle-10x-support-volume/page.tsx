@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
-
-import BlogPost from '@/components/blog/blog-post'
+import { formatDate } from '@/lib/blog-utils'
+import BlogPost from '@/components/blog/blog-post-enhanced'
+import { convertMDXToPostContent } from '@/lib/mdx-blog-utils'
 
 export const metadata: Metadata = {
   title: 'Black Friday Survival: How DTC Brands Handle 10x Support Volume | Garrio',
@@ -13,7 +13,16 @@ export const metadata: Metadata = {
   },
 }
 
-const postData = {
+async function getPostContent() {
+  // Try to get content from MDX first, fallback to inline content
+  const mdxContent = await convertMDXToPostContent("black-friday-survival-how-dtc-brands-handle-10x-support-volume");
+  
+  if (mdxContent) {
+    return mdxContent;
+  }
+  
+  // Fallback to inline content
+  return {
   slug: "black-friday-survival-how-dtc-brands-handle-10x-support-volume",
   title: "Black Friday Survival: How DTC Brands Handle 10x Support Volume",
   excerpt: "Peak season preparation, scalability strategies, and real case studies from DTC brands managing 50x order increases during major shopping events",
@@ -417,8 +426,8 @@ The difference between peak season success and disaster isn't team size or budge
       }
     ],
     cta: {
-      text: "See Garrio in Action",
-      href: "/demo"
+      text: "Prepare for Peak Season Success",
+      href: "https://apps.shopify.com/garrio?utm_source=blog&utm_campaign=black_friday_survival"
     }
   },
   sources: [
@@ -473,10 +482,10 @@ The difference between peak season success and disaster isn't team size or budge
   ]
 }
 
-export default function BlogPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <BlogPost post={postData} formattedDate="January 22, 2025" />
-    </Suspense>
-  )
+}
+
+export default async function BlogPage() {
+  const postData = await getPostContent();
+  const formattedDate = formatDate(postData.publishDate);
+  return <BlogPost post={postData} formattedDate={formattedDate} />;
 }

@@ -1,53 +1,29 @@
-import type { Metadata } from 'next'
+---
+title: "The Complete Shopify SEO Guide 2025: Optimize Your Store for Rankings"
+slug: "the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings"
+excerpt: "Master technical optimization, keyword strategies, Core Web Vitals, and proven tactics to dominate search results and drive organic traffic to your Shopify store"
+publishDate: "2025-01-22"
+readingTime: 15
+author: "Garrio Team"
+vertical: ["ecommerce", "fashion", "beauty"]
+funnel: "awareness"
+persona: ["founders", "ecommerce-managers"]
+hero: "/covers/shopify-seo-guide.jpg"
+ogImage: "/covers/shopify-seo-guide.jpg"
+canonical: "https://garrio.ai/blog/the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings"
+---
 
-import BlogPost from '@/components/blog/blog-post-enhanced'
-import { formatDate } from '@/lib/blog-utils'
-import { convertMDXToPostContent } from '@/lib/mdx-blog-utils'
-
-export const metadata: Metadata = {
-  title: 'The Complete Shopify SEO Guide 2025: Optimize Your Store for Rankings | Garrio',
-  description: 'Master Shopify SEO with our comprehensive 2025 guide. Learn technical optimization, keyword strategies, Core Web Vitals, and proven tactics to rank higher and drive more organic traffic.',
-  openGraph: {
-    title: 'The Complete Shopify SEO Guide 2025: Optimize Your Store for Rankings',
-    description: 'Master Shopify SEO optimization for higher rankings and more organic traffic',
-    type: 'article',
-  },
-}
-
-async function getPostContent() {
-  // Try to get content from MDX first, fallback to inline content
-  const mdxContent = await convertMDXToPostContent("the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings");
-  
-  if (mdxContent) {
-    return mdxContent;
-  }
-  
-  // Fallback to inline content
-  return {
-  slug: "the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings",
-  title: "The Complete Shopify SEO Guide 2025: Optimize Your Store for Rankings",
-  excerpt: "Master technical optimization, keyword strategies, Core Web Vitals, and proven tactics to dominate search results and drive organic traffic to your Shopify store",
-  publishDate: "2025-01-22",
-  readingTime: 15,
-  author: "Garrio Team",
-  vertical: ["ecommerce", "fashion", "beauty"],
-  funnel: "awareness",
-  persona: ["founders", "ecommerce-managers"],
-  hero: "/covers/shopify-seo-guide.jpg",
-  ogImage: "/covers/shopify-seo-guide.jpg",
-  canonical: "https://garrio.ai/blog/the-complete-shopify-seo-guide-2025-optimize-your-store-for-rankings",
-  content: {
-    intro: `When Sarah launched her handmade jewelry store on Shopify, she assumed the platform would handle SEO automatically. Six months later, her beautiful products were buried on page 47 of Google search results. Meanwhile, her competitor with inferior products was ranking #3 for "handmade sterling silver rings"—the exact keyword Sarah was targeting.
+When Sarah launched her handmade jewelry store on Shopify, she assumed the platform would handle SEO automatically. Six months later, her beautiful products were buried on page 47 of Google search results. Meanwhile, her competitor with inferior products was ranking #3 for "handmade sterling silver rings"—the exact keyword Sarah was targeting.
 
 The difference? **Strategic Shopify SEO optimization.**
 
 Today, Sarah's store receives **15,000+ monthly organic visitors** and ranks in the top 3 for 47 high-value keywords. Her transformation illustrates a crucial reality: **Shopify stores are 1.8x faster than other ecommerce platforms**, but speed alone doesn't guarantee rankings. Success requires systematic optimization across technical, content, and strategic elements.
 
-This comprehensive guide reveals the exact strategies that separate top-ranking Shopify stores from the millions struggling for visibility.`,
-    sections: [
-      {
-        h2: "The Shopify SEO Landscape in 2025",
-      body: `### Google's Evolving Requirements
+This comprehensive guide reveals the exact strategies that separate top-ranking Shopify stores from the millions struggling for visibility.
+
+## The Shopify SEO Landscape in 2025
+
+### Google's Evolving Requirements
 
 **Core Web Vitals Updates:**
 - **Interaction to Next Paint (INP)** replaced First Input Delay (FID) as a Core Web Vital in 2024
@@ -67,16 +43,16 @@ This comprehensive guide reveals the exact strategies that separate top-ranking 
 - **URL structure constraints**: Limited subcategory organization
 - **Duplicate content risks**: Collection and product page overlaps
 - **Meta tag limitations**: Restricted customization in some areas
-- **Internal linking challenges**: Navigation complexity at scale`
-    },
-    {
-      h2: "Technical SEO Foundation",
-      body: `### Site Structure Optimization
+- **Internal linking challenges**: Navigation complexity at scale
+
+## Technical SEO Foundation
+
+### Site Structure Optimization
 
 **The Optimal Shopify Hierarchy:**
-\`\`\`
+```
 Home Page → Category/Collection Page → Product Page
-\`\`\`
+```
 
 **Why This Structure Works:**
 - **Clear user journey**: Logical navigation flow
@@ -95,10 +71,10 @@ Home Page → Category/Collection Page → Product Page
 **URL Structure Best Practices:**
 
 **Recommended URL Format:**
-- **Homepage**: \`yourstore.com\`
-- **Collections**: \`yourstore.com/collections/jewelry\`
-- **Products**: \`yourstore.com/products/sterling-silver-moon-ring\`
-- **Blog**: \`yourstore.com/blogs/news/article-title\`
+- **Homepage**: `yourstore.com`
+- **Collections**: `yourstore.com/collections/jewelry`
+- **Products**: `yourstore.com/products/sterling-silver-moon-ring`
+- **Blog**: `yourstore.com/blogs/news/article-title`
 
 **Optimization Tips:**
 - Use hyphens, not underscores, in URLs
@@ -140,7 +116,7 @@ Home Page → Category/Collection Page → Product Page
 **Essential Schema Types for Shopify:**
 
 **Product Schema:**
-\`\`\`json
+```json
 {
   "@context": "https://schema.org/",
   "@type": "Product",
@@ -159,10 +135,10 @@ Home Page → Category/Collection Page → Product Page
     "availability": "https://schema.org/InStock"
   }
 }
-\`\`\`
+```
 
 **Organization Schema:**
-\`\`\`json
+```json
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -179,10 +155,10 @@ Home Page → Category/Collection Page → Product Page
     "https://www.instagram.com/lunajewelry"
   ]
 }
-\`\`\`
+```
 
 **Breadcrumb Schema:**
-\`\`\`json
+```json
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -206,11 +182,11 @@ Home Page → Category/Collection Page → Product Page
     }
   ]
 }
-\`\`\``
-    },
-    {
-      h2: "Keyword Strategy & Content Optimization",
-      body: `### Ecommerce Keyword Research
+```
+
+## Keyword Strategy & Content Optimization
+
+### Ecommerce Keyword Research
 
 **The Three-Tier Keyword Strategy:**
 
@@ -240,9 +216,9 @@ Home Page → Category/Collection Page → Product Page
 ### Product Page Optimization
 
 **Title Tag Formula:**
-\`\`\`
+```
 Primary Keyword | Secondary Keyword | Brand Name
-\`\`\`
+```
 
 **Examples:**
 - ✅ Good: "Sterling Silver Moon Ring | Handmade Jewelry | Luna Jewelry"
@@ -293,11 +269,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Breadcrumb navigation**: Clear hierarchical structure
 - **Related collections**: Cross-link complementary categories
 - **Featured product links**: Link to individual product pages
-- **Blog content links**: Connect to relevant educational content`
-    },
-    {
-      h2: "Content Marketing for SEO",
-      body: `### Blog Content Strategy
+- **Blog content links**: Connect to relevant educational content
+
+## Content Marketing for SEO
+
+### Blog Content Strategy
 
 **Content Pillars for Ecommerce SEO:**
 
@@ -359,11 +335,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Encourage detailed reviews**: Provide review prompts and incentives
 - **Photo reviews**: Visual content improves engagement and SEO
 - **Video reviews**: Higher engagement and social proof
-- **Review responses**: Engage with customers publicly`
-    },
-    {
-      h2: "Advanced SEO Tactics",
-      body: `### Link Building for Ecommerce
+- **Review responses**: Engage with customers publicly
+
+## Advanced SEO Tactics
+
+### Link Building for Ecommerce
 
 **Internal Link Building:**
 
@@ -415,11 +391,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Image optimization**: WebP format, proper sizing
 - **Minimal plugins**: Reduce third-party scripts
 - **AMP implementation**: For blog content (optional)
-- **PWA features**: App-like experience`
-    },
-    {
-      h2: "Monitoring & Analytics",
-      body: `### SEO Performance Tracking
+- **PWA features**: App-like experience
+
+## Monitoring & Analytics
+
+### SEO Performance Tracking
 
 **Essential Metrics to Monitor:**
 
@@ -459,11 +435,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Ahrefs**: Keyword research and competitor analysis
 - **SEMrush**: Comprehensive SEO platform
 - **Screaming Frog**: Technical SEO crawling
-- **GTmetrix**: Page speed and performance analysis`
-    },
-    {
-      h2: "Common Shopify SEO Mistakes to Avoid",
-      body: `### Technical SEO Pitfalls
+- **GTmetrix**: Page speed and performance analysis
+
+## Common Shopify SEO Mistakes to Avoid
+
+### Technical SEO Pitfalls
 
 **Mistake #1: Duplicate Content Issues**
 - **Problem**: Multiple URLs showing same content
@@ -490,11 +466,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 **Mistake #5: Ignoring Blog SEO**
 - **Problem**: Blog posts without SEO optimization
 - **Solution**: Keyword research for all blog content, proper optimization
-- **Prevention**: SEO checklist for content creation process`
-    },
-    {
-      h2: "Your 90-Day Shopify SEO Action Plan",
-      body: `### Days 1-30: Foundation Setup
+- **Prevention**: SEO checklist for content creation process
+
+## Your 90-Day Shopify SEO Action Plan
+
+### Days 1-30: Foundation Setup
 
 **Week 1-2: Technical Audit and Cleanup**
 - Install Google Search Console and Analytics
@@ -534,11 +510,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 - Set up comprehensive tracking and reporting
 - Analyze performance and identify improvements
 - Plan next quarter's SEO strategy
-- Document processes for ongoing optimization`
-    },
-    {
-      h2: "ROI Expectations and Timeline",
-      body: `### Realistic Timeline for Results
+- Document processes for ongoing optimization
+
+## ROI Expectations and Timeline
+
+### Realistic Timeline for Results
 
 **Months 1-3: Foundation Building**
 - **Technical improvements**: Immediate impact on user experience
@@ -575,11 +551,11 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Dedicated SEO team**: $2,000-6,000/month
 - **Content marketing**: $500-2,000/month
 - **Advanced tools**: $300-500/month
-- **Link building and PR**: $500-2,000/month`
-    },
-    {
-      h2: "The Future of Shopify SEO",
-      body: `### Emerging Trends for 2025-2026
+- **Link building and PR**: $500-2,000/month
+
+## The Future of Shopify SEO
+
+### Emerging Trends for 2025-2026
 
 **AI and Machine Learning:**
 - **AI-generated content**: Tools for scaling content creation
@@ -597,20 +573,4 @@ Primary Keyword | Secondary Keyword | Brand Name
 - **Shopify SEO improvements**: Platform-level optimization enhancements
 - **App ecosystem growth**: More sophisticated SEO tools
 - **Integration capabilities**: Better connection with SEO platforms
-- **Performance optimization**: Continued speed improvements`
-      }
-    ],
-    cta: {
-      text: "Boost Your Shopify SEO Today",
-      href: "https://apps.shopify.com/garrio?utm_source=blog&utm_campaign=shopify_seo_guide"
-    }
-  }
-}
-
-}
-
-export default async function BlogPage() {
-  const blogPostData = await getPostContent();
-  const formattedDate = formatDate(blogPostData.publishDate);
-  return <BlogPost post={blogPostData} formattedDate={formattedDate} />;
-}
+- **Performance optimization**: Continued speed improvements

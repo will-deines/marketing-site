@@ -31,7 +31,7 @@ export default function CtaRail() {
       <p className="text-purple-800 mb-4">Join 2,247 stores saving 10 hrs/wk with automated customer support.</p>
       <Button className="w-full bg-purple-600 hover:bg-purple-700" asChild>
         <Link
-          href="https://apps.shopify.com/app-installation"
+          href="https://apps.shopify.com/garrio"
           target="_blank"
           rel="noopener noreferrer"
           onClick={trackCtaClick}

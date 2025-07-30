@@ -495,7 +495,7 @@ export default function RoiCalculator() {
                   asChild
                 >
                   <Link
-                    href={`https://apps.shopify.com/app-installation?utm_source=roi&utm_medium=calculator&utm_campaign=save_${Math.round(results.savings[results.highestCompetitorCost.slug] || 0)}&utm_content=${chatVolume}_chats`}
+                    href={`https://apps.shopify.com/garrio?utm_source=roi&utm_medium=calculator&utm_campaign=save_${Math.round(results.savings[results.highestCompetitorCost.slug] || 0)}&utm_content=${chatVolume}_chats`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleCtaClick}

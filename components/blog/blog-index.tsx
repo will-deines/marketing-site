@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useRef, useCallback, useMemo } from "react"
 
 import BlogFilters from "@/components/blog/blog-filters"
 import BlogGrid from "@/components/blog/blog-grid"
@@ -9,7 +9,76 @@ import BlogHero from "@/components/blog/blog-hero"
 import CtaRail from "@/components/blog/cta-rail"
 import EmptyState from "@/components/blog/empty-state"
 import FeaturedPost from "@/components/blog/featured-post"
-import { getFilteredPosts, getFeaturedPost, funnelLabels, verticalLabels, type Post } from "@/lib/blog-utils"
+import { funnelLabels, verticalLabels, type Post } from "@/lib/blog-utils"
+
+// Client-side utility functions for filtering posts
+function getFilteredPostsFromArray(
+  posts: Post[],
+  {
+    vertical = [],
+    funnel = "",
+    minReadingTime = 0,
+    maxReadingTime = 100,
+    page = 1,
+    limit = 9,
+  }: {
+    vertical?: string[]
+    funnel?: string
+    minReadingTime?: number
+    maxReadingTime?: number
+    page?: number
+    limit?: number
+  }
+): {
+  posts: Post[]
+  total: number
+  hasMore: boolean
+} {
+  let filteredPosts = [...posts]
+
+  // Filter by vertical
+  if (vertical.length > 0) {
+    filteredPosts = filteredPosts.filter((post) => post.vertical.some((v) => vertical.includes(v)))
+  }
+
+  // Filter by funnel
+  if (funnel) {
+    filteredPosts = filteredPosts.filter((post) => post.funnel === funnel)
+  }
+
+  // Filter by reading time
+  filteredPosts = filteredPosts.filter(
+    (post) => post.readingTime >= minReadingTime && post.readingTime <= maxReadingTime,
+  )
+
+  // Sort by publish date (newest first)
+  filteredPosts.sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+
+  // Paginate
+  const startIndex = (page - 1) * limit
+  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + limit)
+
+  return {
+    posts: paginatedPosts,
+    total: filteredPosts.length,
+    hasMore: startIndex + limit < filteredPosts.length,
+  }
+}
+
+function getFeaturedPostFromArray(posts: Post[], vertical: string[] = []): Post | null {
+  let candidatePosts = [...posts]
+
+  // Filter by vertical if provided
+  if (vertical.length > 0) {
+    candidatePosts = candidatePosts.filter((post) => post.vertical.some((v) => vertical.includes(v)))
+  }
+
+  // Sort by publish date (newest first)
+  candidatePosts.sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+
+  // Return the most recent post or null if no posts match
+  return candidatePosts.length > 0 ? candidatePosts[0] : null
+}
 
 interface BlogIndexProps {
   initialVertical: string[]
@@ -18,6 +87,7 @@ interface BlogIndexProps {
   initialMaxReadingTime: number
   initialPage: number
   allVerticals: string[]
+  posts: Post[]
 }
 
 export default function BlogIndex({
@@ -27,7 +97,11 @@ export default function BlogIndex({
   initialMaxReadingTime,
   initialPage,
   allVerticals,
+  posts: allPosts,
 }: BlogIndexProps) {
+  // Memoize posts to prevent infinite loops
+  const memoizedPosts = useMemo(() => allPosts, [allPosts.length])
+
   // State for filters
   const [vertical, setVertical] = useState<string[]>(initialVertical)
   const [funnel, setFunnel] = useState<string | undefined>(initialFunnel)
@@ -61,7 +135,7 @@ export default function BlogIndex({
         posts: filteredPosts,
         total,
         hasMore: moreAvailable,
-      } = getFilteredPosts({
+      } = getFilteredPostsFromArray(memoizedPosts, {
         vertical,
         funnel,
         minReadingTime,
@@ -91,14 +165,14 @@ export default function BlogIndex({
         })
       }
     },
-    [vertical, funnel, minReadingTime, maxReadingTime, page],
+    [vertical, funnel, minReadingTime, maxReadingTime, page, memoizedPosts],
   )
 
   // Load featured post
   const loadFeaturedPost = useCallback(() => {
-    const featured = getFeaturedPost(vertical)
+    const featured = getFeaturedPostFromArray(memoizedPosts, vertical)
     setFeaturedPost(featured)
-  }, [vertical])
+  }, [vertical, memoizedPosts])
 
   // Update URL with filters
   const updateUrl = useCallback(() => {

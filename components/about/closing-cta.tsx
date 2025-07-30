@@ -97,7 +97,7 @@ export default function ClosingCTA() {
               className="group relative bg-white text-purple-900 hover:bg-white/95 text-lg px-8 py-6 h-auto shadow-2xl hover:shadow-white/25 transform hover:scale-105 transition-all duration-300 overflow-hidden" 
               asChild
             >
-              <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer">
+              <Link href="https://apps.shopify.com/garrio" target="_blank" rel="noopener noreferrer">
                 <span className="relative z-10 flex items-center">
                   Install Free on Shopify
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

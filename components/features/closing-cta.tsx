@@ -60,7 +60,7 @@ export default function ClosingCTA() {
               className="bg-white text-purple-900 hover:bg-white/90 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 text-lg px-8 py-6 h-auto rounded-2xl font-semibold group"
               asChild
             >
-              <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+              <Link href="https://apps.shopify.com/garrio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                 <Sparkles className="w-5 h-5" />
                 Start Free Today
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
-import BlogPost from "@/components/blog/blog-post";
+import BlogPost from "@/components/blog/blog-post-enhanced";
+import { formatDate } from "@/lib/blog-utils";
+import { convertMDXToPostContent } from "@/lib/mdx-blog-utils";
 
 export const metadata: Metadata = {
   title:
@@ -17,7 +19,16 @@ export const metadata: Metadata = {
   },
 };
 
-const postContent = {
+async function getPostContent() {
+  // Try to get content from MDX first, fallback to inline content
+  const mdxContent = await convertMDXToPostContent("why-fashion-brands-need-industry-specific-ai-not-generic-chatbots");
+  
+  if (mdxContent) {
+    return mdxContent;
+  }
+  
+  // Fallback to inline content
+  return {
   title: "Why Fashion Brands Need Industry-Specific AI (Not Generic Chatbots)",
   slug: "why-fashion-brands-need-industry-specific-ai-not-generic-chatbots",
   excerpt: "Generic chatbots fail fashion brands. Discover how industry-specific AI handles size guides, styling advice, and returns to reduce the 30-40% return rates plaguing fashion ecommerce.",
@@ -84,9 +95,12 @@ const postContent = {
       href: "https://apps.shopify.com/garrio?utm_source=blog&utm_campaign=fashion_ai_vs_generic"
     }
   }
-};
+  };
+}
 
-export default function BlogPage() {
-  return <BlogPost post={postContent} formattedDate="January 22, 2025" />;
+export default async function BlogPage() {
+  const postContent = await getPostContent();
+  const formattedDate = formatDate(postContent.publishDate);
+  return <BlogPost post={postContent} formattedDate={formattedDate} />;
 }
 

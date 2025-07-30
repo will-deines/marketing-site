@@ -214,7 +214,7 @@ export default function BeforeAfterComparison() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to reclaim your creative energy?</h3>
               <p className="text-gray-600 mb-6">Join 500+ founders who chose growth over burnout</p>
               <Link
-                href="https://apps.shopify.com/app-installation"
+                href="https://apps.shopify.com/garrio"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 group"
               >
                 Start your transformation

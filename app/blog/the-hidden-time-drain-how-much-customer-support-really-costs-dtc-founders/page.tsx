@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import BlogPost from '@/components/blog/blog-post'
+import BlogPost from '@/components/blog/blog-post-enhanced'
 import { getPostBySlug, formatDate } from '@/lib/blog-utils'
 
 export const metadata: Metadata = {

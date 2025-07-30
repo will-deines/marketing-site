@@ -108,7 +108,7 @@ export default function PricingBreakout({ competitor }: PricingBreakoutProps) {
             </div>
             
             <Button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-200" asChild>
-              <Link href="https://apps.shopify.com/app-installation" target="_blank" rel="noopener noreferrer">
+              <Link href="https://apps.shopify.com/garrio" target="_blank" rel="noopener noreferrer">
                 Add Garrio Free—1-Click Install
               </Link>
             </Button>
