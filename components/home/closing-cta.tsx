@@ -1,34 +1,41 @@
-"use client"
+"use client";
 
-import { ArrowRight, Sparkles, Clock, Users, TrendingUp, Zap } from "lucide-react"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import {
+  ArrowRight,
+  Sparkles,
+  Clock,
+  Users,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function ClosingCTA() {
-  const [isPulsing, setIsPulsing] = useState(false)
+  const [isPulsing, setIsPulsing] = useState(false);
 
   // Set up pulsing animation every 8 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsPulsing(true)
+      setIsPulsing(true);
 
       // Reset pulsing state after animation completes
       setTimeout(() => {
-        setIsPulsing(false)
-      }, 1000)
-    }, 8000)
+        setIsPulsing(false);
+      }, 1000);
+    }, 8000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative w-full py-20 md:py-32 overflow-hidden">
       {/* Elegant gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),transparent_50%)]"></div>
-      
+
       {/* Content */}
       <div className="relative z-20 container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
@@ -36,18 +43,19 @@ export default function ClosingCTA() {
             <Sparkles className="w-4 h-4" />
             Ready to transform your business?
           </div>
-          
+
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-            Your customers are 
+            Your customers are
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-100 to-white">
               waiting
             </span>
           </h2>
-          
+
           <p className="text-white/90 text-xl md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed">
-            Don't let another potential sale slip away while you're stuck answering emails. 
-            Set up Garrio in 3 minutes and start converting every question into revenue.
+            Don't let another potential sale slip away while you're stuck
+            answering emails. Set up Garrio in 5 minutes and start converting
+            every question into revenue.
           </p>
         </div>
 
@@ -58,11 +66,11 @@ export default function ClosingCTA() {
               <div className="bg-white/20 p-3 rounded-xl inline-flex mb-4">
                 <Clock className="w-6 h-6 text-white" />
               </div>
-              <div className="text-3xl font-bold text-white mb-2">3 min</div>
+              <div className="text-3xl font-bold text-white mb-2">5 min</div>
               <div className="text-white/80">Setup time</div>
             </div>
           </div>
-          
+
           <div className="text-center">
             <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
               <div className="bg-white/20 p-3 rounded-xl inline-flex mb-4">
@@ -72,7 +80,7 @@ export default function ClosingCTA() {
               <div className="text-white/80">Done for you</div>
             </div>
           </div>
-          
+
           <div className="text-center">
             <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
               <div className="bg-white/20 p-3 rounded-xl inline-flex mb-4">
@@ -93,15 +101,17 @@ export default function ClosingCTA() {
             }`}
             asChild
           >
-            <Link 
-              href="https://apps.shopify.com/garrio?utm_source=homepage_closing_cta&utm_medium=cta&utm_campaign=free_install" 
-              target="_blank" 
+            <Link
+              href="https://apps.shopify.com/garrio?utm_source=homepage_closing_cta&utm_medium=cta&utm_campaign=free_install"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 sm:gap-3"
             >
               <Zap className="w-4 sm:w-6 h-4 sm:h-6 flex-shrink-0" />
               <span className="sm:hidden">Start Building</span>
-              <span className="hidden sm:inline">Start Building Your Dream Business</span>
+              <span className="hidden sm:inline">
+                Start Building Your Dream Business
+              </span>
               <ArrowRight className="w-4 sm:w-6 h-4 sm:h-6 group-hover:translate-x-1 transition-transform flex-shrink-0" />
             </Link>
           </Button>
@@ -127,5 +137,5 @@ export default function ClosingCTA() {
         </div>
       </div>
     </section>
-  )
+  );
 }
